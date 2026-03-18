@@ -50,31 +50,31 @@ export default async function ProfilePage() {
   return (
     <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: 'transparent' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
-        <h1 className="text-2xl font-bold mb-6" style={{ color: '#E8F0FE' }}>
+        <h1 className="text-2xl font-bold mb-6" style={{ color: '#1E293B' }}>
           Profile
         </h1>
 
         {/* Identity */}
-        <div className="rounded-lg p-5 mb-4" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
-          <p className="text-lg font-bold" style={{ color: '#E8F0FE' }}>
+        <div className="rounded-lg p-5 mb-4" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
+          <p className="text-lg font-bold" style={{ color: '#1E293B' }}>
             {profile?.display_name ?? 'Learner'}
           </p>
-          <p className="text-sm mt-1" style={{ color: '#8BA3C4' }}>
+          <p className="text-sm mt-1" style={{ color: '#64748B' }}>
             {user.email}
           </p>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-3 gap-3 mb-4">
-          <div className="rounded-lg p-4 text-center" style={{ backgroundColor: '#25253D', borderBottom: `2px solid ${tierColour}` }}>
-            <p className="text-xs" style={{ color: '#8BA3C4' }}>Tier</p>
+          <div className="rounded-lg p-4 text-center" style={{ backgroundColor: '#FFFFFF', borderBottom: `2px solid ${tierColour}` }}>
+            <p className="text-xs" style={{ color: '#64748B' }}>Tier</p>
             <p className="mt-1 text-sm font-semibold capitalize" style={{ color: tierColour }}>
               {tier}
             </p>
           </div>
-          <div className="rounded-lg p-4 text-center" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
-            <p className="text-xs" style={{ color: '#8BA3C4' }}>Streak</p>
-            <p className="mt-1 text-sm font-semibold" style={{ color: '#E8F0FE' }}>
+          <div className="rounded-lg p-4 text-center" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
+            <p className="text-xs" style={{ color: '#64748B' }}>Streak</p>
+            <p className="mt-1 text-sm font-semibold" style={{ color: '#1E293B' }}>
               {profile?.streak_current ?? 0}d
             </p>
             {(profile?.streak_longest ?? 0) > 0 && (
@@ -83,32 +83,32 @@ export default async function ProfilePage() {
               </p>
             )}
           </div>
-          <div className="rounded-lg p-4 text-center" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
-            <p className="text-xs" style={{ color: '#8BA3C4' }}>Done</p>
-            <p className="mt-1 text-sm font-semibold" style={{ color: '#E8F0FE' }}>
+          <div className="rounded-lg p-4 text-center" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
+            <p className="text-xs" style={{ color: '#64748B' }}>Done</p>
+            <p className="mt-1 text-sm font-semibold" style={{ color: '#1E293B' }}>
               {completedCount ?? 0}
             </p>
           </div>
         </div>
 
         {/* Details */}
-        <div className="rounded-lg p-5 mb-4 space-y-4" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
+        <div className="rounded-lg p-5 mb-4 space-y-4" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
           {profile?.occupation && (
             <div>
               <p className="text-xs uppercase tracking-wide" style={{ color: '#6B7280' }}>Background</p>
-              <p className="text-sm mt-1" style={{ color: '#E8F0FE' }}>{profile.occupation}</p>
+              <p className="text-sm mt-1" style={{ color: '#1E293B' }}>{profile.occupation}</p>
             </div>
           )}
           {profile?.primary_goal && (
             <div>
               <p className="text-xs uppercase tracking-wide" style={{ color: '#6B7280' }}>Goal</p>
-              <p className="text-sm mt-1" style={{ color: '#E8F0FE' }}>{profile.primary_goal}</p>
+              <p className="text-sm mt-1" style={{ color: '#1E293B' }}>{profile.primary_goal}</p>
             </div>
           )}
           {profile?.weekly_time_commitment && (
             <div>
               <p className="text-xs uppercase tracking-wide" style={{ color: '#6B7280' }}>Time commitment</p>
-              <p className="text-sm mt-1" style={{ color: '#E8F0FE' }}>
+              <p className="text-sm mt-1" style={{ color: '#1E293B' }}>
                 {TIME_LABELS[profile.weekly_time_commitment] ?? profile.weekly_time_commitment}
               </p>
             </div>
@@ -122,7 +122,7 @@ export default async function ProfilePage() {
 
         {/* Notifications */}
         <div className="mb-4">
-          <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#8BA3C4' }}>
+          <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#64748B' }}>
             Notifications
           </h2>
           <NotificationPreferences userId={user.id} />

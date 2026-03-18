@@ -76,21 +76,21 @@ export function NotificationPreferences({ userId }: Props) {
         <div
           key={key}
           className="flex items-center justify-between rounded-lg px-4 py-3"
-          style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}
+          style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}
         >
           <div>
-            <p className="text-sm font-medium" style={{ color: '#E8F0FE' }}>{LABELS[key].title}</p>
-            <p className="text-xs" style={{ color: '#8BA3C4' }}>{LABELS[key].desc}</p>
+            <p className="text-sm font-medium" style={{ color: '#1E293B' }}>{LABELS[key].title}</p>
+            <p className="text-xs" style={{ color: '#64748B' }}>{LABELS[key].desc}</p>
           </div>
           <button
             onClick={() => toggle(key)}
             className="relative w-11 h-6 rounded-full transition-colors flex-shrink-0"
-            style={{ backgroundColor: prefs[key] ? '#E8C872' : '#363654' }}
+            style={{ backgroundColor: prefs[key] ? '#E8C872' : '#E2E8F0' }}
           >
             <div
               className="absolute top-0.5 w-5 h-5 rounded-full transition-transform"
               style={{
-                backgroundColor: prefs[key] ? '#1A1A2E' : '#8BA3C4',
+                backgroundColor: prefs[key] ? '#1E293B' : '#64748B',
                 transform: prefs[key] ? 'translateX(22px)' : 'translateX(2px)',
               }}
             />

@@ -84,12 +84,12 @@ export function CommunityClient({ posts: initialPosts, userId, userName, isAdmin
         <button
           onClick={() => setShowForm(true)}
           className="w-full rounded-lg py-3 text-sm font-semibold"
-          style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
+          style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
         >
           New Post
         </button>
       ) : (
-        <div className="rounded-lg p-4 space-y-3" style={{ backgroundColor: '#25253D', border: '1px solid #E8C872' }}>
+        <div className="rounded-lg p-4 space-y-3" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8C872' }}>
           <div className="flex gap-2">
             {POST_TYPES.map((t) => (
               <button
@@ -97,9 +97,9 @@ export function CommunityClient({ posts: initialPosts, userId, userName, isAdmin
                 onClick={() => setPostType(t.value)}
                 className="rounded-md px-2.5 py-1 text-xs font-semibold"
                 style={{
-                  backgroundColor: postType === t.value ? t.colour : '#1A1A2E',
-                  color: postType === t.value ? '#1A1A2E' : '#8BA3C4',
-                  border: `1px solid ${postType === t.value ? t.colour : '#363654'}`,
+                  backgroundColor: postType === t.value ? t.colour : '#F8FAFC',
+                  color: postType === t.value ? '#1E293B' : '#64748B',
+                  border: `1px solid ${postType === t.value ? t.colour : '#E2E8F0'}`,
                 }}
               >
                 {t.label}
@@ -112,13 +112,13 @@ export function CommunityClient({ posts: initialPosts, userId, userName, isAdmin
             placeholder="What's on your mind?"
             rows={3}
             className="w-full rounded-lg px-3 py-2 text-sm outline-none resize-none"
-            style={{ backgroundColor: '#1A1A2E', color: '#E8F0FE', border: '1px solid #363654' }}
+            style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
           />
           <div className="flex gap-2">
             <button
               onClick={() => setShowForm(false)}
               className="flex-1 rounded-lg py-2 text-sm font-semibold"
-              style={{ backgroundColor: '#1A1A2E', color: '#8BA3C4', border: '1px solid #363654' }}
+              style={{ backgroundColor: '#F8FAFC', color: '#64748B', border: '1px solid #E2E8F0' }}
             >
               Cancel
             </button>
@@ -126,7 +126,7 @@ export function CommunityClient({ posts: initialPosts, userId, userName, isAdmin
               onClick={handlePost}
               disabled={posting || !content.trim()}
               className="flex-1 rounded-lg py-2 text-sm font-semibold transition-opacity disabled:opacity-30"
-              style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
+              style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
             >
               {posting ? 'Posting' : 'Post'}
             </button>
@@ -142,14 +142,14 @@ export function CommunityClient({ posts: initialPosts, userId, userName, isAdmin
             key={post.id}
             className="rounded-lg p-4"
             style={{
-              backgroundColor: '#25253D',
-              border: post.isPinned ? '1px solid #E8C872' : '1px solid #363654',
+              backgroundColor: '#FFFFFF',
+              border: post.isPinned ? '1px solid #E8C872' : '1px solid #E2E8F0',
             }}
           >
             {/* Header */}
             <div className="flex items-center gap-2 mb-2">
               {post.isPinned && <span className="text-xs" style={{ color: '#E8C872' }}>📌</span>}
-              <span className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>
+              <span className="text-sm font-semibold" style={{ color: '#1E293B' }}>
                 {post.authorName}
               </span>
               {typeInfo && (
@@ -182,9 +182,9 @@ export function CommunityClient({ posts: initialPosts, userId, userName, isAdmin
                     onClick={() => handleReaction(post.id, r.key, post.reactions)}
                     className="rounded-md px-2 py-1 text-xs flex items-center gap-1 transition-all"
                     style={{
-                      backgroundColor: reacted ? '#363654' : 'transparent',
-                      border: `1px solid ${reacted ? '#8BA3C4' : '#363654'}`,
-                      color: '#8BA3C4',
+                      backgroundColor: reacted ? '#E2E8F0' : 'transparent',
+                      border: `1px solid ${reacted ? '#64748B' : '#E2E8F0'}`,
+                      color: '#64748B',
                     }}
                   >
                     <span>{r.emoji}</span>
@@ -207,8 +207,8 @@ export function CommunityClient({ posts: initialPosts, userId, userName, isAdmin
       })}
 
       {initialPosts.length === 0 && (
-        <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
-          <p className="text-sm" style={{ color: '#8BA3C4' }}>
+        <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
+          <p className="text-sm" style={{ color: '#64748B' }}>
             No posts yet. Be the first to share something.
           </p>
         </div>

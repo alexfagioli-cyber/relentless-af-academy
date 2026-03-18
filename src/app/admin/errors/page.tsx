@@ -14,8 +14,8 @@ export default async function AdminErrorsPage() {
   if (error) {
     return (
       <>
-        <h1 className="text-2xl font-bold mb-1" style={{ color: '#E8F0FE' }}>Admin</h1>
-        <p className="text-sm mb-4" style={{ color: '#8BA3C4' }}>Errors</p>
+        <h1 className="text-2xl font-bold mb-1" style={{ color: '#1E293B' }}>Admin</h1>
+        <p className="text-sm mb-4" style={{ color: '#64748B' }}>Errors</p>
         <AdminNav />
         <p style={{ color: '#EF4444' }}>Failed to load errors: {error.message}</p>
       </>
@@ -24,8 +24,8 @@ export default async function AdminErrorsPage() {
 
   return (
     <>
-      <h1 className="text-2xl font-bold mb-1" style={{ color: '#E8F0FE' }}>Admin</h1>
-      <p className="text-sm mb-4" style={{ color: '#8BA3C4' }}>Errors</p>
+      <h1 className="text-2xl font-bold mb-1" style={{ color: '#1E293B' }}>Admin</h1>
+      <p className="text-sm mb-4" style={{ color: '#64748B' }}>Errors</p>
       <AdminNav />
       <ErrorsList errors={errors ?? []} />
     </>

@@ -56,7 +56,7 @@ export function FeedbackButton() {
         <button
           onClick={() => setOpen(true)}
           className="fixed bottom-24 right-6 z-40 rounded-full px-3 py-1.5 text-xs font-semibold transition-all shadow-lg"
-          style={{ color: '#E8C872', border: '1.5px solid #E8C872', backgroundColor: '#25253D' }}
+          style={{ color: '#E8C872', border: '1.5px solid #E8C872', backgroundColor: '#FFFFFF' }}
         >
           Feedback
         </button>
@@ -70,7 +70,7 @@ export function FeedbackButton() {
         >
           <div
             className="w-full max-w-lg rounded-t-xl p-5 pb-8"
-            style={{ backgroundColor: '#25253D', border: '1px solid #363654', borderBottom: 'none' }}
+            style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', borderBottom: 'none' }}
             onClick={(e) => e.stopPropagation()}
           >
             {submitted ? (
@@ -80,10 +80,10 @@ export function FeedbackButton() {
             ) : (
               <>
                 <div className="flex items-center justify-between mb-4">
-                  <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>
+                  <p className="text-sm font-semibold" style={{ color: '#1E293B' }}>
                     How&apos;s the platform so far?
                   </p>
-                  <button onClick={() => setOpen(false)} className="text-xs" style={{ color: '#8BA3C4' }}>
+                  <button onClick={() => setOpen(false)} className="text-xs" style={{ color: '#64748B' }}>
                     Close
                   </button>
                 </div>
@@ -95,9 +95,9 @@ export function FeedbackButton() {
                       onClick={() => setRating(r.value)}
                       className="rounded-lg py-3 text-center transition-all"
                       style={{
-                        backgroundColor: rating === r.value ? '#E8C872' : '#1A1A2E',
-                        color: rating === r.value ? '#1A1A2E' : '#8BA3C4',
-                        border: `1px solid ${rating === r.value ? '#E8C872' : '#363654'}`,
+                        backgroundColor: rating === r.value ? '#E8C872' : '#F8FAFC',
+                        color: rating === r.value ? '#1E293B' : '#64748B',
+                        border: `1px solid ${rating === r.value ? '#E8C872' : '#E2E8F0'}`,
                       }}
                     >
                       <span className="text-lg block">{r.emoji}</span>
@@ -112,14 +112,14 @@ export function FeedbackButton() {
                   placeholder="Anything specific? (optional)"
                   rows={2}
                   className="w-full rounded-lg px-3 py-2 text-sm outline-none resize-none mb-3"
-                  style={{ backgroundColor: '#1A1A2E', color: '#E8F0FE', border: '1px solid #363654' }}
+                  style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
                 />
 
                 <button
                   onClick={handleSubmit}
                   disabled={!rating}
                   className="w-full rounded-lg py-2.5 text-sm font-semibold transition-opacity disabled:opacity-30"
-                  style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
+                  style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
                 >
                   Send
                 </button>

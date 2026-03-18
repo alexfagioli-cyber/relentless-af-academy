@@ -40,8 +40,8 @@ export default async function ReviewPage() {
   return (
     <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: 'transparent' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
-        <h1 className="text-2xl font-bold mb-2" style={{ color: '#E8F0FE' }}>Reviews Due</h1>
-        <p className="text-sm mb-6" style={{ color: '#8BA3C4' }}>
+        <h1 className="text-2xl font-bold mb-2" style={{ color: '#1E293B' }}>Reviews Due</h1>
+        <p className="text-sm mb-6" style={{ color: '#64748B' }}>
           Spaced repetition — revisit what you&apos;ve learned to make it stick.
         </p>
 

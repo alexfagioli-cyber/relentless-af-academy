@@ -110,8 +110,8 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
 
   return (
     <div className="space-y-4">
-      <div className="rounded-lg p-4" style={{ backgroundColor: '#25253D' }}>
-        <p className="text-sm font-medium mb-3" style={{ color: '#E8F0FE' }}>
+      <div className="rounded-lg p-4" style={{ backgroundColor: '#FFFFFF' }}>
+        <p className="text-sm font-medium mb-3" style={{ color: '#1E293B' }}>
           Have a certificate?
         </p>
 
@@ -123,16 +123,16 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
             placeholder="Certificate number"
             className="flex-1 rounded-md px-3 py-3 text-sm outline-none"
             style={{
-              backgroundColor: '#1A1A2E',
-              color: '#E8F0FE',
-              border: '1px solid #374151',
+              backgroundColor: '#F8FAFC',
+              color: '#1E293B',
+              border: '1px solid #E2E8F0',
             }}
           />
           <button
             type="submit"
             disabled={verifying || !certNumber.trim()}
             className="rounded-md px-4 py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
-            style={{ backgroundColor: '#E8C872', color: '#E8F0FE' }}
+            style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
           >
             {verifying ? '...' : 'Verify Certificate'}
           </button>
@@ -148,7 +148,7 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
           onClick={handleSelfReport}
           disabled={verifying}
           className="w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity disabled:opacity-50"
-          style={{ backgroundColor: '#25253D', color: '#8BA3C4', border: '1px solid #374151' }}
+          style={{ backgroundColor: '#FFFFFF', color: '#64748B', border: '1px solid #E2E8F0' }}
         >
           {verifying ? 'Saving' : 'Self-Report Completion'}
         </button>

@@ -51,8 +51,8 @@ export default async function CommunityPage() {
   return (
     <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: 'transparent' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
-        <h1 className="text-2xl font-bold mb-2" style={{ color: '#E8F0FE' }}>Community</h1>
-        <p className="text-sm mb-6" style={{ color: '#8BA3C4' }}>Share, learn, celebrate.</p>
+        <h1 className="text-2xl font-bold mb-2" style={{ color: '#1E293B' }}>Community</h1>
+        <p className="text-sm mb-6" style={{ color: '#64748B' }}>Share, learn, celebrate.</p>
 
         <CommunityClient
           posts={postsData}

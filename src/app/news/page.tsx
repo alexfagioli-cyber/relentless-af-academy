@@ -22,10 +22,10 @@ export default async function NewsPage() {
   return (
     <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: 'transparent' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
-        <h1 className="text-2xl font-bold mb-2" style={{ color: '#E8F0FE' }}>
+        <h1 className="text-2xl font-bold mb-2" style={{ color: '#1E293B' }}>
           AI News &amp; Ideas
         </h1>
-        <p className="text-sm mb-6" style={{ color: '#8BA3C4' }}>
+        <p className="text-sm mb-6" style={{ color: '#64748B' }}>
           What&apos;s happening in AI — and how it applies to you.
         </p>
 
@@ -39,7 +39,7 @@ export default async function NewsPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block rounded-lg p-4 transition-all"
-                style={{ backgroundColor: '#25253D', borderLeft: `3px solid ${cat.colour}` }}
+                style={{ backgroundColor: '#FFFFFF', borderLeft: `3px solid ${cat.colour}` }}
               >
                 <div className="flex items-center gap-2 mb-2">
                   <span
@@ -54,11 +54,11 @@ export default async function NewsPage() {
                     </span>
                   )}
                 </div>
-                <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>
+                <p className="text-sm font-semibold" style={{ color: '#1E293B' }}>
                   {item.title}
                 </p>
                 {item.description && (
-                  <p className="mt-1 text-xs leading-relaxed" style={{ color: '#8BA3C4' }}>
+                  <p className="mt-1 text-xs leading-relaxed" style={{ color: '#64748B' }}>
                     {item.description}
                   </p>
                 )}
@@ -68,8 +68,8 @@ export default async function NewsPage() {
         </div>
 
         {(!items || items.length === 0) && (
-          <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
-            <p className="text-sm" style={{ color: '#8BA3C4' }}>
+          <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
+            <p className="text-sm" style={{ color: '#64748B' }}>
               Nothing here yet. Check back soon.
             </p>
           </div>

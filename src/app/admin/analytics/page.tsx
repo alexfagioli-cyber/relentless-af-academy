@@ -177,8 +177,8 @@ export default async function AdminAnalyticsPage() {
 
   return (
     <>
-      <h1 className="text-2xl font-bold mb-1" style={{ color: '#E8F0FE' }}>Admin</h1>
-      <p className="text-sm mb-4" style={{ color: '#8BA3C4' }}>Analytics</p>
+      <h1 className="text-2xl font-bold mb-1" style={{ color: '#1E293B' }}>Admin</h1>
+      <p className="text-sm mb-4" style={{ color: '#64748B' }}>Analytics</p>
       <AdminNav />
       <AnalyticsClient
         stats={{

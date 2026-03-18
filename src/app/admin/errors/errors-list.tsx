@@ -16,7 +16,7 @@ export function ErrorsList({ errors }: { errors: PlatformError[] }) {
 
   if (errors.length === 0) {
     return (
-      <p className="text-sm" style={{ color: '#8BA3C4' }}>
+      <p className="text-sm" style={{ color: '#64748B' }}>
         No errors recorded.
       </p>
     )
@@ -36,8 +36,8 @@ export function ErrorsList({ errors }: { errors: PlatformError[] }) {
             key={err.id}
             className="rounded-lg cursor-pointer transition-colors"
             style={{
-              backgroundColor: '#25253D',
-              border: '1px solid #363654',
+              backgroundColor: '#FFFFFF',
+              border: '1px solid #E2E8F0',
             }}
             onClick={() => setExpandedId(isExpanded ? null : err.id)}
           >
@@ -50,16 +50,16 @@ export function ErrorsList({ errors }: { errors: PlatformError[] }) {
                 {err.error_type ?? 'unknown'}
               </span>
               <div className="flex-1 min-w-0">
-                <p className="text-sm truncate" style={{ color: '#E8F0FE' }}>
+                <p className="text-sm truncate" style={{ color: '#1E293B' }}>
                   {truncatedMessage ?? 'No message'}
                 </p>
                 <div className="flex gap-3 mt-1">
                   {err.page && (
-                    <span className="text-xs" style={{ color: '#8BA3C4' }}>
+                    <span className="text-xs" style={{ color: '#64748B' }}>
                       {err.page}
                     </span>
                   )}
-                  <span className="text-xs" style={{ color: '#8BA3C4' }}>
+                  <span className="text-xs" style={{ color: '#64748B' }}>
                     {new Date(err.created_at).toLocaleString('en-GB', {
                       day: 'numeric',
                       month: 'short',
@@ -76,25 +76,25 @@ export function ErrorsList({ errors }: { errors: PlatformError[] }) {
             {isExpanded && (
               <div
                 className="px-4 pb-4"
-                style={{ borderTop: '1px solid #363654' }}
+                style={{ borderTop: '1px solid #E2E8F0' }}
               >
                 <div className="pt-3">
-                  <p className="text-xs font-medium mb-1" style={{ color: '#8BA3C4' }}>
+                  <p className="text-xs font-medium mb-1" style={{ color: '#64748B' }}>
                     Full message
                   </p>
-                  <p className="text-sm whitespace-pre-wrap break-words" style={{ color: '#E8F0FE' }}>
+                  <p className="text-sm whitespace-pre-wrap break-words" style={{ color: '#1E293B' }}>
                     {err.message ?? 'No message'}
                   </p>
                 </div>
                 {err.stack && (
                   <div className="mt-3">
-                    <p className="text-xs font-medium mb-1" style={{ color: '#8BA3C4' }}>
+                    <p className="text-xs font-medium mb-1" style={{ color: '#64748B' }}>
                       Stack trace
                     </p>
                     <pre
                       className="text-xs whitespace-pre-wrap break-words overflow-x-auto p-3 rounded"
                       style={{
-                        color: '#8BA3C4',
+                        color: '#64748B',
                         backgroundColor: 'rgba(54, 54, 84, 0.5)',
                       }}
                     >

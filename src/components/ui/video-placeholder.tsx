@@ -5,12 +5,12 @@ interface VideoPlaceholderProps {
 export function VideoPlaceholder({ videoUrl }: VideoPlaceholderProps) {
   if (videoUrl) {
     return (
-      <div className="mb-6 rounded-lg overflow-hidden" style={{ border: '1px solid #363654' }}>
+      <div className="mb-6 rounded-lg overflow-hidden" style={{ border: '1px solid #E2E8F0' }}>
         <video
           src={videoUrl}
           controls
           className="w-full"
-          style={{ backgroundColor: '#1A1A2E' }}
+          style={{ backgroundColor: '#F8FAFC' }}
         />
       </div>
     )
@@ -19,7 +19,7 @@ export function VideoPlaceholder({ videoUrl }: VideoPlaceholderProps) {
   return (
     <div
       className="mb-6 rounded-lg p-8 flex flex-col items-center justify-center gap-3"
-      style={{ backgroundColor: '#25253D', border: '2px solid #E8C872' }}
+      style={{ backgroundColor: '#FFFFFF', border: '2px solid #E8C872' }}
     >
       <div
         className="w-12 h-12 rounded-full flex items-center justify-center"

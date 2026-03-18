@@ -59,15 +59,15 @@ function PlaygroundInner({ userId }: { userId: string }) {
   }
 
   return (
-    <div className="flex flex-col h-[100dvh]" style={{ backgroundColor: '#1A1A2E' }}>
+    <div className="flex flex-col h-[100dvh]" style={{ backgroundColor: '#F8FAFC' }}>
       {/* Header */}
-      <div className="px-4 pt-4 pb-3" style={{ borderBottom: '1px solid #363654' }}>
+      <div className="px-4 pt-4 pb-3" style={{ borderBottom: '1px solid #E2E8F0' }}>
         <div className="flex items-center justify-between max-w-lg mx-auto">
           <div>
-            <h1 className="text-lg font-bold" style={{ color: '#E8F0FE' }}>AI Playground</h1>
-            <p className="text-xs" style={{ color: '#8BA3C4' }}>Practice your prompts</p>
+            <h1 className="text-lg font-bold" style={{ color: '#1E293B' }}>AI Playground</h1>
+            <p className="text-xs" style={{ color: '#64748B' }}>Practice your prompts</p>
           </div>
-          <Link href="/" className="text-xs" style={{ color: '#8BA3C4' }}>
+          <Link href="/" className="text-xs" style={{ color: '#64748B' }}>
             ← Back
           </Link>
         </div>
@@ -78,7 +78,7 @@ function PlaygroundInner({ userId }: { userId: string }) {
         <div className="max-w-lg mx-auto space-y-3">
           {messages.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-sm" style={{ color: '#8BA3C4' }}>
+              <p className="text-sm" style={{ color: '#64748B' }}>
                 Type a prompt below to practise. Your prompts are saved so you can see what you&apos;ve tried.
               </p>
             </div>
@@ -89,9 +89,9 @@ function PlaygroundInner({ userId }: { userId: string }) {
               <div
                 className="rounded-xl px-4 py-3 max-w-[85%] text-sm leading-relaxed"
                 style={{
-                  backgroundColor: msg.role === 'user' ? '#25253D' : '#25253D',
-                  border: msg.role === 'user' ? '1px solid #E8C872' : '1px solid #363654',
-                  color: '#E8F0FE',
+                  backgroundColor: msg.role === 'user' ? '#FFFFFF' : '#FFFFFF',
+                  border: msg.role === 'user' ? '1px solid #E8C872' : '1px solid #E2E8F0',
+                  color: '#1E293B',
                 }}
               >
                 <p className="whitespace-pre-wrap">{msg.content}</p>
@@ -99,7 +99,7 @@ function PlaygroundInner({ userId }: { userId: string }) {
                   <button
                     onClick={handleCopyAndOpen}
                     className="mt-3 rounded-lg px-3 py-1.5 text-xs font-semibold"
-                    style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
+                    style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
                   >
                     Open Claude →
                   </button>
@@ -112,7 +112,7 @@ function PlaygroundInner({ userId }: { userId: string }) {
             <div className="flex justify-start">
               <div
                 className="rounded-xl px-4 py-3 text-sm"
-                style={{ backgroundColor: '#25253D', border: '1px solid #363654', color: '#8BA3C4' }}
+                style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', color: '#64748B' }}
               >
                 Thinking...
               </div>
@@ -122,7 +122,7 @@ function PlaygroundInner({ userId }: { userId: string }) {
       </div>
 
       {/* Input bar */}
-      <div className="px-4 py-3" style={{ backgroundColor: '#25253D', borderTop: '1px solid #363654' }}>
+      <div className="px-4 py-3" style={{ backgroundColor: '#FFFFFF', borderTop: '1px solid #E2E8F0' }}>
         <div className="max-w-lg mx-auto flex gap-2">
           <textarea
             value={input}
@@ -136,13 +136,13 @@ function PlaygroundInner({ userId }: { userId: string }) {
             placeholder="Type a prompt..."
             rows={1}
             className="flex-1 rounded-lg px-3 py-2.5 text-sm outline-none resize-none"
-            style={{ backgroundColor: '#1A1A2E', color: '#E8F0FE', border: '1px solid #363654' }}
+            style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
           />
           <button
             onClick={handleSend}
             disabled={!input.trim() || sending}
             className="rounded-lg px-4 text-sm font-semibold transition-opacity disabled:opacity-30"
-            style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
+            style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
           >
             Send
           </button>

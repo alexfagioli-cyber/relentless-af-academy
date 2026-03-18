@@ -116,7 +116,7 @@ export default function PromptsPage() {
 
   return (
     <>
-      <h1 className="text-2xl font-bold mb-4" style={{ color: '#E8F0FE' }}>
+      <h1 className="text-2xl font-bold mb-4" style={{ color: '#1E293B' }}>
         Prompt Templates
       </h1>
       <AdminNav />
@@ -126,7 +126,7 @@ export default function PromptsPage() {
         <div className="flex items-center justify-between">
           <h2
             className="text-sm font-semibold uppercase tracking-wide"
-            style={{ color: '#8BA3C4' }}
+            style={{ color: '#64748B' }}
           >
             Templates
           </h2>
@@ -134,7 +134,7 @@ export default function PromptsPage() {
             <button
               onClick={startAdd}
               className="rounded-md px-4 py-2 text-sm font-semibold transition-opacity"
-              style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
+              style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
             >
               Add Prompt
             </button>
@@ -143,7 +143,7 @@ export default function PromptsPage() {
 
         {/* Error banner */}
         {error && (
-          <p className="text-xs rounded-md px-3 py-2" style={{ color: '#E8C872', backgroundColor: '#25253D', border: '1px solid #363654' }}>
+          <p className="text-xs rounded-md px-3 py-2" style={{ color: '#E8C872', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
             {error}
           </p>
         )}
@@ -153,16 +153,16 @@ export default function PromptsPage() {
           <form
             onSubmit={handleSave}
             className="rounded-lg p-4 space-y-4"
-            style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}
+            style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}
           >
-            <h3 className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>
+            <h3 className="text-sm font-semibold" style={{ color: '#1E293B' }}>
               {editingId ? 'Edit Prompt' : 'New Prompt'}
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Title */}
               <div>
-                <label className="text-xs block mb-1" style={{ color: '#8BA3C4' }}>
+                <label className="text-xs block mb-1" style={{ color: '#64748B' }}>
                   Title
                 </label>
                 <input
@@ -170,14 +170,14 @@ export default function PromptsPage() {
                   value={form.title}
                   onChange={(e) => setForm({ ...form, title: e.target.value })}
                   className="w-full rounded-md px-3 py-2 text-sm outline-none"
-                  style={{ backgroundColor: '#1A1A2E', color: '#E8F0FE', border: '1px solid #363654' }}
+                  style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
                   placeholder="e.g. Scenario Builder"
                 />
               </div>
 
               {/* Category */}
               <div>
-                <label className="text-xs block mb-1" style={{ color: '#8BA3C4' }}>
+                <label className="text-xs block mb-1" style={{ color: '#64748B' }}>
                   Category
                 </label>
                 <input
@@ -185,7 +185,7 @@ export default function PromptsPage() {
                   value={form.category}
                   onChange={(e) => setForm({ ...form, category: e.target.value })}
                   className="w-full rounded-md px-3 py-2 text-sm outline-none"
-                  style={{ backgroundColor: '#1A1A2E', color: '#E8F0FE', border: '1px solid #363654' }}
+                  style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
                   placeholder="e.g. coaching, assessment"
                 />
               </div>
@@ -193,7 +193,7 @@ export default function PromptsPage() {
 
             {/* Description */}
             <div>
-              <label className="text-xs block mb-1" style={{ color: '#8BA3C4' }}>
+              <label className="text-xs block mb-1" style={{ color: '#64748B' }}>
                 Description
               </label>
               <input
@@ -201,14 +201,14 @@ export default function PromptsPage() {
                 value={form.description}
                 onChange={(e) => setForm({ ...form, description: e.target.value })}
                 className="w-full rounded-md px-3 py-2 text-sm outline-none"
-                style={{ backgroundColor: '#1A1A2E', color: '#E8F0FE', border: '1px solid #363654' }}
+                style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
                 placeholder="Short description of what this template does"
               />
             </div>
 
             {/* Template */}
             <div>
-              <label className="text-xs block mb-1" style={{ color: '#8BA3C4' }}>
+              <label className="text-xs block mb-1" style={{ color: '#64748B' }}>
                 Template
               </label>
               <textarea
@@ -216,14 +216,14 @@ export default function PromptsPage() {
                 onChange={(e) => setForm({ ...form, template: e.target.value })}
                 rows={8}
                 className="w-full rounded-md px-3 py-2 text-sm outline-none resize-y"
-                style={{ backgroundColor: '#1A1A2E', color: '#E8F0FE', border: '1px solid #363654' }}
+                style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
                 placeholder="Enter the prompt template text..."
               />
             </div>
 
             {/* Order index */}
             <div className="max-w-[120px]">
-              <label className="text-xs block mb-1" style={{ color: '#8BA3C4' }}>
+              <label className="text-xs block mb-1" style={{ color: '#64748B' }}>
                 Order
               </label>
               <input
@@ -231,7 +231,7 @@ export default function PromptsPage() {
                 value={form.order_index}
                 onChange={(e) => setForm({ ...form, order_index: parseInt(e.target.value) || 0 })}
                 className="w-full rounded-md px-3 py-2 text-sm outline-none"
-                style={{ backgroundColor: '#1A1A2E', color: '#E8F0FE', border: '1px solid #363654' }}
+                style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
               />
             </div>
 
@@ -241,7 +241,7 @@ export default function PromptsPage() {
                 type="submit"
                 disabled={saving}
                 className="rounded-md px-4 py-2 text-sm font-semibold transition-opacity disabled:opacity-50"
-                style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
+                style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
               >
                 {saving ? 'Saving...' : editingId ? 'Update' : 'Create'}
               </button>
@@ -249,7 +249,7 @@ export default function PromptsPage() {
                 type="button"
                 onClick={cancelForm}
                 className="rounded-md px-4 py-2 text-sm font-semibold transition-opacity"
-                style={{ backgroundColor: 'transparent', color: '#8BA3C4', border: '1px solid #363654' }}
+                style={{ backgroundColor: 'transparent', color: '#64748B', border: '1px solid #E2E8F0' }}
               >
                 Cancel
               </button>
@@ -274,19 +274,19 @@ export default function PromptsPage() {
                 onClick={() => startEdit(p)}
                 className="w-full rounded-lg p-4 text-left transition-all"
                 style={{
-                  backgroundColor: '#25253D',
-                  border: editingId === p.id ? '1px solid #E8C872' : '1px solid #363654',
+                  backgroundColor: '#FFFFFF',
+                  border: editingId === p.id ? '1px solid #E8C872' : '1px solid #E2E8F0',
                 }}
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-sm font-medium truncate" style={{ color: '#E8F0FE' }}>
+                      <span className="text-sm font-medium truncate" style={{ color: '#1E293B' }}>
                         {p.title}
                       </span>
                       <span
                         className="text-xs px-2 py-0.5 rounded-full"
-                        style={{ backgroundColor: '#363654', color: '#8BA3C4' }}
+                        style={{ backgroundColor: '#E2E8F0', color: '#64748B' }}
                       >
                         {p.category}
                       </span>

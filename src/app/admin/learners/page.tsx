@@ -14,8 +14,8 @@ export default async function AdminLearnersPage() {
   if (learnersError) {
     return (
       <>
-        <h1 className="text-2xl font-bold mb-1" style={{ color: '#E8F0FE' }}>Admin</h1>
-        <p className="text-sm mb-4" style={{ color: '#8BA3C4' }}>Learners</p>
+        <h1 className="text-2xl font-bold mb-1" style={{ color: '#1E293B' }}>Admin</h1>
+        <p className="text-sm mb-4" style={{ color: '#64748B' }}>Learners</p>
         <AdminNav />
         <p style={{ color: '#E8C872' }}>Failed to load learners: {learnersError.message}</p>
       </>
@@ -94,8 +94,8 @@ export default async function AdminLearnersPage() {
 
   return (
     <>
-      <h1 className="text-2xl font-bold mb-1" style={{ color: '#E8F0FE' }}>Admin</h1>
-      <p className="text-sm mb-4" style={{ color: '#8BA3C4' }}>Learners</p>
+      <h1 className="text-2xl font-bold mb-1" style={{ color: '#1E293B' }}>Admin</h1>
+      <p className="text-sm mb-4" style={{ color: '#64748B' }}>Learners</p>
       <AdminNav />
       <LearnersClient learners={learnerData} />
     </>

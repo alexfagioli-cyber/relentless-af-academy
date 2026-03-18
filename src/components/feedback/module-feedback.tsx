@@ -80,7 +80,7 @@ export function ModuleFeedback({ moduleId, userId }: Props) {
   }
 
   return (
-    <div className="mt-6 pt-6" style={{ borderTop: '1px solid #374151' }}>
+    <div className="mt-6 pt-6" style={{ borderTop: '1px solid #E2E8F0' }}>
       <p className="text-xs uppercase tracking-wide mb-3" style={{ color: '#6B7280' }}>
         How was this module?
       </p>
@@ -93,9 +93,9 @@ export function ModuleFeedback({ moduleId, userId }: Props) {
             disabled={saving}
             className="flex-1 rounded-lg py-2 text-center text-xs transition-all"
             style={{
-              backgroundColor: selected === r.value ? '#E8C872' : '#25253D',
-              color: selected === r.value ? '#E8F0FE' : '#8BA3C4',
-              border: selected === r.value ? '1px solid #E8C872' : '1px solid #374151',
+              backgroundColor: selected === r.value ? '#E8C872' : '#FFFFFF',
+              color: selected === r.value ? '#1E293B' : '#64748B',
+              border: selected === r.value ? '1px solid #E8C872' : '1px solid #E2E8F0',
             }}
           >
             <span className="block text-base mb-0.5">{r.icon}</span>
@@ -123,16 +123,16 @@ export function ModuleFeedback({ moduleId, userId }: Props) {
             rows={2}
             className="w-full rounded-md px-3 py-2 text-sm outline-none resize-none"
             style={{
-              backgroundColor: '#1A1A2E',
-              color: '#E8F0FE',
-              border: '1px solid #374151',
+              backgroundColor: '#F8FAFC',
+              color: '#1E293B',
+              border: '1px solid #E2E8F0',
             }}
           />
           <button
             onClick={handleCommentSave}
             disabled={saving}
             className="rounded-md px-4 py-2 text-xs font-semibold transition-opacity disabled:opacity-50"
-            style={{ backgroundColor: '#25253D', color: '#8BA3C4', border: '1px solid #374151' }}
+            style={{ backgroundColor: '#FFFFFF', color: '#64748B', border: '1px solid #E2E8F0' }}
           >
             {saving ? 'Saving' : 'Save comment'}
           </button>

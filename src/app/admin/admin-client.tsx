@@ -156,7 +156,7 @@ export function AdminDashboardClient({ learners, invites, feedback, generalFeedb
     <div className="space-y-8 pb-4">
       {/* c) Progress Overview */}
       <section>
-        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#8BA3C4' }}>
+        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#64748B' }}>
           Overview
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -174,7 +174,7 @@ export function AdminDashboardClient({ learners, invites, feedback, generalFeedb
 
       {/* a) Learner Table */}
       <section>
-        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#8BA3C4' }}>
+        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#64748B' }}>
           Learners
         </h2>
         <div className="space-y-2">
@@ -183,7 +183,7 @@ export function AdminDashboardClient({ learners, invites, feedback, generalFeedb
               <button
                 onClick={() => setExpandedId(expandedId === l.id ? null : l.id)}
                 className="w-full rounded-lg p-4 text-left transition-all"
-                style={{ backgroundColor: '#25253D', border: expandedId === l.id ? '1px solid #E8C872' : '1px solid #374151' }}
+                style={{ backgroundColor: '#FFFFFF', border: expandedId === l.id ? '1px solid #E8C872' : '1px solid #E2E8F0' }}
               >
                 <div className="flex items-center gap-3">
                   {/* Status dot */}
@@ -195,11 +195,11 @@ export function AdminDashboardClient({ learners, invites, feedback, generalFeedb
 
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium truncate" style={{ color: '#E8F0FE' }}>
+                      <span className="text-sm font-medium truncate" style={{ color: '#1E293B' }}>
                         {l.displayName}
                       </span>
                       {l.isAdmin && (
-                        <span className="text-xs px-1.5 py-0.5 rounded" style={{ backgroundColor: '#E8C872', color: '#E8F0FE' }}>
+                        <span className="text-xs px-1.5 py-0.5 rounded" style={{ backgroundColor: '#E8C872', color: '#1E293B' }}>
                           admin
                         </span>
                       )}
@@ -219,37 +219,37 @@ export function AdminDashboardClient({ learners, invites, feedback, generalFeedb
 
               {/* Expanded detail */}
               {expandedId === l.id && (
-                <div className="rounded-b-lg p-4 -mt-1 space-y-4" style={{ backgroundColor: '#25253D', borderTop: '1px solid #374151' }}>
+                <div className="rounded-b-lg p-4 -mt-1 space-y-4" style={{ backgroundColor: '#FFFFFF', borderTop: '1px solid #E2E8F0' }}>
                   {/* Basic info */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                     <div className="truncate">
                       <span style={{ color: '#6B7280' }}>Email: </span>
-                      <span style={{ color: '#8BA3C4' }}>{l.email}</span>
+                      <span style={{ color: '#64748B' }}>{l.email}</span>
                     </div>
                     <div>
                       <span style={{ color: '#6B7280' }}>Last active: </span>
-                      <span style={{ color: '#8BA3C4' }}>
+                      <span style={{ color: '#64748B' }}>
                         {l.lastActive ? `${l.daysInactive}d ago` : 'Never'}
                       </span>
                     </div>
                     <div>
                       <span style={{ color: '#6B7280' }}>Completion: </span>
-                      <span style={{ color: '#8BA3C4' }}>{l.completionPct}%</span>
+                      <span style={{ color: '#64748B' }}>{l.completionPct}%</span>
                     </div>
                     <div>
                       <span style={{ color: '#6B7280' }}>Best streak: </span>
-                      <span style={{ color: '#8BA3C4' }}>{l.streakLongest}d</span>
+                      <span style={{ color: '#64748B' }}>{l.streakLongest}d</span>
                     </div>
                     {l.weeklyTime && (
                       <div>
                         <span style={{ color: '#6B7280' }}>Weekly time: </span>
-                        <span style={{ color: '#8BA3C4' }}>{l.weeklyTime}</span>
+                        <span style={{ color: '#64748B' }}>{l.weeklyTime}</span>
                       </div>
                     )}
                     {l.motivation && (
                       <div className="col-span-2">
                         <span style={{ color: '#6B7280' }}>Motivation: </span>
-                        <span style={{ color: '#8BA3C4' }}>{l.motivation}</span>
+                        <span style={{ color: '#64748B' }}>{l.motivation}</span>
                       </div>
                     )}
                   </div>
@@ -261,7 +261,7 @@ export function AdminDashboardClient({ learners, invites, feedback, generalFeedb
                       value={l.tier ?? 'aware'}
                       onChange={(e) => handleTierOverride(l.id, e.target.value)}
                       className="rounded-md px-3 py-1.5 text-xs"
-                      style={{ backgroundColor: '#1A1A2E', color: '#E8F0FE', border: '1px solid #374151' }}
+                      style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
                     >
                       <option value="aware">Aware</option>
                       <option value="enabled">Enabled</option>
@@ -276,7 +276,7 @@ export function AdminDashboardClient({ learners, invites, feedback, generalFeedb
                       <div className="space-y-1">
                         {l.attempts.slice(0, 5).map((a, i) => (
                           <div key={i} className="flex justify-between text-xs rounded px-2 py-1" style={{ backgroundColor: 'transparent' }}>
-                            <span style={{ color: '#8BA3C4' }}>{a.assessment_title}</span>
+                            <span style={{ color: '#64748B' }}>{a.assessment_title}</span>
                             <span style={{ color: a.passed ? '#22C55E' : '#E8C872' }}>
                               {Math.round(a.score)}% — {a.passed ? 'Pass' : 'Fail'}
                             </span>
@@ -294,7 +294,7 @@ export function AdminDashboardClient({ learners, invites, feedback, generalFeedb
                         {l.onboarding.map((o, i) => (
                           <div key={i} className="text-xs rounded px-2 py-1" style={{ backgroundColor: 'transparent' }}>
                             <span style={{ color: '#6B7280' }}>{o.question_key}: </span>
-                            <span style={{ color: '#8BA3C4' }}>{JSON.stringify(o.response)}</span>
+                            <span style={{ color: '#64748B' }}>{JSON.stringify(o.response)}</span>
                           </div>
                         ))}
                       </div>
@@ -313,7 +313,7 @@ export function AdminDashboardClient({ learners, invites, feedback, generalFeedb
 
       {/* b) Invite Management */}
       <section>
-        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#8BA3C4' }}>
+        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#64748B' }}>
           Invites
         </h2>
 
@@ -324,13 +324,13 @@ export function AdminDashboardClient({ learners, invites, feedback, generalFeedb
             onChange={(e) => setInviteEmail(e.target.value)}
             placeholder="Email address"
             className="flex-1 rounded-md px-3 py-3 text-sm outline-none"
-            style={{ backgroundColor: '#25253D', color: '#E8F0FE', border: '1px solid #374151' }}
+            style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
           />
           <button
             type="submit"
             disabled={inviteLoading || !inviteEmail.trim()}
             className="rounded-md px-4 py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
-            style={{ backgroundColor: '#E8C872', color: '#E8F0FE' }}
+            style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
           >
             {inviteLoading ? '...' : 'Send Invite'}
           </button>
@@ -345,8 +345,8 @@ export function AdminDashboardClient({ learners, invites, feedback, generalFeedb
 
         <div className="space-y-2">
           {invites.map((inv) => (
-            <div key={inv.id} className="flex items-center justify-between rounded-md px-3 py-2 text-xs" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
-              <span className="truncate mr-2" style={{ color: '#8BA3C4' }}>{inv.email}</span>
+            <div key={inv.id} className="flex items-center justify-between rounded-md px-3 py-2 text-xs" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
+              <span className="truncate mr-2" style={{ color: '#64748B' }}>{inv.email}</span>
               <span style={{
                 color: inv.status === 'accepted' ? '#22C55E' : inv.status === 'expired' ? '#E8C872' : '#E8C872'
               }}>
@@ -362,20 +362,20 @@ export function AdminDashboardClient({ learners, invites, feedback, generalFeedb
 
       {/* Feedback */}
       <section>
-        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#8BA3C4' }}>
+        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#64748B' }}>
           Recent Feedback
         </h2>
         <div className="space-y-2">
           {feedback.map((f, i) => (
-            <div key={i} className="rounded-lg p-3" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
+            <div key={i} className="rounded-lg p-3" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
               <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-medium" style={{ color: '#E8F0FE' }}>{f.learnerName}</span>
+                <span className="text-xs font-medium" style={{ color: '#1E293B' }}>{f.learnerName}</span>
                 <span className="text-xs" style={{ color: '#6B7280' }}>
                   {new Date(f.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
                 </span>
               </div>
               <div className="flex items-center gap-2 text-xs">
-                <span style={{ color: '#8BA3C4' }}>{f.moduleTitle}</span>
+                <span style={{ color: '#64748B' }}>{f.moduleTitle}</span>
                 <span style={{ color: '#E8C872' }}>{RATING_LABELS[f.rating] ?? f.rating}</span>
               </div>
               {f.comment && (
@@ -391,14 +391,14 @@ export function AdminDashboardClient({ learners, invites, feedback, generalFeedb
 
       {/* General Feedback (floating button) */}
       <section>
-        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#8BA3C4' }}>
+        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#64748B' }}>
           Platform Feedback
         </h2>
         <div className="space-y-2">
           {generalFeedback.map((f, i) => (
-            <div key={i} className="rounded-lg p-3" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
+            <div key={i} className="rounded-lg p-3" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
               <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-medium" style={{ color: '#E8F0FE' }}>{f.learnerName}</span>
+                <span className="text-xs font-medium" style={{ color: '#1E293B' }}>{f.learnerName}</span>
                 <span className="text-xs" style={{ color: '#6B7280' }}>
                   {new Date(f.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
                 </span>
@@ -408,7 +408,7 @@ export function AdminDashboardClient({ learners, invites, feedback, generalFeedb
                 <span style={{ color: '#6B7280' }}>on {f.page}</span>
               </div>
               {f.comment && (
-                <p className="mt-1 text-xs" style={{ color: '#8BA3C4' }}>&ldquo;{f.comment}&rdquo;</p>
+                <p className="mt-1 text-xs" style={{ color: '#64748B' }}>&ldquo;{f.comment}&rdquo;</p>
               )}
             </div>
           ))}
@@ -423,9 +423,9 @@ export function AdminDashboardClient({ learners, invites, feedback, generalFeedb
 
 function StatCard({ label, value, capitalize }: { label: string; value: string | number; capitalize?: boolean }) {
   return (
-    <div className="rounded-lg p-3" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
+    <div className="rounded-lg p-3" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
       <p className="text-xs uppercase tracking-wide" style={{ color: '#6B7280' }}>{label}</p>
-      <p className={`mt-1 text-lg font-semibold ${capitalize ? 'capitalize' : ''}`} style={{ color: '#E8F0FE' }}>
+      <p className={`mt-1 text-lg font-semibold ${capitalize ? 'capitalize' : ''}`} style={{ color: '#1E293B' }}>
         {value}
       </p>
     </div>
