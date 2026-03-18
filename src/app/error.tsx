@@ -10,10 +10,10 @@ export default function Error({
     <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#111827' }}>
       <div className="text-center">
         <h1 className="text-xl font-semibold mb-2" style={{ color: '#F9FAFB' }}>
-          Service temporarily unavailable
+          Something&apos;s not right
         </h1>
         <p className="text-sm mb-6" style={{ color: '#9CA3AF' }}>
-          Something went wrong. Please try again.
+          Give it a moment and try again.
         </p>
         <button
           onClick={reset}

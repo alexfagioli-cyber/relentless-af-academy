@@ -6,7 +6,7 @@ export default function ExpiredPage() {
           Invite Expired
         </h1>
         <p className="text-sm" style={{ color: '#9CA3AF' }}>
-          Your invite has expired. Contact Alex for a new one.
+          This invite has expired. Reach out to Alex for a new one.
         </p>
       </div>
     </div>

@@ -128,7 +128,7 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
   if (submitting) {
     return (
       <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#1E293B' }}>
-        <p className="text-sm" style={{ color: '#9CA3AF' }}>Scoring your answers...</p>
+        <p className="text-sm" style={{ color: '#9CA3AF' }}>Scoring your answers</p>
       </div>
     )
   }

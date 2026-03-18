@@ -134,7 +134,7 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
             className="rounded-md px-4 py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
             style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
           >
-            {verifying ? '...' : 'Verify'}
+            {verifying ? '...' : 'Verify Certificate'}
           </button>
         </form>
 
@@ -150,7 +150,7 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
           className="w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity disabled:opacity-50"
           style={{ backgroundColor: '#1E293B', color: '#9CA3AF', border: '1px solid #374151' }}
         >
-          {verifying ? 'Saving...' : 'Self-Report Completion'}
+          {verifying ? 'Saving' : 'Self-Report Completion'}
         </button>
       )}
     </div>

@@ -134,7 +134,7 @@ export function ModuleFeedback({ moduleId, userId }: Props) {
             className="rounded-md px-4 py-2 text-xs font-semibold transition-opacity disabled:opacity-50"
             style={{ backgroundColor: '#1E293B', color: '#9CA3AF', border: '1px solid #374151' }}
           >
-            {saving ? 'Saving...' : 'Save comment'}
+            {saving ? 'Saving' : 'Save comment'}
           </button>
         </div>
       )}

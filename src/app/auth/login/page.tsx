@@ -1,6 +1,7 @@
 'use client'
 
 import { createClient } from '@/lib/supabase/client'
+import { getLoginQuote } from '@/lib/login-quotes'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Suspense, useState } from 'react'
 
@@ -43,6 +44,9 @@ function LoginForm() {
         </h1>
         <p className="mt-2 text-sm" style={{ color: '#9CA3AF' }}>
           Sign in to continue your journey
+        </p>
+        <p className="mt-4 text-sm italic" style={{ color: '#9CA3AF' }}>
+          {getLoginQuote()}
         </p>
       </div>
 
@@ -101,7 +105,7 @@ function LoginForm() {
           className="w-full rounded-md py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
           style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
         >
-          {loading ? 'Signing in...' : 'Sign in'}
+          {loading ? 'Signing in' : 'Sign In'}
         </button>
       </form>
     </div>

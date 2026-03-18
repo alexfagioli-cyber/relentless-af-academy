@@ -61,7 +61,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
       .single()
 
     if (error || !assessmentRow) {
-      setAssessmentError("Assessment couldn't load. Please refresh or try again later.")
+      setAssessmentError("Assessment didn't load. Refresh and try again.")
       return
     }
 
@@ -216,7 +216,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
           className="block w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity"
           style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
         >
-          {status === 'completed' ? 'Revisit Course' : 'Start Course'} →
+          {status === 'completed' ? 'Revisit Course' : 'Start This'} →
         </a>
 
         {status !== 'completed' && (
@@ -226,7 +226,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
             className="block w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity disabled:opacity-50"
             style={{ backgroundColor: '#1E293B', color: '#9CA3AF', border: '1px solid #374151' }}
           >
-            {loading ? 'Saving...' : "I've finished this course"}
+            {loading ? 'Saving' : "I've finished this course"}
           </button>
         )}
 
@@ -248,7 +248,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
             className="block w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity disabled:opacity-50"
             style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
           >
-            {loading ? 'Saving...' : 'Mark Challenge Complete'}
+            {loading ? 'Saving' : 'Done — Move On'}
           </button>
         ) : (
           <div className="text-sm text-center" style={{ color: '#22C55E' }}>
@@ -328,7 +328,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
           className="w-full rounded-lg py-3 text-sm font-semibold text-center"
           style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
         >
-          {attempts.length > 0 ? 'Try Again' : 'Start Assessment'}
+          {attempts.length > 0 ? 'Go Again' : 'Start Assessment'}
         </button>
         {attempts.length > 0 && <PreviousAttempts attempts={attempts} />}
       </div>

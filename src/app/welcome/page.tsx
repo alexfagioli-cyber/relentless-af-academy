@@ -116,6 +116,19 @@ export default function WelcomePage() {
           </p>
         </div>
 
+        {/* From Alex */}
+        <div className="mb-10 pt-8" style={{ borderTop: '1px solid #1E293B' }}>
+          <p className="text-sm leading-relaxed mb-4" style={{ color: '#9CA3AF' }}>
+            I built this because I&apos;ve seen what AI does when people actually learn to use it properly. Not surface-level stuff — real understanding that changes how you work, study, and think.
+          </p>
+          <p className="text-sm leading-relaxed mb-4" style={{ color: '#9CA3AF' }}>
+            This platform exists for the people I care about. Go at your own pace, take what you need, and know that the content here is the same material used to train professionals at the companies building this technology.
+          </p>
+          <p className="text-sm" style={{ color: '#9CA3AF' }}>
+            — <span className="italic">Alex</span>
+          </p>
+        </div>
+
         {/* CTA */}
         <Link
           href="/onboarding"

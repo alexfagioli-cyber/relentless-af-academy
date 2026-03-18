@@ -2,6 +2,8 @@ import { createClient } from '@/lib/supabase/server'
 import { computeUnlockedModules } from '@/lib/prerequisites'
 import { getDashboardMessage } from '@/lib/dashboard-messages'
 import { BottomNav } from '@/components/layout/bottom-nav'
+import { ProgressRing } from '@/components/ui/progress-ring'
+import { getDailyTip } from '@/lib/daily-tips'
 import Link from 'next/link'
 
 const TIER_ORDER = ['aware', 'enabled', 'specialist'] as const
@@ -80,26 +82,30 @@ export default async function DashboardPage() {
           })()}
         </div>
 
-        {/* Stats row */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
-          <div className="rounded-lg p-4" style={{ backgroundColor: '#1E293B' }}>
+        {/* Progress ring + stats */}
+        <div className="flex items-center justify-center gap-6 mb-8">
+          <div className="rounded-lg p-4 text-center" style={{ backgroundColor: '#1E293B' }}>
             <p className="text-xs uppercase tracking-wide" style={{ color: '#9CA3AF' }}>Tier</p>
             <p className="mt-1 text-lg font-semibold capitalize" style={{ color: '#F9FAFB' }}>
               {profile?.tier ?? '—'}
             </p>
           </div>
-          <div className="rounded-lg p-4" style={{ backgroundColor: '#1E293B' }}>
+
+          <ProgressRing completed={completedCount} total={totalCount} />
+
+          <div className="rounded-lg p-4 text-center" style={{ backgroundColor: '#1E293B' }}>
             <p className="text-xs uppercase tracking-wide" style={{ color: '#9CA3AF' }}>Streak</p>
             <p className="mt-1 text-lg font-semibold" style={{ color: '#F9FAFB' }}>
-              {profile?.streak_current ?? 0} day{(profile?.streak_current ?? 0) !== 1 ? 's' : ''}
+              {profile?.streak_current ?? 0}d
             </p>
           </div>
-          <div className="rounded-lg p-4" style={{ backgroundColor: '#1E293B' }}>
-            <p className="text-xs uppercase tracking-wide" style={{ color: '#9CA3AF' }}>Done</p>
-            <p className="mt-1 text-lg font-semibold" style={{ color: '#F9FAFB' }}>
-              {completedCount}/{totalCount}
-            </p>
-          </div>
+        </div>
+
+        {/* Daily tip */}
+        <div className="rounded-lg p-4 mb-6" style={{ backgroundColor: '#1E293B', borderLeft: '3px solid #DC2626' }}>
+          <p className="text-sm" style={{ color: '#9CA3AF' }}>
+            {getDailyTip()}
+          </p>
         </div>
 
         {/* Next module / Continue Learning */}
@@ -110,7 +116,7 @@ export default async function DashboardPage() {
             style={{ backgroundColor: '#1E293B', border: '1px solid #DC2626' }}
           >
             <p className="text-sm mb-2" style={{ color: '#9CA3AF' }}>
-              Welcome! Start your first module to begin your AI journey.
+              Nothing started yet. That changes today.
             </p>
             <p className="text-base font-semibold" style={{ color: '#F9FAFB' }}>
               {nextModule.title}

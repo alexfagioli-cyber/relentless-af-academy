@@ -291,7 +291,7 @@ export default function OnboardingPage() {
               className="flex-1 rounded-lg py-3 text-sm font-semibold transition-opacity disabled:opacity-30"
               style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
             >
-              {submitting ? 'Setting up your path...' : "Let's go"}
+              {submitting ? 'Setting up your path' : "Let's Go"}
             </button>
           )}
         </div>

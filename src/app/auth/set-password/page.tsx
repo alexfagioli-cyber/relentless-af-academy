@@ -108,7 +108,7 @@ export default function SetPasswordPage() {
             className="w-full rounded-md py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
             style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
           >
-            {loading ? 'Setting password...' : 'Set password & continue'}
+            {loading ? 'Setting password' : 'Set Your Password'}
           </button>
         </form>
       </div>
