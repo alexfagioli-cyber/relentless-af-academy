@@ -61,7 +61,7 @@ export default async function ToolsPage() {
   if (!user) redirect('/auth/login')
 
   return (
-    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: '#111827' }}>
+    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: '#0F172A' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
         <h1 className="text-2xl font-bold mb-2" style={{ color: '#F9FAFB' }}>
           AI Tools Directory
@@ -89,7 +89,7 @@ export default async function ToolsPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block rounded-lg p-4 transition-all"
-                  style={{ backgroundColor: '#1E293B' }}
+                  style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1 min-w-0">

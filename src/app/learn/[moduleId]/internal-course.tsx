@@ -111,7 +111,7 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
 
   if (completed) {
     return (
-      <div className="rounded-lg p-6 text-center animate-fade-in" style={{ backgroundColor: '#1E293B' }}>
+      <div className="rounded-lg p-6 text-center animate-fade-in" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
         <p className="text-lg font-semibold" style={{ color: '#22C55E' }}>Complete</p>
         <p className="mt-2 text-sm" style={{ color: '#9CA3AF' }}>
           You&apos;re ready to move on to the next module.

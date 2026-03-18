@@ -68,7 +68,7 @@ export default async function NewsPage() {
         </div>
 
         {(!items || items.length === 0) && (
-          <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#1E293B' }}>
+          <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
             <p className="text-sm" style={{ color: '#9CA3AF' }}>
               Nothing here yet. Check back soon.
             </p>
