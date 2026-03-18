@@ -110,8 +110,8 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
 
   return (
     <div className="space-y-4">
-      <div className="rounded-lg p-4" style={{ backgroundColor: '#FFFFFF' }}>
-        <p className="text-sm font-medium mb-3" style={{ color: '#1E293B' }}>
+      <div className="rounded-lg p-4" style={{ backgroundColor: '#25253D' }}>
+        <p className="text-sm font-medium mb-3" style={{ color: '#FFFFFF' }}>
           Have a certificate?
         </p>
 
@@ -123,23 +123,23 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
             placeholder="Certificate number"
             className="flex-1 rounded-md px-3 py-3 text-sm outline-none"
             style={{
-              backgroundColor: '#FFFFFF',
-              color: '#1E293B',
-              border: '1px solid #E2E8F0',
+              backgroundColor: '#1A1A2E',
+              color: '#FFFFFF',
+              border: '1px solid #374151',
             }}
           />
           <button
             type="submit"
             disabled={verifying || !certNumber.trim()}
             className="rounded-md px-4 py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
-            style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
+            style={{ backgroundColor: '#E8C872', color: '#FFFFFF' }}
           >
             {verifying ? '...' : 'Verify Certificate'}
           </button>
         </form>
 
         {error && (
-          <p className="mt-2 text-xs" style={{ color: '#D4A31E' }}>{error}</p>
+          <p className="mt-2 text-xs" style={{ color: '#E8C872' }}>{error}</p>
         )}
       </div>
 
@@ -148,7 +148,7 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
           onClick={handleSelfReport}
           disabled={verifying}
           className="w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity disabled:opacity-50"
-          style={{ backgroundColor: '#FFFFFF', color: '#64748B', border: '1px solid #E2E8F0' }}
+          style={{ backgroundColor: '#25253D', color: '#D4D4E8', border: '1px solid #374151' }}
         >
           {verifying ? 'Saving' : 'Self-Report Completion'}
         </button>

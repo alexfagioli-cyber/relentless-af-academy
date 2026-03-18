@@ -127,13 +127,13 @@ export default function AdminNewsPage() {
 
   return (
     <>
-      <h1 className="text-2xl font-bold mb-4" style={{ color: '#1E293B' }}>
+      <h1 className="text-2xl font-bold mb-4" style={{ color: '#FFFFFF' }}>
         Admin
       </h1>
       <AdminNav />
 
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold" style={{ color: '#1E293B' }}>
+        <h2 className="text-lg font-semibold" style={{ color: '#FFFFFF' }}>
           News Items
         </h2>
         {!showForm && (
@@ -145,7 +145,7 @@ export default function AdminNewsPage() {
               setError(null)
             }}
             className="px-3 py-1.5 rounded text-xs font-medium transition-colors"
-            style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
+            style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
           >
             + Add News Item
           </button>
@@ -165,14 +165,14 @@ export default function AdminNewsPage() {
       {showForm && (
         <div
           className="rounded-lg p-4 mb-6"
-          style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}
+          style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}
         >
-          <h3 className="text-sm font-semibold mb-3" style={{ color: '#1E293B' }}>
+          <h3 className="text-sm font-semibold mb-3" style={{ color: '#FFFFFF' }}>
             {editingId ? 'Edit News Item' : 'New News Item'}
           </h3>
           <div className="space-y-3">
             <div>
-              <label className="block text-xs mb-1" style={{ color: '#64748B' }}>
+              <label className="block text-xs mb-1" style={{ color: '#D4D4E8' }}>
                 Title *
               </label>
               <input
@@ -181,15 +181,15 @@ export default function AdminNewsPage() {
                 onChange={(e) => setForm({ ...form, title: e.target.value })}
                 className="w-full rounded px-3 py-2 text-sm outline-none"
                 style={{
-                  backgroundColor: '#FFFFFF',
-                  border: '1px solid #E2E8F0',
-                  color: '#1E293B',
+                  backgroundColor: '#1A1A2E',
+                  border: '1px solid #363654',
+                  color: '#FFFFFF',
                 }}
                 placeholder="Article title"
               />
             </div>
             <div>
-              <label className="block text-xs mb-1" style={{ color: '#64748B' }}>
+              <label className="block text-xs mb-1" style={{ color: '#D4D4E8' }}>
                 Description
               </label>
               <textarea
@@ -198,15 +198,15 @@ export default function AdminNewsPage() {
                 rows={3}
                 className="w-full rounded px-3 py-2 text-sm outline-none resize-y"
                 style={{
-                  backgroundColor: '#FFFFFF',
-                  border: '1px solid #E2E8F0',
-                  color: '#1E293B',
+                  backgroundColor: '#1A1A2E',
+                  border: '1px solid #363654',
+                  color: '#FFFFFF',
                 }}
                 placeholder="Brief description"
               />
             </div>
             <div>
-              <label className="block text-xs mb-1" style={{ color: '#64748B' }}>
+              <label className="block text-xs mb-1" style={{ color: '#D4D4E8' }}>
                 URL *
               </label>
               <input
@@ -215,16 +215,16 @@ export default function AdminNewsPage() {
                 onChange={(e) => setForm({ ...form, url: e.target.value })}
                 className="w-full rounded px-3 py-2 text-sm outline-none"
                 style={{
-                  backgroundColor: '#FFFFFF',
-                  border: '1px solid #E2E8F0',
-                  color: '#1E293B',
+                  backgroundColor: '#1A1A2E',
+                  border: '1px solid #363654',
+                  color: '#FFFFFF',
                 }}
                 placeholder="https://..."
               />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs mb-1" style={{ color: '#64748B' }}>
+                <label className="block text-xs mb-1" style={{ color: '#D4D4E8' }}>
                   Category
                 </label>
                 <select
@@ -232,9 +232,9 @@ export default function AdminNewsPage() {
                   onChange={(e) => setForm({ ...form, category: e.target.value })}
                   className="w-full rounded px-3 py-2 text-sm outline-none"
                   style={{
-                    backgroundColor: '#FFFFFF',
-                    border: '1px solid #E2E8F0',
-                    color: '#1E293B',
+                    backgroundColor: '#1A1A2E',
+                    border: '1px solid #363654',
+                    color: '#FFFFFF',
                   }}
                 >
                   {CATEGORIES.map((c) => (
@@ -245,7 +245,7 @@ export default function AdminNewsPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-xs mb-1" style={{ color: '#64748B' }}>
+                <label className="block text-xs mb-1" style={{ color: '#D4D4E8' }}>
                   Published At
                 </label>
                 <input
@@ -254,9 +254,9 @@ export default function AdminNewsPage() {
                   onChange={(e) => setForm({ ...form, published_at: e.target.value })}
                   className="w-full rounded px-3 py-2 text-sm outline-none"
                   style={{
-                    backgroundColor: '#FFFFFF',
-                    border: '1px solid #E2E8F0',
-                    color: '#1E293B',
+                    backgroundColor: '#1A1A2E',
+                    border: '1px solid #363654',
+                    color: '#FFFFFF',
                   }}
                 />
               </div>
@@ -266,14 +266,14 @@ export default function AdminNewsPage() {
                 onClick={handleSave}
                 disabled={saving}
                 className="px-4 py-2 rounded text-xs font-medium transition-colors disabled:opacity-50"
-                style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
+                style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
               >
                 {saving ? 'Saving...' : editingId ? 'Update' : 'Create'}
               </button>
               <button
                 onClick={handleCancel}
                 className="px-4 py-2 rounded text-xs font-medium transition-colors"
-                style={{ backgroundColor: '#E2E8F0', color: '#64748B' }}
+                style={{ backgroundColor: '#363654', color: '#D4D4E8' }}
               >
                 Cancel
               </button>
@@ -284,15 +284,15 @@ export default function AdminNewsPage() {
 
       {/* Items list */}
       {loading ? (
-        <p className="text-sm" style={{ color: '#64748B' }}>
+        <p className="text-sm" style={{ color: '#D4D4E8' }}>
           Loading...
         </p>
       ) : items.length === 0 ? (
         <div
           className="rounded-lg p-6 text-center"
-          style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}
+          style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}
         >
-          <p className="text-sm" style={{ color: '#64748B' }}>
+          <p className="text-sm" style={{ color: '#D4D4E8' }}>
             No news items yet.
           </p>
         </div>
@@ -303,8 +303,8 @@ export default function AdminNewsPage() {
               key={item.id}
               className="rounded-lg p-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4"
               style={{
-                backgroundColor: '#FFFFFF',
-                border: '1px solid #E2E8F0',
+                backgroundColor: '#25253D',
+                border: '1px solid #363654',
                 opacity: item.hidden ? 0.5 : 1,
               }}
             >
@@ -312,7 +312,7 @@ export default function AdminNewsPage() {
                 <div className="flex items-center gap-2 flex-wrap">
                   <p
                     className="text-sm font-medium truncate"
-                    style={{ color: '#1E293B' }}
+                    style={{ color: '#FFFFFF' }}
                   >
                     {item.title}
                   </p>
@@ -328,7 +328,7 @@ export default function AdminNewsPage() {
                 <div className="flex items-center gap-2 mt-1 flex-wrap">
                   <span
                     className="text-[10px] uppercase tracking-wide font-semibold px-1.5 py-0.5 rounded"
-                    style={{ backgroundColor: '#E2E8F0', color: '#D4A31E' }}
+                    style={{ backgroundColor: '#363654', color: '#E8C872' }}
                   >
                     {item.category}
                   </span>
@@ -347,7 +347,7 @@ export default function AdminNewsPage() {
                 <button
                   onClick={() => handleEdit(item)}
                   className="px-2.5 py-1 rounded text-[11px] font-medium transition-colors"
-                  style={{ backgroundColor: '#E2E8F0', color: '#64748B' }}
+                  style={{ backgroundColor: '#363654', color: '#D4D4E8' }}
                 >
                   Edit
                 </button>

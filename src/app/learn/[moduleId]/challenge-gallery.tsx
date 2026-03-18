@@ -28,7 +28,7 @@ export async function ChallengeGallery({ moduleId }: Props) {
 
   return (
     <div className="mt-6">
-      <p className="text-xs uppercase tracking-wide font-semibold mb-3" style={{ color: '#64748B' }}>
+      <p className="text-xs uppercase tracking-wide font-semibold mb-3" style={{ color: '#D4D4E8' }}>
         How others approached this
       </p>
       <div className="space-y-2">
@@ -37,9 +37,9 @@ export async function ChallengeGallery({ moduleId }: Props) {
           const text = (r.responses as Record<string, string>)?.reflection ?? ''
           if (!text) return null
           return (
-            <div key={i} className="rounded-lg p-3" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
-              <p className="text-xs font-semibold mb-1" style={{ color: '#1E293B' }}>{name}</p>
-              <p className="text-xs leading-relaxed" style={{ color: '#64748B' }}>
+            <div key={i} className="rounded-lg p-3" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
+              <p className="text-xs font-semibold mb-1" style={{ color: '#FFFFFF' }}>{name}</p>
+              <p className="text-xs leading-relaxed" style={{ color: '#D4D4E8' }}>
                 {text.length > 200 ? text.slice(0, 200) + '...' : text}
               </p>
             </div>

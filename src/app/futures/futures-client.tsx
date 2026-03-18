@@ -24,7 +24,7 @@ const PERSONAS: Persona[] = [
     name: 'Sarah',
     role: 'School Student (16)',
     initials: 'S',
-    colour: '#D4A31E',
+    colour: '#E8C872',
     tag: 'Starts at Aware',
     before: 'Spends hours on revision, struggles with essay structure, googles everything.',
     afterAware: 'Uses Claude for revision breakdowns, essay planning, and research summaries.',
@@ -197,10 +197,10 @@ export function FuturesClient() {
   return (
     <div className="max-w-lg mx-auto px-4 pt-8 animate-fade-in">
       {/* Header */}
-      <h1 className="text-2xl font-bold mb-2" style={{ color: '#1E293B' }}>
+      <h1 className="text-2xl font-bold mb-2" style={{ color: '#FFFFFF' }}>
         Where Could AI Take You?
       </h1>
-      <p className="text-sm mb-8" style={{ color: '#64748B' }}>
+      <p className="text-sm mb-8" style={{ color: '#D4D4E8' }}>
         Real stories, real possibilities. See what&apos;s ahead.
       </p>
 
@@ -208,7 +208,7 @@ export function FuturesClient() {
       {/* PART 1: PEOPLE LIKE YOU                                       */}
       {/* ============================================================ */}
       <div className="mb-10">
-        <h2 className="text-xs uppercase tracking-wide font-semibold mb-4" style={{ color: '#D4A31E' }}>
+        <h2 className="text-xs uppercase tracking-wide font-semibold mb-4" style={{ color: '#E8C872' }}>
           People Like You
         </h2>
 
@@ -216,24 +216,24 @@ export function FuturesClient() {
         <div
           ref={scrollRef}
           className="rounded-xl p-5 mb-3 animate-fade-in"
-          style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}
+          style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}
           key={personaIdx}
         >
           {/* Avatar + name */}
           <div className="flex items-center gap-3 mb-4">
             <div
               className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold"
-              style={{ backgroundColor: persona.colour, color: '#1E293B' }}
+              style={{ backgroundColor: persona.colour, color: '#1A1A2E' }}
             >
               {persona.initials}
             </div>
             <div>
-              <p className="text-sm font-bold" style={{ color: '#1E293B' }}>{persona.name}</p>
-              <p className="text-xs" style={{ color: '#64748B' }}>{persona.role}</p>
+              <p className="text-sm font-bold" style={{ color: '#FFFFFF' }}>{persona.name}</p>
+              <p className="text-xs" style={{ color: '#D4D4E8' }}>{persona.role}</p>
             </div>
             <span
               className="ml-auto text-[10px] uppercase tracking-wide font-semibold px-2 py-0.5 rounded"
-              style={{ color: '#D4A31E', backgroundColor: '#D4A31E15' }}
+              style={{ color: '#E8C872', backgroundColor: '#E8C87215' }}
             >
               {persona.tag}
             </span>
@@ -242,17 +242,17 @@ export function FuturesClient() {
           {/* Before */}
           <div className="mb-3">
             <p className="text-[10px] uppercase tracking-wide font-semibold mb-1" style={{ color: '#6B7280' }}>Before</p>
-            <p className="text-xs leading-relaxed" style={{ color: '#64748B' }}>{persona.before}</p>
+            <p className="text-xs leading-relaxed" style={{ color: '#D4D4E8' }}>{persona.before}</p>
           </div>
 
           {/* After tiers */}
           <div className="space-y-2">
             <div className="rounded-lg px-3 py-2" style={{ backgroundColor: 'transparent' }}>
-              <p className="text-[10px] uppercase tracking-wide font-semibold" style={{ color: '#D4A31E' }}>After Aware</p>
+              <p className="text-[10px] uppercase tracking-wide font-semibold" style={{ color: '#E8C872' }}>After Aware</p>
               <p className="text-xs leading-relaxed mt-0.5" style={{ color: '#D1D5DB' }}>{persona.afterAware}</p>
             </div>
             <div className="rounded-lg px-3 py-2" style={{ backgroundColor: 'transparent' }}>
-              <p className="text-[10px] uppercase tracking-wide font-semibold" style={{ color: '#D4A31E' }}>After Enabled</p>
+              <p className="text-[10px] uppercase tracking-wide font-semibold" style={{ color: '#E8C872' }}>After Enabled</p>
               <p className="text-xs leading-relaxed mt-0.5" style={{ color: '#D1D5DB' }}>{persona.afterEnabled}</p>
             </div>
             {persona.afterSpecialist && (
@@ -272,7 +272,7 @@ export function FuturesClient() {
               onClick={() => setPersonaIdx(i)}
               className="w-2 h-2 rounded-full transition-all"
               style={{
-                backgroundColor: i === personaIdx ? '#D4A31E' : '#E2E8F0',
+                backgroundColor: i === personaIdx ? '#E8C872' : '#363654',
                 width: i === personaIdx ? 16 : 8,
               }}
             />
@@ -284,15 +284,15 @@ export function FuturesClient() {
       {/* PART 2: WHAT COULD AI DO FOR YOU?                             */}
       {/* ============================================================ */}
       <div className="mb-10">
-        <h2 className="text-xs uppercase tracking-wide font-semibold mb-4" style={{ color: '#D4A31E' }}>
+        <h2 className="text-xs uppercase tracking-wide font-semibold mb-4" style={{ color: '#E8C872' }}>
           What Could AI Do for You?
         </h2>
 
         {!showResults ? (
-          <div className="rounded-xl p-5" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
+          <div className="rounded-xl p-5" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
             {wizardStep === 0 && (
               <div className="animate-fade-in">
-                <p className="text-sm font-semibold mb-3" style={{ color: '#1E293B' }}>
+                <p className="text-sm font-semibold mb-3" style={{ color: '#FFFFFF' }}>
                   What best describes you?
                 </p>
                 <div className="space-y-2">
@@ -302,9 +302,9 @@ export function FuturesClient() {
                       onClick={() => { setRole(opt); setWizardStep(1) }}
                       className="w-full text-left rounded-lg px-4 py-3 text-sm transition-all"
                       style={{
-                        backgroundColor: role === opt ? '#D4A31E' : '#FFFFFF',
-                        color: role === opt ? '#1E293B' : '#64748B',
-                        border: `1px solid ${role === opt ? '#D4A31E' : '#E2E8F0'}`,
+                        backgroundColor: role === opt ? '#E8C872' : '#1A1A2E',
+                        color: role === opt ? '#1A1A2E' : '#8BA3C4',
+                        border: `1px solid ${role === opt ? '#E8C872' : '#363654'}`,
                       }}
                     >
                       {opt}
@@ -316,7 +316,7 @@ export function FuturesClient() {
 
             {wizardStep === 1 && (
               <div className="animate-fade-in">
-                <p className="text-sm font-semibold mb-3" style={{ color: '#1E293B' }}>
+                <p className="text-sm font-semibold mb-3" style={{ color: '#FFFFFF' }}>
                   What takes up most of your time?
                 </p>
                 <textarea
@@ -325,13 +325,13 @@ export function FuturesClient() {
                   placeholder="The thing that eats your hours..."
                   rows={3}
                   className="w-full rounded-lg px-3 py-2 text-sm outline-none resize-none mb-3"
-                  style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
+                  style={{ backgroundColor: '#1A1A2E', color: '#FFFFFF', border: '1px solid #363654' }}
                 />
                 <div className="flex gap-2">
                   <button
                     onClick={() => setWizardStep(0)}
                     className="flex-1 rounded-lg py-2.5 text-sm font-semibold"
-                    style={{ backgroundColor: '#FFFFFF', color: '#64748B', border: '1px solid #E2E8F0' }}
+                    style={{ backgroundColor: '#1A1A2E', color: '#D4D4E8', border: '1px solid #363654' }}
                   >
                     Back
                   </button>
@@ -339,7 +339,7 @@ export function FuturesClient() {
                     onClick={() => setWizardStep(2)}
                     disabled={!timeEater.trim()}
                     className="flex-1 rounded-lg py-2.5 text-sm font-semibold transition-opacity disabled:opacity-30"
-                    style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
+                    style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
                   >
                     Continue
                   </button>
@@ -349,7 +349,7 @@ export function FuturesClient() {
 
             {wizardStep === 2 && (
               <div className="animate-fade-in">
-                <p className="text-sm font-semibold mb-3" style={{ color: '#1E293B' }}>
+                <p className="text-sm font-semibold mb-3" style={{ color: '#FFFFFF' }}>
                   What would you do with an extra 10 hours per week?
                 </p>
                 <textarea
@@ -358,13 +358,13 @@ export function FuturesClient() {
                   placeholder="If you had the time..."
                   rows={3}
                   className="w-full rounded-lg px-3 py-2 text-sm outline-none resize-none mb-3"
-                  style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
+                  style={{ backgroundColor: '#1A1A2E', color: '#FFFFFF', border: '1px solid #363654' }}
                 />
                 <div className="flex gap-2">
                   <button
                     onClick={() => setWizardStep(1)}
                     className="flex-1 rounded-lg py-2.5 text-sm font-semibold"
-                    style={{ backgroundColor: '#FFFFFF', color: '#64748B', border: '1px solid #E2E8F0' }}
+                    style={{ backgroundColor: '#1A1A2E', color: '#D4D4E8', border: '1px solid #363654' }}
                   >
                     Back
                   </button>
@@ -372,7 +372,7 @@ export function FuturesClient() {
                     onClick={handleShowResults}
                     disabled={!tenHours.trim()}
                     className="flex-1 rounded-lg py-2.5 text-sm font-semibold transition-opacity disabled:opacity-30"
-                    style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
+                    style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
                   >
                     See My Results
                   </button>
@@ -383,14 +383,14 @@ export function FuturesClient() {
         ) : (
           <div className="animate-fade-in space-y-3">
             {/* Personal context */}
-            <div className="rounded-xl p-4" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
-              <p className="text-sm" style={{ color: '#1E293B' }}>
-                You said most of your time goes to <strong style={{ color: '#D4A31E' }}>{timeEater}</strong>.
-                With 10 extra hours you&apos;d <strong style={{ color: '#D4A31E' }}>{tenHours}</strong>.
+            <div className="rounded-xl p-4" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
+              <p className="text-sm" style={{ color: '#FFFFFF' }}>
+                You said most of your time goes to <strong style={{ color: '#E8C872' }}>{timeEater}</strong>.
+                With 10 extra hours you&apos;d <strong style={{ color: '#E8C872' }}>{tenHours}</strong>.
               </p>
             </div>
 
-            <p className="text-sm font-semibold" style={{ color: '#1E293B' }}>
+            <p className="text-sm font-semibold" style={{ color: '#FFFFFF' }}>
               Here are 5 ways AI could change your week:
             </p>
 
@@ -400,11 +400,11 @@ export function FuturesClient() {
                 <div
                   key={i}
                   className="rounded-lg px-4 py-3"
-                  style={{ backgroundColor: '#FFFFFF', borderLeft: '3px solid #D4A31E' }}
+                  style={{ backgroundColor: '#25253D', borderLeft: '3px solid #E8C872' }}
                 >
-                  <p className="text-sm font-semibold" style={{ color: '#1E293B' }}>{title}</p>
+                  <p className="text-sm font-semibold" style={{ color: '#FFFFFF' }}>{title}</p>
                   {rest.length > 0 && (
-                    <p className="text-xs mt-0.5" style={{ color: '#64748B' }}>{rest.join(' — ')}</p>
+                    <p className="text-xs mt-0.5" style={{ color: '#D4D4E8' }}>{rest.join(' — ')}</p>
                   )}
                 </div>
               )
@@ -413,7 +413,7 @@ export function FuturesClient() {
             <Link
               href="/learn"
               className="block rounded-lg py-3 text-center text-sm font-bold mt-4"
-              style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
+              style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
             >
               Your Path Starts Here →
             </Link>
@@ -421,7 +421,7 @@ export function FuturesClient() {
             <button
               onClick={() => { setShowResults(false); setWizardStep(0); setRole(null); setTimeEater(''); setTenHours('') }}
               className="block w-full text-center text-xs py-2"
-              style={{ color: '#64748B' }}
+              style={{ color: '#D4D4E8' }}
             >
               Try again with different answers
             </button>
@@ -433,10 +433,10 @@ export function FuturesClient() {
       {/* PART 3: AI IN REAL LIFE                                       */}
       {/* ============================================================ */}
       <div className="mb-10">
-        <h2 className="text-xs uppercase tracking-wide font-semibold mb-4" style={{ color: '#D4A31E' }}>
+        <h2 className="text-xs uppercase tracking-wide font-semibold mb-4" style={{ color: '#E8C872' }}>
           AI in Real Life
         </h2>
-        <p className="text-sm mb-4" style={{ color: '#64748B' }}>
+        <p className="text-sm mb-4" style={{ color: '#D4D4E8' }}>
           AI isn&apos;t just for tech people. Here&apos;s what anyone can do today:
         </p>
 
@@ -445,9 +445,9 @@ export function FuturesClient() {
             <div
               key={i}
               className="rounded-lg px-4 py-2.5 flex items-center gap-3"
-              style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}
+              style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}
             >
-              <span className="text-xs" style={{ color: '#D4A31E' }}>✦</span>
+              <span className="text-xs" style={{ color: '#E8C872' }}>✦</span>
               <p className="text-xs" style={{ color: '#D1D5DB' }}>{example}</p>
             </div>
           ))}
@@ -458,7 +458,7 @@ export function FuturesClient() {
       <Link
         href="/learn"
         className="block rounded-lg py-4 text-center text-base font-bold mb-8"
-        style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
+        style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
       >
         Start Your AI Journey →
       </Link>

@@ -4,8 +4,8 @@
   "description": "Personal AI training programme",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#FFFFFF",
-  "theme_color": "#D4A31E",
+  "background_color": "#1A1A2E",
+  "theme_color": "#E8C872",
   "icons": [
     {
       "src": "/icon-192.png",

@@ -40,7 +40,7 @@ const PRICING_OPTIONS = ['free', 'freemium', 'paid']
 function pricingBadgeColour(pricing: string | null): string {
   switch (pricing) {
     case 'free': return '#22C55E'
-    case 'freemium': return '#D4A31E'
+    case 'freemium': return '#E8C872'
     case 'paid': return '#EF4444'
     default: return '#6B7280'
   }
@@ -139,7 +139,7 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
           <button
             onClick={openAdd}
             className="rounded-md px-4 py-2 text-sm font-semibold transition-opacity"
-            style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
+            style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
           >
             Add Tool
           </button>
@@ -151,69 +151,69 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
         <form
           onSubmit={handleSubmit}
           className="rounded-lg p-4 space-y-3"
-          style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}
+          style={{ backgroundColor: '#25253D', border: '1px solid #E8C872' }}
         >
-          <h3 className="text-sm font-semibold" style={{ color: '#1E293B' }}>
+          <h3 className="text-sm font-semibold" style={{ color: '#FFFFFF' }}>
             {editingId ? 'Edit Tool' : 'Add Tool'}
           </h3>
 
           {/* Name */}
           <div>
-            <label className="text-xs block mb-1" style={{ color: '#64748B' }}>Name *</label>
+            <label className="text-xs block mb-1" style={{ color: '#D4D4E8' }}>Name *</label>
             <input
               type="text"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               className="w-full rounded-md px-3 py-2 text-sm outline-none"
-              style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
+              style={{ backgroundColor: '#1A1A2E', color: '#FFFFFF', border: '1px solid #363654' }}
             />
           </div>
 
           {/* Description */}
           <div>
-            <label className="text-xs block mb-1" style={{ color: '#64748B' }}>Description</label>
+            <label className="text-xs block mb-1" style={{ color: '#D4D4E8' }}>Description</label>
             <textarea
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
               rows={3}
               className="w-full rounded-md px-3 py-2 text-sm outline-none resize-y"
-              style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
+              style={{ backgroundColor: '#1A1A2E', color: '#FFFFFF', border: '1px solid #363654' }}
             />
           </div>
 
           {/* URL */}
           <div>
-            <label className="text-xs block mb-1" style={{ color: '#64748B' }}>URL</label>
+            <label className="text-xs block mb-1" style={{ color: '#D4D4E8' }}>URL</label>
             <input
               type="url"
               value={form.url}
               onChange={(e) => setForm({ ...form, url: e.target.value })}
               placeholder="https://..."
               className="w-full rounded-md px-3 py-2 text-sm outline-none"
-              style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
+              style={{ backgroundColor: '#1A1A2E', color: '#FFFFFF', border: '1px solid #363654' }}
             />
           </div>
 
           {/* Category + Pricing row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="text-xs block mb-1" style={{ color: '#64748B' }}>Category</label>
+              <label className="text-xs block mb-1" style={{ color: '#D4D4E8' }}>Category</label>
               <input
                 type="text"
                 value={form.category}
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
                 placeholder="e.g. Writing, Research, Coding"
                 className="w-full rounded-md px-3 py-2 text-sm outline-none"
-                style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
+                style={{ backgroundColor: '#1A1A2E', color: '#FFFFFF', border: '1px solid #363654' }}
               />
             </div>
             <div>
-              <label className="text-xs block mb-1" style={{ color: '#64748B' }}>Pricing</label>
+              <label className="text-xs block mb-1" style={{ color: '#D4D4E8' }}>Pricing</label>
               <select
                 value={form.pricing}
                 onChange={(e) => setForm({ ...form, pricing: e.target.value })}
                 className="w-full rounded-md px-3 py-2 text-sm outline-none"
-                style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
+                style={{ backgroundColor: '#1A1A2E', color: '#FFFFFF', border: '1px solid #363654' }}
               >
                 {PRICING_OPTIONS.map((p) => (
                   <option key={p} value={p}>
@@ -227,13 +227,13 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
           {/* Order index + Alex recommends row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-end">
             <div>
-              <label className="text-xs block mb-1" style={{ color: '#64748B' }}>Order Index</label>
+              <label className="text-xs block mb-1" style={{ color: '#D4D4E8' }}>Order Index</label>
               <input
                 type="number"
                 value={form.order_index}
                 onChange={(e) => setForm({ ...form, order_index: e.target.value })}
                 className="w-full rounded-md px-3 py-2 text-sm outline-none"
-                style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
+                style={{ backgroundColor: '#1A1A2E', color: '#FFFFFF', border: '1px solid #363654' }}
               />
             </div>
             <label className="flex items-center gap-2 py-2 cursor-pointer">
@@ -241,9 +241,9 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
                 type="checkbox"
                 checked={form.alex_recommends}
                 onChange={(e) => setForm({ ...form, alex_recommends: e.target.checked })}
-                className="w-4 h-4 rounded accent-[#D4A31E]"
+                className="w-4 h-4 rounded accent-[#E8C872]"
               />
-              <span className="text-sm" style={{ color: '#1E293B' }}>Alex Recommends</span>
+              <span className="text-sm" style={{ color: '#FFFFFF' }}>Alex Recommends</span>
             </label>
           </div>
 
@@ -258,7 +258,7 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
               type="submit"
               disabled={saving}
               className="rounded-md px-4 py-2 text-sm font-semibold transition-opacity disabled:opacity-50"
-              style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
+              style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
             >
               {saving ? 'Saving...' : editingId ? 'Update' : 'Create'}
             </button>
@@ -266,7 +266,7 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
               type="button"
               onClick={cancel}
               className="rounded-md px-4 py-2 text-sm transition-opacity"
-              style={{ color: '#64748B', border: '1px solid #E2E8F0' }}
+              style={{ color: '#D4D4E8', border: '1px solid #363654' }}
             >
               Cancel
             </button>
@@ -282,8 +282,8 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
             onClick={() => openEdit(tool)}
             className="w-full rounded-lg p-4 text-left transition-all"
             style={{
-              backgroundColor: '#FFFFFF',
-              border: editingId === tool.id ? '1px solid #D4A31E' : '1px solid #E2E8F0',
+              backgroundColor: '#25253D',
+              border: editingId === tool.id ? '1px solid #E8C872' : '1px solid #363654',
             }}
           >
             <div className="flex items-center gap-3">
@@ -291,20 +291,20 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
               {tool.alex_recommends && (
                 <div
                   className="w-2 h-2 rounded-full flex-shrink-0"
-                  style={{ backgroundColor: '#D4A31E' }}
+                  style={{ backgroundColor: '#E8C872' }}
                   title="Alex Recommends"
                 />
               )}
 
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span className="text-sm font-medium" style={{ color: '#1E293B' }}>
+                  <span className="text-sm font-medium" style={{ color: '#FFFFFF' }}>
                     {tool.name}
                   </span>
                   {tool.alex_recommends && (
                     <span
                       className="text-[10px] px-1.5 py-0.5 rounded font-medium"
-                      style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
+                      style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
                     >
                       RECOMMENDED
                     </span>

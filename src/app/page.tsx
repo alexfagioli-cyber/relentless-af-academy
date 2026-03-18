@@ -9,8 +9,8 @@ import Link from 'next/link'
 
 const TIER_ORDER = ['aware', 'enabled', 'specialist'] as const
 const TIER_COLOURS: Record<string, string> = {
-  aware: '#D4A31E',
-  enabled: '#D4A31E',
+  aware: '#E8C872',
+  enabled: '#E8C872',
   specialist: '#8B5CF6',
 }
 const MODULE_TYPE_ICONS: Record<string, string> = {
@@ -108,7 +108,7 @@ export default async function DashboardPage() {
       <div className="max-w-lg mx-auto px-4 pt-8">
         {/* Welcome */}
         <div className="mb-6">
-          <h1 className="text-2xl font-bold" style={{ color: '#1E293B' }}>
+          <h1 className="text-2xl font-bold" style={{ color: '#FFFFFF' }}>
             Welcome back{profile?.display_name ? `, ${getFirstName(profile.display_name)}` : ''}
           </h1>
           {(() => {
@@ -119,7 +119,7 @@ export default async function DashboardPage() {
               primary_goal: profile?.primary_goal ?? null,
             })
             return (
-              <p className="mt-1 text-sm" style={{ color: '#64748B' }}>
+              <p className="mt-1 text-sm" style={{ color: '#D4D4E8' }}>
                 {msg.subtext}
               </p>
             )
@@ -129,51 +129,53 @@ export default async function DashboardPage() {
         {/* Futures card */}
         <Link
           href="/futures"
-          className="block rounded-xl p-5 mb-6 transition-all"
-          style={{ backgroundColor: '#FFFFFF', border: '2px solid #D4A31E' }}
+          className="block rounded-xl p-5 mb-6 transition-all card-depth gold-glow"
+          style={{ border: '2px solid #E8C872' }}
         >
-          <p className="text-base font-bold" style={{ color: '#D4A31E' }}>
+          <p className="text-base font-bold" style={{ color: '#E8C872' }}>
             Where could AI take you?
           </p>
-          <p className="text-sm mt-1" style={{ color: '#64748B' }}>
+          <p className="text-sm mt-1" style={{ color: '#D4D4E8' }}>
             Real stories, an interactive explorer, and 15 things you can do with AI today.
           </p>
-          <p className="mt-3 text-sm font-semibold" style={{ color: '#D4A31E' }}>
+          <p className="mt-3 text-sm font-semibold" style={{ color: '#E8C872' }}>
             Explore →
           </p>
         </Link>
 
+        <div className="section-divider" />
+
         {/* Quick stats bar */}
         <div className="flex items-center gap-3 mb-6">
-          <div className="flex-1 rounded-lg px-3 py-2 text-center" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
-            <p className="text-xs" style={{ color: '#64748B' }}>Time</p>
-            <p className="text-sm font-semibold" style={{ color: '#1E293B' }}>
+          <div className="flex-1 rounded-lg px-3 py-2 text-center card-depth">
+            <p className="text-xs" style={{ color: '#D4D4E8' }}>Time</p>
+            <p className="text-sm font-semibold" style={{ color: '#FFFFFF' }}>
               {totalHours > 0 ? `${totalHours}h${remainderMins > 0 ? ` ${remainderMins}m` : ''}` : `${totalMins}m`}
             </p>
           </div>
-          <div className="flex-1 rounded-lg px-3 py-2 text-center" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
-            <p className="text-xs" style={{ color: '#64748B' }}>Streak</p>
-            <p className="text-sm font-semibold" style={{ color: '#1E293B' }}>
+          <div className="flex-1 rounded-lg px-3 py-2 text-center card-depth">
+            <p className="text-xs" style={{ color: '#D4D4E8' }}>Streak</p>
+            <p className="text-sm font-semibold" style={{ color: '#FFFFFF' }}>
               {(profile?.streak_current ?? 0) > 0 ? `🔥 ${profile?.streak_current}d` : '0d'}
             </p>
           </div>
-          <div className="flex-1 rounded-lg px-3 py-2 text-center" style={{ backgroundColor: '#FFFFFF', borderBottom: `2px solid ${TIER_COLOURS[learnerTier] ?? '#D4A31E'}` }}>
-            <p className="text-xs" style={{ color: '#64748B' }}>Tier</p>
-            <p className="text-sm font-semibold capitalize" style={{ color: TIER_COLOURS[learnerTier] ?? '#1E293B' }}>
+          <div className="flex-1 rounded-lg px-3 py-2 text-center card-depth" style={{ borderBottom: `2px solid ${TIER_COLOURS[learnerTier] ?? '#E8C872'}` }}>
+            <p className="text-xs" style={{ color: '#D4D4E8' }}>Tier</p>
+            <p className="text-sm font-semibold capitalize" style={{ color: TIER_COLOURS[learnerTier] ?? '#E8F0FE' }}>
               {learnerTier}
             </p>
           </div>
         </div>
 
         {/* Progress ring + tier progress */}
-        <div className="flex items-center gap-5 mb-6 rounded-lg p-4" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
+        <div className="flex items-center gap-5 mb-6 rounded-lg p-4 card-depth">
           <ProgressRing completed={completedCount} total={totalCount} size={90} />
           <div className="flex-1">
-            <p className="text-sm font-semibold" style={{ color: '#1E293B' }}>
+            <p className="text-sm font-semibold" style={{ color: '#FFFFFF' }}>
               {currentTierCompleted} of {currentTierTotal} in {learnerTier.charAt(0).toUpperCase() + learnerTier.slice(1)}
             </p>
             {nextInTier && (
-              <p className="mt-1 text-xs" style={{ color: '#64748B' }}>
+              <p className="mt-1 text-xs" style={{ color: '#D4D4E8' }}>
                 Next up: {nextInTier.title}
               </p>
             )}
@@ -185,51 +187,53 @@ export default async function DashboardPage() {
           </div>
         </div>
 
+        <div className="section-divider" />
+
         {/* Continue / Resume card */}
         {resumeModule && completedCount === 0 ? (
           <Link
             href={`/learn/${resumeModule.id}`}
-            className="block rounded-lg p-5 mb-4 transition-all"
-            style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}
+            className="block rounded-lg p-5 mb-4 transition-all card-depth gold-glow"
+            style={{ border: '1px solid #E8C872' }}
           >
-            <p className="text-sm mb-2" style={{ color: '#64748B' }}>
+            <p className="text-sm mb-2" style={{ color: '#D4D4E8' }}>
               Nothing started yet. That changes today.
             </p>
-            <p className="text-base font-semibold" style={{ color: '#1E293B' }}>
+            <p className="text-base font-semibold" style={{ color: '#FFFFFF' }}>
               {MODULE_TYPE_ICONS[resumeModule.module_type] ?? ''} {resumeModule.title}
             </p>
-            <p className="mt-2 text-sm font-semibold" style={{ color: '#D4A31E' }}>
+            <p className="mt-2 text-sm font-semibold" style={{ color: '#E8C872' }}>
               Start →
             </p>
           </Link>
         ) : resumeModule ? (
           <Link
             href={`/learn/${resumeModule.id}`}
-            className="block rounded-lg p-5 mb-4 transition-all"
-            style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}
+            className="block rounded-lg p-5 mb-4 transition-all card-depth gold-glow"
+            style={{ border: '1px solid #E8C872' }}
           >
-            <p className="text-xs uppercase tracking-wide mb-1" style={{ color: '#64748B' }}>
+            <p className="text-xs uppercase tracking-wide mb-1" style={{ color: '#D4D4E8' }}>
               {inProgressModule ? 'Continue where you left off' : 'Up next'}
             </p>
-            <p className="text-base font-semibold" style={{ color: '#1E293B' }}>
+            <p className="text-base font-semibold" style={{ color: '#FFFFFF' }}>
               {MODULE_TYPE_ICONS[resumeModule.module_type] ?? ''} {resumeModule.title}
             </p>
-            <p className="mt-2 text-sm font-semibold" style={{ color: '#D4A31E' }}>
+            <p className="mt-2 text-sm font-semibold" style={{ color: '#E8C872' }}>
               {inProgressModule ? 'Resume →' : 'Start →'}
             </p>
           </Link>
         ) : completedCount === totalCount && totalCount > 0 ? (
-          <div className="rounded-lg p-5 mb-4 text-center" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
+          <div className="rounded-lg p-5 mb-4 text-center card-depth">
             <p className="text-base font-semibold" style={{ color: '#22C55E' }}>
               All modules completed
             </p>
-            <p className="mt-1 text-sm" style={{ color: '#64748B' }}>
+            <p className="mt-1 text-sm" style={{ color: '#D4D4E8' }}>
               You&apos;ve finished everything available in your tier. Extraordinary.
             </p>
           </div>
         ) : (
-          <div className="rounded-lg p-5 mb-4 text-center" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
-            <p className="text-sm" style={{ color: '#64748B' }}>
+          <div className="rounded-lg p-5 mb-4 text-center card-depth">
+            <p className="text-sm" style={{ color: '#D4D4E8' }}>
               Complete your current modules to unlock the next step.
             </p>
           </div>
@@ -239,17 +243,17 @@ export default async function DashboardPage() {
         {dueReviews > 0 && (
           <Link
             href="/review"
-            className="block rounded-lg p-4 mb-4 transition-all"
-            style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}
+            className="block rounded-lg p-4 mb-4 transition-all card-depth"
+            style={{ border: '1px solid #E8C872' }}
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-semibold" style={{ color: '#1E293B' }}>Reviews due</p>
-                <p className="text-xs mt-0.5" style={{ color: '#64748B' }}>
+                <p className="text-sm font-semibold" style={{ color: '#FFFFFF' }}>Reviews due</p>
+                <p className="text-xs mt-0.5" style={{ color: '#D4D4E8' }}>
                   {dueReviews} module{dueReviews !== 1 ? 's' : ''} ready for review
                 </p>
               </div>
-              <span className="rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold" style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}>
+              <span className="rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold" style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}>
                 {dueReviews}
               </span>
             </div>
@@ -257,34 +261,38 @@ export default async function DashboardPage() {
         )}
 
         {/* Daily tip */}
-        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#FFFFFF', borderLeft: '3px solid #D4A31E' }}>
-          <p className="text-sm" style={{ color: '#64748B' }}>
+        <div className="rounded-lg p-4 mb-4 card-depth" style={{ borderLeft: '3px solid #E8C872' }}>
+          <p className="text-sm" style={{ color: '#D4D4E8' }}>
             {getDailyTip()}
           </p>
         </div>
 
+        <div className="section-divider" />
+
         {/* Quick access cards — 2x2 grid */}
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <Link href="/playground" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}>
-            <p className="text-sm font-semibold" style={{ color: '#D4A31E' }}>AI Playground</p>
-            <p className="text-xs mt-1" style={{ color: '#64748B' }}>Practise your prompts</p>
+          <Link href="/playground" className="rounded-lg p-4 transition-all card-depth" style={{ border: '1px solid #E8C872' }}>
+            <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>AI Playground</p>
+            <p className="text-xs mt-1" style={{ color: '#D4D4E8' }}>Practise your prompts</p>
           </Link>
-          <Link href="/community" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}>
-            <p className="text-sm font-semibold" style={{ color: '#D4A31E' }}>Community</p>
-            <p className="text-xs mt-1" style={{ color: '#64748B' }}>Share and learn together</p>
+          <Link href="/community" className="rounded-lg p-4 transition-all card-depth" style={{ border: '1px solid #E8C872' }}>
+            <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>Community</p>
+            <p className="text-xs mt-1" style={{ color: '#D4D4E8' }}>Share and learn together</p>
           </Link>
-          <Link href="/tools" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}>
-            <p className="text-sm font-semibold" style={{ color: '#D4A31E' }}>AI Tools</p>
-            <p className="text-xs mt-1" style={{ color: '#64748B' }}>Curated directory</p>
+          <Link href="/tools" className="rounded-lg p-4 transition-all card-depth" style={{ border: '1px solid #E8C872' }}>
+            <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>AI Tools</p>
+            <p className="text-xs mt-1" style={{ color: '#D4D4E8' }}>Curated directory</p>
           </Link>
-          <Link href="/news" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}>
-            <p className="text-sm font-semibold" style={{ color: '#D4A31E' }}>Latest News</p>
-            <p className="text-xs mt-1" style={{ color: '#64748B' }}>AI updates and ideas</p>
+          <Link href="/news" className="rounded-lg p-4 transition-all card-depth" style={{ border: '1px solid #E8C872' }}>
+            <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>Latest News</p>
+            <p className="text-xs mt-1" style={{ color: '#D4D4E8' }}>AI updates and ideas</p>
           </Link>
         </div>
 
+        <div className="section-divider" />
+
         {/* Recent activity */}
-        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
+        <div className="rounded-lg p-4 mb-4 card-depth">
           <p className="text-xs uppercase tracking-wide mb-3" style={{ color: '#6B7280' }}>Recent activity</p>
           {recentEvents && recentEvents.length > 0 ? (
             <div className="space-y-2">
@@ -313,7 +321,7 @@ export default async function DashboardPage() {
         <Link
           href="/learn"
           className="block rounded-lg p-4 text-center text-sm font-medium mb-4"
-          style={{ backgroundColor: '#FFFFFF', color: '#64748B', border: '1px solid #E2E8F0' }}
+          style={{ backgroundColor: '#25253D', color: '#D4D4E8', border: '1px solid #374151' }}
         >
           View full learning path
         </Link>

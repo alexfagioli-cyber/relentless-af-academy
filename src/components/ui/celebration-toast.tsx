@@ -34,8 +34,8 @@ function Toast({
       onClick={onDismiss}
       className="w-[calc(100%-2rem)] max-w-sm mx-auto rounded-lg border-l-4 px-4 py-3 shadow-lg cursor-pointer text-left"
       style={{
-        backgroundColor: '#FFFFFF',
-        borderLeftColor: '#D4A31E',
+        backgroundColor: '#25253D',
+        borderLeftColor: '#E8C872',
         animation: 'toastSlideIn 0.35s ease-out',
       }}
     >

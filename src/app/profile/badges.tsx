@@ -8,8 +8,8 @@ export function BadgeWall({ earnedKeys }: Props) {
   const earnedSet = new Set(earnedKeys)
 
   return (
-    <div className="rounded-lg p-4" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
-      <p className="text-xs uppercase tracking-wide font-semibold mb-3" style={{ color: '#64748B' }}>
+    <div className="rounded-lg p-4" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
+      <p className="text-xs uppercase tracking-wide font-semibold mb-3" style={{ color: '#D4D4E8' }}>
         Badges
       </p>
       <div className="grid grid-cols-4 gap-3">
@@ -20,15 +20,15 @@ export function BadgeWall({ earnedKeys }: Props) {
               <div
                 className="w-12 h-12 rounded-full flex items-center justify-center text-xl mb-1 transition-all"
                 style={{
-                  backgroundColor: isEarned ? '#FFFFFF' : '#FFFFFF',
-                  border: `2px solid ${isEarned ? badge.colour : '#E2E8F0'}`,
+                  backgroundColor: isEarned ? '#25253D' : '#1A1A2E',
+                  border: `2px solid ${isEarned ? badge.colour : '#363654'}`,
                   boxShadow: isEarned ? `0 0 12px ${badge.colour}40` : 'none',
                   opacity: isEarned ? 1 : 0.4,
                 }}
               >
                 {badge.emoji}
               </div>
-              <p className="text-[10px] leading-tight" style={{ color: isEarned ? '#1E293B' : '#6B7280' }}>
+              <p className="text-[10px] leading-tight" style={{ color: isEarned ? '#E8F0FE' : '#6B7280' }}>
                 {badge.name}
               </p>
             </div>

@@ -214,7 +214,7 @@ export default async function AdminPage() {
 
   return (
     <>
-      <h1 className="text-2xl font-bold mb-4" style={{ color: '#1E293B' }}>Admin</h1>
+      <h1 className="text-2xl font-bold mb-4" style={{ color: '#FFFFFF' }}>Admin</h1>
       <AdminNav />
       <AdminDashboardClient
         learners={learnerData}

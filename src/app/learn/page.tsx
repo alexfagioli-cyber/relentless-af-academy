@@ -84,13 +84,13 @@ export default async function LearnPage() {
   return (
     <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: 'transparent' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
-        <h1 className="text-2xl font-bold mb-6" style={{ color: '#1E293B' }}>
+        <h1 className="text-2xl font-bold mb-6" style={{ color: '#FFFFFF' }}>
           Learning Path
         </h1>
 
         {groupedModules.map(({ tier, modules: tierModules }) => (
           <div key={tier} className="mb-8">
-            <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#64748B' }}>
+            <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#D4D4E8' }}>
               {TIER_LABELS[tier]} Tier
             </h2>
             <div className="space-y-3">
@@ -100,15 +100,15 @@ export default async function LearnPage() {
 
                 const borderColor =
                   status === 'completed' ? '#22C55E' :
-                  status === 'available' ? '#D4A31E' :
-                  status === 'in_progress' ? '#D4A31E' :
-                  '#E2E8F0'
+                  status === 'available' ? '#E8C872' :
+                  status === 'in_progress' ? '#E8C872' :
+                  '#374151'
 
                 const content = (
                   <div
                     className="rounded-lg p-4 transition-status"
                     style={{
-                      backgroundColor: '#FFFFFF',
+                      backgroundColor: '#25253D',
                       border: `1px solid ${borderColor}`,
                       opacity: isLocked ? 0.5 : 1,
                     }}
@@ -123,11 +123,11 @@ export default async function LearnPage() {
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium" style={{ color: '#1E293B' }}>
+                        <p className="text-sm font-medium" style={{ color: '#FFFFFF' }}>
                           {mod.title}
                         </p>
                         <div className="flex items-center gap-3 mt-1">
-                          <span className="text-xs" style={{ color: '#64748B' }}>
+                          <span className="text-xs" style={{ color: '#D4D4E8' }}>
                             {mod.module_type}
                           </span>
                           {mod.estimated_duration_mins && (

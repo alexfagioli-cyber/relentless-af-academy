@@ -9,18 +9,18 @@ export interface BadgeDef {
 }
 
 export const BADGE_DEFINITIONS: BadgeDef[] = [
-  { key: 'first_login', name: 'First Steps', description: 'Completed onboarding', emoji: '🚀', colour: '#64748B' },
-  { key: 'first_module', name: 'Off the Mark', description: 'Completed first module', emoji: '✅', colour: '#D4A31E' },
-  { key: 'first_assessment', name: 'Tested', description: 'Passed first assessment', emoji: '📝', colour: '#D4A31E' },
-  { key: 'streak_3', name: 'Consistency', description: '3-day streak', emoji: '🔥', colour: '#64748B' },
-  { key: 'streak_7', name: 'Relentless Week', description: '7-day streak', emoji: '⚡', colour: '#D4A31E' },
-  { key: 'streak_30', name: 'Unstoppable', description: '30-day streak', emoji: '💎', colour: '#D4A31E' },
+  { key: 'first_login', name: 'First Steps', description: 'Completed onboarding', emoji: '🚀', colour: '#8BA3C4' },
+  { key: 'first_module', name: 'Off the Mark', description: 'Completed first module', emoji: '✅', colour: '#E8C872' },
+  { key: 'first_assessment', name: 'Tested', description: 'Passed first assessment', emoji: '📝', colour: '#E8C872' },
+  { key: 'streak_3', name: 'Consistency', description: '3-day streak', emoji: '🔥', colour: '#8BA3C4' },
+  { key: 'streak_7', name: 'Relentless Week', description: '7-day streak', emoji: '⚡', colour: '#E8C872' },
+  { key: 'streak_30', name: 'Unstoppable', description: '30-day streak', emoji: '💎', colour: '#E8C872' },
   { key: 'tier_aware', name: 'AI Aware', description: 'Completed Aware tier gate', emoji: '🥉', colour: '#CD7F32' },
-  { key: 'tier_enabled', name: 'AI Enabled', description: 'Completed Enabled tier gate', emoji: '🥈', colour: '#64748B' },
-  { key: 'tier_specialist', name: 'Specialist', description: 'Completed Specialist tier gate', emoji: '🥇', colour: '#D4A31E' },
-  { key: 'all_challenges', name: 'Challenger', description: 'Completed all challenges in your tier', emoji: '⚔️', colour: '#D4A31E' },
-  { key: 'cert_verified', name: 'Certified', description: 'Verified a Skilljar certificate', emoji: '🎓', colour: '#D4A31E' },
-  { key: 'feedback_given', name: 'Voice Heard', description: 'Gave your first feedback', emoji: '💬', colour: '#64748B' },
+  { key: 'tier_enabled', name: 'AI Enabled', description: 'Completed Enabled tier gate', emoji: '🥈', colour: '#8BA3C4' },
+  { key: 'tier_specialist', name: 'Specialist', description: 'Completed Specialist tier gate', emoji: '🥇', colour: '#E8C872' },
+  { key: 'all_challenges', name: 'Challenger', description: 'Completed all challenges in your tier', emoji: '⚔️', colour: '#E8C872' },
+  { key: 'cert_verified', name: 'Certified', description: 'Verified a Skilljar certificate', emoji: '🎓', colour: '#E8C872' },
+  { key: 'feedback_given', name: 'Voice Heard', description: 'Gave your first feedback', emoji: '💬', colour: '#8BA3C4' },
 ]
 
 export async function checkAndAwardBadges(supabase: SupabaseClient, learnerId: string) {

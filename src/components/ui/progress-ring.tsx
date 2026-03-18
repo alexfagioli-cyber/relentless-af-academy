@@ -12,7 +12,7 @@ export function ProgressRing({ completed, total, size = 120 }: ProgressRingProps
   const offset = circumference - (pct / 100) * circumference
 
   return (
-    <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
+    <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size, filter: 'drop-shadow(0 0 8px rgba(232, 200, 114, 0.2))' }}>
       <svg width={size} height={size} className="-rotate-90">
         {/* Track */}
         <circle
@@ -20,7 +20,7 @@ export function ProgressRing({ completed, total, size = 120 }: ProgressRingProps
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke="#E2E8F0"
+          stroke="#363654"
           strokeWidth={strokeWidth}
         />
         {/* Fill */}
@@ -29,7 +29,7 @@ export function ProgressRing({ completed, total, size = 120 }: ProgressRingProps
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke="#D4A31E"
+          stroke="#E8C872"
           strokeWidth={strokeWidth}
           strokeLinecap="round"
           strokeDasharray={circumference}
@@ -39,7 +39,7 @@ export function ProgressRing({ completed, total, size = 120 }: ProgressRingProps
       </svg>
       {/* Centre text */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-2xl font-bold" style={{ color: '#1E293B' }}>
+        <span className="text-2xl font-bold" style={{ color: '#FFFFFF' }}>
           {pct}%
         </span>
       </div>

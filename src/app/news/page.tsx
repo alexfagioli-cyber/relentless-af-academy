@@ -3,9 +3,9 @@ import { BottomNav } from '@/components/layout/bottom-nav'
 import { redirect } from 'next/navigation'
 
 const CATEGORY_LABELS: Record<string, { label: string; colour: string }> = {
-  feature: { label: 'Feature', colour: '#D4A31E' },
+  feature: { label: 'Feature', colour: '#E8C872' },
   tip: { label: 'Tip', colour: '#22C55E' },
-  'use-case': { label: 'Use Case', colour: '#D4A31E' },
+  'use-case': { label: 'Use Case', colour: '#E8C872' },
   news: { label: 'News', colour: '#8B5CF6' },
 }
 
@@ -22,10 +22,10 @@ export default async function NewsPage() {
   return (
     <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: 'transparent' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
-        <h1 className="text-2xl font-bold mb-2" style={{ color: '#1E293B' }}>
+        <h1 className="text-2xl font-bold mb-2" style={{ color: '#FFFFFF' }}>
           AI News &amp; Ideas
         </h1>
-        <p className="text-sm mb-6" style={{ color: '#64748B' }}>
+        <p className="text-sm mb-6" style={{ color: '#D4D4E8' }}>
           What&apos;s happening in AI — and how it applies to you.
         </p>
 
@@ -39,7 +39,7 @@ export default async function NewsPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block rounded-lg p-4 transition-all"
-                style={{ backgroundColor: '#FFFFFF', borderLeft: `3px solid ${cat.colour}` }}
+                style={{ backgroundColor: '#25253D', borderLeft: `3px solid ${cat.colour}` }}
               >
                 <div className="flex items-center gap-2 mb-2">
                   <span
@@ -54,11 +54,11 @@ export default async function NewsPage() {
                     </span>
                   )}
                 </div>
-                <p className="text-sm font-semibold" style={{ color: '#1E293B' }}>
+                <p className="text-sm font-semibold" style={{ color: '#FFFFFF' }}>
                   {item.title}
                 </p>
                 {item.description && (
-                  <p className="mt-1 text-xs leading-relaxed" style={{ color: '#64748B' }}>
+                  <p className="mt-1 text-xs leading-relaxed" style={{ color: '#D4D4E8' }}>
                     {item.description}
                   </p>
                 )}
@@ -68,8 +68,8 @@ export default async function NewsPage() {
         </div>
 
         {(!items || items.length === 0) && (
-          <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
-            <p className="text-sm" style={{ color: '#64748B' }}>
+          <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
+            <p className="text-sm" style={{ color: '#D4D4E8' }}>
               Nothing here yet. Check back soon.
             </p>
           </div>

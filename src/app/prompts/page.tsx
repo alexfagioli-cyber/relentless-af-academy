@@ -4,8 +4,8 @@ import { redirect } from 'next/navigation'
 import { CopyPromptButton } from './copy-button'
 
 const CATEGORY_COLOURS: Record<string, string> = {
-  Study: '#D4A31E',
-  Work: '#D4A31E',
+  Study: '#E8C872',
+  Work: '#E8C872',
   Creative: '#8B5CF6',
   Research: '#3B82F6',
   'Decision-Making': '#22C55E',
@@ -27,10 +27,10 @@ export default async function PromptsPage() {
   return (
     <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: 'transparent' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
-        <h1 className="text-2xl font-bold mb-2" style={{ color: '#1E293B' }}>
+        <h1 className="text-2xl font-bold mb-2" style={{ color: '#FFFFFF' }}>
           Prompt Library
         </h1>
-        <p className="text-sm mb-6" style={{ color: '#64748B' }}>
+        <p className="text-sm mb-6" style={{ color: '#D4D4E8' }}>
           Ready-to-use templates. Copy, fill in the [brackets], paste into Claude.
         </p>
 
@@ -39,9 +39,9 @@ export default async function PromptsPage() {
             <div className="flex items-center gap-2 mb-3">
               <div
                 className="w-2 h-2 rounded-full"
-                style={{ backgroundColor: CATEGORY_COLOURS[category] ?? '#D4A31E' }}
+                style={{ backgroundColor: CATEGORY_COLOURS[category] ?? '#E8C872' }}
               />
-              <h2 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CATEGORY_COLOURS[category] ?? '#D4A31E' }}>
+              <h2 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CATEGORY_COLOURS[category] ?? '#E8C872' }}>
                 {category}
               </h2>
             </div>
@@ -50,14 +50,14 @@ export default async function PromptsPage() {
                 <div
                   key={prompt.id}
                   className="rounded-lg p-4"
-                  style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}
+                  style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-semibold" style={{ color: '#1E293B' }}>
+                      <p className="text-sm font-semibold" style={{ color: '#FFFFFF' }}>
                         {prompt.title}
                       </p>
-                      <p className="mt-1.5 text-xs leading-relaxed whitespace-pre-line" style={{ color: '#64748B' }}>
+                      <p className="mt-1.5 text-xs leading-relaxed whitespace-pre-line" style={{ color: '#D4D4E8' }}>
                         {prompt.template}
                       </p>
                     </div>
@@ -70,7 +70,7 @@ export default async function PromptsPage() {
         ))}
 
         {(!prompts || prompts.length === 0) && (
-          <p className="text-sm text-center py-8" style={{ color: '#64748B' }}>Prompts coming soon.</p>
+          <p className="text-sm text-center py-8" style={{ color: '#D4D4E8' }}>Prompts coming soon.</p>
         )}
       </div>
       <BottomNav />

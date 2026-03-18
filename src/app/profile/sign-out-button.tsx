@@ -21,7 +21,7 @@ export function SignOutButton() {
       onClick={handleSignOut}
       disabled={loading}
       className="w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity disabled:opacity-50"
-      style={{ backgroundColor: '#FFFFFF', color: '#64748B', border: '1px solid #E2E8F0' }}
+      style={{ backgroundColor: '#25253D', color: '#D4D4E8', border: '1px solid #374151' }}
     >
       {loading ? 'Signing out' : 'Sign Out'}
     </button>

@@ -53,7 +53,7 @@ const PLATFORM_OPTIONS = ['skilljar', 'github', 'coursera', 'claudecertification
 const TIER_COLOURS: Record<string, string> = {
   aware: '#4CAF50',
   enabled: '#2196F3',
-  specialist: '#D4A31E',
+  specialist: '#E8C872',
 }
 
 const TYPE_LABELS: Record<string, string> = {
@@ -163,9 +163,9 @@ export function ModuleManager({ modules }: { modules: Module[] }) {
   }
 
   const inputStyle: React.CSSProperties = {
-    backgroundColor: '#FFFFFF',
-    border: '1px solid #E2E8F0',
-    color: '#1E293B',
+    backgroundColor: '#1A1A2E',
+    border: '1px solid #363654',
+    color: '#FFFFFF',
     borderRadius: 6,
     padding: '8px 12px',
     width: '100%',
@@ -178,7 +178,7 @@ export function ModuleManager({ modules }: { modules: Module[] }) {
   }
 
   const labelStyle: React.CSSProperties = {
-    color: '#64748B',
+    color: '#D4D4E8',
     fontSize: 12,
     fontWeight: 500,
     marginBottom: 4,
@@ -189,13 +189,13 @@ export function ModuleManager({ modules }: { modules: Module[] }) {
     <div>
       {/* Header with Add button */}
       <div className="flex items-center justify-between mb-4">
-        <p style={{ color: '#64748B', fontSize: 14 }}>
+        <p style={{ color: '#D4D4E8', fontSize: 14 }}>
           {modules.length} module{modules.length !== 1 ? 's' : ''}
         </p>
         <button
           onClick={openAdd}
           className="px-4 py-2 rounded-md text-sm font-medium"
-          style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
+          style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
         >
           Add Module
         </button>
@@ -210,9 +210,9 @@ export function ModuleManager({ modules }: { modules: Module[] }) {
         >
           <div
             className="w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-lg p-6"
-            style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}
+            style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}
           >
-            <h2 className="text-lg font-bold mb-4" style={{ color: '#1E293B' }}>
+            <h2 className="text-lg font-bold mb-4" style={{ color: '#FFFFFF' }}>
               {editingId ? 'Edit Module' : 'Add Module'}
             </h2>
 
@@ -351,8 +351,8 @@ export function ModuleManager({ modules }: { modules: Module[] }) {
                   disabled={saving}
                   className="flex-1 py-2 rounded-md text-sm font-medium"
                   style={{
-                    backgroundColor: saving ? '#E2E8F0' : '#D4A31E',
-                    color: '#1E293B',
+                    backgroundColor: saving ? '#363654' : '#E8C872',
+                    color: '#1A1A2E',
                   }}
                 >
                   {saving ? 'Saving...' : editingId ? 'Update Module' : 'Create Module'}
@@ -360,7 +360,7 @@ export function ModuleManager({ modules }: { modules: Module[] }) {
                 <button
                   onClick={closeForm}
                   className="px-4 py-2 rounded-md text-sm"
-                  style={{ border: '1px solid #E2E8F0', color: '#64748B' }}
+                  style={{ border: '1px solid #363654', color: '#D4D4E8' }}
                 >
                   Cancel
                 </button>
@@ -376,13 +376,13 @@ export function ModuleManager({ modules }: { modules: Module[] }) {
           <div
             key={mod.id}
             className="flex items-center justify-between p-3 rounded-lg"
-            style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}
+            style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}
           >
             <div className="flex-1 min-w-0 mr-3">
               <div className="flex items-center gap-2 flex-wrap">
                 <span
                   className="text-sm font-medium truncate"
-                  style={{ color: '#1E293B' }}
+                  style={{ color: '#FFFFFF' }}
                 >
                   {mod.title}
                 </span>
@@ -390,7 +390,7 @@ export function ModuleManager({ modules }: { modules: Module[] }) {
                   className="text-xs px-2 py-0.5 rounded-full shrink-0"
                   style={{
                     backgroundColor: TIER_COLOURS[mod.tier] ?? '#666',
-                    color: '#1E293B',
+                    color: '#1A1A2E',
                     fontWeight: 600,
                   }}
                 >
@@ -398,12 +398,12 @@ export function ModuleManager({ modules }: { modules: Module[] }) {
                 </span>
                 <span
                   className="text-xs px-2 py-0.5 rounded shrink-0"
-                  style={{ backgroundColor: '#E2E8F0', color: '#64748B' }}
+                  style={{ backgroundColor: '#363654', color: '#D4D4E8' }}
                 >
                   {TYPE_LABELS[mod.module_type] ?? mod.module_type}
                 </span>
               </div>
-              <div className="flex gap-4 mt-1 text-xs" style={{ color: '#64748B' }}>
+              <div className="flex gap-4 mt-1 text-xs" style={{ color: '#D4D4E8' }}>
                 <span>#{mod.order_index}</span>
                 {mod.platform && <span>{mod.platform}</span>}
                 {mod.estimated_duration_mins && <span>{mod.estimated_duration_mins}m</span>}
@@ -412,7 +412,7 @@ export function ModuleManager({ modules }: { modules: Module[] }) {
             <button
               onClick={() => openEdit(mod)}
               className="px-3 py-1.5 rounded text-xs font-medium shrink-0"
-              style={{ border: '1px solid #E2E8F0', color: '#D4A31E' }}
+              style={{ border: '1px solid #363654', color: '#E8C872' }}
             >
               Edit
             </button>
@@ -420,7 +420,7 @@ export function ModuleManager({ modules }: { modules: Module[] }) {
         ))}
 
         {modules.length === 0 && (
-          <p className="text-center py-8" style={{ color: '#64748B' }}>
+          <p className="text-center py-8" style={{ color: '#D4D4E8' }}>
             No modules yet. Add your first one above.
           </p>
         )}

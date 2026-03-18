@@ -26,7 +26,7 @@ interface Props {
 
 function statusDotColour(days: number): string {
   if (days <= 3) return '#22C55E'   // green
-  if (days <= 7) return '#D4A31E'   // amber
+  if (days <= 7) return '#E8C872'   // amber
   if (days <= 14) return '#EF4444'  // red
   return '#6B7280'                  // grey
 }
@@ -85,8 +85,8 @@ export function LearnersClient({ learners }: Props) {
               onClick={() => setExpandedId(isExpanded ? null : l.id)}
               className="w-full rounded-lg p-4 text-left transition-all"
               style={{
-                backgroundColor: '#FFFFFF',
-                border: isExpanded ? '1px solid #D4A31E' : '1px solid #E2E8F0',
+                backgroundColor: '#25253D',
+                border: isExpanded ? '1px solid #E8C872' : '1px solid #363654',
               }}
             >
               <div className="flex items-center gap-3">
@@ -99,19 +99,19 @@ export function LearnersClient({ learners }: Props) {
 
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium truncate" style={{ color: '#1E293B' }}>
+                    <span className="text-sm font-medium truncate" style={{ color: '#FFFFFF' }}>
                       {l.displayName}
                     </span>
                     {l.isAdmin && (
                       <span
                         className="text-xs px-1.5 py-0.5 rounded"
-                        style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
+                        style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
                       >
                         admin
                       </span>
                     )}
                   </div>
-                  <div className="flex flex-wrap items-center gap-3 mt-0.5 text-xs" style={{ color: '#64748B' }}>
+                  <div className="flex flex-wrap items-center gap-3 mt-0.5 text-xs" style={{ color: '#D4D4E8' }}>
                     <span>{l.email}</span>
                     <span className="capitalize">{l.tier ?? '--'}</span>
                     <span>{l.completed} completed</span>
@@ -120,7 +120,7 @@ export function LearnersClient({ learners }: Props) {
                   </div>
                 </div>
 
-                <span className="text-xs flex-shrink-0" style={{ color: '#64748B' }}>
+                <span className="text-xs flex-shrink-0" style={{ color: '#D4D4E8' }}>
                   {isExpanded ? '\u25BC' : '\u25B6'}
                 </span>
               </div>
@@ -130,24 +130,24 @@ export function LearnersClient({ learners }: Props) {
             {isExpanded && (
               <div
                 className="rounded-b-lg p-4 -mt-1 space-y-4"
-                style={{ backgroundColor: '#FFFFFF', borderTop: '1px solid #E2E8F0' }}
+                style={{ backgroundColor: '#25253D', borderTop: '1px solid #363654' }}
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                   <div className="truncate">
                     <span style={{ color: '#6B7280' }}>Email: </span>
-                    <span style={{ color: '#64748B' }}>{l.email}</span>
+                    <span style={{ color: '#D4D4E8' }}>{l.email}</span>
                   </div>
                   <div>
                     <span style={{ color: '#6B7280' }}>Completion: </span>
-                    <span style={{ color: '#64748B' }}>{l.completionPct}% ({l.completed}/{l.total})</span>
+                    <span style={{ color: '#D4D4E8' }}>{l.completionPct}% ({l.completed}/{l.total})</span>
                   </div>
                   <div>
                     <span style={{ color: '#6B7280' }}>Best streak: </span>
-                    <span style={{ color: '#64748B' }}>{l.streakLongest}d</span>
+                    <span style={{ color: '#D4D4E8' }}>{l.streakLongest}d</span>
                   </div>
                   <div>
                     <span style={{ color: '#6B7280' }}>Last active: </span>
-                    <span style={{ color: '#64748B' }}>
+                    <span style={{ color: '#D4D4E8' }}>
                       {l.lastActive
                         ? new Date(l.lastActive).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
                         : 'Never'}
@@ -156,7 +156,7 @@ export function LearnersClient({ learners }: Props) {
                   {l.motivation && (
                     <div className="col-span-2">
                       <span style={{ color: '#6B7280' }}>Motivation: </span>
-                      <span style={{ color: '#64748B' }}>{l.motivation}</span>
+                      <span style={{ color: '#D4D4E8' }}>{l.motivation}</span>
                     </div>
                   )}
                 </div>
@@ -169,14 +169,14 @@ export function LearnersClient({ learners }: Props) {
                     onChange={(e) => handleTierOverride(l.id, e.target.value)}
                     disabled={savingTier === l.id}
                     className="rounded-md px-3 py-1.5 text-xs disabled:opacity-50"
-                    style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
+                    style={{ backgroundColor: '#1A1A2E', color: '#FFFFFF', border: '1px solid #363654' }}
                   >
                     <option value="aware">Aware</option>
                     <option value="enabled">Enabled</option>
                     <option value="specialist">Specialist</option>
                   </select>
                   {savingTier === l.id && (
-                    <span className="text-xs ml-2" style={{ color: '#64748B' }}>Saving...</span>
+                    <span className="text-xs ml-2" style={{ color: '#D4D4E8' }}>Saving...</span>
                   )}
                 </div>
               </div>

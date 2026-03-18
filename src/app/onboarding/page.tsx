@@ -28,7 +28,7 @@ function QuestionCard({
 
   return (
     <div className="space-y-3">
-      <p className="text-base font-medium" style={{ color: '#1E293B' }}>{label}</p>
+      <p className="text-base font-medium" style={{ color: '#FFFFFF' }}>{label}</p>
       <div className="space-y-2">
         {options.map((opt, i) => {
           const selected = responses[questionKey] === i
@@ -38,9 +38,9 @@ function QuestionCard({
               onClick={() => onSelect(questionKey, i)}
               className="w-full text-left rounded-lg px-4 py-3 text-sm transition-all"
               style={{
-                backgroundColor: selected ? '#D4A31E' : '#FFFFFF',
-                color: selected ? '#1E293B' : '#64748B',
-                border: selected ? '1px solid #D4A31E' : '1px solid #E2E8F0',
+                backgroundColor: selected ? '#E8C872' : '#25253D',
+                color: selected ? '#E8F0FE' : '#8BA3C4',
+                border: selected ? '1px solid #E8C872' : '1px solid #374151',
               }}
             >
               {opt.label}
@@ -56,8 +56,8 @@ function Step1({ responses, onSelect }: StepProps) {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-xl font-bold" style={{ color: '#1E293B' }}>Welcome</h2>
-        <p className="mt-1 text-sm" style={{ color: '#64748B' }}>Let&apos;s understand what you&apos;re looking for.</p>
+        <h2 className="text-xl font-bold" style={{ color: '#FFFFFF' }}>Welcome</h2>
+        <p className="mt-1 text-sm" style={{ color: '#D4D4E8' }}>Let&apos;s understand what you&apos;re looking for.</p>
       </div>
       <QuestionCard questionKey="motivation" label="What brings you to RelentlessAF Academy?" responses={responses} onSelect={onSelect} />
       <QuestionCard questionKey="background" label="What best describes you right now?" responses={responses} onSelect={onSelect} />
@@ -78,8 +78,8 @@ function Step2({ responses, onSelect }: StepProps) {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-xl font-bold" style={{ color: '#1E293B' }}>AI Knowledge</h2>
-        <p className="mt-1 text-sm" style={{ color: '#64748B' }}>No right or wrong answers — just where you are now.</p>
+        <h2 className="text-xl font-bold" style={{ color: '#FFFFFF' }}>AI Knowledge</h2>
+        <p className="mt-1 text-sm" style={{ color: '#D4D4E8' }}>No right or wrong answers — just where you are now.</p>
       </div>
       <QuestionCard questionKey="ai_familiarity" label="Have you used any AI tool before? (ChatGPT, Claude, Copilot, Gemini)" responses={responses} onSelect={onSelect} />
       {q4Key && (
@@ -103,12 +103,12 @@ function Step3({ responses, onSelect, timeCommitment, onTimeSelect }: StepProps 
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-xl font-bold" style={{ color: '#1E293B' }}>Goals</h2>
-        <p className="mt-1 text-sm" style={{ color: '#64748B' }}>Where do you want to end up?</p>
+        <h2 className="text-xl font-bold" style={{ color: '#FFFFFF' }}>Goals</h2>
+        <p className="mt-1 text-sm" style={{ color: '#D4D4E8' }}>Where do you want to end up?</p>
       </div>
       <QuestionCard questionKey="success_vision" label="What would success look like for you?" responses={responses} onSelect={onSelect} />
       <div className="space-y-3">
-        <p className="text-base font-medium" style={{ color: '#1E293B' }}>How much time can you commit per week?</p>
+        <p className="text-base font-medium" style={{ color: '#FFFFFF' }}>How much time can you commit per week?</p>
         <div className="space-y-2">
           {TIME_OPTIONS.map((opt) => {
             const selected = timeCommitment === opt
@@ -119,9 +119,9 @@ function Step3({ responses, onSelect, timeCommitment, onTimeSelect }: StepProps 
                 onClick={() => onTimeSelect(opt)}
                 className="w-full text-left rounded-lg px-4 py-3 text-sm transition-all"
                 style={{
-                  backgroundColor: selected ? '#D4A31E' : '#FFFFFF',
-                  color: selected ? '#1E293B' : '#64748B',
-                  border: selected ? '1px solid #D4A31E' : '1px solid #E2E8F0',
+                  backgroundColor: selected ? '#E8C872' : '#25253D',
+                  color: selected ? '#E8F0FE' : '#8BA3C4',
+                  border: selected ? '1px solid #E8C872' : '1px solid #374151',
                 }}
               >
                 {labels[opt]}
@@ -271,7 +271,7 @@ export default function OnboardingPage() {
             <div
               key={i}
               className="h-1 flex-1 rounded-full transition-colors duration-300"
-              style={{ backgroundColor: i <= step ? '#D4A31E' : '#E2E8F0' }}
+              style={{ backgroundColor: i <= step ? '#E8C872' : '#374151' }}
             />
           ))}
         </div>
@@ -283,7 +283,7 @@ export default function OnboardingPage() {
 
         {/* Error */}
         {error && (
-          <div className="mt-4 rounded-md p-3 text-sm" style={{ backgroundColor: '#FFFFFF', color: '#D4A31E' }}>
+          <div className="mt-4 rounded-md p-3 text-sm" style={{ backgroundColor: '#25253D', color: '#E8C872' }}>
             {error}
           </div>
         )}
@@ -294,7 +294,7 @@ export default function OnboardingPage() {
             <button
               onClick={() => setStep(step - 1)}
               className="flex-1 rounded-lg py-3 text-sm font-semibold"
-              style={{ backgroundColor: '#FFFFFF', color: '#64748B', border: '1px solid #E2E8F0' }}
+              style={{ backgroundColor: '#25253D', color: '#D4D4E8', border: '1px solid #374151' }}
             >
               Back
             </button>
@@ -304,7 +304,7 @@ export default function OnboardingPage() {
               onClick={() => setStep(step + 1)}
               disabled={!canAdvance()}
               className="flex-1 rounded-lg py-3 text-sm font-semibold transition-opacity disabled:opacity-30"
-              style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
+              style={{ backgroundColor: '#E8C872', color: '#FFFFFF' }}
             >
               Continue
             </button>
@@ -313,7 +313,7 @@ export default function OnboardingPage() {
               onClick={handleSubmit}
               disabled={!canAdvance() || submitting}
               className="flex-1 rounded-lg py-3 text-sm font-semibold transition-opacity disabled:opacity-30"
-              style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
+              style={{ backgroundColor: '#E8C872', color: '#FFFFFF' }}
             >
               {submitting ? 'Setting up your path' : "Let's Go"}
             </button>

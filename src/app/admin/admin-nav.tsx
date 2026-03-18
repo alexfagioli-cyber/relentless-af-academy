@@ -28,9 +28,9 @@ export function AdminNav() {
               href={tab.href}
               className="px-3 py-2 rounded-md text-xs font-medium whitespace-nowrap transition-colors"
               style={{
-                backgroundColor: isActive ? '#D4A31E' : '#FFFFFF',
-                color: isActive ? '#1E293B' : '#64748B',
-                border: isActive ? 'none' : '1px solid #E2E8F0',
+                backgroundColor: isActive ? '#E8C872' : '#25253D',
+                color: isActive ? '#1A1A2E' : '#8BA3C4',
+                border: isActive ? 'none' : '1px solid #363654',
               }}
             >
               {tab.label}
