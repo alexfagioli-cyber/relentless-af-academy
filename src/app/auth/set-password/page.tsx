@@ -42,7 +42,7 @@ export default function SetPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#0A1628' }}>
+    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: 'transparent' }}>
       <div className="w-full max-w-sm space-y-8">
         <div className="text-center">
           <h1 className="text-2xl font-bold" style={{ color: '#E8F0FE' }}>
@@ -54,7 +54,7 @@ export default function SetPasswordPage() {
         </div>
 
         {error && (
-          <div className="rounded-md p-3 text-sm" style={{ backgroundColor: '#122240', color: '#E8C872' }}>
+          <div className="rounded-md p-3 text-sm" style={{ backgroundColor: '#25253D', color: '#E8C872' }}>
             {error}
           </div>
         )}
@@ -72,7 +72,7 @@ export default function SetPasswordPage() {
               onChange={(e) => setPassword(e.target.value)}
               className="mt-1 block w-full rounded-md px-3 py-2 text-sm outline-none focus:ring-2"
               style={{
-                backgroundColor: '#122240',
+                backgroundColor: '#25253D',
                 color: '#E8F0FE',
                 borderColor: '#374151',
                 border: '1px solid #374151',
@@ -93,7 +93,7 @@ export default function SetPasswordPage() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               className="mt-1 block w-full rounded-md px-3 py-2 text-sm outline-none focus:ring-2"
               style={{
-                backgroundColor: '#122240',
+                backgroundColor: '#25253D',
                 color: '#E8F0FE',
                 borderColor: '#374151',
                 border: '1px solid #374151',

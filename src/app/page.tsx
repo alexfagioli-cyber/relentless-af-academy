@@ -103,12 +103,12 @@ export default async function DashboardPage() {
   const moduleMap = new Map((modules ?? []).map((m) => [m.id, m]))
 
   return (
-    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: '#0A1628' }}>
+    <div className="min-h-screen pb-20 animate-fade-in" style={{ background: 'radial-gradient(ellipse at top, #25253D 0%, transparent 60%)' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
         {/* Welcome */}
         <div className="mb-6">
           <h1 className="text-2xl font-bold" style={{ color: '#E8F0FE' }}>
-            Welcome back{profile?.display_name ? `, ${profile.display_name}` : ''}
+            Welcome back{profile?.display_name ? `, ${profile.display_name.split(' ')[0]}` : ''}
           </h1>
           {(() => {
             const msg = getDashboardMessage({
@@ -125,11 +125,28 @@ export default async function DashboardPage() {
           })()}
         </div>
 
+        {/* Futures card — top of dashboard */}
+        <Link
+          href="/futures"
+          className="block rounded-xl p-5 mb-6 transition-all"
+          style={{ backgroundColor: '#25253D', border: '2px solid #E8C872' }}
+        >
+          <p className="text-base font-bold" style={{ color: '#E8C872' }}>
+            Where could AI take you?
+          </p>
+          <p className="text-sm mt-1" style={{ color: '#8BA3C4' }}>
+            Real stories, an interactive explorer, and 15 things you can do with AI today.
+          </p>
+          <p className="mt-3 text-sm font-semibold" style={{ color: '#E8C872' }}>
+            Explore →
+          </p>
+        </Link>
+
         {/* Quick stats bar */}
         <div className="flex items-center gap-3 mb-6">
           <div
             className="flex-1 rounded-lg px-3 py-2 text-center"
-            style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}
+            style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}
           >
             <p className="text-xs" style={{ color: '#8BA3C4' }}>Time</p>
             <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>
@@ -138,7 +155,7 @@ export default async function DashboardPage() {
           </div>
           <div
             className="flex-1 rounded-lg px-3 py-2 text-center"
-            style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}
+            style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}
           >
             <p className="text-xs" style={{ color: '#8BA3C4' }}>Streak</p>
             <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>
@@ -147,7 +164,7 @@ export default async function DashboardPage() {
           </div>
           <div
             className="flex-1 rounded-lg px-3 py-2 text-center"
-            style={{ backgroundColor: '#122240', borderBottom: `2px solid ${TIER_COLOURS[learnerTier] ?? '#E8C872'}` }}
+            style={{ backgroundColor: '#25253D', borderBottom: `2px solid ${TIER_COLOURS[learnerTier] ?? '#E8C872'}` }}
           >
             <p className="text-xs" style={{ color: '#8BA3C4' }}>Tier</p>
             <p className="text-sm font-semibold capitalize" style={{ color: TIER_COLOURS[learnerTier] ?? '#E8F0FE' }}>
@@ -157,7 +174,7 @@ export default async function DashboardPage() {
         </div>
 
         {/* Progress ring + tier progress */}
-        <div className="flex items-center gap-5 mb-6 rounded-lg p-4" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
+        <div className="flex items-center gap-5 mb-6 rounded-lg p-4" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
           <ProgressRing completed={completedCount} total={totalCount} size={90} />
           <div className="flex-1">
             <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>
@@ -181,7 +198,7 @@ export default async function DashboardPage() {
           <Link
             href={`/learn/${resumeModule.id}`}
             className="block rounded-lg p-5 mb-4 transition-all"
-            style={{ backgroundColor: '#122240', border: '1px solid #E8C872' }}
+            style={{ backgroundColor: '#25253D', border: '1px solid #E8C872' }}
           >
             <p className="text-sm mb-2" style={{ color: '#8BA3C4' }}>
               Nothing started yet. That changes today.
@@ -197,7 +214,7 @@ export default async function DashboardPage() {
           <Link
             href={`/learn/${resumeModule.id}`}
             className="block rounded-lg p-5 mb-4 transition-all"
-            style={{ backgroundColor: '#122240', border: '1px solid #E8C872' }}
+            style={{ backgroundColor: '#25253D', border: '1px solid #E8C872' }}
           >
             <p className="text-xs uppercase tracking-wide mb-1" style={{ color: '#8BA3C4' }}>
               {inProgressModule ? 'Continue where you left off' : 'Up next'}
@@ -210,7 +227,7 @@ export default async function DashboardPage() {
             </p>
           </Link>
         ) : completedCount === totalCount && totalCount > 0 ? (
-          <div className="rounded-lg p-5 mb-4 text-center" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
+          <div className="rounded-lg p-5 mb-4 text-center" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
             <p className="text-base font-semibold" style={{ color: '#22C55E' }}>
               All modules completed
             </p>
@@ -219,36 +236,22 @@ export default async function DashboardPage() {
             </p>
           </div>
         ) : (
-          <div className="rounded-lg p-5 mb-4 text-center" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
+          <div className="rounded-lg p-5 mb-4 text-center" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
             <p className="text-sm" style={{ color: '#8BA3C4' }}>
               Complete your current modules to unlock the next step.
             </p>
           </div>
         )}
 
-        {/* Futures card */}
-        <Link
-          href="/futures"
-          className="block rounded-lg p-4 mb-4 transition-all"
-          style={{ backgroundColor: '#122240', border: '1px solid #E8C87230' }}
-        >
-          <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>
-            Where could AI take you? →
-          </p>
-          <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>
-            Real stories, interactive explorer, and 15 things you can do today.
-          </p>
-        </Link>
-
         {/* Daily tip */}
-        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#122240', borderLeft: '3px solid #E8C872' }}>
+        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#25253D', borderLeft: '3px solid #E8C872' }}>
           <p className="text-sm" style={{ color: '#8BA3C4' }}>
             {getDailyTip()}
           </p>
         </div>
 
         {/* Recent activity */}
-        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
+        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
           <p className="text-xs uppercase tracking-wide mb-3" style={{ color: '#6B7280' }}>Recent activity</p>
           {recentEvents && recentEvents.length > 0 ? (
             <div className="space-y-2">
@@ -277,7 +280,7 @@ export default async function DashboardPage() {
         <Link
           href="/learn"
           className="block rounded-lg p-4 text-center text-sm font-medium"
-          style={{ backgroundColor: '#122240', color: '#8BA3C4', border: '1px solid #374151' }}
+          style={{ backgroundColor: '#25253D', color: '#8BA3C4', border: '1px solid #374151' }}
         >
           View full learning path
         </Link>

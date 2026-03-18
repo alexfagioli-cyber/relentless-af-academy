@@ -1,6 +1,6 @@
 export default function ExpiredPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#0A1628' }}>
+    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: 'transparent' }}>
       <div className="w-full max-w-sm text-center">
         <h1 className="text-2xl font-bold mb-3" style={{ color: '#E8F0FE' }}>
           Invite Expired

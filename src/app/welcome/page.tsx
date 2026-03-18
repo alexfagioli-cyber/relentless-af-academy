@@ -20,7 +20,7 @@ const tiers = [
 
 export default function WelcomePage() {
   return (
-    <div className="min-h-screen px-4 py-12 sm:py-16" style={{ backgroundColor: '#0A1628' }}>
+    <div className="min-h-screen px-4 py-12 sm:py-16" style={{ backgroundColor: 'transparent' }}>
       <div className="max-w-lg mx-auto">
 
         {/* Heading */}
@@ -57,17 +57,17 @@ export default function WelcomePage() {
             What people are doing with AI right now:
           </h2>
           <div className="space-y-3">
-            <div className="rounded-lg p-5" style={{ backgroundColor: '#122240', borderLeft: '3px solid #E8C872' }}>
+            <div className="rounded-lg p-5" style={{ backgroundColor: '#25253D', borderLeft: '3px solid #E8C872' }}>
               <p className="text-sm leading-relaxed" style={{ color: '#D1D5DB' }}>
                 <span className="font-semibold" style={{ color: '#E8F0FE' }}>Students</span> are using AI to revise smarter, break down complex topics in seconds, and write with more clarity than they ever thought possible.
               </p>
             </div>
-            <div className="rounded-lg p-5" style={{ backgroundColor: '#122240', borderLeft: '3px solid #E8C872' }}>
+            <div className="rounded-lg p-5" style={{ backgroundColor: '#25253D', borderLeft: '3px solid #E8C872' }}>
               <p className="text-sm leading-relaxed" style={{ color: '#D1D5DB' }}>
                 <span className="font-semibold" style={{ color: '#E8F0FE' }}>Professionals</span> are automating half their admin, generating reports in minutes, and making better decisions with AI-powered analysis.
               </p>
             </div>
-            <div className="rounded-lg p-5" style={{ backgroundColor: '#122240', borderLeft: '3px solid #E8C872' }}>
+            <div className="rounded-lg p-5" style={{ backgroundColor: '#25253D', borderLeft: '3px solid #E8C872' }}>
               <p className="text-sm leading-relaxed" style={{ color: '#D1D5DB' }}>
                 <span className="font-semibold" style={{ color: '#E8F0FE' }}>Builders</span> are creating apps, tools, and entire businesses that didn&apos;t exist six months ago — some without writing a single line of code.
               </p>
@@ -90,7 +90,7 @@ export default function WelcomePage() {
                 key={tier.name}
                 className="rounded-lg p-5"
                 style={{
-                  backgroundColor: '#122240',
+                  backgroundColor: '#25253D',
                   borderLeft: `3px solid ${tier.accent}`,
                 }}
               >
@@ -117,7 +117,7 @@ export default function WelcomePage() {
         </div>
 
         {/* From Alex */}
-        <div className="mb-10 pt-8" style={{ borderTop: '1px solid #122240' }}>
+        <div className="mb-10 pt-8" style={{ borderTop: '1px solid #25253D' }}>
           <p className="text-sm leading-relaxed mb-4" style={{ color: '#8BA3C4' }}>
             I built this because I&apos;ve seen what AI does when people actually learn to use it properly. Not surface-level stuff — real understanding that changes how you work, study, and think.
           </p>

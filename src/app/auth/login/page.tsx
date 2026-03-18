@@ -51,7 +51,7 @@ function LoginForm() {
       </div>
 
       {(urlError || error) && (
-        <div className="rounded-md p-3 text-sm" style={{ backgroundColor: '#122240', color: '#E8C872' }}>
+        <div className="rounded-md p-3 text-sm" style={{ backgroundColor: '#25253D', color: '#E8C872' }}>
           {urlError === 'invalid_link' ? 'Invalid or expired link. Please try again.' : error}
         </div>
       )}
@@ -69,7 +69,7 @@ function LoginForm() {
             onChange={(e) => setEmail(e.target.value)}
             className="mt-1 block w-full rounded-md px-3 py-2 text-sm outline-none focus:ring-2"
             style={{
-              backgroundColor: '#122240',
+              backgroundColor: '#25253D',
               color: '#E8F0FE',
               borderColor: '#374151',
               border: '1px solid #374151',
@@ -90,7 +90,7 @@ function LoginForm() {
             onChange={(e) => setPassword(e.target.value)}
             className="mt-1 block w-full rounded-md px-3 py-2 text-sm outline-none focus:ring-2"
             style={{
-              backgroundColor: '#122240',
+              backgroundColor: '#25253D',
               color: '#E8F0FE',
               borderColor: '#374151',
               border: '1px solid #374151',
@@ -114,7 +114,7 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#0A1628' }}>
+    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: 'transparent' }}>
       <Suspense>
         <LoginForm />
       </Suspense>

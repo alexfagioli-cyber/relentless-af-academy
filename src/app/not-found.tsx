@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#0A1628' }}>
+    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: 'transparent' }}>
       <div className="text-center">
         <p className="text-6xl font-bold mb-4" style={{ color: '#E8C872' }}>404</p>
         <h1 className="text-xl font-semibold mb-2" style={{ color: '#E8F0FE' }}>

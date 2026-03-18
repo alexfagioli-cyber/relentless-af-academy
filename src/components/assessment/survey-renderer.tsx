@@ -25,10 +25,10 @@ export interface ScoreResult {
 // Custom dark theme matching RelentlessAF branding
 const darkTheme = {
   cssVariables: {
-    '--sjs-general-backcolor': '#122240',
-    '--sjs-general-backcolor-dark': '#0A1628',
-    '--sjs-general-backcolor-dim': '#0A1628',
-    '--sjs-general-backcolor-dim-light': '#122240',
+    '--sjs-general-backcolor': '#25253D',
+    '--sjs-general-backcolor-dark': '#1A1A2E',
+    '--sjs-general-backcolor-dim': '#1A1A2E',
+    '--sjs-general-backcolor-dim-light': '#25253D',
     '--sjs-general-forecolor': '#E8F0FE',
     '--sjs-general-forecolor-light': '#8BA3C4',
     '--sjs-general-dim-forecolor': '#8BA3C4',
@@ -97,7 +97,7 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
   // Show result screen
   if (result) {
     return (
-      <div className="rounded-lg p-6 text-center animate-fade-in" style={{ backgroundColor: '#122240' }}>
+      <div className="rounded-lg p-6 text-center animate-fade-in" style={{ backgroundColor: '#25253D' }}>
         <div
           className="text-4xl font-bold mb-2 animate-reveal"
           style={{ color: result.passed ? '#22C55E' : '#E8C872' }}
@@ -127,7 +127,7 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
   // Show loading state while scoring
   if (submitting) {
     return (
-      <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#122240' }}>
+      <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#25253D' }}>
         <p className="text-sm" style={{ color: '#8BA3C4' }}>Scoring your answers</p>
       </div>
     )
@@ -137,7 +137,7 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
   if (error) {
     return (
       <div className="space-y-4">
-        <div className="rounded-lg p-4 text-sm" style={{ backgroundColor: '#122240', color: '#E8C872' }}>
+        <div className="rounded-lg p-4 text-sm" style={{ backgroundColor: '#25253D', color: '#E8C872' }}>
           {error}
         </div>
       </div>
@@ -164,16 +164,16 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
       <Survey model={survey} />
       <style jsx global>{`
         .survey-dark-wrapper .sd-root-modern {
-          background-color: #0A1628 !important;
+          background-color: #1A1A2E !important;
         }
         .survey-dark-wrapper .sd-body {
-          background-color: #0A1628 !important;
+          background-color: #1A1A2E !important;
         }
         .survey-dark-wrapper .sd-page {
-          background-color: #0A1628 !important;
+          background-color: #1A1A2E !important;
         }
         .survey-dark-wrapper .sd-question__content {
-          background-color: #122240 !important;
+          background-color: #25253D !important;
           border-radius: 8px !important;
           padding: 16px !important;
         }

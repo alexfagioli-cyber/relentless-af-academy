@@ -9,7 +9,7 @@ export default async function FuturesPage() {
   if (!user) redirect('/auth/login')
 
   return (
-    <div className="min-h-screen pb-20" style={{ backgroundColor: '#0A1628' }}>
+    <div className="min-h-screen pb-20" style={{ backgroundColor: 'transparent' }}>
       <FuturesClient />
       <BottomNav />
     </div>

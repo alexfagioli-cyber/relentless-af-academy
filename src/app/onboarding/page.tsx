@@ -38,7 +38,7 @@ function QuestionCard({
               onClick={() => onSelect(questionKey, i)}
               className="w-full text-left rounded-lg px-4 py-3 text-sm transition-all"
               style={{
-                backgroundColor: selected ? '#E8C872' : '#122240',
+                backgroundColor: selected ? '#E8C872' : '#25253D',
                 color: selected ? '#E8F0FE' : '#8BA3C4',
                 border: selected ? '1px solid #E8C872' : '1px solid #374151',
               }}
@@ -119,7 +119,7 @@ function Step3({ responses, onSelect, timeCommitment, onTimeSelect }: StepProps 
                 onClick={() => onTimeSelect(opt)}
                 className="w-full text-left rounded-lg px-4 py-3 text-sm transition-all"
                 style={{
-                  backgroundColor: selected ? '#E8C872' : '#122240',
+                  backgroundColor: selected ? '#E8C872' : '#25253D',
                   color: selected ? '#E8F0FE' : '#8BA3C4',
                   border: selected ? '1px solid #E8C872' : '1px solid #374151',
                 }}
@@ -263,7 +263,7 @@ export default function OnboardingPage() {
   ]
 
   return (
-    <div className="min-h-screen px-4 py-8" style={{ backgroundColor: '#0A1628' }}>
+    <div className="min-h-screen px-4 py-8" style={{ backgroundColor: 'transparent' }}>
       <div className="max-w-lg mx-auto">
         {/* Progress bar */}
         <div className="flex gap-2 mb-8">
@@ -283,7 +283,7 @@ export default function OnboardingPage() {
 
         {/* Error */}
         {error && (
-          <div className="mt-4 rounded-md p-3 text-sm" style={{ backgroundColor: '#122240', color: '#E8C872' }}>
+          <div className="mt-4 rounded-md p-3 text-sm" style={{ backgroundColor: '#25253D', color: '#E8C872' }}>
             {error}
           </div>
         )}
@@ -294,7 +294,7 @@ export default function OnboardingPage() {
             <button
               onClick={() => setStep(step - 1)}
               className="flex-1 rounded-lg py-3 text-sm font-semibold"
-              style={{ backgroundColor: '#122240', color: '#8BA3C4', border: '1px solid #374151' }}
+              style={{ backgroundColor: '#25253D', color: '#8BA3C4', border: '1px solid #374151' }}
             >
               Back
             </button>

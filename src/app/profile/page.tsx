@@ -37,14 +37,14 @@ export default async function ProfilePage() {
   const tierColour = TIER_COLOURS[tier] ?? '#E8C872'
 
   return (
-    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: '#0A1628' }}>
+    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: 'transparent' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
         <h1 className="text-2xl font-bold mb-6" style={{ color: '#E8F0FE' }}>
           Profile
         </h1>
 
         {/* Identity */}
-        <div className="rounded-lg p-5 mb-4" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
+        <div className="rounded-lg p-5 mb-4" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
           <p className="text-lg font-bold" style={{ color: '#E8F0FE' }}>
             {profile?.display_name ?? 'Learner'}
           </p>
@@ -55,13 +55,13 @@ export default async function ProfilePage() {
 
         {/* Stats */}
         <div className="grid grid-cols-3 gap-3 mb-4">
-          <div className="rounded-lg p-4 text-center" style={{ backgroundColor: '#122240', borderBottom: `2px solid ${tierColour}` }}>
+          <div className="rounded-lg p-4 text-center" style={{ backgroundColor: '#25253D', borderBottom: `2px solid ${tierColour}` }}>
             <p className="text-xs" style={{ color: '#8BA3C4' }}>Tier</p>
             <p className="mt-1 text-sm font-semibold capitalize" style={{ color: tierColour }}>
               {tier}
             </p>
           </div>
-          <div className="rounded-lg p-4 text-center" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
+          <div className="rounded-lg p-4 text-center" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
             <p className="text-xs" style={{ color: '#8BA3C4' }}>Streak</p>
             <p className="mt-1 text-sm font-semibold" style={{ color: '#E8F0FE' }}>
               {profile?.streak_current ?? 0}d
@@ -72,7 +72,7 @@ export default async function ProfilePage() {
               </p>
             )}
           </div>
-          <div className="rounded-lg p-4 text-center" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
+          <div className="rounded-lg p-4 text-center" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
             <p className="text-xs" style={{ color: '#8BA3C4' }}>Done</p>
             <p className="mt-1 text-sm font-semibold" style={{ color: '#E8F0FE' }}>
               {completedCount ?? 0}
@@ -81,7 +81,7 @@ export default async function ProfilePage() {
         </div>
 
         {/* Details */}
-        <div className="rounded-lg p-5 mb-4 space-y-4" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
+        <div className="rounded-lg p-5 mb-4 space-y-4" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
           {profile?.occupation && (
             <div>
               <p className="text-xs uppercase tracking-wide" style={{ color: '#6B7280' }}>Background</p>

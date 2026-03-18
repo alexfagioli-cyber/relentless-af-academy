@@ -82,7 +82,7 @@ export default async function LearnPage() {
   }))
 
   return (
-    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: '#0A1628' }}>
+    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: 'transparent' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
         <h1 className="text-2xl font-bold mb-6" style={{ color: '#E8F0FE' }}>
           Learning Path
@@ -108,7 +108,7 @@ export default async function LearnPage() {
                   <div
                     className="rounded-lg p-4 transition-status"
                     style={{
-                      backgroundColor: '#122240',
+                      backgroundColor: '#25253D',
                       border: `1px solid ${borderColor}`,
                       opacity: isLocked ? 0.5 : 1,
                     }}

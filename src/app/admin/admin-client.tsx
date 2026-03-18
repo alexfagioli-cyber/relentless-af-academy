@@ -167,7 +167,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
               <button
                 onClick={() => setExpandedId(expandedId === l.id ? null : l.id)}
                 className="w-full rounded-lg p-4 text-left transition-all"
-                style={{ backgroundColor: '#122240', border: expandedId === l.id ? '1px solid #E8C872' : '1px solid #374151' }}
+                style={{ backgroundColor: '#25253D', border: expandedId === l.id ? '1px solid #E8C872' : '1px solid #374151' }}
               >
                 <div className="flex items-center gap-3">
                   {/* Status dot */}
@@ -203,7 +203,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
 
               {/* Expanded detail */}
               {expandedId === l.id && (
-                <div className="rounded-b-lg p-4 -mt-1 space-y-4" style={{ backgroundColor: '#122240', borderTop: '1px solid #374151' }}>
+                <div className="rounded-b-lg p-4 -mt-1 space-y-4" style={{ backgroundColor: '#25253D', borderTop: '1px solid #374151' }}>
                   {/* Basic info */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                     <div className="truncate">
@@ -245,7 +245,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
                       value={l.tier ?? 'aware'}
                       onChange={(e) => handleTierOverride(l.id, e.target.value)}
                       className="rounded-md px-3 py-1.5 text-xs"
-                      style={{ backgroundColor: '#0A1628', color: '#E8F0FE', border: '1px solid #374151' }}
+                      style={{ backgroundColor: '#1A1A2E', color: '#E8F0FE', border: '1px solid #374151' }}
                     >
                       <option value="aware">Aware</option>
                       <option value="enabled">Enabled</option>
@@ -259,7 +259,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
                       <p className="text-xs mb-1" style={{ color: '#6B7280' }}>Assessment attempts</p>
                       <div className="space-y-1">
                         {l.attempts.slice(0, 5).map((a, i) => (
-                          <div key={i} className="flex justify-between text-xs rounded px-2 py-1" style={{ backgroundColor: '#0A1628' }}>
+                          <div key={i} className="flex justify-between text-xs rounded px-2 py-1" style={{ backgroundColor: 'transparent' }}>
                             <span style={{ color: '#8BA3C4' }}>{a.assessment_title}</span>
                             <span style={{ color: a.passed ? '#22C55E' : '#E8C872' }}>
                               {Math.round(a.score)}% — {a.passed ? 'Pass' : 'Fail'}
@@ -276,7 +276,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
                       <p className="text-xs mb-1" style={{ color: '#6B7280' }}>Onboarding responses</p>
                       <div className="space-y-1">
                         {l.onboarding.map((o, i) => (
-                          <div key={i} className="text-xs rounded px-2 py-1" style={{ backgroundColor: '#0A1628' }}>
+                          <div key={i} className="text-xs rounded px-2 py-1" style={{ backgroundColor: 'transparent' }}>
                             <span style={{ color: '#6B7280' }}>{o.question_key}: </span>
                             <span style={{ color: '#8BA3C4' }}>{JSON.stringify(o.response)}</span>
                           </div>
@@ -308,7 +308,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
             onChange={(e) => setInviteEmail(e.target.value)}
             placeholder="Email address"
             className="flex-1 rounded-md px-3 py-3 text-sm outline-none"
-            style={{ backgroundColor: '#122240', color: '#E8F0FE', border: '1px solid #374151' }}
+            style={{ backgroundColor: '#25253D', color: '#E8F0FE', border: '1px solid #374151' }}
           />
           <button
             type="submit"
@@ -329,7 +329,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
 
         <div className="space-y-2">
           {invites.map((inv) => (
-            <div key={inv.id} className="flex items-center justify-between rounded-md px-3 py-2 text-xs" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
+            <div key={inv.id} className="flex items-center justify-between rounded-md px-3 py-2 text-xs" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
               <span className="truncate mr-2" style={{ color: '#8BA3C4' }}>{inv.email}</span>
               <span style={{
                 color: inv.status === 'accepted' ? '#22C55E' : inv.status === 'expired' ? '#E8C872' : '#E8C872'
@@ -351,7 +351,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
         </h2>
         <div className="space-y-2">
           {feedback.map((f, i) => (
-            <div key={i} className="rounded-lg p-3" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
+            <div key={i} className="rounded-lg p-3" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
               <div className="flex items-center justify-between mb-1">
                 <span className="text-xs font-medium" style={{ color: '#E8F0FE' }}>{f.learnerName}</span>
                 <span className="text-xs" style={{ color: '#6B7280' }}>
@@ -378,7 +378,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
 
 function StatCard({ label, value, capitalize }: { label: string; value: string | number; capitalize?: boolean }) {
   return (
-    <div className="rounded-lg p-3" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
+    <div className="rounded-lg p-3" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
       <p className="text-xs uppercase tracking-wide" style={{ color: '#6B7280' }}>{label}</p>
       <p className={`mt-1 text-lg font-semibold ${capitalize ? 'capitalize' : ''}`} style={{ color: '#E8F0FE' }}>
         {value}
