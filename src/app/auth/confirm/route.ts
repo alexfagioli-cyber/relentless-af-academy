@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest) {
@@ -16,10 +17,38 @@ export async function GET(request: NextRequest) {
     })
 
     if (!error) {
-      // Check if user has completed onboarding
       const { data: { user } } = await supabase.auth.getUser()
 
       if (user) {
+        // Check invite expiry
+        const adminClient = createAdminClient()
+        const { data: invite } = await adminClient
+          .from('invites')
+          .select('id, status, expires_at')
+          .eq('email', user.email?.toLowerCase() ?? '')
+          .single()
+
+        if (invite) {
+          const expired = invite.status === 'expired' || new Date(invite.expires_at) < new Date()
+
+          if (expired) {
+            // Update invite status to expired if not already
+            if (invite.status !== 'expired') {
+              await adminClient
+                .from('invites')
+                .update({ status: 'expired' })
+                .eq('id', invite.id)
+            }
+            return NextResponse.redirect(new URL('/auth/expired', request.url))
+          }
+
+          // Mark invite as accepted
+          await adminClient
+            .from('invites')
+            .update({ status: 'accepted' })
+            .eq('id', invite.id)
+        }
+
         const { data: profile } = await supabase
           .from('learner_profiles')
           .select('onboarding_complete')

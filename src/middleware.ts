@@ -33,8 +33,8 @@ export async function middleware(request: NextRequest) {
 
   const { pathname } = request.nextUrl
 
-  // Allow all auth routes through
-  if (pathname.startsWith('/auth')) {
+  // Allow auth routes and API routes with their own auth through
+  if (pathname.startsWith('/auth') || pathname.startsWith('/api/admin/briefing')) {
     return supabaseResponse
   }
 
