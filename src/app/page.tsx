@@ -39,21 +39,21 @@ export default async function DashboardPage() {
   const tierIndex = TIER_ORDER.indexOf(learnerTier as typeof TIER_ORDER[number])
   const visibleTiers = TIER_ORDER.slice(0, tierIndex + 1)
 
-  // Get modules for visible tiers
-  const { data: modules } = await supabase
+  // FIX #1: Get ALL modules from aware upward — an Enabled learner still starts at A00
+  const { data: allModules } = await supabase
     .from('modules')
     .select('id, title, order_index, tier, module_type, estimated_duration_mins')
     .in('tier', visibleTiers)
     .order('order_index', { ascending: true })
 
-  // Get prerequisites for these modules
-  const moduleIds = (modules ?? []).map((m) => m.id)
+  const modules = allModules ?? []
+  const moduleIds = modules.map((m) => m.id)
+
   const { data: prerequisites } = await supabase
     .from('prerequisites')
     .select('module_id, prerequisite_module_id, prerequisite_group')
     .in('module_id', moduleIds.length > 0 ? moduleIds : ['00000000-0000-0000-0000-000000000000'])
 
-  // Get progress
   const { data: progress } = await supabase
     .from('progress')
     .select('module_id, status')
@@ -68,16 +68,16 @@ export default async function DashboardPage() {
   const completedCount = completedIds.size
   const totalCount = moduleIds.length
 
-  // Find in-progress module (resume) or next available
-  const inProgressModule = (modules ?? []).find((m) => inProgressIds.has(m.id))
+  // Next module: across ALL visible tiers, sorted by order_index (lowest first = A00)
   const unlockedIds = computeUnlockedModules(moduleIds, prerequisites ?? [], completedIds)
-  const nextModule = (modules ?? []).find(
+  const inProgressModule = modules.find((m) => inProgressIds.has(m.id))
+  const nextModule = modules.find(
     (m) => unlockedIds.has(m.id) && !completedIds.has(m.id),
   )
   const resumeModule = inProgressModule ?? nextModule
 
-  // Tier progress
-  const currentTierModules = (modules ?? []).filter((m) => m.tier === learnerTier)
+  // Tier progress for assigned tier
+  const currentTierModules = modules.filter((m) => m.tier === learnerTier)
   const currentTierCompleted = currentTierModules.filter((m) => completedIds.has(m.id)).length
   const currentTierTotal = currentTierModules.length
   const nextInTier = currentTierModules.find(
@@ -85,7 +85,7 @@ export default async function DashboardPage() {
   )
 
   // Total time invested
-  const totalMins = (modules ?? [])
+  const totalMins = modules
     .filter((m) => completedIds.has(m.id))
     .reduce((sum, m) => sum + (m.estimated_duration_mins ?? 0), 0)
   const totalHours = Math.floor(totalMins / 60)
@@ -100,10 +100,7 @@ export default async function DashboardPage() {
     .order('created_at', { ascending: false })
     .limit(5)
 
-  // Map event object_ids to module titles
-  const moduleMap = new Map((modules ?? []).map((m) => [m.id, m]))
-
-  // Reviews due
+  const moduleMap = new Map(modules.map((m) => [m.id, m]))
   const dueReviews = await getDueReviewCount(supabase, user?.id ?? '')
 
   return (
@@ -129,7 +126,7 @@ export default async function DashboardPage() {
           })()}
         </div>
 
-        {/* Futures card — top of dashboard */}
+        {/* Futures card */}
         <Link
           href="/futures"
           className="block rounded-xl p-5 mb-6 transition-all"
@@ -146,66 +143,21 @@ export default async function DashboardPage() {
           </p>
         </Link>
 
-        {/* Quick links */}
-        <div className="grid grid-cols-2 gap-3 mb-6">
-          <Link
-            href="/playground"
-            className="rounded-lg p-4 transition-all"
-            style={{ backgroundColor: '#25253D', borderLeft: '3px solid #E8C872' }}
-          >
-            <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>AI Playground</p>
-            <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>Experiment with prompts in real time</p>
-          </Link>
-          <Link
-            href="/community"
-            className="rounded-lg p-4 transition-all"
-            style={{ backgroundColor: '#25253D', borderLeft: '3px solid #E8C872' }}
-          >
-            <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>Community</p>
-            <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>Share and learn with others</p>
-          </Link>
-          <Link
-            href="/tools"
-            className="rounded-lg p-4 transition-all"
-            style={{ backgroundColor: '#25253D', borderLeft: '3px solid #E8C872' }}
-          >
-            <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>Tools</p>
-            <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>Curated directory of the best AI tools</p>
-          </Link>
-          <Link
-            href="/news"
-            className="rounded-lg p-4 transition-all"
-            style={{ backgroundColor: '#25253D', borderLeft: '3px solid #E8C872' }}
-          >
-            <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>News</p>
-            <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>AI updates that matter to you</p>
-          </Link>
-        </div>
-
         {/* Quick stats bar */}
         <div className="flex items-center gap-3 mb-6">
-          <div
-            className="flex-1 rounded-lg px-3 py-2 text-center"
-            style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}
-          >
+          <div className="flex-1 rounded-lg px-3 py-2 text-center" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
             <p className="text-xs" style={{ color: '#8BA3C4' }}>Time</p>
             <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>
               {totalHours > 0 ? `${totalHours}h${remainderMins > 0 ? ` ${remainderMins}m` : ''}` : `${totalMins}m`}
             </p>
           </div>
-          <div
-            className="flex-1 rounded-lg px-3 py-2 text-center"
-            style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}
-          >
+          <div className="flex-1 rounded-lg px-3 py-2 text-center" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
             <p className="text-xs" style={{ color: '#8BA3C4' }}>Streak</p>
             <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>
               {(profile?.streak_current ?? 0) > 0 ? `🔥 ${profile?.streak_current}d` : '0d'}
             </p>
           </div>
-          <div
-            className="flex-1 rounded-lg px-3 py-2 text-center"
-            style={{ backgroundColor: '#25253D', borderBottom: `2px solid ${TIER_COLOURS[learnerTier] ?? '#E8C872'}` }}
-          >
+          <div className="flex-1 rounded-lg px-3 py-2 text-center" style={{ backgroundColor: '#25253D', borderBottom: `2px solid ${TIER_COLOURS[learnerTier] ?? '#E8C872'}` }}>
             <p className="text-xs" style={{ color: '#8BA3C4' }}>Tier</p>
             <p className="text-sm font-semibold capitalize" style={{ color: TIER_COLOURS[learnerTier] ?? '#E8F0FE' }}>
               {learnerTier}
@@ -292,17 +244,12 @@ export default async function DashboardPage() {
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>
-                  Reviews due
-                </p>
+                <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>Reviews due</p>
                 <p className="text-xs mt-0.5" style={{ color: '#8BA3C4' }}>
                   {dueReviews} module{dueReviews !== 1 ? 's' : ''} ready for review
                 </p>
               </div>
-              <span
-                className="rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold"
-                style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
-              >
+              <span className="rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold" style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}>
                 {dueReviews}
               </span>
             </div>
@@ -314,6 +261,26 @@ export default async function DashboardPage() {
           <p className="text-sm" style={{ color: '#8BA3C4' }}>
             {getDailyTip()}
           </p>
+        </div>
+
+        {/* Quick access cards — 2x2 grid */}
+        <div className="grid grid-cols-2 gap-3 mb-4">
+          <Link href="/playground" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#25253D', border: '1px solid #E8C872' }}>
+            <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>AI Playground</p>
+            <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>Practise your prompts</p>
+          </Link>
+          <Link href="/community" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#25253D', border: '1px solid #E8C872' }}>
+            <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>Community</p>
+            <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>Share and learn together</p>
+          </Link>
+          <Link href="/tools" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#25253D', border: '1px solid #E8C872' }}>
+            <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>AI Tools</p>
+            <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>Curated directory</p>
+          </Link>
+          <Link href="/news" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#25253D', border: '1px solid #E8C872' }}>
+            <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>Latest News</p>
+            <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>AI updates and ideas</p>
+          </Link>
         </div>
 
         {/* Recent activity */}
@@ -342,27 +309,15 @@ export default async function DashboardPage() {
           )}
         </div>
 
-        {/* Quick link to full path */}
+        {/* Full learning path link */}
         <Link
           href="/learn"
-          className="block rounded-lg p-4 text-center text-sm font-medium"
+          className="block rounded-lg p-4 text-center text-sm font-medium mb-4"
           style={{ backgroundColor: '#25253D', color: '#8BA3C4', border: '1px solid #374151' }}
         >
           View full learning path
         </Link>
       </div>
-
-      {/* Playground button */}
-      <Link
-        href="/playground"
-        className="fixed bottom-[5.5rem] right-4 z-30 flex items-center gap-1.5 rounded-full px-3 py-1.5 shadow-lg"
-        style={{ backgroundColor: '#25253D', border: '1.5px solid #E8C872' }}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#E8C872" className="w-4 h-4">
-          <path fillRule="evenodd" d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.178 7.152.52 1.978.29 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.68-3.348 3.97a48.901 48.901 0 0 1-3.476.383.39.39 0 0 0-.297.17l-2.755 4.133a.75.75 0 0 1-1.248 0l-2.755-4.133a.39.39 0 0 0-.297-.17 48.9 48.9 0 0 1-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97Z" clipRule="evenodd" />
-        </svg>
-        <span className="text-xs font-semibold" style={{ color: '#E8C872' }}>AI Playground</span>
-      </Link>
 
       <BottomNav />
     </div>
@@ -370,9 +325,7 @@ export default async function DashboardPage() {
 }
 
 function getFirstName(name: string): string {
-  // If name has a space, take the first word (e.g. "Alex Fagioli" → "Alex")
   if (name.includes(' ')) return name.split(' ')[0]
-  // Email prefix or single word — capitalise first letter
   return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
 }
 
