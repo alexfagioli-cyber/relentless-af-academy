@@ -2,6 +2,9 @@ import { createClient } from '@/lib/supabase/server'
 import { BottomNav } from '@/components/layout/bottom-nav'
 import { redirect } from 'next/navigation'
 import { SignOutButton } from './sign-out-button'
+import { NotificationPreferences } from './notifications'
+import { BadgeWall } from './badges'
+import { checkAndAwardBadges } from '@/lib/badges'
 
 const TIER_COLOURS: Record<string, string> = {
   aware: '#E8C872',
@@ -32,6 +35,14 @@ export default async function ProfilePage() {
     .select('*', { count: 'exact', head: true })
     .eq('learner_id', user.id)
     .eq('status', 'completed')
+
+  // Check and award any new badges, then fetch all
+  await checkAndAwardBadges(supabase, user.id)
+  const { data: badges } = await supabase
+    .from('badges')
+    .select('badge_key')
+    .eq('learner_id', user.id)
+  const earnedBadgeKeys = (badges ?? []).map((b) => b.badge_key)
 
   const tier = profile?.tier ?? 'aware'
   const tierColour = TIER_COLOURS[tier] ?? '#E8C872'
@@ -102,6 +113,19 @@ export default async function ProfilePage() {
               </p>
             </div>
           )}
+        </div>
+
+        {/* Badges */}
+        <div className="mb-4">
+          <BadgeWall earnedKeys={earnedBadgeKeys} />
+        </div>
+
+        {/* Notifications */}
+        <div className="mb-4">
+          <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#8BA3C4' }}>
+            Notifications
+          </h2>
+          <NotificationPreferences userId={user.id} />
         </div>
 
         {/* Sign out */}

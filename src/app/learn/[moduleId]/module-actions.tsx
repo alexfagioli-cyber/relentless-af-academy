@@ -170,6 +170,10 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
     // Check tier completion
     await checkTierCelebrations(supabase, userId, moduleId, celebrate)
 
+    // Schedule spaced repetition reviews
+    const { scheduleReviews } = await import('@/lib/spaced-repetition')
+    await scheduleReviews(supabase, userId, moduleId)
+
     setStatus('completed')
     setLoading(false)
     router.refresh()
@@ -371,6 +375,8 @@ function ChallengeActions({
 }) {
   const [reflection, setReflection] = useState('')
   const [saving, setSaving] = useState(false)
+  const [showShareOffer, setShowShareOffer] = useState(false)
+  const [shareAnon, setShareAnon] = useState(false)
 
   async function handleSubmit() {
     setSaving(true)
@@ -386,6 +392,55 @@ function ChallengeActions({
     }
     await onComplete()
     setSaving(false)
+    if (reflection.trim()) setShowShareOffer(true)
+  }
+
+  async function handleShare() {
+    const supabase = createClient()
+    await supabase
+      .from('challenge_responses')
+      .update({ shared: true, share_anonymous: shareAnon })
+      .eq('learner_id', userId)
+      .eq('module_id', moduleId)
+    setShowShareOffer(false)
+  }
+
+  if (showShareOffer) {
+    return (
+      <div className="space-y-3 animate-fade-in">
+        <div className="text-sm text-center" style={{ color: '#22C55E' }}>Challenge completed</div>
+        <div className="rounded-lg p-4" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
+          <p className="text-sm font-semibold mb-3" style={{ color: '#E8F0FE' }}>
+            Share this with the community?
+          </p>
+          <label className="flex items-center gap-2 text-xs mb-3 cursor-pointer" style={{ color: '#8BA3C4' }}>
+            <input
+              type="checkbox"
+              checked={shareAnon}
+              onChange={() => setShareAnon(!shareAnon)}
+              className="rounded"
+            />
+            Share anonymously
+          </label>
+          <div className="flex gap-2">
+            <button
+              onClick={() => setShowShareOffer(false)}
+              className="flex-1 rounded-lg py-2 text-sm"
+              style={{ backgroundColor: '#1A1A2E', color: '#8BA3C4', border: '1px solid #363654' }}
+            >
+              Skip
+            </button>
+            <button
+              onClick={handleShare}
+              className="flex-1 rounded-lg py-2 text-sm font-semibold"
+              style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
+            >
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   if (status === 'completed') {

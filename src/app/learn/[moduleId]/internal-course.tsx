@@ -104,6 +104,10 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
     if (newStreak === 3) celebrate('streak_3')
     if (newStreak === 7) celebrate('streak_7')
 
+    // Schedule spaced repetition reviews
+    const { scheduleReviews } = await import('@/lib/spaced-repetition')
+    await scheduleReviews(supabase, userId, moduleId)
+
     setCompleted(true)
     setSaving(false)
     router.refresh()

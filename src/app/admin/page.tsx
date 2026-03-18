@@ -3,6 +3,7 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { redirect } from 'next/navigation'
 import { BottomNav } from '@/components/layout/bottom-nav'
 import { AdminDashboardClient } from './admin-client'
+import { AdminNav } from './admin-nav'
 
 export default async function AdminPage() {
   const supabase = await createClient()
@@ -212,28 +213,22 @@ export default async function AdminPage() {
   }))
 
   return (
-    <div className="min-h-screen pb-20" style={{ backgroundColor: 'transparent' }}>
-      <div className="max-w-4xl mx-auto px-4 pt-8">
-        <h1 className="text-2xl font-bold mb-6" style={{ color: '#E8F0FE' }}>
-          Admin Dashboard
-        </h1>
-
-        <AdminDashboardClient
-          learners={learnerData}
-          invites={inviteData}
-          feedback={feedbackData}
-          generalFeedback={generalFeedbackData}
-          summary={{
-            totalLearners,
-            avgCompletion,
-            avgStreak,
-            mostCommonTier,
-            tierCounts,
-          }}
-        />
-      </div>
-
-      <BottomNav />
-    </div>
+    <>
+      <h1 className="text-2xl font-bold mb-4" style={{ color: '#E8F0FE' }}>Admin</h1>
+      <AdminNav />
+      <AdminDashboardClient
+        learners={learnerData}
+        invites={inviteData}
+        feedback={feedbackData}
+        generalFeedback={generalFeedbackData}
+        summary={{
+          totalLearners,
+          avgCompletion,
+          avgStreak,
+          mostCommonTier,
+          tierCounts,
+        }}
+      />
+    </>
   )
 }

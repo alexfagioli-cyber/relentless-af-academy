@@ -19,6 +19,7 @@
     "next": "16.1.7",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "recharts": "^3.8.0",
     "shadcn": "^4.0.8",
     "survey-core": "^2.5.16",
     "survey-react-ui": "^2.5.16",

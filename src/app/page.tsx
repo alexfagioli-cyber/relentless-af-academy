@@ -4,6 +4,7 @@ import { getDashboardMessage } from '@/lib/dashboard-messages'
 import { BottomNav } from '@/components/layout/bottom-nav'
 import { ProgressRing } from '@/components/ui/progress-ring'
 import { getDailyTip } from '@/lib/daily-tips'
+import { getDueReviewCount } from '@/lib/spaced-repetition'
 import Link from 'next/link'
 
 const TIER_ORDER = ['aware', 'enabled', 'specialist'] as const
@@ -101,6 +102,9 @@ export default async function DashboardPage() {
 
   // Map event object_ids to module titles
   const moduleMap = new Map((modules ?? []).map((m) => [m.id, m]))
+
+  // Reviews due
+  const dueReviews = await getDueReviewCount(supabase, user?.id ?? '')
 
   return (
     <div className="min-h-screen pb-20 animate-fade-in" style={{ background: 'radial-gradient(ellipse at top, #25253D 0%, transparent 60%)' }}>
@@ -243,6 +247,32 @@ export default async function DashboardPage() {
           </div>
         )}
 
+        {/* Reviews due */}
+        {dueReviews > 0 && (
+          <Link
+            href="/review"
+            className="block rounded-lg p-4 mb-4 transition-all"
+            style={{ backgroundColor: '#25253D', border: '1px solid #E8C872' }}
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>
+                  Reviews due
+                </p>
+                <p className="text-xs mt-0.5" style={{ color: '#8BA3C4' }}>
+                  {dueReviews} module{dueReviews !== 1 ? 's' : ''} ready for review
+                </p>
+              </div>
+              <span
+                className="rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold"
+                style={{ backgroundColor: '#E8C872', color: '#1A1A2E' }}
+              >
+                {dueReviews}
+              </span>
+            </div>
+          </Link>
+        )}
+
         {/* Daily tip */}
         <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#25253D', borderLeft: '3px solid #E8C872' }}>
           <p className="text-sm" style={{ color: '#8BA3C4' }}>
@@ -285,6 +315,18 @@ export default async function DashboardPage() {
           View full learning path
         </Link>
       </div>
+
+      {/* Playground FAB */}
+      <Link
+        href="/playground"
+        className="fixed bottom-28 right-4 z-30 w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
+        style={{ backgroundColor: '#E8C872' }}
+        title="AI Playground"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#1A1A2E" className="w-6 h-6">
+          <path fillRule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5Z" clipRule="evenodd" />
+        </svg>
+      </Link>
 
       <BottomNav />
     </div>

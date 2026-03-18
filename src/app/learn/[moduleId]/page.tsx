@@ -6,6 +6,8 @@ import { ModuleActions } from './module-actions'
 import { InternalCourse } from './internal-course'
 import { VerifyCert } from './verify-cert'
 import { ModuleFeedback } from '@/components/feedback/module-feedback'
+import { ChallengeGallery } from './challenge-gallery'
+import { VideoPlaceholder } from '@/components/ui/video-placeholder'
 
 const PLATFORM_LABELS: Record<string, string> = {
   skilljar: 'Anthropic Academy (Skilljar)',
@@ -112,6 +114,11 @@ export default async function ModuleDetailPage({
           </div>
         )}
 
+        {/* Video placeholder for internal modules */}
+        {mod.platform === 'internal' && (
+          <VideoPlaceholder videoUrl={mod.video_url} />
+        )}
+
         {/* Internal course — screen-based content */}
         {mod.platform === 'internal' && mod.module_type === 'course' && mod.content?.screens ? (
           <InternalCourse
@@ -137,6 +144,11 @@ export default async function ModuleDetailPage({
           <div className="mt-4">
             <VerifyCert moduleId={mod.id} userId={user.id} platform={mod.platform} />
           </div>
+        )}
+
+        {/* Challenge gallery — shared responses */}
+        {mod.module_type === 'challenge' && (
+          <ChallengeGallery moduleId={mod.id} />
         )}
 
         {/* Feedback — shown after completion */}
