@@ -263,7 +263,7 @@ export default function OnboardingPage() {
   ]
 
   return (
-    <div className="min-h-screen px-4 py-8" style={{ backgroundColor: '#111827' }}>
+    <div className="min-h-screen px-4 py-8" style={{ backgroundColor: '#0F172A' }}>
       <div className="max-w-lg mx-auto">
         {/* Progress bar */}
         <div className="flex gap-2 mb-8">

@@ -5,7 +5,7 @@ Next.js 14+ (App Router), TypeScript strict, Tailwind CSS, Supabase JS v2, shadc
 
 ## Conventions
 - Mobile-first: design at 375px, scale up
-- Dark mode only (background #111827)
+- Dark mode only (background #0F172A, surface #1E293B with #334155 border, crimson accent #DC2626)
 - All secrets in .env.local, never hardcoded
 - Server-side scoring only for assessments
 - British English in all user-facing text

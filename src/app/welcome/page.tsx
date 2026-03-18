@@ -20,7 +20,7 @@ const tiers = [
 
 export default function WelcomePage() {
   return (
-    <div className="min-h-screen px-4 py-12 sm:py-16" style={{ backgroundColor: '#111827' }}>
+    <div className="min-h-screen px-4 py-12 sm:py-16" style={{ backgroundColor: '#0F172A' }}>
       <div className="max-w-lg mx-auto">
 
         {/* Heading */}

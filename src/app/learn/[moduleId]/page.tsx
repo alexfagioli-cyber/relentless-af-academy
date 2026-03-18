@@ -3,6 +3,7 @@ import { BottomNav } from '@/components/layout/bottom-nav'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { ModuleActions } from './module-actions'
+import { InternalCourse } from './internal-course'
 import { VerifyCert } from './verify-cert'
 import { ModuleFeedback } from '@/components/feedback/module-feedback'
 
@@ -41,7 +42,7 @@ export default async function ModuleDetailPage({
 
   if (!mod) {
     return (
-      <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#111827' }}>
+      <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#0F172A' }}>
         <div className="text-center">
           <p className="text-lg font-medium" style={{ color: '#F9FAFB' }}>Module not found</p>
           <Link href="/learn" className="mt-4 inline-block text-sm" style={{ color: '#DC2626' }}>
@@ -65,7 +66,7 @@ export default async function ModuleDetailPage({
   const currentStatus = progress?.status ?? 'not_started'
 
   return (
-    <div className="min-h-screen pb-20" style={{ backgroundColor: '#111827' }}>
+    <div className="min-h-screen pb-20" style={{ backgroundColor: '#0F172A' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
         {/* Back link */}
         <Link href="/learn" className="text-sm mb-6 inline-block" style={{ color: '#9CA3AF' }}>
@@ -88,7 +89,7 @@ export default async function ModuleDetailPage({
         </div>
 
         {/* Details */}
-        <div className="rounded-lg p-4 mb-6 space-y-3" style={{ backgroundColor: '#1E293B' }}>
+        <div className="rounded-lg p-4 mb-6 space-y-3" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
           {mod.description && (
             <p className="text-sm" style={{ color: '#9CA3AF' }}>
               {mod.description}
@@ -111,15 +112,25 @@ export default async function ModuleDetailPage({
           </div>
         )}
 
-        {/* Actions — client component */}
-        <ModuleActions
-          moduleId={mod.id}
-          moduleType={mod.module_type}
-          externalUrl={mod.external_url}
-          platform={mod.platform}
-          currentStatus={currentStatus}
-          userId={user.id}
-        />
+        {/* Internal course — screen-based content */}
+        {mod.platform === 'internal' && mod.module_type === 'course' && mod.content?.screens ? (
+          <InternalCourse
+            moduleId={mod.id}
+            userId={user.id}
+            screens={mod.content.screens}
+            currentStatus={currentStatus}
+          />
+        ) : (
+          /* Actions — external courses, challenges, assessments */
+          <ModuleActions
+            moduleId={mod.id}
+            moduleType={mod.module_type}
+            externalUrl={mod.external_url}
+            platform={mod.platform}
+            currentStatus={currentStatus}
+            userId={user.id}
+          />
+        )}
 
         {/* Certificate verification for Skilljar courses */}
         {mod.platform === 'skilljar' && currentStatus !== 'completed' && (

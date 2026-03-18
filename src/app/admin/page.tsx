@@ -194,7 +194,7 @@ export default async function AdminPage() {
   }))
 
   return (
-    <div className="min-h-screen pb-20" style={{ backgroundColor: '#111827' }}>
+    <div className="min-h-screen pb-20" style={{ backgroundColor: '#0F172A' }}>
       <div className="max-w-4xl mx-auto px-4 pt-8">
         <h1 className="text-2xl font-bold mb-6" style={{ color: '#F9FAFB' }}>
           Admin Dashboard

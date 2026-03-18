@@ -123,7 +123,7 @@ export function ModuleFeedback({ moduleId, userId }: Props) {
             rows={2}
             className="w-full rounded-md px-3 py-2 text-sm outline-none resize-none"
             style={{
-              backgroundColor: '#111827',
+              backgroundColor: '#0F172A',
               color: '#F9FAFB',
               border: '1px solid #374151',
             }}

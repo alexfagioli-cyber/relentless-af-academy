@@ -3,7 +3,7 @@ import { BottomNav } from '@/components/layout/bottom-nav'
 
 export default function LearnLoading() {
   return (
-    <div className="min-h-screen pb-20" style={{ backgroundColor: '#111827' }}>
+    <div className="min-h-screen pb-20" style={{ backgroundColor: '#0F172A' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
         <Skeleton className="h-8 w-40 mb-6" />
 

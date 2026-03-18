@@ -7,6 +7,22 @@ import { getDailyTip } from '@/lib/daily-tips'
 import Link from 'next/link'
 
 const TIER_ORDER = ['aware', 'enabled', 'specialist'] as const
+const TIER_COLOURS: Record<string, string> = {
+  aware: '#F59E0B',
+  enabled: '#DC2626',
+  specialist: '#8B5CF6',
+}
+const MODULE_TYPE_ICONS: Record<string, string> = {
+  course: '📖',
+  challenge: '⚡',
+  assessment: '📝',
+}
+const VERB_LABELS: Record<string, string> = {
+  completed: 'Completed',
+  started: 'Started',
+  passed: 'Passed',
+  failed: 'Attempted',
+}
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -25,7 +41,7 @@ export default async function DashboardPage() {
   // Get modules for visible tiers
   const { data: modules } = await supabase
     .from('modules')
-    .select('id, title, order_index, tier')
+    .select('id, title, order_index, tier, module_type, estimated_duration_mins')
     .in('tier', visibleTiers)
     .order('order_index', { ascending: true })
 
@@ -43,22 +59,54 @@ export default async function DashboardPage() {
     .eq('learner_id', user?.id ?? '')
 
   const completedIds = new Set(
-    (progress ?? []).filter((p) => p.status === 'completed').map((p) => p.module_id)
+    (progress ?? []).filter((p) => p.status === 'completed').map((p) => p.module_id),
+  )
+  const inProgressIds = new Set(
+    (progress ?? []).filter((p) => p.status === 'in_progress').map((p) => p.module_id),
   )
   const completedCount = completedIds.size
   const totalCount = moduleIds.length
 
-  // Find next available module
+  // Find in-progress module (resume) or next available
+  const inProgressModule = (modules ?? []).find((m) => inProgressIds.has(m.id))
   const unlockedIds = computeUnlockedModules(moduleIds, prerequisites ?? [], completedIds)
   const nextModule = (modules ?? []).find(
-    (m) => unlockedIds.has(m.id) && !completedIds.has(m.id)
+    (m) => unlockedIds.has(m.id) && !completedIds.has(m.id),
+  )
+  const resumeModule = inProgressModule ?? nextModule
+
+  // Tier progress
+  const currentTierModules = (modules ?? []).filter((m) => m.tier === learnerTier)
+  const currentTierCompleted = currentTierModules.filter((m) => completedIds.has(m.id)).length
+  const currentTierTotal = currentTierModules.length
+  const nextInTier = currentTierModules.find(
+    (m) => unlockedIds.has(m.id) && !completedIds.has(m.id),
   )
 
+  // Total time invested
+  const totalMins = (modules ?? [])
+    .filter((m) => completedIds.has(m.id))
+    .reduce((sum, m) => sum + (m.estimated_duration_mins ?? 0), 0)
+  const totalHours = Math.floor(totalMins / 60)
+  const remainderMins = totalMins % 60
+
+  // Recent activity
+  const { data: recentEvents } = await supabase
+    .from('learning_events')
+    .select('verb, object_id, created_at')
+    .eq('learner_id', user?.id ?? '')
+    .in('verb', ['completed', 'started', 'passed', 'failed'])
+    .order('created_at', { ascending: false })
+    .limit(5)
+
+  // Map event object_ids to module titles
+  const moduleMap = new Map((modules ?? []).map((m) => [m.id, m]))
+
   return (
-    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: '#111827' }}>
+    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: '#0F172A' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
         {/* Welcome */}
-        <div className="mb-8">
+        <div className="mb-6">
           <h1 className="text-2xl font-bold" style={{ color: '#F9FAFB' }}>
             Welcome back{profile?.display_name ? `, ${profile.display_name}` : ''}
           </h1>
@@ -70,79 +118,99 @@ export default async function DashboardPage() {
               primary_goal: profile?.primary_goal ?? null,
             })
             return (
-              <>
-                <p className="mt-2 text-base font-semibold" style={{ color: '#F9FAFB' }}>
-                  {msg.headline}
-                </p>
-                <p className="mt-1 text-sm" style={{ color: '#9CA3AF' }}>
-                  {msg.subtext}
-                </p>
-              </>
+              <p className="mt-1 text-sm" style={{ color: '#9CA3AF' }}>
+                {msg.subtext}
+              </p>
             )
           })()}
         </div>
 
-        {/* Progress ring + stats */}
-        <div className="flex items-center justify-center gap-6 mb-8">
-          <div className="rounded-lg p-4 text-center" style={{ backgroundColor: '#1E293B' }}>
-            <p className="text-xs uppercase tracking-wide" style={{ color: '#9CA3AF' }}>Tier</p>
-            <p className="mt-1 text-lg font-semibold capitalize" style={{ color: '#F9FAFB' }}>
-              {profile?.tier ?? '—'}
+        {/* Quick stats bar */}
+        <div className="flex items-center gap-3 mb-6">
+          <div
+            className="flex-1 rounded-lg px-3 py-2 text-center"
+            style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}
+          >
+            <p className="text-xs" style={{ color: '#9CA3AF' }}>Time</p>
+            <p className="text-sm font-semibold" style={{ color: '#F9FAFB' }}>
+              {totalHours > 0 ? `${totalHours}h${remainderMins > 0 ? ` ${remainderMins}m` : ''}` : `${totalMins}m`}
             </p>
           </div>
-
-          <ProgressRing completed={completedCount} total={totalCount} />
-
-          <div className="rounded-lg p-4 text-center" style={{ backgroundColor: '#1E293B' }}>
-            <p className="text-xs uppercase tracking-wide" style={{ color: '#9CA3AF' }}>Streak</p>
-            <p className="mt-1 text-lg font-semibold" style={{ color: '#F9FAFB' }}>
-              {profile?.streak_current ?? 0}d
+          <div
+            className="flex-1 rounded-lg px-3 py-2 text-center"
+            style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}
+          >
+            <p className="text-xs" style={{ color: '#9CA3AF' }}>Streak</p>
+            <p className="text-sm font-semibold" style={{ color: '#F9FAFB' }}>
+              {(profile?.streak_current ?? 0) > 0 ? `🔥 ${profile?.streak_current}d` : '0d'}
+            </p>
+          </div>
+          <div
+            className="flex-1 rounded-lg px-3 py-2 text-center"
+            style={{ backgroundColor: '#1E293B', borderBottom: `2px solid ${TIER_COLOURS[learnerTier] ?? '#DC2626'}` }}
+          >
+            <p className="text-xs" style={{ color: '#9CA3AF' }}>Tier</p>
+            <p className="text-sm font-semibold capitalize" style={{ color: TIER_COLOURS[learnerTier] ?? '#F9FAFB' }}>
+              {learnerTier}
             </p>
           </div>
         </div>
 
-        {/* Daily tip */}
-        <div className="rounded-lg p-4 mb-6" style={{ backgroundColor: '#1E293B', borderLeft: '3px solid #DC2626' }}>
-          <p className="text-sm" style={{ color: '#9CA3AF' }}>
-            {getDailyTip()}
-          </p>
+        {/* Progress ring + tier progress */}
+        <div className="flex items-center gap-5 mb-6 rounded-lg p-4" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
+          <ProgressRing completed={completedCount} total={totalCount} size={90} />
+          <div className="flex-1">
+            <p className="text-sm font-semibold" style={{ color: '#F9FAFB' }}>
+              {currentTierCompleted} of {currentTierTotal} in {learnerTier.charAt(0).toUpperCase() + learnerTier.slice(1)}
+            </p>
+            {nextInTier && (
+              <p className="mt-1 text-xs" style={{ color: '#9CA3AF' }}>
+                Next up: {nextInTier.title}
+              </p>
+            )}
+            {currentTierCompleted === currentTierTotal && currentTierTotal > 0 && (
+              <p className="mt-1 text-xs font-semibold" style={{ color: '#22C55E' }}>
+                Tier complete
+              </p>
+            )}
+          </div>
         </div>
 
-        {/* Next module / Continue Learning */}
-        {nextModule && completedCount === 0 ? (
+        {/* Continue / Resume card */}
+        {resumeModule && completedCount === 0 ? (
           <Link
-            href={`/learn/${nextModule.id}`}
-            className="block rounded-lg p-5 mb-6 transition-all"
+            href={`/learn/${resumeModule.id}`}
+            className="block rounded-lg p-5 mb-4 transition-all"
             style={{ backgroundColor: '#1E293B', border: '1px solid #DC2626' }}
           >
             <p className="text-sm mb-2" style={{ color: '#9CA3AF' }}>
               Nothing started yet. That changes today.
             </p>
             <p className="text-base font-semibold" style={{ color: '#F9FAFB' }}>
-              {nextModule.title}
+              {MODULE_TYPE_ICONS[resumeModule.module_type] ?? ''} {resumeModule.title}
             </p>
             <p className="mt-2 text-sm font-semibold" style={{ color: '#DC2626' }}>
               Start →
             </p>
           </Link>
-        ) : nextModule ? (
+        ) : resumeModule ? (
           <Link
-            href={`/learn/${nextModule.id}`}
-            className="block rounded-lg p-5 mb-6 transition-all"
+            href={`/learn/${resumeModule.id}`}
+            className="block rounded-lg p-5 mb-4 transition-all"
             style={{ backgroundColor: '#1E293B', border: '1px solid #DC2626' }}
           >
             <p className="text-xs uppercase tracking-wide mb-1" style={{ color: '#9CA3AF' }}>
-              Continue learning
+              {inProgressModule ? 'Continue where you left off' : 'Up next'}
             </p>
             <p className="text-base font-semibold" style={{ color: '#F9FAFB' }}>
-              {nextModule.title}
+              {MODULE_TYPE_ICONS[resumeModule.module_type] ?? ''} {resumeModule.title}
             </p>
             <p className="mt-2 text-sm font-semibold" style={{ color: '#DC2626' }}>
-              Start →
+              {inProgressModule ? 'Resume →' : 'Start →'}
             </p>
           </Link>
         ) : completedCount === totalCount && totalCount > 0 ? (
-          <div className="rounded-lg p-5 mb-6 text-center" style={{ backgroundColor: '#1E293B' }}>
+          <div className="rounded-lg p-5 mb-4 text-center" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
             <p className="text-base font-semibold" style={{ color: '#22C55E' }}>
               All modules completed
             </p>
@@ -151,15 +219,45 @@ export default async function DashboardPage() {
             </p>
           </div>
         ) : (
-          <div className="rounded-lg p-5 mb-6 text-center" style={{ backgroundColor: '#1E293B' }}>
+          <div className="rounded-lg p-5 mb-4 text-center" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
             <p className="text-sm" style={{ color: '#9CA3AF' }}>
               Complete your current modules to unlock the next step.
             </p>
-            <Link href="/learn" className="mt-2 inline-block text-sm font-semibold" style={{ color: '#DC2626' }}>
-              View learning path →
-            </Link>
           </div>
         )}
+
+        {/* Daily tip */}
+        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#1E293B', borderLeft: '3px solid #DC2626' }}>
+          <p className="text-sm" style={{ color: '#9CA3AF' }}>
+            {getDailyTip()}
+          </p>
+        </div>
+
+        {/* Recent activity */}
+        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
+          <p className="text-xs uppercase tracking-wide mb-3" style={{ color: '#6B7280' }}>Recent activity</p>
+          {recentEvents && recentEvents.length > 0 ? (
+            <div className="space-y-2">
+              {recentEvents.map((event, i) => {
+                const mod = moduleMap.get(event.object_id)
+                const label = VERB_LABELS[event.verb] ?? event.verb
+                const timeAgo = formatTimeAgo(event.created_at)
+                return (
+                  <div key={i} className="flex items-center justify-between text-xs">
+                    <p style={{ color: '#D1D5DB' }}>
+                      {label}{mod ? `: ${mod.title}` : ''}
+                    </p>
+                    <p style={{ color: '#6B7280' }}>{timeAgo}</p>
+                  </div>
+                )
+              })}
+            </div>
+          ) : (
+            <p className="text-xs" style={{ color: '#6B7280' }}>
+              Nothing here yet. Your journey starts with one tap.
+            </p>
+          )}
+        </div>
 
         {/* Quick link to full path */}
         <Link
@@ -174,4 +272,19 @@ export default async function DashboardPage() {
       <BottomNav />
     </div>
   )
+}
+
+function formatTimeAgo(dateStr: string): string {
+  const now = new Date()
+  const date = new Date(dateStr)
+  const diffMs = now.getTime() - date.getTime()
+  const diffMins = Math.floor(diffMs / 60000)
+  if (diffMins < 1) return 'just now'
+  if (diffMins < 60) return `${diffMins}m ago`
+  const diffHours = Math.floor(diffMins / 60)
+  if (diffHours < 24) return `${diffHours}h ago`
+  const diffDays = Math.floor(diffHours / 24)
+  if (diffDays === 1) return 'yesterday'
+  if (diffDays < 7) return `${diffDays}d ago`
+  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })
 }

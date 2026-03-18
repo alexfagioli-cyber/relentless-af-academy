@@ -26,8 +26,8 @@ export interface ScoreResult {
 const darkTheme = {
   cssVariables: {
     '--sjs-general-backcolor': '#1E293B',
-    '--sjs-general-backcolor-dark': '#111827',
-    '--sjs-general-backcolor-dim': '#111827',
+    '--sjs-general-backcolor-dark': '#0F172A',
+    '--sjs-general-backcolor-dim': '#0F172A',
     '--sjs-general-backcolor-dim-light': '#1E293B',
     '--sjs-general-forecolor': '#F9FAFB',
     '--sjs-general-forecolor-light': '#9CA3AF',
@@ -164,13 +164,13 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
       <Survey model={survey} />
       <style jsx global>{`
         .survey-dark-wrapper .sd-root-modern {
-          background-color: #111827 !important;
+          background-color: #0F172A !important;
         }
         .survey-dark-wrapper .sd-body {
-          background-color: #111827 !important;
+          background-color: #0F172A !important;
         }
         .survey-dark-wrapper .sd-page {
-          background-color: #111827 !important;
+          background-color: #0F172A !important;
         }
         .survey-dark-wrapper .sd-question__content {
           background-color: #1E293B !important;

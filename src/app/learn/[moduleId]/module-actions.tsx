@@ -239,24 +239,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
 
   // Internal challenge
   if (moduleType === 'challenge') {
-    return (
-      <div className="space-y-4">
-        {status !== 'completed' ? (
-          <button
-            onClick={markComplete}
-            disabled={loading}
-            className="block w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity disabled:opacity-50"
-            style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
-          >
-            {loading ? 'Saving' : 'Done — Move On'}
-          </button>
-        ) : (
-          <div className="text-sm text-center" style={{ color: '#22C55E' }}>
-            Challenge completed
-          </div>
-        )}
-      </div>
-    )
+    return <ChallengeActions status={status} loading={loading} userId={userId} moduleId={moduleId} onComplete={markComplete} />
   }
 
   // Internal assessment — live SurveyJS
@@ -271,7 +254,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
 
     if (!assessment) {
       return (
-        <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#1E293B' }}>
+        <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
           <p className="text-sm" style={{ color: '#9CA3AF' }}>Loading assessment...</p>
         </div>
       )
@@ -317,7 +300,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
     // Failed or not yet attempted
     return (
       <div className="space-y-4">
-        <div className="rounded-lg p-4" style={{ backgroundColor: '#1E293B' }}>
+        <div className="rounded-lg p-4" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
           <p className="text-sm" style={{ color: '#9CA3AF' }}>
             {assessment.pass_score}% to pass
             {assessment.time_limit_mins ? ` · ${assessment.time_limit_mins} minute time limit` : ''}
@@ -373,6 +356,72 @@ async function checkTierCelebrations(
   if (currentTier === 'enabled') celebrate('tier_enabled_to_specialist')
 }
 
+function ChallengeActions({
+  status,
+  loading,
+  userId,
+  moduleId,
+  onComplete,
+}: {
+  status: string
+  loading: boolean
+  userId: string
+  moduleId: string
+  onComplete: () => Promise<void>
+}) {
+  const [reflection, setReflection] = useState('')
+  const [saving, setSaving] = useState(false)
+
+  async function handleSubmit() {
+    setSaving(true)
+    if (reflection.trim()) {
+      const supabase = createClient()
+      await supabase
+        .from('challenge_responses')
+        .upsert({
+          learner_id: userId,
+          module_id: moduleId,
+          responses: { reflection },
+        }, { onConflict: 'learner_id,module_id' })
+    }
+    await onComplete()
+    setSaving(false)
+  }
+
+  if (status === 'completed') {
+    return (
+      <div className="text-sm text-center" style={{ color: '#22C55E' }}>
+        Challenge completed
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-4">
+      <textarea
+        value={reflection}
+        onChange={(e) => setReflection(e.target.value)}
+        placeholder="Write your reflection here — what you did, what you learned, what surprised you..."
+        rows={5}
+        className="w-full rounded-lg px-3 py-3 text-sm outline-none resize-none"
+        style={{
+          backgroundColor: '#0F172A',
+          color: '#F9FAFB',
+          border: '1px solid #374151',
+        }}
+      />
+      <button
+        onClick={handleSubmit}
+        disabled={loading || saving}
+        className="block w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity disabled:opacity-50"
+        style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
+      >
+        {loading || saving ? 'Saving' : 'Done — Move On'}
+      </button>
+    </div>
+  )
+}
+
 function PreviousAttempts({ attempts }: { attempts: AttemptData[] }) {
   if (attempts.length === 0) return null
 
@@ -380,7 +429,7 @@ function PreviousAttempts({ attempts }: { attempts: AttemptData[] }) {
     <div className="space-y-2">
       <p className="text-xs uppercase tracking-wide" style={{ color: '#6B7280' }}>Previous attempts</p>
       {attempts.map((a, i) => (
-        <div key={i} className="flex items-center justify-between rounded-md px-3 py-2 text-xs" style={{ backgroundColor: '#1E293B' }}>
+        <div key={i} className="flex items-center justify-between rounded-md px-3 py-2 text-xs" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
           <span style={{ color: '#9CA3AF' }}>
             {new Date(a.attempted_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
           </span>

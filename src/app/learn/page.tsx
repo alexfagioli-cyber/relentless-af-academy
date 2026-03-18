@@ -82,7 +82,7 @@ export default async function LearnPage() {
   }))
 
   return (
-    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: '#111827' }}>
+    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: '#0F172A' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
         <h1 className="text-2xl font-bold mb-6" style={{ color: '#F9FAFB' }}>
           Learning Path

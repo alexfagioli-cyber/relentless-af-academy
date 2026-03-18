@@ -245,7 +245,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
                       value={l.tier ?? 'aware'}
                       onChange={(e) => handleTierOverride(l.id, e.target.value)}
                       className="rounded-md px-3 py-1.5 text-xs"
-                      style={{ backgroundColor: '#111827', color: '#F9FAFB', border: '1px solid #374151' }}
+                      style={{ backgroundColor: '#0F172A', color: '#F9FAFB', border: '1px solid #374151' }}
                     >
                       <option value="aware">Aware</option>
                       <option value="enabled">Enabled</option>
@@ -259,7 +259,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
                       <p className="text-xs mb-1" style={{ color: '#6B7280' }}>Assessment attempts</p>
                       <div className="space-y-1">
                         {l.attempts.slice(0, 5).map((a, i) => (
-                          <div key={i} className="flex justify-between text-xs rounded px-2 py-1" style={{ backgroundColor: '#111827' }}>
+                          <div key={i} className="flex justify-between text-xs rounded px-2 py-1" style={{ backgroundColor: '#0F172A' }}>
                             <span style={{ color: '#9CA3AF' }}>{a.assessment_title}</span>
                             <span style={{ color: a.passed ? '#22C55E' : '#DC2626' }}>
                               {Math.round(a.score)}% — {a.passed ? 'Pass' : 'Fail'}
@@ -276,7 +276,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
                       <p className="text-xs mb-1" style={{ color: '#6B7280' }}>Onboarding responses</p>
                       <div className="space-y-1">
                         {l.onboarding.map((o, i) => (
-                          <div key={i} className="text-xs rounded px-2 py-1" style={{ backgroundColor: '#111827' }}>
+                          <div key={i} className="text-xs rounded px-2 py-1" style={{ backgroundColor: '#0F172A' }}>
                             <span style={{ color: '#6B7280' }}>{o.question_key}: </span>
                             <span style={{ color: '#9CA3AF' }}>{JSON.stringify(o.response)}</span>
                           </div>
@@ -329,7 +329,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
 
         <div className="space-y-2">
           {invites.map((inv) => (
-            <div key={inv.id} className="flex items-center justify-between rounded-md px-3 py-2 text-xs" style={{ backgroundColor: '#1E293B' }}>
+            <div key={inv.id} className="flex items-center justify-between rounded-md px-3 py-2 text-xs" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
               <span className="truncate mr-2" style={{ color: '#9CA3AF' }}>{inv.email}</span>
               <span style={{
                 color: inv.status === 'accepted' ? '#22C55E' : inv.status === 'expired' ? '#DC2626' : '#F59E0B'
@@ -351,7 +351,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
         </h2>
         <div className="space-y-2">
           {feedback.map((f, i) => (
-            <div key={i} className="rounded-lg p-3" style={{ backgroundColor: '#1E293B' }}>
+            <div key={i} className="rounded-lg p-3" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
               <div className="flex items-center justify-between mb-1">
                 <span className="text-xs font-medium" style={{ color: '#F9FAFB' }}>{f.learnerName}</span>
                 <span className="text-xs" style={{ color: '#6B7280' }}>
@@ -378,7 +378,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
 
 function StatCard({ label, value, capitalize }: { label: string; value: string | number; capitalize?: boolean }) {
   return (
-    <div className="rounded-lg p-3" style={{ backgroundColor: '#1E293B' }}>
+    <div className="rounded-lg p-3" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
       <p className="text-xs uppercase tracking-wide" style={{ color: '#6B7280' }}>{label}</p>
       <p className={`mt-1 text-lg font-semibold ${capitalize ? 'capitalize' : ''}`} style={{ color: '#F9FAFB' }}>
         {value}

@@ -123,7 +123,7 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
             placeholder="Certificate number"
             className="flex-1 rounded-md px-3 py-3 text-sm outline-none"
             style={{
-              backgroundColor: '#111827',
+              backgroundColor: '#0F172A',
               color: '#F9FAFB',
               border: '1px solid #374151',
             }}

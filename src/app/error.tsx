@@ -7,7 +7,7 @@ export default function Error({
   reset: () => void
 }) {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#111827' }}>
+    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#0F172A' }}>
       <div className="text-center">
         <h1 className="text-xl font-semibold mb-2" style={{ color: '#F9FAFB' }}>
           Something&apos;s not right
