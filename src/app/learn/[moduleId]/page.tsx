@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { ModuleActions } from './module-actions'
 import { VerifyCert } from './verify-cert'
+import { ModuleFeedback } from '@/components/feedback/module-feedback'
 
 const PLATFORM_LABELS: Record<string, string> = {
   skilljar: 'Anthropic Academy (Skilljar)',
@@ -125,6 +126,11 @@ export default async function ModuleDetailPage({
           <div className="mt-4">
             <VerifyCert moduleId={mod.id} userId={user.id} platform={mod.platform} />
           </div>
+        )}
+
+        {/* Feedback — shown after completion */}
+        {currentStatus === 'completed' && (
+          <ModuleFeedback moduleId={mod.id} userId={user.id} />
         )}
       </div>
 

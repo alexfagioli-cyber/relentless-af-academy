@@ -40,9 +40,18 @@ interface Summary {
   tierCounts: { aware: number; enabled: number; specialist: number }
 }
 
+interface FeedbackData {
+  learnerName: string
+  moduleTitle: string
+  rating: string
+  comment: string | null
+  createdAt: string
+}
+
 interface Props {
   learners: LearnerData[]
   invites: InviteData[]
+  feedback: FeedbackData[]
   summary: Summary
 }
 
@@ -60,7 +69,14 @@ function statusLabel(days: number): string {
   return 'Dormant'
 }
 
-export function AdminDashboardClient({ learners, invites, summary }: Props) {
+const RATING_LABELS: Record<string, string> = {
+  useful: '👍 Useful',
+  too_easy: '😴 Too Easy',
+  too_hard: '😤 Too Hard',
+  confusing: '😕 Confusing',
+}
+
+export function AdminDashboardClient({ learners, invites, feedback, summary }: Props) {
   const [expandedId, setExpandedId] = useState<string | null>(null)
   const [inviteEmail, setInviteEmail] = useState('')
   const [inviteLoading, setInviteLoading] = useState(false)
@@ -121,7 +137,7 @@ export function AdminDashboardClient({ learners, invites, summary }: Props) {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 pb-4">
       {/* c) Progress Overview */}
       <section>
         <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#9CA3AF' }}>
@@ -189,8 +205,8 @@ export function AdminDashboardClient({ learners, invites, summary }: Props) {
               {expandedId === l.id && (
                 <div className="rounded-b-lg p-4 -mt-1 space-y-4" style={{ backgroundColor: '#1E293B', borderTop: '1px solid #374151' }}>
                   {/* Basic info */}
-                  <div className="grid grid-cols-2 gap-2 text-xs">
-                    <div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                    <div className="truncate">
                       <span style={{ color: '#6B7280' }}>Email: </span>
                       <span style={{ color: '#9CA3AF' }}>{l.email}</span>
                     </div>
@@ -274,7 +290,7 @@ export function AdminDashboardClient({ learners, invites, summary }: Props) {
           ))}
 
           {learners.length === 0 && (
-            <p className="text-sm text-center py-4" style={{ color: '#6B7280' }}>No learners yet</p>
+            <p className="text-sm text-center py-4" style={{ color: '#6B7280' }}>No learners yet. Send your first invite above.</p>
           )}
         </div>
       </section>
@@ -285,19 +301,19 @@ export function AdminDashboardClient({ learners, invites, summary }: Props) {
           Invites
         </h2>
 
-        <form onSubmit={handleInvite} className="flex gap-2 mb-4">
+        <form onSubmit={handleInvite} className="flex flex-col sm:flex-row gap-2 mb-4">
           <input
             type="email"
             value={inviteEmail}
             onChange={(e) => setInviteEmail(e.target.value)}
             placeholder="Email address"
-            className="flex-1 rounded-md px-3 py-2 text-sm outline-none"
+            className="flex-1 rounded-md px-3 py-3 text-sm outline-none"
             style={{ backgroundColor: '#1E293B', color: '#F9FAFB', border: '1px solid #374151' }}
           />
           <button
             type="submit"
             disabled={inviteLoading || !inviteEmail.trim()}
-            className="rounded-md px-4 py-2 text-sm font-semibold transition-opacity disabled:opacity-50"
+            className="rounded-md px-4 py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
             style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
           >
             {inviteLoading ? '...' : 'Send Invite'}
@@ -314,7 +330,7 @@ export function AdminDashboardClient({ learners, invites, summary }: Props) {
         <div className="space-y-2">
           {invites.map((inv) => (
             <div key={inv.id} className="flex items-center justify-between rounded-md px-3 py-2 text-xs" style={{ backgroundColor: '#1E293B' }}>
-              <span style={{ color: '#9CA3AF' }}>{inv.email}</span>
+              <span className="truncate mr-2" style={{ color: '#9CA3AF' }}>{inv.email}</span>
               <span style={{
                 color: inv.status === 'accepted' ? '#22C55E' : inv.status === 'expired' ? '#DC2626' : '#F59E0B'
               }}>
@@ -324,6 +340,35 @@ export function AdminDashboardClient({ learners, invites, summary }: Props) {
           ))}
           {invites.length === 0 && (
             <p className="text-sm text-center py-2" style={{ color: '#6B7280' }}>No invites sent yet</p>
+          )}
+        </div>
+      </section>
+
+      {/* Feedback */}
+      <section>
+        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#9CA3AF' }}>
+          Recent Feedback
+        </h2>
+        <div className="space-y-2">
+          {feedback.map((f, i) => (
+            <div key={i} className="rounded-lg p-3" style={{ backgroundColor: '#1E293B' }}>
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs font-medium" style={{ color: '#F9FAFB' }}>{f.learnerName}</span>
+                <span className="text-xs" style={{ color: '#6B7280' }}>
+                  {new Date(f.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
+                </span>
+              </div>
+              <div className="flex items-center gap-2 text-xs">
+                <span style={{ color: '#9CA3AF' }}>{f.moduleTitle}</span>
+                <span style={{ color: '#F59E0B' }}>{RATING_LABELS[f.rating] ?? f.rating}</span>
+              </div>
+              {f.comment && (
+                <p className="mt-1 text-xs" style={{ color: '#6B7280' }}>&ldquo;{f.comment}&rdquo;</p>
+              )}
+            </div>
+          ))}
+          {feedback.length === 0 && (
+            <p className="text-sm text-center py-2" style={{ color: '#6B7280' }}>No feedback yet</p>
           )}
         </div>
       </section>

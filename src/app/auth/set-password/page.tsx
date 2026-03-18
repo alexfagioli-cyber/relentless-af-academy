@@ -37,7 +37,7 @@ export default function SetPasswordPage() {
       return
     }
 
-    router.push('/onboarding')
+    router.push('/welcome')
     router.refresh()
   }
 
@@ -105,7 +105,7 @@ export default function SetPasswordPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-md py-2 text-sm font-semibold transition-opacity disabled:opacity-50"
+            className="w-full rounded-md py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
             style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
           >
             {loading ? 'Setting password...' : 'Set password & continue'}

@@ -241,14 +241,16 @@ export default function OnboardingPage() {
           {[0, 1, 2].map((i) => (
             <div
               key={i}
-              className="h-1 flex-1 rounded-full"
+              className="h-1 flex-1 rounded-full transition-colors duration-300"
               style={{ backgroundColor: i <= step ? '#DC2626' : '#374151' }}
             />
           ))}
         </div>
 
         {/* Step content */}
-        {steps[step]}
+        <div key={step} className="animate-slide-in">
+          {steps[step]}
+        </div>
 
         {/* Error */}
         {error && (

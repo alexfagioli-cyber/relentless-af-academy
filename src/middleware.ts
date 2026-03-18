@@ -46,7 +46,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // Check onboarding status
-  if (!pathname.startsWith('/onboarding')) {
+  if (!pathname.startsWith('/onboarding') && !pathname.startsWith('/welcome')) {
     const { data: profile } = await supabase
       .from('learner_profiles')
       .select('onboarding_complete')

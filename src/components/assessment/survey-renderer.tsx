@@ -82,9 +82,9 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
   // Show result screen
   if (result) {
     return (
-      <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#1E293B' }}>
+      <div className="rounded-lg p-6 text-center animate-fade-in" style={{ backgroundColor: '#1E293B' }}>
         <div
-          className="text-4xl font-bold mb-2"
+          className="text-4xl font-bold mb-2 animate-reveal"
           style={{ color: result.passed ? '#22C55E' : '#DC2626' }}
         >
           {Math.round(result.score)}%

@@ -52,7 +52,7 @@ export default async function DashboardPage() {
   )
 
   return (
-    <div className="min-h-screen pb-20" style={{ backgroundColor: '#111827' }}>
+    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: '#111827' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
         {/* Welcome */}
         <div className="mb-8">
@@ -65,7 +65,7 @@ export default async function DashboardPage() {
         </div>
 
         {/* Stats row */}
-        <div className="grid grid-cols-3 gap-3 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
           <div className="rounded-lg p-4" style={{ backgroundColor: '#1E293B' }}>
             <p className="text-xs uppercase tracking-wide" style={{ color: '#9CA3AF' }}>Tier</p>
             <p className="mt-1 text-lg font-semibold capitalize" style={{ color: '#F9FAFB' }}>
@@ -87,7 +87,23 @@ export default async function DashboardPage() {
         </div>
 
         {/* Next module / Continue Learning */}
-        {nextModule ? (
+        {nextModule && completedCount === 0 ? (
+          <Link
+            href={`/learn/${nextModule.id}`}
+            className="block rounded-lg p-5 mb-6 transition-all"
+            style={{ backgroundColor: '#1E293B', border: '1px solid #DC2626' }}
+          >
+            <p className="text-sm mb-2" style={{ color: '#9CA3AF' }}>
+              Welcome! Start your first module to begin your AI journey.
+            </p>
+            <p className="text-base font-semibold" style={{ color: '#F9FAFB' }}>
+              {nextModule.title}
+            </p>
+            <p className="mt-2 text-sm font-semibold" style={{ color: '#DC2626' }}>
+              Start →
+            </p>
+          </Link>
+        ) : nextModule ? (
           <Link
             href={`/learn/${nextModule.id}`}
             className="block rounded-lg p-5 mb-6 transition-all"

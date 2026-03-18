@@ -98,7 +98,7 @@ function LoginForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full rounded-md py-2 text-sm font-semibold transition-opacity disabled:opacity-50"
+          className="w-full rounded-md py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
           style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
         >
           {loading ? 'Signing in...' : 'Sign in'}

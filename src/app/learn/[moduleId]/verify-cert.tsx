@@ -103,13 +103,13 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
           Have a certificate?
         </p>
 
-        <form onSubmit={handleVerify} className="flex gap-2">
+        <form onSubmit={handleVerify} className="flex flex-col sm:flex-row gap-2">
           <input
             type="text"
             value={certNumber}
             onChange={(e) => setCertNumber(e.target.value)}
             placeholder="Certificate number"
-            className="flex-1 rounded-md px-3 py-2 text-sm outline-none"
+            className="flex-1 rounded-md px-3 py-3 text-sm outline-none"
             style={{
               backgroundColor: '#111827',
               color: '#F9FAFB',
@@ -119,7 +119,7 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
           <button
             type="submit"
             disabled={verifying || !certNumber.trim()}
-            className="rounded-md px-4 py-2 text-sm font-semibold transition-opacity disabled:opacity-50"
+            className="rounded-md px-4 py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
             style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
           >
             {verifying ? '...' : 'Verify'}

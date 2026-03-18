@@ -97,6 +97,36 @@ export default async function AdminPage() {
     assessmentTitleMap.set(a.id, a.title)
   }
 
+  // Fetch feedback
+  const { data: allFeedback } = await adminClient
+    .from('module_feedback')
+    .select('learner_id, module_id, rating, comment, created_at')
+    .order('created_at', { ascending: false })
+
+  // Module title map for feedback display
+  const moduleTitleMap = new Map<string, string>()
+  for (const m of modules ?? []) {
+    moduleTitleMap.set(m.id, '')
+  }
+  const { data: modulesWithTitles } = await adminClient
+    .from('modules')
+    .select('id, title')
+  for (const m of modulesWithTitles ?? []) {
+    moduleTitleMap.set(m.id, m.title)
+  }
+
+  // Build feedback data for client
+  const feedbackData = (allFeedback ?? []).slice(0, 20).map((f) => {
+    const learner = (learners ?? []).find((l) => l.id === f.learner_id)
+    return {
+      learnerName: learner?.display_name ?? 'Unknown',
+      moduleTitle: moduleTitleMap.get(f.module_id) ?? 'Unknown',
+      rating: f.rating,
+      comment: f.comment,
+      createdAt: f.created_at,
+    }
+  })
+
   // Build learner data for client
   const now = new Date()
   const learnerData = (learners ?? []).map((l) => {
@@ -173,6 +203,7 @@ export default async function AdminPage() {
         <AdminDashboardClient
           learners={learnerData}
           invites={inviteData}
+          feedback={feedbackData}
           summary={{
             totalLearners,
             avgCompletion,
