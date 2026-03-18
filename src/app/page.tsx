@@ -103,11 +103,11 @@ export default async function DashboardPage() {
   const moduleMap = new Map((modules ?? []).map((m) => [m.id, m]))
 
   return (
-    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: '#0F172A' }}>
+    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: '#0A1628' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
         {/* Welcome */}
         <div className="mb-6">
-          <h1 className="text-2xl font-bold" style={{ color: '#F9FAFB' }}>
+          <h1 className="text-2xl font-bold" style={{ color: '#E8F0FE' }}>
             Welcome back{profile?.display_name ? `, ${profile.display_name}` : ''}
           </h1>
           {(() => {
@@ -118,7 +118,7 @@ export default async function DashboardPage() {
               primary_goal: profile?.primary_goal ?? null,
             })
             return (
-              <p className="mt-1 text-sm" style={{ color: '#9CA3AF' }}>
+              <p className="mt-1 text-sm" style={{ color: '#8BA3C4' }}>
                 {msg.subtext}
               </p>
             )
@@ -129,42 +129,42 @@ export default async function DashboardPage() {
         <div className="flex items-center gap-3 mb-6">
           <div
             className="flex-1 rounded-lg px-3 py-2 text-center"
-            style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}
+            style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}
           >
-            <p className="text-xs" style={{ color: '#9CA3AF' }}>Time</p>
-            <p className="text-sm font-semibold" style={{ color: '#F9FAFB' }}>
+            <p className="text-xs" style={{ color: '#8BA3C4' }}>Time</p>
+            <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>
               {totalHours > 0 ? `${totalHours}h${remainderMins > 0 ? ` ${remainderMins}m` : ''}` : `${totalMins}m`}
             </p>
           </div>
           <div
             className="flex-1 rounded-lg px-3 py-2 text-center"
-            style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}
+            style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}
           >
-            <p className="text-xs" style={{ color: '#9CA3AF' }}>Streak</p>
-            <p className="text-sm font-semibold" style={{ color: '#F9FAFB' }}>
+            <p className="text-xs" style={{ color: '#8BA3C4' }}>Streak</p>
+            <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>
               {(profile?.streak_current ?? 0) > 0 ? `🔥 ${profile?.streak_current}d` : '0d'}
             </p>
           </div>
           <div
             className="flex-1 rounded-lg px-3 py-2 text-center"
-            style={{ backgroundColor: '#1E293B', borderBottom: `2px solid ${TIER_COLOURS[learnerTier] ?? '#DC2626'}` }}
+            style={{ backgroundColor: '#122240', borderBottom: `2px solid ${TIER_COLOURS[learnerTier] ?? '#DC2626'}` }}
           >
-            <p className="text-xs" style={{ color: '#9CA3AF' }}>Tier</p>
-            <p className="text-sm font-semibold capitalize" style={{ color: TIER_COLOURS[learnerTier] ?? '#F9FAFB' }}>
+            <p className="text-xs" style={{ color: '#8BA3C4' }}>Tier</p>
+            <p className="text-sm font-semibold capitalize" style={{ color: TIER_COLOURS[learnerTier] ?? '#E8F0FE' }}>
               {learnerTier}
             </p>
           </div>
         </div>
 
         {/* Progress ring + tier progress */}
-        <div className="flex items-center gap-5 mb-6 rounded-lg p-4" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
+        <div className="flex items-center gap-5 mb-6 rounded-lg p-4" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
           <ProgressRing completed={completedCount} total={totalCount} size={90} />
           <div className="flex-1">
-            <p className="text-sm font-semibold" style={{ color: '#F9FAFB' }}>
+            <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>
               {currentTierCompleted} of {currentTierTotal} in {learnerTier.charAt(0).toUpperCase() + learnerTier.slice(1)}
             </p>
             {nextInTier && (
-              <p className="mt-1 text-xs" style={{ color: '#9CA3AF' }}>
+              <p className="mt-1 text-xs" style={{ color: '#8BA3C4' }}>
                 Next up: {nextInTier.title}
               </p>
             )}
@@ -181,12 +181,12 @@ export default async function DashboardPage() {
           <Link
             href={`/learn/${resumeModule.id}`}
             className="block rounded-lg p-5 mb-4 transition-all"
-            style={{ backgroundColor: '#1E293B', border: '1px solid #DC2626' }}
+            style={{ backgroundColor: '#122240', border: '1px solid #DC2626' }}
           >
-            <p className="text-sm mb-2" style={{ color: '#9CA3AF' }}>
+            <p className="text-sm mb-2" style={{ color: '#8BA3C4' }}>
               Nothing started yet. That changes today.
             </p>
-            <p className="text-base font-semibold" style={{ color: '#F9FAFB' }}>
+            <p className="text-base font-semibold" style={{ color: '#E8F0FE' }}>
               {MODULE_TYPE_ICONS[resumeModule.module_type] ?? ''} {resumeModule.title}
             </p>
             <p className="mt-2 text-sm font-semibold" style={{ color: '#DC2626' }}>
@@ -197,12 +197,12 @@ export default async function DashboardPage() {
           <Link
             href={`/learn/${resumeModule.id}`}
             className="block rounded-lg p-5 mb-4 transition-all"
-            style={{ backgroundColor: '#1E293B', border: '1px solid #DC2626' }}
+            style={{ backgroundColor: '#122240', border: '1px solid #DC2626' }}
           >
-            <p className="text-xs uppercase tracking-wide mb-1" style={{ color: '#9CA3AF' }}>
+            <p className="text-xs uppercase tracking-wide mb-1" style={{ color: '#8BA3C4' }}>
               {inProgressModule ? 'Continue where you left off' : 'Up next'}
             </p>
-            <p className="text-base font-semibold" style={{ color: '#F9FAFB' }}>
+            <p className="text-base font-semibold" style={{ color: '#E8F0FE' }}>
               {MODULE_TYPE_ICONS[resumeModule.module_type] ?? ''} {resumeModule.title}
             </p>
             <p className="mt-2 text-sm font-semibold" style={{ color: '#DC2626' }}>
@@ -210,31 +210,31 @@ export default async function DashboardPage() {
             </p>
           </Link>
         ) : completedCount === totalCount && totalCount > 0 ? (
-          <div className="rounded-lg p-5 mb-4 text-center" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
+          <div className="rounded-lg p-5 mb-4 text-center" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
             <p className="text-base font-semibold" style={{ color: '#22C55E' }}>
               All modules completed
             </p>
-            <p className="mt-1 text-sm" style={{ color: '#9CA3AF' }}>
+            <p className="mt-1 text-sm" style={{ color: '#8BA3C4' }}>
               You&apos;ve finished everything available in your tier. Extraordinary.
             </p>
           </div>
         ) : (
-          <div className="rounded-lg p-5 mb-4 text-center" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
-            <p className="text-sm" style={{ color: '#9CA3AF' }}>
+          <div className="rounded-lg p-5 mb-4 text-center" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
+            <p className="text-sm" style={{ color: '#8BA3C4' }}>
               Complete your current modules to unlock the next step.
             </p>
           </div>
         )}
 
         {/* Daily tip */}
-        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#1E293B', borderLeft: '3px solid #DC2626' }}>
-          <p className="text-sm" style={{ color: '#9CA3AF' }}>
+        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#122240', borderLeft: '3px solid #DC2626' }}>
+          <p className="text-sm" style={{ color: '#8BA3C4' }}>
             {getDailyTip()}
           </p>
         </div>
 
         {/* Recent activity */}
-        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
+        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
           <p className="text-xs uppercase tracking-wide mb-3" style={{ color: '#6B7280' }}>Recent activity</p>
           {recentEvents && recentEvents.length > 0 ? (
             <div className="space-y-2">
@@ -263,7 +263,7 @@ export default async function DashboardPage() {
         <Link
           href="/learn"
           className="block rounded-lg p-4 text-center text-sm font-medium"
-          style={{ backgroundColor: '#1E293B', color: '#9CA3AF', border: '1px solid #374151' }}
+          style={{ backgroundColor: '#122240', color: '#8BA3C4', border: '1px solid #374151' }}
         >
           View full learning path
         </Link>

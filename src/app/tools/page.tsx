@@ -24,7 +24,7 @@ const CATEGORY_COLOURS: Record<string, string> = {
 const PRICING_COLOURS: Record<string, string> = {
   Free: '#22C55E',
   Freemium: '#F59E0B',
-  Paid: '#9CA3AF',
+  Paid: '#8BA3C4',
 }
 
 const TOOLS: Tool[] = [
@@ -61,12 +61,12 @@ export default async function ToolsPage() {
   if (!user) redirect('/auth/login')
 
   return (
-    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: '#0F172A' }}>
+    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: '#0A1628' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
-        <h1 className="text-2xl font-bold mb-2" style={{ color: '#F9FAFB' }}>
+        <h1 className="text-2xl font-bold mb-2" style={{ color: '#E8F0FE' }}>
           AI Tools Directory
         </h1>
-        <p className="text-sm mb-6" style={{ color: '#9CA3AF' }}>
+        <p className="text-sm mb-6" style={{ color: '#8BA3C4' }}>
           The best AI tools across every category. Curated, not comprehensive.
         </p>
 
@@ -89,12 +89,12 @@ export default async function ToolsPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block rounded-lg p-4 transition-all"
-                  style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}
+                  style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <p className="text-sm font-semibold" style={{ color: '#F9FAFB' }}>
+                        <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>
                           {tool.name}
                         </p>
                         <span
@@ -112,7 +112,7 @@ export default async function ToolsPage() {
                           </span>
                         )}
                       </div>
-                      <p className="mt-1 text-xs leading-relaxed" style={{ color: '#9CA3AF' }}>
+                      <p className="mt-1 text-xs leading-relaxed" style={{ color: '#8BA3C4' }}>
                         {tool.description}
                       </p>
                     </div>

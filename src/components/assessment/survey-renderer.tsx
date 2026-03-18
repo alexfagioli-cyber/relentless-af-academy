@@ -25,19 +25,19 @@ export interface ScoreResult {
 // Custom dark theme matching RelentlessAF branding
 const darkTheme = {
   cssVariables: {
-    '--sjs-general-backcolor': '#1E293B',
-    '--sjs-general-backcolor-dark': '#0F172A',
-    '--sjs-general-backcolor-dim': '#0F172A',
-    '--sjs-general-backcolor-dim-light': '#1E293B',
-    '--sjs-general-forecolor': '#F9FAFB',
-    '--sjs-general-forecolor-light': '#9CA3AF',
-    '--sjs-general-dim-forecolor': '#9CA3AF',
+    '--sjs-general-backcolor': '#122240',
+    '--sjs-general-backcolor-dark': '#0A1628',
+    '--sjs-general-backcolor-dim': '#0A1628',
+    '--sjs-general-backcolor-dim-light': '#122240',
+    '--sjs-general-forecolor': '#E8F0FE',
+    '--sjs-general-forecolor-light': '#8BA3C4',
+    '--sjs-general-dim-forecolor': '#8BA3C4',
     '--sjs-general-dim-forecolor-light': '#6B7280',
     '--sjs-primary-backcolor': '#DC2626',
     '--sjs-primary-backcolor-light': 'rgba(220, 38, 38, 0.15)',
     '--sjs-primary-backcolor-dark': '#B91C1C',
-    '--sjs-primary-forecolor': '#F9FAFB',
-    '--sjs-primary-forecolor-light': '#F9FAFB',
+    '--sjs-primary-forecolor': '#E8F0FE',
+    '--sjs-primary-forecolor-light': '#E8F0FE',
     '--sjs-base-unit': '8px',
     '--sjs-corner-radius': '8px',
     '--sjs-shadow-small': 'none',
@@ -97,17 +97,17 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
   // Show result screen
   if (result) {
     return (
-      <div className="rounded-lg p-6 text-center animate-fade-in" style={{ backgroundColor: '#1E293B' }}>
+      <div className="rounded-lg p-6 text-center animate-fade-in" style={{ backgroundColor: '#122240' }}>
         <div
           className="text-4xl font-bold mb-2 animate-reveal"
           style={{ color: result.passed ? '#22C55E' : '#DC2626' }}
         >
           {Math.round(result.score)}%
         </div>
-        <p className="text-lg font-semibold mb-1" style={{ color: '#F9FAFB' }}>
+        <p className="text-lg font-semibold mb-1" style={{ color: '#E8F0FE' }}>
           {result.passed ? 'Passed' : 'Not quite'}
         </p>
-        <p className="text-sm mb-4" style={{ color: '#9CA3AF' }}>
+        <p className="text-sm mb-4" style={{ color: '#8BA3C4' }}>
           {result.correct_count} of {result.total_questions} correct
           {!result.passed && ` — you need ${passScore}% to pass`}
         </p>
@@ -116,7 +116,7 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
             Module completed. Keep going.
           </p>
         ) : (
-          <p className="text-sm" style={{ color: '#9CA3AF' }}>
+          <p className="text-sm" style={{ color: '#8BA3C4' }}>
             Review the material and try again when you&apos;re ready.
           </p>
         )}
@@ -127,8 +127,8 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
   // Show loading state while scoring
   if (submitting) {
     return (
-      <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#1E293B' }}>
-        <p className="text-sm" style={{ color: '#9CA3AF' }}>Scoring your answers</p>
+      <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#122240' }}>
+        <p className="text-sm" style={{ color: '#8BA3C4' }}>Scoring your answers</p>
       </div>
     )
   }
@@ -137,7 +137,7 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
   if (error) {
     return (
       <div className="space-y-4">
-        <div className="rounded-lg p-4 text-sm" style={{ backgroundColor: '#1E293B', color: '#DC2626' }}>
+        <div className="rounded-lg p-4 text-sm" style={{ backgroundColor: '#122240', color: '#DC2626' }}>
           {error}
         </div>
       </div>
@@ -164,28 +164,28 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
       <Survey model={survey} />
       <style jsx global>{`
         .survey-dark-wrapper .sd-root-modern {
-          background-color: #0F172A !important;
+          background-color: #0A1628 !important;
         }
         .survey-dark-wrapper .sd-body {
-          background-color: #0F172A !important;
+          background-color: #0A1628 !important;
         }
         .survey-dark-wrapper .sd-page {
-          background-color: #0F172A !important;
+          background-color: #0A1628 !important;
         }
         .survey-dark-wrapper .sd-question__content {
-          background-color: #1E293B !important;
+          background-color: #122240 !important;
           border-radius: 8px !important;
           padding: 16px !important;
         }
         .survey-dark-wrapper .sd-item__control-label {
-          color: #F9FAFB !important;
+          color: #E8F0FE !important;
         }
         .survey-dark-wrapper .sd-selectbase__label {
-          color: #9CA3AF !important;
+          color: #8BA3C4 !important;
         }
         .survey-dark-wrapper .sd-btn {
           background-color: #DC2626 !important;
-          color: #F9FAFB !important;
+          color: #E8F0FE !important;
           border: none !important;
           border-radius: 8px !important;
         }

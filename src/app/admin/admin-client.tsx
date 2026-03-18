@@ -140,7 +140,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
     <div className="space-y-8 pb-4">
       {/* c) Progress Overview */}
       <section>
-        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#9CA3AF' }}>
+        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#8BA3C4' }}>
           Overview
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -158,7 +158,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
 
       {/* a) Learner Table */}
       <section>
-        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#9CA3AF' }}>
+        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#8BA3C4' }}>
           Learners
         </h2>
         <div className="space-y-2">
@@ -167,7 +167,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
               <button
                 onClick={() => setExpandedId(expandedId === l.id ? null : l.id)}
                 className="w-full rounded-lg p-4 text-left transition-all"
-                style={{ backgroundColor: '#1E293B', border: expandedId === l.id ? '1px solid #DC2626' : '1px solid #374151' }}
+                style={{ backgroundColor: '#122240', border: expandedId === l.id ? '1px solid #DC2626' : '1px solid #374151' }}
               >
                 <div className="flex items-center gap-3">
                   {/* Status dot */}
@@ -179,11 +179,11 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
 
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium truncate" style={{ color: '#F9FAFB' }}>
+                      <span className="text-sm font-medium truncate" style={{ color: '#E8F0FE' }}>
                         {l.displayName}
                       </span>
                       {l.isAdmin && (
-                        <span className="text-xs px-1.5 py-0.5 rounded" style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}>
+                        <span className="text-xs px-1.5 py-0.5 rounded" style={{ backgroundColor: '#DC2626', color: '#E8F0FE' }}>
                           admin
                         </span>
                       )}
@@ -203,37 +203,37 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
 
               {/* Expanded detail */}
               {expandedId === l.id && (
-                <div className="rounded-b-lg p-4 -mt-1 space-y-4" style={{ backgroundColor: '#1E293B', borderTop: '1px solid #374151' }}>
+                <div className="rounded-b-lg p-4 -mt-1 space-y-4" style={{ backgroundColor: '#122240', borderTop: '1px solid #374151' }}>
                   {/* Basic info */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                     <div className="truncate">
                       <span style={{ color: '#6B7280' }}>Email: </span>
-                      <span style={{ color: '#9CA3AF' }}>{l.email}</span>
+                      <span style={{ color: '#8BA3C4' }}>{l.email}</span>
                     </div>
                     <div>
                       <span style={{ color: '#6B7280' }}>Last active: </span>
-                      <span style={{ color: '#9CA3AF' }}>
+                      <span style={{ color: '#8BA3C4' }}>
                         {l.lastActive ? `${l.daysInactive}d ago` : 'Never'}
                       </span>
                     </div>
                     <div>
                       <span style={{ color: '#6B7280' }}>Completion: </span>
-                      <span style={{ color: '#9CA3AF' }}>{l.completionPct}%</span>
+                      <span style={{ color: '#8BA3C4' }}>{l.completionPct}%</span>
                     </div>
                     <div>
                       <span style={{ color: '#6B7280' }}>Best streak: </span>
-                      <span style={{ color: '#9CA3AF' }}>{l.streakLongest}d</span>
+                      <span style={{ color: '#8BA3C4' }}>{l.streakLongest}d</span>
                     </div>
                     {l.weeklyTime && (
                       <div>
                         <span style={{ color: '#6B7280' }}>Weekly time: </span>
-                        <span style={{ color: '#9CA3AF' }}>{l.weeklyTime}</span>
+                        <span style={{ color: '#8BA3C4' }}>{l.weeklyTime}</span>
                       </div>
                     )}
                     {l.motivation && (
                       <div className="col-span-2">
                         <span style={{ color: '#6B7280' }}>Motivation: </span>
-                        <span style={{ color: '#9CA3AF' }}>{l.motivation}</span>
+                        <span style={{ color: '#8BA3C4' }}>{l.motivation}</span>
                       </div>
                     )}
                   </div>
@@ -245,7 +245,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
                       value={l.tier ?? 'aware'}
                       onChange={(e) => handleTierOverride(l.id, e.target.value)}
                       className="rounded-md px-3 py-1.5 text-xs"
-                      style={{ backgroundColor: '#0F172A', color: '#F9FAFB', border: '1px solid #374151' }}
+                      style={{ backgroundColor: '#0A1628', color: '#E8F0FE', border: '1px solid #374151' }}
                     >
                       <option value="aware">Aware</option>
                       <option value="enabled">Enabled</option>
@@ -259,8 +259,8 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
                       <p className="text-xs mb-1" style={{ color: '#6B7280' }}>Assessment attempts</p>
                       <div className="space-y-1">
                         {l.attempts.slice(0, 5).map((a, i) => (
-                          <div key={i} className="flex justify-between text-xs rounded px-2 py-1" style={{ backgroundColor: '#0F172A' }}>
-                            <span style={{ color: '#9CA3AF' }}>{a.assessment_title}</span>
+                          <div key={i} className="flex justify-between text-xs rounded px-2 py-1" style={{ backgroundColor: '#0A1628' }}>
+                            <span style={{ color: '#8BA3C4' }}>{a.assessment_title}</span>
                             <span style={{ color: a.passed ? '#22C55E' : '#DC2626' }}>
                               {Math.round(a.score)}% — {a.passed ? 'Pass' : 'Fail'}
                             </span>
@@ -276,9 +276,9 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
                       <p className="text-xs mb-1" style={{ color: '#6B7280' }}>Onboarding responses</p>
                       <div className="space-y-1">
                         {l.onboarding.map((o, i) => (
-                          <div key={i} className="text-xs rounded px-2 py-1" style={{ backgroundColor: '#0F172A' }}>
+                          <div key={i} className="text-xs rounded px-2 py-1" style={{ backgroundColor: '#0A1628' }}>
                             <span style={{ color: '#6B7280' }}>{o.question_key}: </span>
-                            <span style={{ color: '#9CA3AF' }}>{JSON.stringify(o.response)}</span>
+                            <span style={{ color: '#8BA3C4' }}>{JSON.stringify(o.response)}</span>
                           </div>
                         ))}
                       </div>
@@ -297,7 +297,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
 
       {/* b) Invite Management */}
       <section>
-        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#9CA3AF' }}>
+        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#8BA3C4' }}>
           Invites
         </h2>
 
@@ -308,13 +308,13 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
             onChange={(e) => setInviteEmail(e.target.value)}
             placeholder="Email address"
             className="flex-1 rounded-md px-3 py-3 text-sm outline-none"
-            style={{ backgroundColor: '#1E293B', color: '#F9FAFB', border: '1px solid #374151' }}
+            style={{ backgroundColor: '#122240', color: '#E8F0FE', border: '1px solid #374151' }}
           />
           <button
             type="submit"
             disabled={inviteLoading || !inviteEmail.trim()}
             className="rounded-md px-4 py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
-            style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
+            style={{ backgroundColor: '#DC2626', color: '#E8F0FE' }}
           >
             {inviteLoading ? '...' : 'Send Invite'}
           </button>
@@ -329,8 +329,8 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
 
         <div className="space-y-2">
           {invites.map((inv) => (
-            <div key={inv.id} className="flex items-center justify-between rounded-md px-3 py-2 text-xs" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
-              <span className="truncate mr-2" style={{ color: '#9CA3AF' }}>{inv.email}</span>
+            <div key={inv.id} className="flex items-center justify-between rounded-md px-3 py-2 text-xs" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
+              <span className="truncate mr-2" style={{ color: '#8BA3C4' }}>{inv.email}</span>
               <span style={{
                 color: inv.status === 'accepted' ? '#22C55E' : inv.status === 'expired' ? '#DC2626' : '#F59E0B'
               }}>
@@ -346,20 +346,20 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
 
       {/* Feedback */}
       <section>
-        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#9CA3AF' }}>
+        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#8BA3C4' }}>
           Recent Feedback
         </h2>
         <div className="space-y-2">
           {feedback.map((f, i) => (
-            <div key={i} className="rounded-lg p-3" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
+            <div key={i} className="rounded-lg p-3" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
               <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-medium" style={{ color: '#F9FAFB' }}>{f.learnerName}</span>
+                <span className="text-xs font-medium" style={{ color: '#E8F0FE' }}>{f.learnerName}</span>
                 <span className="text-xs" style={{ color: '#6B7280' }}>
                   {new Date(f.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
                 </span>
               </div>
               <div className="flex items-center gap-2 text-xs">
-                <span style={{ color: '#9CA3AF' }}>{f.moduleTitle}</span>
+                <span style={{ color: '#8BA3C4' }}>{f.moduleTitle}</span>
                 <span style={{ color: '#F59E0B' }}>{RATING_LABELS[f.rating] ?? f.rating}</span>
               </div>
               {f.comment && (
@@ -378,9 +378,9 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
 
 function StatCard({ label, value, capitalize }: { label: string; value: string | number; capitalize?: boolean }) {
   return (
-    <div className="rounded-lg p-3" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
+    <div className="rounded-lg p-3" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
       <p className="text-xs uppercase tracking-wide" style={{ color: '#6B7280' }}>{label}</p>
-      <p className={`mt-1 text-lg font-semibold ${capitalize ? 'capitalize' : ''}`} style={{ color: '#F9FAFB' }}>
+      <p className={`mt-1 text-lg font-semibold ${capitalize ? 'capitalize' : ''}`} style={{ color: '#E8F0FE' }}>
         {value}
       </p>
     </div>

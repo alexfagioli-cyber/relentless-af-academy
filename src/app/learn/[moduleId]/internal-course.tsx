@@ -111,15 +111,15 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
 
   if (completed) {
     return (
-      <div className="rounded-lg p-6 text-center animate-fade-in" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
+      <div className="rounded-lg p-6 text-center animate-fade-in" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
         <p className="text-lg font-semibold" style={{ color: '#22C55E' }}>Complete</p>
-        <p className="mt-2 text-sm" style={{ color: '#9CA3AF' }}>
+        <p className="mt-2 text-sm" style={{ color: '#8BA3C4' }}>
           You&apos;re ready to move on to the next module.
         </p>
         <button
           onClick={() => router.push('/learn')}
           className="mt-4 rounded-lg px-6 py-2 text-sm font-semibold"
-          style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
+          style={{ backgroundColor: '#DC2626', color: '#E8F0FE' }}
         >
           Continue →
         </button>
@@ -145,7 +145,7 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
 
       {/* Screen content */}
       <div key={currentScreen} className="animate-slide-in">
-        <h2 className="text-xl font-bold mb-4" style={{ color: '#F9FAFB' }}>
+        <h2 className="text-xl font-bold mb-4" style={{ color: '#E8F0FE' }}>
           {screen.title}
         </h2>
 
@@ -154,7 +154,7 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
           {screen.body.split('\n\n').map((paragraph, i) => (
             <p key={i} dangerouslySetInnerHTML={{
               __html: paragraph
-                .replace(/\*\*(.*?)\*\*/g, '<strong style="color:#F9FAFB">$1</strong>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong style="color:#E8F0FE">$1</strong>')
                 .replace(/\n/g, '<br/>')
             }} />
           ))}
@@ -167,7 +167,7 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 block w-full rounded-lg py-3 text-sm font-semibold text-center"
-            style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
+            style={{ backgroundColor: '#DC2626', color: '#E8F0FE' }}
           >
             {screen.action_label ?? 'Open'} →
           </a>
@@ -178,7 +178,7 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
           <div className="mt-6 space-y-5">
             {screen.inputs.map((input) => (
               <div key={input.key}>
-                <label className="block text-sm font-medium mb-2" style={{ color: '#F9FAFB' }}>
+                <label className="block text-sm font-medium mb-2" style={{ color: '#E8F0FE' }}>
                   {input.label}
                 </label>
 
@@ -190,8 +190,8 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
                     rows={3}
                     className="w-full rounded-lg px-3 py-2 text-sm outline-none resize-none"
                     style={{
-                      backgroundColor: '#0F172A',
-                      color: '#F9FAFB',
+                      backgroundColor: '#0A1628',
+                      color: '#E8F0FE',
                       border: '1px solid #374151',
                     }}
                   />
@@ -207,8 +207,8 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
                           onClick={() => updateResponse(input.key, opt)}
                           className="w-full text-left rounded-lg px-4 py-3 text-sm transition-all"
                           style={{
-                            backgroundColor: selected ? '#DC2626' : '#1E293B',
-                            color: selected ? '#F9FAFB' : '#9CA3AF',
+                            backgroundColor: selected ? '#DC2626' : '#122240',
+                            color: selected ? '#E8F0FE' : '#8BA3C4',
                             border: selected ? '1px solid #DC2626' : '1px solid #374151',
                           }}
                         >
@@ -230,7 +230,7 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
           <button
             onClick={() => setCurrentScreen((s) => s - 1)}
             className="flex-1 rounded-lg py-3 text-sm font-semibold"
-            style={{ backgroundColor: '#1E293B', color: '#9CA3AF', border: '1px solid #374151' }}
+            style={{ backgroundColor: '#122240', color: '#8BA3C4', border: '1px solid #374151' }}
           >
             Back
           </button>
@@ -240,7 +240,7 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
             onClick={handleComplete}
             disabled={saving || !canProceed()}
             className="flex-1 rounded-lg py-3 text-sm font-semibold transition-opacity disabled:opacity-30"
-            style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
+            style={{ backgroundColor: '#DC2626', color: '#E8F0FE' }}
           >
             {saving ? 'Saving' : 'Complete'}
           </button>
@@ -249,7 +249,7 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
             onClick={() => setCurrentScreen((s) => s + 1)}
             disabled={screen.inputs ? !canProceed() : false}
             className="flex-1 rounded-lg py-3 text-sm font-semibold transition-opacity disabled:opacity-30"
-            style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
+            style={{ backgroundColor: '#DC2626', color: '#E8F0FE' }}
           >
             Continue
           </button>

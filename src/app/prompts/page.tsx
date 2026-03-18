@@ -55,12 +55,12 @@ export default async function PromptsPage() {
   if (!user) redirect('/auth/login')
 
   return (
-    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: '#0F172A' }}>
+    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: '#0A1628' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
-        <h1 className="text-2xl font-bold mb-2" style={{ color: '#F9FAFB' }}>
+        <h1 className="text-2xl font-bold mb-2" style={{ color: '#E8F0FE' }}>
           Prompt Library
         </h1>
-        <p className="text-sm mb-6" style={{ color: '#9CA3AF' }}>
+        <p className="text-sm mb-6" style={{ color: '#8BA3C4' }}>
           Ready-to-use templates. Copy, fill in the [brackets], paste into Claude.
         </p>
 
@@ -80,14 +80,14 @@ export default async function PromptsPage() {
                 <div
                   key={prompt.title}
                   className="rounded-lg p-4"
-                  style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}
+                  style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-semibold" style={{ color: '#F9FAFB' }}>
+                      <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>
                         {prompt.title}
                       </p>
-                      <p className="mt-1.5 text-xs leading-relaxed whitespace-pre-line" style={{ color: '#9CA3AF' }}>
+                      <p className="mt-1.5 text-xs leading-relaxed whitespace-pre-line" style={{ color: '#8BA3C4' }}>
                         {prompt.template}
                       </p>
                     </div>

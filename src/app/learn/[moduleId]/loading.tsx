@@ -3,7 +3,7 @@ import { BottomNav } from '@/components/layout/bottom-nav'
 
 export default function ModuleLoading() {
   return (
-    <div className="min-h-screen pb-20" style={{ backgroundColor: '#0F172A' }}>
+    <div className="min-h-screen pb-20" style={{ backgroundColor: '#0A1628' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
         <Skeleton className="h-4 w-32 mb-6" />
 

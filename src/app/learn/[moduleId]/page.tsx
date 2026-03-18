@@ -42,9 +42,9 @@ export default async function ModuleDetailPage({
 
   if (!mod) {
     return (
-      <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#0F172A' }}>
+      <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#0A1628' }}>
         <div className="text-center">
-          <p className="text-lg font-medium" style={{ color: '#F9FAFB' }}>Module not found</p>
+          <p className="text-lg font-medium" style={{ color: '#E8F0FE' }}>Module not found</p>
           <Link href="/learn" className="mt-4 inline-block text-sm" style={{ color: '#DC2626' }}>
             Back to learning path
           </Link>
@@ -66,32 +66,32 @@ export default async function ModuleDetailPage({
   const currentStatus = progress?.status ?? 'not_started'
 
   return (
-    <div className="min-h-screen pb-20" style={{ backgroundColor: '#0F172A' }}>
+    <div className="min-h-screen pb-20" style={{ backgroundColor: '#0A1628' }}>
       <div className="max-w-lg mx-auto px-4 pt-8">
         {/* Back link */}
-        <Link href="/learn" className="text-sm mb-6 inline-block" style={{ color: '#9CA3AF' }}>
+        <Link href="/learn" className="text-sm mb-6 inline-block" style={{ color: '#8BA3C4' }}>
           ← Back to learning path
         </Link>
 
         {/* Module header */}
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-xs uppercase tracking-wide px-2 py-0.5 rounded" style={{ backgroundColor: '#1E293B', color: '#9CA3AF' }}>
+            <span className="text-xs uppercase tracking-wide px-2 py-0.5 rounded" style={{ backgroundColor: '#122240', color: '#8BA3C4' }}>
               {mod.module_type}
             </span>
-            <span className="text-xs uppercase tracking-wide px-2 py-0.5 rounded" style={{ backgroundColor: '#1E293B', color: '#9CA3AF' }}>
+            <span className="text-xs uppercase tracking-wide px-2 py-0.5 rounded" style={{ backgroundColor: '#122240', color: '#8BA3C4' }}>
               {mod.tier}
             </span>
           </div>
-          <h1 className="text-2xl font-bold" style={{ color: '#F9FAFB' }}>
+          <h1 className="text-2xl font-bold" style={{ color: '#E8F0FE' }}>
             {mod.title}
           </h1>
         </div>
 
         {/* Details */}
-        <div className="rounded-lg p-4 mb-6 space-y-3" style={{ backgroundColor: '#1E293B', border: '1px solid #334155' }}>
+        <div className="rounded-lg p-4 mb-6 space-y-3" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
           {mod.description && (
-            <p className="text-sm" style={{ color: '#9CA3AF' }}>
+            <p className="text-sm" style={{ color: '#8BA3C4' }}>
               {mod.description}
             </p>
           )}

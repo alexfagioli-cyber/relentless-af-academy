@@ -93,8 +93,8 @@ export function ModuleFeedback({ moduleId, userId }: Props) {
             disabled={saving}
             className="flex-1 rounded-lg py-2 text-center text-xs transition-all"
             style={{
-              backgroundColor: selected === r.value ? '#DC2626' : '#1E293B',
-              color: selected === r.value ? '#F9FAFB' : '#9CA3AF',
+              backgroundColor: selected === r.value ? '#DC2626' : '#122240',
+              color: selected === r.value ? '#E8F0FE' : '#8BA3C4',
               border: selected === r.value ? '1px solid #DC2626' : '1px solid #374151',
             }}
           >
@@ -123,8 +123,8 @@ export function ModuleFeedback({ moduleId, userId }: Props) {
             rows={2}
             className="w-full rounded-md px-3 py-2 text-sm outline-none resize-none"
             style={{
-              backgroundColor: '#0F172A',
-              color: '#F9FAFB',
+              backgroundColor: '#0A1628',
+              color: '#E8F0FE',
               border: '1px solid #374151',
             }}
           />
@@ -132,7 +132,7 @@ export function ModuleFeedback({ moduleId, userId }: Props) {
             onClick={handleCommentSave}
             disabled={saving}
             className="rounded-md px-4 py-2 text-xs font-semibold transition-opacity disabled:opacity-50"
-            style={{ backgroundColor: '#1E293B', color: '#9CA3AF', border: '1px solid #374151' }}
+            style={{ backgroundColor: '#122240', color: '#8BA3C4', border: '1px solid #374151' }}
           >
             {saving ? 'Saving' : 'Save comment'}
           </button>

@@ -20,7 +20,7 @@ export function ProgressRing({ completed, total, size = 120 }: ProgressRingProps
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke="#1E293B"
+          stroke="#1E3A5F"
           strokeWidth={strokeWidth}
         />
         {/* Fill */}
@@ -39,7 +39,7 @@ export function ProgressRing({ completed, total, size = 120 }: ProgressRingProps
       </svg>
       {/* Centre text */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-2xl font-bold" style={{ color: '#F9FAFB' }}>
+        <span className="text-2xl font-bold" style={{ color: '#E8F0FE' }}>
           {pct}%
         </span>
       </div>

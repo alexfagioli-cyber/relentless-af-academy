@@ -42,26 +42,26 @@ export default function SetPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#0F172A' }}>
+    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#0A1628' }}>
       <div className="w-full max-w-sm space-y-8">
         <div className="text-center">
-          <h1 className="text-2xl font-bold" style={{ color: '#F9FAFB' }}>
+          <h1 className="text-2xl font-bold" style={{ color: '#E8F0FE' }}>
             Welcome to the Academy
           </h1>
-          <p className="mt-2 text-sm" style={{ color: '#9CA3AF' }}>
+          <p className="mt-2 text-sm" style={{ color: '#8BA3C4' }}>
             Set your password to get started
           </p>
         </div>
 
         {error && (
-          <div className="rounded-md p-3 text-sm" style={{ backgroundColor: '#1E293B', color: '#DC2626' }}>
+          <div className="rounded-md p-3 text-sm" style={{ backgroundColor: '#122240', color: '#DC2626' }}>
             {error}
           </div>
         )}
 
         <form onSubmit={handleSetPassword} className="space-y-4">
           <div>
-            <label htmlFor="password" className="block text-sm font-medium" style={{ color: '#9CA3AF' }}>
+            <label htmlFor="password" className="block text-sm font-medium" style={{ color: '#8BA3C4' }}>
               Password
             </label>
             <input
@@ -72,8 +72,8 @@ export default function SetPasswordPage() {
               onChange={(e) => setPassword(e.target.value)}
               className="mt-1 block w-full rounded-md px-3 py-2 text-sm outline-none focus:ring-2"
               style={{
-                backgroundColor: '#1E293B',
-                color: '#F9FAFB',
+                backgroundColor: '#122240',
+                color: '#E8F0FE',
                 borderColor: '#374151',
                 border: '1px solid #374151',
               }}
@@ -82,7 +82,7 @@ export default function SetPasswordPage() {
           </div>
 
           <div>
-            <label htmlFor="confirmPassword" className="block text-sm font-medium" style={{ color: '#9CA3AF' }}>
+            <label htmlFor="confirmPassword" className="block text-sm font-medium" style={{ color: '#8BA3C4' }}>
               Confirm password
             </label>
             <input
@@ -93,8 +93,8 @@ export default function SetPasswordPage() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               className="mt-1 block w-full rounded-md px-3 py-2 text-sm outline-none focus:ring-2"
               style={{
-                backgroundColor: '#1E293B',
-                color: '#F9FAFB',
+                backgroundColor: '#122240',
+                color: '#E8F0FE',
                 borderColor: '#374151',
                 border: '1px solid #374151',
               }}
@@ -106,7 +106,7 @@ export default function SetPasswordPage() {
             type="submit"
             disabled={loading}
             className="w-full rounded-md py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
-            style={{ backgroundColor: '#DC2626', color: '#F9FAFB' }}
+            style={{ backgroundColor: '#DC2626', color: '#E8F0FE' }}
           >
             {loading ? 'Setting password' : 'Set Your Password'}
           </button>
