@@ -48,10 +48,19 @@ interface FeedbackData {
   createdAt: string
 }
 
+interface GeneralFeedbackData {
+  learnerName: string
+  page: string
+  rating: string
+  comment: string | null
+  createdAt: string
+}
+
 interface Props {
   learners: LearnerData[]
   invites: InviteData[]
   feedback: FeedbackData[]
+  generalFeedback: GeneralFeedbackData[]
   summary: Summary
 }
 
@@ -76,7 +85,14 @@ const RATING_LABELS: Record<string, string> = {
   confusing: '😕 Confusing',
 }
 
-export function AdminDashboardClient({ learners, invites, feedback, summary }: Props) {
+const GENERAL_RATING_LABELS: Record<string, string> = {
+  love: '❤️ Love it',
+  good: '👍 Good',
+  'needs-work': '🔧 Needs work',
+  confused: '😕 Confused',
+}
+
+export function AdminDashboardClient({ learners, invites, feedback, generalFeedback, summary }: Props) {
   const [expandedId, setExpandedId] = useState<string | null>(null)
   const [inviteEmail, setInviteEmail] = useState('')
   const [inviteLoading, setInviteLoading] = useState(false)
@@ -369,6 +385,35 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
           ))}
           {feedback.length === 0 && (
             <p className="text-sm text-center py-2" style={{ color: '#6B7280' }}>No feedback yet</p>
+          )}
+        </div>
+      </section>
+
+      {/* General Feedback (floating button) */}
+      <section>
+        <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#8BA3C4' }}>
+          Platform Feedback
+        </h2>
+        <div className="space-y-2">
+          {generalFeedback.map((f, i) => (
+            <div key={i} className="rounded-lg p-3" style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}>
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs font-medium" style={{ color: '#E8F0FE' }}>{f.learnerName}</span>
+                <span className="text-xs" style={{ color: '#6B7280' }}>
+                  {new Date(f.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
+                </span>
+              </div>
+              <div className="flex items-center gap-2 text-xs">
+                <span style={{ color: '#E8C872' }}>{GENERAL_RATING_LABELS[f.rating] ?? f.rating}</span>
+                <span style={{ color: '#6B7280' }}>on {f.page}</span>
+              </div>
+              {f.comment && (
+                <p className="mt-1 text-xs" style={{ color: '#8BA3C4' }}>&ldquo;{f.comment}&rdquo;</p>
+              )}
+            </div>
+          ))}
+          {generalFeedback.length === 0 && (
+            <p className="text-sm text-center py-2" style={{ color: '#6B7280' }}>No platform feedback yet</p>
           )}
         </div>
       </section>

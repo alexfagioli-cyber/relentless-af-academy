@@ -115,6 +115,24 @@ export default async function AdminPage() {
     moduleTitleMap.set(m.id, m.title)
   }
 
+  // Fetch general feedback (floating button)
+  const { data: allGeneralFeedback } = await adminClient
+    .from('general_feedback')
+    .select('learner_id, page, rating, comment, created_at')
+    .order('created_at', { ascending: false })
+    .limit(30)
+
+  const generalFeedbackData = (allGeneralFeedback ?? []).map((f) => {
+    const learner = (learners ?? []).find((l) => l.id === f.learner_id)
+    return {
+      learnerName: learner?.display_name ?? 'Unknown',
+      page: f.page,
+      rating: f.rating,
+      comment: f.comment,
+      createdAt: f.created_at,
+    }
+  })
+
   // Build feedback data for client
   const feedbackData = (allFeedback ?? []).slice(0, 20).map((f) => {
     const learner = (learners ?? []).find((l) => l.id === f.learner_id)
@@ -204,6 +222,7 @@ export default async function AdminPage() {
           learners={learnerData}
           invites={inviteData}
           feedback={feedbackData}
+          generalFeedback={generalFeedbackData}
           summary={{
             totalLearners,
             avgCompletion,

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { CelebrationProvider } from '@/components/ui/celebration-toast'
+import { FeedbackButton } from '@/components/ui/feedback-button'
 import './globals.css'
 
 const inter = Inter({
@@ -34,7 +35,10 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icon-192.png" />
       </head>
       <body className={`${inter.variable} font-sans antialiased bg-background text-foreground`}>
-        <CelebrationProvider>{children}</CelebrationProvider>
+        <CelebrationProvider>
+          {children}
+          <FeedbackButton />
+        </CelebrationProvider>
       </body>
     </html>
   )
