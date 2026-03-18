@@ -18,7 +18,7 @@ export default function Error({
         <button
           onClick={reset}
           className="inline-block rounded-lg px-6 py-3 text-sm font-semibold"
-          style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}
+          style={{ backgroundColor: '#E8C872', color: '#E8F0FE' }}
         >
           Try again
         </button>

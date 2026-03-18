@@ -10,8 +10,8 @@ interface Prompt {
 }
 
 const CATEGORY_COLOURS: Record<string, string> = {
-  Study: '#F59E0B',
-  Work: '#F59E0B',
+  Study: '#E8C872',
+  Work: '#E8C872',
   Creative: '#8B5CF6',
   Research: '#3B82F6',
   'Decision-Making': '#22C55E',
@@ -69,9 +69,9 @@ export default async function PromptsPage() {
             <div className="flex items-center gap-2 mb-3">
               <div
                 className="w-2 h-2 rounded-full"
-                style={{ backgroundColor: CATEGORY_COLOURS[category] ?? '#F59E0B' }}
+                style={{ backgroundColor: CATEGORY_COLOURS[category] ?? '#E8C872' }}
               />
-              <h2 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CATEGORY_COLOURS[category] ?? '#F59E0B' }}>
+              <h2 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CATEGORY_COLOURS[category] ?? '#E8C872' }}>
                 {category}
               </h2>
             </div>

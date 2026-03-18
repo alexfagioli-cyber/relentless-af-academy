@@ -132,14 +132,14 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
             type="submit"
             disabled={verifying || !certNumber.trim()}
             className="rounded-md px-4 py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
-            style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}
+            style={{ backgroundColor: '#E8C872', color: '#E8F0FE' }}
           >
             {verifying ? '...' : 'Verify Certificate'}
           </button>
         </form>
 
         {error && (
-          <p className="mt-2 text-xs" style={{ color: '#F59E0B' }}>{error}</p>
+          <p className="mt-2 text-xs" style={{ color: '#E8C872' }}>{error}</p>
         )}
       </div>
 

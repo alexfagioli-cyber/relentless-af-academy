@@ -38,9 +38,9 @@ function QuestionCard({
               onClick={() => onSelect(questionKey, i)}
               className="w-full text-left rounded-lg px-4 py-3 text-sm transition-all"
               style={{
-                backgroundColor: selected ? '#F59E0B' : '#122240',
+                backgroundColor: selected ? '#E8C872' : '#122240',
                 color: selected ? '#E8F0FE' : '#8BA3C4',
-                border: selected ? '1px solid #F59E0B' : '1px solid #374151',
+                border: selected ? '1px solid #E8C872' : '1px solid #374151',
               }}
             >
               {opt.label}
@@ -119,9 +119,9 @@ function Step3({ responses, onSelect, timeCommitment, onTimeSelect }: StepProps 
                 onClick={() => onTimeSelect(opt)}
                 className="w-full text-left rounded-lg px-4 py-3 text-sm transition-all"
                 style={{
-                  backgroundColor: selected ? '#F59E0B' : '#122240',
+                  backgroundColor: selected ? '#E8C872' : '#122240',
                   color: selected ? '#E8F0FE' : '#8BA3C4',
-                  border: selected ? '1px solid #F59E0B' : '1px solid #374151',
+                  border: selected ? '1px solid #E8C872' : '1px solid #374151',
                 }}
               >
                 {labels[opt]}
@@ -271,7 +271,7 @@ export default function OnboardingPage() {
             <div
               key={i}
               className="h-1 flex-1 rounded-full transition-colors duration-300"
-              style={{ backgroundColor: i <= step ? '#F59E0B' : '#374151' }}
+              style={{ backgroundColor: i <= step ? '#E8C872' : '#374151' }}
             />
           ))}
         </div>
@@ -283,7 +283,7 @@ export default function OnboardingPage() {
 
         {/* Error */}
         {error && (
-          <div className="mt-4 rounded-md p-3 text-sm" style={{ backgroundColor: '#122240', color: '#F59E0B' }}>
+          <div className="mt-4 rounded-md p-3 text-sm" style={{ backgroundColor: '#122240', color: '#E8C872' }}>
             {error}
           </div>
         )}
@@ -304,7 +304,7 @@ export default function OnboardingPage() {
               onClick={() => setStep(step + 1)}
               disabled={!canAdvance()}
               className="flex-1 rounded-lg py-3 text-sm font-semibold transition-opacity disabled:opacity-30"
-              style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}
+              style={{ backgroundColor: '#E8C872', color: '#E8F0FE' }}
             >
               Continue
             </button>
@@ -313,7 +313,7 @@ export default function OnboardingPage() {
               onClick={handleSubmit}
               disabled={!canAdvance() || submitting}
               className="flex-1 rounded-lg py-3 text-sm font-semibold transition-opacity disabled:opacity-30"
-              style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}
+              style={{ backgroundColor: '#E8C872', color: '#E8F0FE' }}
             >
               {submitting ? 'Setting up your path' : "Let's Go"}
             </button>

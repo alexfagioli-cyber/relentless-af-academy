@@ -4,12 +4,12 @@ const tiers = [
   {
     name: 'Aware',
     description: 'Understand what AI can do and start using it with confidence.',
-    accent: '#F59E0B',
+    accent: '#E8C872',
   },
   {
     name: 'Enabled',
     description: 'Make AI a genuine force multiplier in your work and studies.',
-    accent: '#F59E0B',
+    accent: '#E8C872',
   },
   {
     name: 'Specialist',
@@ -29,7 +29,7 @@ export default function WelcomePage() {
           style={{ color: '#E8F0FE' }}
         >
           Welcome to<br />
-          <span style={{ color: '#F59E0B' }}>RelentlessAF Academy</span>
+          <span style={{ color: '#E8C872' }}>RelentlessAF Academy</span>
         </h1>
 
         {/* Body copy */}
@@ -57,17 +57,17 @@ export default function WelcomePage() {
             What people are doing with AI right now:
           </h2>
           <div className="space-y-3">
-            <div className="rounded-lg p-5" style={{ backgroundColor: '#122240', borderLeft: '3px solid #F59E0B' }}>
+            <div className="rounded-lg p-5" style={{ backgroundColor: '#122240', borderLeft: '3px solid #E8C872' }}>
               <p className="text-sm leading-relaxed" style={{ color: '#D1D5DB' }}>
                 <span className="font-semibold" style={{ color: '#E8F0FE' }}>Students</span> are using AI to revise smarter, break down complex topics in seconds, and write with more clarity than they ever thought possible.
               </p>
             </div>
-            <div className="rounded-lg p-5" style={{ backgroundColor: '#122240', borderLeft: '3px solid #F59E0B' }}>
+            <div className="rounded-lg p-5" style={{ backgroundColor: '#122240', borderLeft: '3px solid #E8C872' }}>
               <p className="text-sm leading-relaxed" style={{ color: '#D1D5DB' }}>
                 <span className="font-semibold" style={{ color: '#E8F0FE' }}>Professionals</span> are automating half their admin, generating reports in minutes, and making better decisions with AI-powered analysis.
               </p>
             </div>
-            <div className="rounded-lg p-5" style={{ backgroundColor: '#122240', borderLeft: '3px solid #F59E0B' }}>
+            <div className="rounded-lg p-5" style={{ backgroundColor: '#122240', borderLeft: '3px solid #E8C872' }}>
               <p className="text-sm leading-relaxed" style={{ color: '#D1D5DB' }}>
                 <span className="font-semibold" style={{ color: '#E8F0FE' }}>Builders</span> are creating apps, tools, and entire businesses that didn&apos;t exist six months ago — some without writing a single line of code.
               </p>
@@ -133,7 +133,7 @@ export default function WelcomePage() {
         <Link
           href="/onboarding"
           className="block w-full rounded-lg py-4 text-center text-base font-bold tracking-wide"
-          style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}
+          style={{ backgroundColor: '#E8C872', color: '#E8F0FE' }}
         >
           Let&apos;s Go →
         </Link>

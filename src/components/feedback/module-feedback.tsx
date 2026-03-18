@@ -93,9 +93,9 @@ export function ModuleFeedback({ moduleId, userId }: Props) {
             disabled={saving}
             className="flex-1 rounded-lg py-2 text-center text-xs transition-all"
             style={{
-              backgroundColor: selected === r.value ? '#F59E0B' : '#122240',
+              backgroundColor: selected === r.value ? '#E8C872' : '#122240',
               color: selected === r.value ? '#E8F0FE' : '#8BA3C4',
-              border: selected === r.value ? '1px solid #F59E0B' : '1px solid #374151',
+              border: selected === r.value ? '1px solid #E8C872' : '1px solid #374151',
             }}
           >
             <span className="block text-base mb-0.5">{r.icon}</span>

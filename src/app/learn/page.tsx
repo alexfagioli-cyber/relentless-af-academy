@@ -100,8 +100,8 @@ export default async function LearnPage() {
 
                 const borderColor =
                   status === 'completed' ? '#22C55E' :
-                  status === 'available' ? '#F59E0B' :
-                  status === 'in_progress' ? '#F59E0B' :
+                  status === 'available' ? '#E8C872' :
+                  status === 'in_progress' ? '#E8C872' :
                   '#374151'
 
                 const content = (

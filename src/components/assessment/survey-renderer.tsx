@@ -33,9 +33,9 @@ const darkTheme = {
     '--sjs-general-forecolor-light': '#8BA3C4',
     '--sjs-general-dim-forecolor': '#8BA3C4',
     '--sjs-general-dim-forecolor-light': '#6B7280',
-    '--sjs-primary-backcolor': '#F59E0B',
+    '--sjs-primary-backcolor': '#E8C872',
     '--sjs-primary-backcolor-light': 'rgba(245, 158, 11, 0.15)',
-    '--sjs-primary-backcolor-dark': '#D97706',
+    '--sjs-primary-backcolor-dark': '#C9A94E',
     '--sjs-primary-forecolor': '#E8F0FE',
     '--sjs-primary-forecolor-light': '#E8F0FE',
     '--sjs-base-unit': '8px',
@@ -100,7 +100,7 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
       <div className="rounded-lg p-6 text-center animate-fade-in" style={{ backgroundColor: '#122240' }}>
         <div
           className="text-4xl font-bold mb-2 animate-reveal"
-          style={{ color: result.passed ? '#22C55E' : '#F59E0B' }}
+          style={{ color: result.passed ? '#22C55E' : '#E8C872' }}
         >
           {Math.round(result.score)}%
         </div>
@@ -137,7 +137,7 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
   if (error) {
     return (
       <div className="space-y-4">
-        <div className="rounded-lg p-4 text-sm" style={{ backgroundColor: '#122240', color: '#F59E0B' }}>
+        <div className="rounded-lg p-4 text-sm" style={{ backgroundColor: '#122240', color: '#E8C872' }}>
           {error}
         </div>
       </div>
@@ -184,13 +184,13 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
           color: #8BA3C4 !important;
         }
         .survey-dark-wrapper .sd-btn {
-          background-color: #F59E0B !important;
+          background-color: #E8C872 !important;
           color: #E8F0FE !important;
           border: none !important;
           border-radius: 8px !important;
         }
         .survey-dark-wrapper .sd-btn:hover {
-          background-color: #D97706 !important;
+          background-color: #C9A94E !important;
         }
       `}</style>
     </div>

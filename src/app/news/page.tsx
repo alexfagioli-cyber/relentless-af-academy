@@ -3,9 +3,9 @@ import { BottomNav } from '@/components/layout/bottom-nav'
 import { redirect } from 'next/navigation'
 
 const CATEGORY_LABELS: Record<string, { label: string; colour: string }> = {
-  feature: { label: 'Feature', colour: '#F59E0B' },
+  feature: { label: 'Feature', colour: '#E8C872' },
   tip: { label: 'Tip', colour: '#22C55E' },
-  'use-case': { label: 'Use Case', colour: '#F59E0B' },
+  'use-case': { label: 'Use Case', colour: '#E8C872' },
   news: { label: 'News', colour: '#8B5CF6' },
 }
 

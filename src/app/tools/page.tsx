@@ -12,9 +12,9 @@ interface Tool {
 }
 
 const CATEGORY_COLOURS: Record<string, string> = {
-  'AI Assistants': '#F59E0B',
+  'AI Assistants': '#E8C872',
   Writing: '#EC4899',
-  Image: '#F59E0B',
+  Image: '#E8C872',
   Video: '#8B5CF6',
   Code: '#3B82F6',
   Productivity: '#22C55E',
@@ -23,7 +23,7 @@ const CATEGORY_COLOURS: Record<string, string> = {
 
 const PRICING_COLOURS: Record<string, string> = {
   Free: '#22C55E',
-  Freemium: '#F59E0B',
+  Freemium: '#E8C872',
   Paid: '#8BA3C4',
 }
 
@@ -75,9 +75,9 @@ export default async function ToolsPage() {
             <div className="flex items-center gap-2 mb-3">
               <div
                 className="w-2 h-2 rounded-full"
-                style={{ backgroundColor: CATEGORY_COLOURS[category] ?? '#F59E0B' }}
+                style={{ backgroundColor: CATEGORY_COLOURS[category] ?? '#E8C872' }}
               />
-              <h2 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CATEGORY_COLOURS[category] ?? '#F59E0B' }}>
+              <h2 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CATEGORY_COLOURS[category] ?? '#E8C872' }}>
                 {category}
               </h2>
             </div>
@@ -106,7 +106,7 @@ export default async function ToolsPage() {
                         {tool.alexRecommends && (
                           <span
                             className="text-[10px] uppercase tracking-wide font-semibold px-1.5 py-0.5 rounded"
-                            style={{ color: '#F59E0B', backgroundColor: '#F59E0B15' }}
+                            style={{ color: '#E8C872', backgroundColor: '#E8C87215' }}
                           >
                             Alex recommends
                           </span>

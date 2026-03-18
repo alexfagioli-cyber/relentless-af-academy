@@ -214,7 +214,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
           target="_blank"
           rel="noopener noreferrer"
           className="block w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity"
-          style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}
+          style={{ backgroundColor: '#E8C872', color: '#E8F0FE' }}
         >
           {status === 'completed' ? 'Revisit Course' : 'Start This'} →
         </a>
@@ -246,7 +246,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
   if (moduleType === 'assessment') {
     if (assessmentError) {
       return (
-        <div className="rounded-lg p-4 text-sm" style={{ backgroundColor: '#122240', color: '#F59E0B' }}>
+        <div className="rounded-lg p-4 text-sm" style={{ backgroundColor: '#122240', color: '#E8C872' }}>
           {assessmentError}
         </div>
       )
@@ -309,7 +309,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
         <button
           onClick={() => setShowAssessment(true)}
           className="w-full rounded-lg py-3 text-sm font-semibold text-center"
-          style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}
+          style={{ backgroundColor: '#E8C872', color: '#E8F0FE' }}
         >
           {attempts.length > 0 ? 'Go Again' : 'Start Assessment'}
         </button>
@@ -414,7 +414,7 @@ function ChallengeActions({
         onClick={handleSubmit}
         disabled={loading || saving}
         className="block w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity disabled:opacity-50"
-        style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}
+        style={{ backgroundColor: '#E8C872', color: '#E8F0FE' }}
       >
         {loading || saving ? 'Saving' : 'Done — Move On'}
       </button>
@@ -433,7 +433,7 @@ function PreviousAttempts({ attempts }: { attempts: AttemptData[] }) {
           <span style={{ color: '#8BA3C4' }}>
             {new Date(a.attempted_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
           </span>
-          <span style={{ color: a.passed ? '#22C55E' : '#F59E0B' }}>
+          <span style={{ color: a.passed ? '#22C55E' : '#E8C872' }}>
             {Math.round(a.score)}% — {a.passed ? 'Passed' : 'Failed'}
           </span>
         </div>

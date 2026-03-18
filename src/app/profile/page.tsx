@@ -4,8 +4,8 @@ import { redirect } from 'next/navigation'
 import { SignOutButton } from './sign-out-button'
 
 const TIER_COLOURS: Record<string, string> = {
-  aware: '#F59E0B',
-  enabled: '#F59E0B',
+  aware: '#E8C872',
+  enabled: '#E8C872',
   specialist: '#8B5CF6',
 }
 
@@ -34,7 +34,7 @@ export default async function ProfilePage() {
     .eq('status', 'completed')
 
   const tier = profile?.tier ?? 'aware'
-  const tierColour = TIER_COLOURS[tier] ?? '#F59E0B'
+  const tierColour = TIER_COLOURS[tier] ?? '#E8C872'
 
   return (
     <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: '#0A1628' }}>
