@@ -3,6 +3,7 @@ import { BottomNav } from '@/components/layout/bottom-nav'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { ModuleActions } from './module-actions'
+import { VerifyCert } from './verify-cert'
 
 const PLATFORM_LABELS: Record<string, string> = {
   skilljar: 'Anthropic Academy (Skilljar)',
@@ -118,6 +119,13 @@ export default async function ModuleDetailPage({
           currentStatus={currentStatus}
           userId={user.id}
         />
+
+        {/* Certificate verification for Skilljar courses */}
+        {mod.platform === 'skilljar' && currentStatus !== 'completed' && (
+          <div className="mt-4">
+            <VerifyCert moduleId={mod.id} userId={user.id} platform={mod.platform} />
+          </div>
+        )}
       </div>
 
       <BottomNav />
