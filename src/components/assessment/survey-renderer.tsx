@@ -26,14 +26,14 @@ export interface ScoreResult {
 const darkTheme = {
   cssVariables: {
     '--sjs-general-backcolor': '#FFFFFF',
-    '--sjs-general-backcolor-dark': '#F8FAFC',
-    '--sjs-general-backcolor-dim': '#F8FAFC',
+    '--sjs-general-backcolor-dark': '#FFFFFF',
+    '--sjs-general-backcolor-dim': '#FFFFFF',
     '--sjs-general-backcolor-dim-light': '#FFFFFF',
     '--sjs-general-forecolor': '#1E293B',
     '--sjs-general-forecolor-light': '#64748B',
     '--sjs-general-dim-forecolor': '#64748B',
     '--sjs-general-dim-forecolor-light': '#6B7280',
-    '--sjs-primary-backcolor': '#E8C872',
+    '--sjs-primary-backcolor': '#D4A31E',
     '--sjs-primary-backcolor-light': 'rgba(245, 158, 11, 0.15)',
     '--sjs-primary-backcolor-dark': '#C9A94E',
     '--sjs-primary-forecolor': '#1E293B',
@@ -100,7 +100,7 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
       <div className="rounded-lg p-6 text-center animate-fade-in" style={{ backgroundColor: '#FFFFFF' }}>
         <div
           className="text-4xl font-bold mb-2 animate-reveal"
-          style={{ color: result.passed ? '#22C55E' : '#E8C872' }}
+          style={{ color: result.passed ? '#22C55E' : '#D4A31E' }}
         >
           {Math.round(result.score)}%
         </div>
@@ -137,7 +137,7 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
   if (error) {
     return (
       <div className="space-y-4">
-        <div className="rounded-lg p-4 text-sm" style={{ backgroundColor: '#FFFFFF', color: '#E8C872' }}>
+        <div className="rounded-lg p-4 text-sm" style={{ backgroundColor: '#FFFFFF', color: '#D4A31E' }}>
           {error}
         </div>
       </div>
@@ -164,13 +164,13 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
       <Survey model={survey} />
       <style jsx global>{`
         .survey-dark-wrapper .sd-root-modern {
-          background-color: #F8FAFC !important;
+          background-color: #FFFFFF !important;
         }
         .survey-dark-wrapper .sd-body {
-          background-color: #F8FAFC !important;
+          background-color: #FFFFFF !important;
         }
         .survey-dark-wrapper .sd-page {
-          background-color: #F8FAFC !important;
+          background-color: #FFFFFF !important;
         }
         .survey-dark-wrapper .sd-question__content {
           background-color: #FFFFFF !important;
@@ -184,7 +184,7 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
           color: #64748B !important;
         }
         .survey-dark-wrapper .sd-btn {
-          background-color: #E8C872 !important;
+          background-color: #D4A31E !important;
           color: #1E293B !important;
           border: none !important;
           border-radius: 8px !important;

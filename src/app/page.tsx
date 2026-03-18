@@ -9,8 +9,8 @@ import Link from 'next/link'
 
 const TIER_ORDER = ['aware', 'enabled', 'specialist'] as const
 const TIER_COLOURS: Record<string, string> = {
-  aware: '#E8C872',
-  enabled: '#E8C872',
+  aware: '#D4A31E',
+  enabled: '#D4A31E',
   specialist: '#8B5CF6',
 }
 const MODULE_TYPE_ICONS: Record<string, string> = {
@@ -130,15 +130,15 @@ export default async function DashboardPage() {
         <Link
           href="/futures"
           className="block rounded-xl p-5 mb-6 transition-all"
-          style={{ backgroundColor: '#FFFFFF', border: '2px solid #E8C872' }}
+          style={{ backgroundColor: '#FFFFFF', border: '2px solid #D4A31E' }}
         >
-          <p className="text-base font-bold" style={{ color: '#E8C872' }}>
+          <p className="text-base font-bold" style={{ color: '#D4A31E' }}>
             Where could AI take you?
           </p>
           <p className="text-sm mt-1" style={{ color: '#64748B' }}>
             Real stories, an interactive explorer, and 15 things you can do with AI today.
           </p>
-          <p className="mt-3 text-sm font-semibold" style={{ color: '#E8C872' }}>
+          <p className="mt-3 text-sm font-semibold" style={{ color: '#D4A31E' }}>
             Explore →
           </p>
         </Link>
@@ -157,7 +157,7 @@ export default async function DashboardPage() {
               {(profile?.streak_current ?? 0) > 0 ? `🔥 ${profile?.streak_current}d` : '0d'}
             </p>
           </div>
-          <div className="flex-1 rounded-lg px-3 py-2 text-center" style={{ backgroundColor: '#FFFFFF', borderBottom: `2px solid ${TIER_COLOURS[learnerTier] ?? '#E8C872'}` }}>
+          <div className="flex-1 rounded-lg px-3 py-2 text-center" style={{ backgroundColor: '#FFFFFF', borderBottom: `2px solid ${TIER_COLOURS[learnerTier] ?? '#D4A31E'}` }}>
             <p className="text-xs" style={{ color: '#64748B' }}>Tier</p>
             <p className="text-sm font-semibold capitalize" style={{ color: TIER_COLOURS[learnerTier] ?? '#1E293B' }}>
               {learnerTier}
@@ -190,7 +190,7 @@ export default async function DashboardPage() {
           <Link
             href={`/learn/${resumeModule.id}`}
             className="block rounded-lg p-5 mb-4 transition-all"
-            style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8C872' }}
+            style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}
           >
             <p className="text-sm mb-2" style={{ color: '#64748B' }}>
               Nothing started yet. That changes today.
@@ -198,7 +198,7 @@ export default async function DashboardPage() {
             <p className="text-base font-semibold" style={{ color: '#1E293B' }}>
               {MODULE_TYPE_ICONS[resumeModule.module_type] ?? ''} {resumeModule.title}
             </p>
-            <p className="mt-2 text-sm font-semibold" style={{ color: '#E8C872' }}>
+            <p className="mt-2 text-sm font-semibold" style={{ color: '#D4A31E' }}>
               Start →
             </p>
           </Link>
@@ -206,7 +206,7 @@ export default async function DashboardPage() {
           <Link
             href={`/learn/${resumeModule.id}`}
             className="block rounded-lg p-5 mb-4 transition-all"
-            style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8C872' }}
+            style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}
           >
             <p className="text-xs uppercase tracking-wide mb-1" style={{ color: '#64748B' }}>
               {inProgressModule ? 'Continue where you left off' : 'Up next'}
@@ -214,7 +214,7 @@ export default async function DashboardPage() {
             <p className="text-base font-semibold" style={{ color: '#1E293B' }}>
               {MODULE_TYPE_ICONS[resumeModule.module_type] ?? ''} {resumeModule.title}
             </p>
-            <p className="mt-2 text-sm font-semibold" style={{ color: '#E8C872' }}>
+            <p className="mt-2 text-sm font-semibold" style={{ color: '#D4A31E' }}>
               {inProgressModule ? 'Resume →' : 'Start →'}
             </p>
           </Link>
@@ -240,7 +240,7 @@ export default async function DashboardPage() {
           <Link
             href="/review"
             className="block rounded-lg p-4 mb-4 transition-all"
-            style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8C872' }}
+            style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}
           >
             <div className="flex items-center justify-between">
               <div>
@@ -249,7 +249,7 @@ export default async function DashboardPage() {
                   {dueReviews} module{dueReviews !== 1 ? 's' : ''} ready for review
                 </p>
               </div>
-              <span className="rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold" style={{ backgroundColor: '#E8C872', color: '#1E293B' }}>
+              <span className="rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold" style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}>
                 {dueReviews}
               </span>
             </div>
@@ -257,7 +257,7 @@ export default async function DashboardPage() {
         )}
 
         {/* Daily tip */}
-        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#FFFFFF', borderLeft: '3px solid #E8C872' }}>
+        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#FFFFFF', borderLeft: '3px solid #D4A31E' }}>
           <p className="text-sm" style={{ color: '#64748B' }}>
             {getDailyTip()}
           </p>
@@ -265,20 +265,20 @@ export default async function DashboardPage() {
 
         {/* Quick access cards — 2x2 grid */}
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <Link href="/playground" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8C872' }}>
-            <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>AI Playground</p>
+          <Link href="/playground" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}>
+            <p className="text-sm font-semibold" style={{ color: '#D4A31E' }}>AI Playground</p>
             <p className="text-xs mt-1" style={{ color: '#64748B' }}>Practise your prompts</p>
           </Link>
-          <Link href="/futures" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8C872' }}>
-            <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>Futures</p>
+          <Link href="/futures" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}>
+            <p className="text-sm font-semibold" style={{ color: '#D4A31E' }}>Futures</p>
             <p className="text-xs mt-1" style={{ color: '#64748B' }}>Where AI could take your career and life</p>
           </Link>
-          <Link href="/tools" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8C872' }}>
-            <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>AI Tools</p>
+          <Link href="/tools" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}>
+            <p className="text-sm font-semibold" style={{ color: '#D4A31E' }}>AI Tools</p>
             <p className="text-xs mt-1" style={{ color: '#64748B' }}>Curated directory</p>
           </Link>
-          <Link href="/news" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8C872' }}>
-            <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>Latest News</p>
+          <Link href="/news" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}>
+            <p className="text-sm font-semibold" style={{ color: '#D4A31E' }}>Latest News</p>
             <p className="text-xs mt-1" style={{ color: '#64748B' }}>AI updates and ideas</p>
           </Link>
         </div>

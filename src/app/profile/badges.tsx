@@ -20,7 +20,7 @@ export function BadgeWall({ earnedKeys }: Props) {
               <div
                 className="w-12 h-12 rounded-full flex items-center justify-center text-xl mb-1 transition-all"
                 style={{
-                  backgroundColor: isEarned ? '#FFFFFF' : '#F8FAFC',
+                  backgroundColor: isEarned ? '#FFFFFF' : '#FFFFFF',
                   border: `2px solid ${isEarned ? badge.colour : '#E2E8F0'}`,
                   boxShadow: isEarned ? `0 0 12px ${badge.colour}40` : 'none',
                   opacity: isEarned ? 1 : 0.4,

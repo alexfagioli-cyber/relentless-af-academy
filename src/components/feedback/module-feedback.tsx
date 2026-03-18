@@ -93,9 +93,9 @@ export function ModuleFeedback({ moduleId, userId }: Props) {
             disabled={saving}
             className="flex-1 rounded-lg py-2 text-center text-xs transition-all"
             style={{
-              backgroundColor: selected === r.value ? '#E8C872' : '#FFFFFF',
+              backgroundColor: selected === r.value ? '#D4A31E' : '#FFFFFF',
               color: selected === r.value ? '#1E293B' : '#64748B',
-              border: selected === r.value ? '1px solid #E8C872' : '1px solid #E2E8F0',
+              border: selected === r.value ? '1px solid #D4A31E' : '1px solid #E2E8F0',
             }}
           >
             <span className="block text-base mb-0.5">{r.icon}</span>
@@ -123,7 +123,7 @@ export function ModuleFeedback({ moduleId, userId }: Props) {
             rows={2}
             className="w-full rounded-md px-3 py-2 text-sm outline-none resize-none"
             style={{
-              backgroundColor: '#F8FAFC',
+              backgroundColor: '#FFFFFF',
               color: '#1E293B',
               border: '1px solid #E2E8F0',
             }}

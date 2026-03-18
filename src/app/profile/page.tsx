@@ -7,8 +7,8 @@ import { BadgeWall } from './badges'
 import { checkAndAwardBadges } from '@/lib/badges'
 
 const TIER_COLOURS: Record<string, string> = {
-  aware: '#E8C872',
-  enabled: '#E8C872',
+  aware: '#D4A31E',
+  enabled: '#D4A31E',
   specialist: '#8B5CF6',
 }
 
@@ -45,7 +45,7 @@ export default async function ProfilePage() {
   const earnedBadgeKeys = (badges ?? []).map((b) => b.badge_key)
 
   const tier = profile?.tier ?? 'aware'
-  const tierColour = TIER_COLOURS[tier] ?? '#E8C872'
+  const tierColour = TIER_COLOURS[tier] ?? '#D4A31E'
 
   return (
     <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: 'transparent' }}>

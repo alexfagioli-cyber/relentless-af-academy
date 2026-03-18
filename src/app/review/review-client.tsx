@@ -67,8 +67,8 @@ export function ReviewClient({ reviews, userId }: { reviews: Review[]; userId: s
     const prompt = REFLECTION_PROMPTS[Math.floor(Math.random() * REFLECTION_PROMPTS.length)]
     return (
       <div className="space-y-4 animate-fade-in">
-        <div className="rounded-lg p-4" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8C872' }}>
-          <p className="text-xs uppercase tracking-wide" style={{ color: '#E8C872' }}>
+        <div className="rounded-lg p-4" style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}>
+          <p className="text-xs uppercase tracking-wide" style={{ color: '#D4A31E' }}>
             {TYPE_LABELS[review.reviewType] ?? 'Review'}
           </p>
           <p className="text-sm font-semibold mt-1" style={{ color: '#1E293B' }}>
@@ -84,14 +84,14 @@ export function ReviewClient({ reviews, userId }: { reviews: Review[]; userId: s
           placeholder="Your reflection..."
           rows={4}
           className="w-full rounded-lg px-3 py-2 text-sm outline-none resize-none"
-          style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
+          style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
         />
 
         <div className="flex gap-2">
           <button
             onClick={() => setActiveIdx(null)}
             className="flex-1 rounded-lg py-2.5 text-sm"
-            style={{ backgroundColor: '#F8FAFC', color: '#64748B', border: '1px solid #E2E8F0' }}
+            style={{ backgroundColor: '#FFFFFF', color: '#64748B', border: '1px solid #E2E8F0' }}
           >
             Back
           </button>
@@ -99,7 +99,7 @@ export function ReviewClient({ reviews, userId }: { reviews: Review[]; userId: s
             onClick={() => handleComplete(review.id)}
             disabled={saving}
             className="flex-1 rounded-lg py-2.5 text-sm font-semibold transition-opacity disabled:opacity-30"
-            style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+            style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
           >
             {saving ? 'Saving' : 'Done'}
           </button>
@@ -124,7 +124,7 @@ export function ReviewClient({ reviews, userId }: { reviews: Review[]; userId: s
                 {TYPE_LABELS[review.reviewType] ?? 'Review'} · due {review.dueDate}
               </p>
             </div>
-            <span className="text-sm" style={{ color: '#E8C872' }}>→</span>
+            <span className="text-sm" style={{ color: '#D4A31E' }}>→</span>
           </div>
         </button>
       ))}

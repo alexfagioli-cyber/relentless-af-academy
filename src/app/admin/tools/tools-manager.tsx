@@ -40,7 +40,7 @@ const PRICING_OPTIONS = ['free', 'freemium', 'paid']
 function pricingBadgeColour(pricing: string | null): string {
   switch (pricing) {
     case 'free': return '#22C55E'
-    case 'freemium': return '#E8C872'
+    case 'freemium': return '#D4A31E'
     case 'paid': return '#EF4444'
     default: return '#6B7280'
   }
@@ -139,7 +139,7 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
           <button
             onClick={openAdd}
             className="rounded-md px-4 py-2 text-sm font-semibold transition-opacity"
-            style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+            style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
           >
             Add Tool
           </button>
@@ -151,7 +151,7 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
         <form
           onSubmit={handleSubmit}
           className="rounded-lg p-4 space-y-3"
-          style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8C872' }}
+          style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}
         >
           <h3 className="text-sm font-semibold" style={{ color: '#1E293B' }}>
             {editingId ? 'Edit Tool' : 'Add Tool'}
@@ -165,7 +165,7 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               className="w-full rounded-md px-3 py-2 text-sm outline-none"
-              style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
+              style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
             />
           </div>
 
@@ -177,7 +177,7 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
               onChange={(e) => setForm({ ...form, description: e.target.value })}
               rows={3}
               className="w-full rounded-md px-3 py-2 text-sm outline-none resize-y"
-              style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
+              style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
             />
           </div>
 
@@ -190,7 +190,7 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
               onChange={(e) => setForm({ ...form, url: e.target.value })}
               placeholder="https://..."
               className="w-full rounded-md px-3 py-2 text-sm outline-none"
-              style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
+              style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
             />
           </div>
 
@@ -204,7 +204,7 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
                 placeholder="e.g. Writing, Research, Coding"
                 className="w-full rounded-md px-3 py-2 text-sm outline-none"
-                style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
+                style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
               />
             </div>
             <div>
@@ -213,7 +213,7 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
                 value={form.pricing}
                 onChange={(e) => setForm({ ...form, pricing: e.target.value })}
                 className="w-full rounded-md px-3 py-2 text-sm outline-none"
-                style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
+                style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
               >
                 {PRICING_OPTIONS.map((p) => (
                   <option key={p} value={p}>
@@ -233,7 +233,7 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
                 value={form.order_index}
                 onChange={(e) => setForm({ ...form, order_index: e.target.value })}
                 className="w-full rounded-md px-3 py-2 text-sm outline-none"
-                style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
+                style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
               />
             </div>
             <label className="flex items-center gap-2 py-2 cursor-pointer">
@@ -241,7 +241,7 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
                 type="checkbox"
                 checked={form.alex_recommends}
                 onChange={(e) => setForm({ ...form, alex_recommends: e.target.checked })}
-                className="w-4 h-4 rounded accent-[#E8C872]"
+                className="w-4 h-4 rounded accent-[#D4A31E]"
               />
               <span className="text-sm" style={{ color: '#1E293B' }}>Alex Recommends</span>
             </label>
@@ -258,7 +258,7 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
               type="submit"
               disabled={saving}
               className="rounded-md px-4 py-2 text-sm font-semibold transition-opacity disabled:opacity-50"
-              style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+              style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
             >
               {saving ? 'Saving...' : editingId ? 'Update' : 'Create'}
             </button>
@@ -283,7 +283,7 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
             className="w-full rounded-lg p-4 text-left transition-all"
             style={{
               backgroundColor: '#FFFFFF',
-              border: editingId === tool.id ? '1px solid #E8C872' : '1px solid #E2E8F0',
+              border: editingId === tool.id ? '1px solid #D4A31E' : '1px solid #E2E8F0',
             }}
           >
             <div className="flex items-center gap-3">
@@ -291,7 +291,7 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
               {tool.alex_recommends && (
                 <div
                   className="w-2 h-2 rounded-full flex-shrink-0"
-                  style={{ backgroundColor: '#E8C872' }}
+                  style={{ backgroundColor: '#D4A31E' }}
                   title="Alex Recommends"
                 />
               )}
@@ -304,7 +304,7 @@ export function ToolsManager({ tools }: { tools: Tool[] }) {
                   {tool.alex_recommends && (
                     <span
                       className="text-[10px] px-1.5 py-0.5 rounded font-medium"
-                      style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+                      style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
                     >
                       RECOMMENDED
                     </span>

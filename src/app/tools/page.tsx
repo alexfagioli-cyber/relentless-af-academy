@@ -3,9 +3,9 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 
 const CATEGORY_COLOURS: Record<string, string> = {
-  'AI Assistants': '#E8C872',
+  'AI Assistants': '#D4A31E',
   Writing: '#EC4899',
-  Image: '#E8C872',
+  Image: '#D4A31E',
   Video: '#8B5CF6',
   Code: '#3B82F6',
   Productivity: '#22C55E',
@@ -14,7 +14,7 @@ const CATEGORY_COLOURS: Record<string, string> = {
 
 const PRICING_COLOURS: Record<string, string> = {
   free: '#22C55E',
-  freemium: '#E8C872',
+  freemium: '#D4A31E',
   paid: '#64748B',
 }
 
@@ -45,9 +45,9 @@ export default async function ToolsPage() {
             <div className="flex items-center gap-2 mb-3">
               <div
                 className="w-2 h-2 rounded-full"
-                style={{ backgroundColor: CATEGORY_COLOURS[category] ?? '#E8C872' }}
+                style={{ backgroundColor: CATEGORY_COLOURS[category] ?? '#D4A31E' }}
               />
-              <h2 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CATEGORY_COLOURS[category] ?? '#E8C872' }}>
+              <h2 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CATEGORY_COLOURS[category] ?? '#D4A31E' }}>
                 {category}
               </h2>
             </div>
@@ -78,7 +78,7 @@ export default async function ToolsPage() {
                         {tool.alex_recommends && (
                           <span
                             className="text-[10px] uppercase tracking-wide font-semibold px-1.5 py-0.5 rounded"
-                            style={{ color: '#E8C872', backgroundColor: '#E8C87215' }}
+                            style={{ color: '#D4A31E', backgroundColor: '#D4A31E15' }}
                           >
                             Alex recommends
                           </span>

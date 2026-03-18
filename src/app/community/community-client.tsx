@@ -18,7 +18,7 @@ interface Post {
 const POST_TYPES = [
   { value: 'share', label: 'Share', colour: '#3B82F6' },
   { value: 'win', label: 'Win', colour: '#22C55E' },
-  { value: 'question', label: 'Question', colour: '#E8C872' },
+  { value: 'question', label: 'Question', colour: '#D4A31E' },
   { value: 'tip', label: 'Tip', colour: '#8B5CF6' },
 ]
 
@@ -84,12 +84,12 @@ export function CommunityClient({ posts: initialPosts, userId, userName, isAdmin
         <button
           onClick={() => setShowForm(true)}
           className="w-full rounded-lg py-3 text-sm font-semibold"
-          style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+          style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
         >
           New Post
         </button>
       ) : (
-        <div className="rounded-lg p-4 space-y-3" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8C872' }}>
+        <div className="rounded-lg p-4 space-y-3" style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}>
           <div className="flex gap-2">
             {POST_TYPES.map((t) => (
               <button
@@ -97,7 +97,7 @@ export function CommunityClient({ posts: initialPosts, userId, userName, isAdmin
                 onClick={() => setPostType(t.value)}
                 className="rounded-md px-2.5 py-1 text-xs font-semibold"
                 style={{
-                  backgroundColor: postType === t.value ? t.colour : '#F8FAFC',
+                  backgroundColor: postType === t.value ? t.colour : '#FFFFFF',
                   color: postType === t.value ? '#1E293B' : '#64748B',
                   border: `1px solid ${postType === t.value ? t.colour : '#E2E8F0'}`,
                 }}
@@ -112,13 +112,13 @@ export function CommunityClient({ posts: initialPosts, userId, userName, isAdmin
             placeholder="What's on your mind?"
             rows={3}
             className="w-full rounded-lg px-3 py-2 text-sm outline-none resize-none"
-            style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
+            style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
           />
           <div className="flex gap-2">
             <button
               onClick={() => setShowForm(false)}
               className="flex-1 rounded-lg py-2 text-sm font-semibold"
-              style={{ backgroundColor: '#F8FAFC', color: '#64748B', border: '1px solid #E2E8F0' }}
+              style={{ backgroundColor: '#FFFFFF', color: '#64748B', border: '1px solid #E2E8F0' }}
             >
               Cancel
             </button>
@@ -126,7 +126,7 @@ export function CommunityClient({ posts: initialPosts, userId, userName, isAdmin
               onClick={handlePost}
               disabled={posting || !content.trim()}
               className="flex-1 rounded-lg py-2 text-sm font-semibold transition-opacity disabled:opacity-30"
-              style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+              style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
             >
               {posting ? 'Posting' : 'Post'}
             </button>
@@ -143,12 +143,12 @@ export function CommunityClient({ posts: initialPosts, userId, userName, isAdmin
             className="rounded-lg p-4"
             style={{
               backgroundColor: '#FFFFFF',
-              border: post.isPinned ? '1px solid #E8C872' : '1px solid #E2E8F0',
+              border: post.isPinned ? '1px solid #D4A31E' : '1px solid #E2E8F0',
             }}
           >
             {/* Header */}
             <div className="flex items-center gap-2 mb-2">
-              {post.isPinned && <span className="text-xs" style={{ color: '#E8C872' }}>📌</span>}
+              {post.isPinned && <span className="text-xs" style={{ color: '#D4A31E' }}>📌</span>}
               <span className="text-sm font-semibold" style={{ color: '#1E293B' }}>
                 {post.authorName}
               </span>

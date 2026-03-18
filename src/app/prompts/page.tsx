@@ -4,8 +4,8 @@ import { redirect } from 'next/navigation'
 import { CopyPromptButton } from './copy-button'
 
 const CATEGORY_COLOURS: Record<string, string> = {
-  Study: '#E8C872',
-  Work: '#E8C872',
+  Study: '#D4A31E',
+  Work: '#D4A31E',
   Creative: '#8B5CF6',
   Research: '#3B82F6',
   'Decision-Making': '#22C55E',
@@ -39,9 +39,9 @@ export default async function PromptsPage() {
             <div className="flex items-center gap-2 mb-3">
               <div
                 className="w-2 h-2 rounded-full"
-                style={{ backgroundColor: CATEGORY_COLOURS[category] ?? '#E8C872' }}
+                style={{ backgroundColor: CATEGORY_COLOURS[category] ?? '#D4A31E' }}
               />
-              <h2 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CATEGORY_COLOURS[category] ?? '#E8C872' }}>
+              <h2 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CATEGORY_COLOURS[category] ?? '#D4A31E' }}>
                 {category}
               </h2>
             </div>

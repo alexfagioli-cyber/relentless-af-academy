@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-brand-crimson: #E8C872;
+  --color-brand-crimson: #D4A31E;
   --color-brand-charcoal: #1F2937;
   --color-surface: #FFFFFF;
   --color-background: var(--background);
@@ -51,7 +51,7 @@
 }
 
 :root {
-  --background: #F8FAFC;
+  --background: #FFFFFF;
   --foreground: #1E293B;
   --card: #FFFFFF;
   --card-foreground: #1E293B;
@@ -86,7 +86,7 @@
 }
 
 .dark {
-  --background: #F8FAFC;
+  --background: #FFFFFF;
   --foreground: #1E293B;
   --card: #FFFFFF;
   --card-foreground: #1E293B;
@@ -125,7 +125,7 @@
   }
   body {
     @apply text-foreground;
-    background: #F8FAFC;
+    background: #FFFFFF;
     min-height: 100vh;
   }
   html {

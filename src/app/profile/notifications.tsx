@@ -85,7 +85,7 @@ export function NotificationPreferences({ userId }: Props) {
           <button
             onClick={() => toggle(key)}
             className="relative w-11 h-6 rounded-full transition-colors flex-shrink-0"
-            style={{ backgroundColor: prefs[key] ? '#E8C872' : '#E2E8F0' }}
+            style={{ backgroundColor: prefs[key] ? '#D4A31E' : '#E2E8F0' }}
           >
             <div
               className="absolute top-0.5 w-5 h-5 rounded-full transition-transform"

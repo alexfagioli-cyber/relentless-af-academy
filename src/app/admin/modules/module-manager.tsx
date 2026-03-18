@@ -53,7 +53,7 @@ const PLATFORM_OPTIONS = ['skilljar', 'github', 'coursera', 'claudecertification
 const TIER_COLOURS: Record<string, string> = {
   aware: '#4CAF50',
   enabled: '#2196F3',
-  specialist: '#E8C872',
+  specialist: '#D4A31E',
 }
 
 const TYPE_LABELS: Record<string, string> = {
@@ -163,7 +163,7 @@ export function ModuleManager({ modules }: { modules: Module[] }) {
   }
 
   const inputStyle: React.CSSProperties = {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: '#FFFFFF',
     border: '1px solid #E2E8F0',
     color: '#1E293B',
     borderRadius: 6,
@@ -195,7 +195,7 @@ export function ModuleManager({ modules }: { modules: Module[] }) {
         <button
           onClick={openAdd}
           className="px-4 py-2 rounded-md text-sm font-medium"
-          style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+          style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
         >
           Add Module
         </button>
@@ -351,7 +351,7 @@ export function ModuleManager({ modules }: { modules: Module[] }) {
                   disabled={saving}
                   className="flex-1 py-2 rounded-md text-sm font-medium"
                   style={{
-                    backgroundColor: saving ? '#E2E8F0' : '#E8C872',
+                    backgroundColor: saving ? '#E2E8F0' : '#D4A31E',
                     color: '#1E293B',
                   }}
                 >
@@ -412,7 +412,7 @@ export function ModuleManager({ modules }: { modules: Module[] }) {
             <button
               onClick={() => openEdit(mod)}
               className="px-3 py-1.5 rounded text-xs font-medium shrink-0"
-              style={{ border: '1px solid #E2E8F0', color: '#E8C872' }}
+              style={{ border: '1px solid #E2E8F0', color: '#D4A31E' }}
             >
               Edit
             </button>

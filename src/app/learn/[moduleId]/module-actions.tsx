@@ -218,7 +218,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
           target="_blank"
           rel="noopener noreferrer"
           className="block w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity"
-          style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+          style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
         >
           {status === 'completed' ? 'Revisit Course' : 'Start This'} →
         </a>
@@ -250,7 +250,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
   if (moduleType === 'assessment') {
     if (assessmentError) {
       return (
-        <div className="rounded-lg p-4 text-sm" style={{ backgroundColor: '#FFFFFF', color: '#E8C872' }}>
+        <div className="rounded-lg p-4 text-sm" style={{ backgroundColor: '#FFFFFF', color: '#D4A31E' }}>
           {assessmentError}
         </div>
       )
@@ -313,7 +313,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
         <button
           onClick={() => setShowAssessment(true)}
           className="w-full rounded-lg py-3 text-sm font-semibold text-center"
-          style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+          style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
         >
           {attempts.length > 0 ? 'Go Again' : 'Start Assessment'}
         </button>
@@ -426,14 +426,14 @@ function ChallengeActions({
             <button
               onClick={() => setShowShareOffer(false)}
               className="flex-1 rounded-lg py-2 text-sm"
-              style={{ backgroundColor: '#F8FAFC', color: '#64748B', border: '1px solid #E2E8F0' }}
+              style={{ backgroundColor: '#FFFFFF', color: '#64748B', border: '1px solid #E2E8F0' }}
             >
               Skip
             </button>
             <button
               onClick={handleShare}
               className="flex-1 rounded-lg py-2 text-sm font-semibold"
-              style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+              style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
             >
               Share
             </button>
@@ -460,7 +460,7 @@ function ChallengeActions({
         rows={5}
         className="w-full rounded-lg px-3 py-3 text-sm outline-none resize-none"
         style={{
-          backgroundColor: '#F8FAFC',
+          backgroundColor: '#FFFFFF',
           color: '#1E293B',
           border: '1px solid #E2E8F0',
         }}
@@ -469,7 +469,7 @@ function ChallengeActions({
         onClick={handleSubmit}
         disabled={loading || saving}
         className="block w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity disabled:opacity-50"
-        style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+        style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
       >
         {loading || saving ? 'Saving' : 'Done — Move On'}
       </button>
@@ -488,7 +488,7 @@ function PreviousAttempts({ attempts }: { attempts: AttemptData[] }) {
           <span style={{ color: '#64748B' }}>
             {new Date(a.attempted_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
           </span>
-          <span style={{ color: a.passed ? '#22C55E' : '#E8C872' }}>
+          <span style={{ color: a.passed ? '#22C55E' : '#D4A31E' }}>
             {Math.round(a.score)}% — {a.passed ? 'Passed' : 'Failed'}
           </span>
         </div>

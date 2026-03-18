@@ -134,7 +134,7 @@ export default function PromptsPage() {
             <button
               onClick={startAdd}
               className="rounded-md px-4 py-2 text-sm font-semibold transition-opacity"
-              style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+              style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
             >
               Add Prompt
             </button>
@@ -143,7 +143,7 @@ export default function PromptsPage() {
 
         {/* Error banner */}
         {error && (
-          <p className="text-xs rounded-md px-3 py-2" style={{ color: '#E8C872', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
+          <p className="text-xs rounded-md px-3 py-2" style={{ color: '#D4A31E', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
             {error}
           </p>
         )}
@@ -170,7 +170,7 @@ export default function PromptsPage() {
                   value={form.title}
                   onChange={(e) => setForm({ ...form, title: e.target.value })}
                   className="w-full rounded-md px-3 py-2 text-sm outline-none"
-                  style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
+                  style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
                   placeholder="e.g. Scenario Builder"
                 />
               </div>
@@ -185,7 +185,7 @@ export default function PromptsPage() {
                   value={form.category}
                   onChange={(e) => setForm({ ...form, category: e.target.value })}
                   className="w-full rounded-md px-3 py-2 text-sm outline-none"
-                  style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
+                  style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
                   placeholder="e.g. coaching, assessment"
                 />
               </div>
@@ -201,7 +201,7 @@ export default function PromptsPage() {
                 value={form.description}
                 onChange={(e) => setForm({ ...form, description: e.target.value })}
                 className="w-full rounded-md px-3 py-2 text-sm outline-none"
-                style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
+                style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
                 placeholder="Short description of what this template does"
               />
             </div>
@@ -216,7 +216,7 @@ export default function PromptsPage() {
                 onChange={(e) => setForm({ ...form, template: e.target.value })}
                 rows={8}
                 className="w-full rounded-md px-3 py-2 text-sm outline-none resize-y"
-                style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
+                style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
                 placeholder="Enter the prompt template text..."
               />
             </div>
@@ -231,7 +231,7 @@ export default function PromptsPage() {
                 value={form.order_index}
                 onChange={(e) => setForm({ ...form, order_index: parseInt(e.target.value) || 0 })}
                 className="w-full rounded-md px-3 py-2 text-sm outline-none"
-                style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
+                style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
               />
             </div>
 
@@ -241,7 +241,7 @@ export default function PromptsPage() {
                 type="submit"
                 disabled={saving}
                 className="rounded-md px-4 py-2 text-sm font-semibold transition-opacity disabled:opacity-50"
-                style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+                style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
               >
                 {saving ? 'Saving...' : editingId ? 'Update' : 'Create'}
               </button>
@@ -275,7 +275,7 @@ export default function PromptsPage() {
                 className="w-full rounded-lg p-4 text-left transition-all"
                 style={{
                   backgroundColor: '#FFFFFF',
-                  border: editingId === p.id ? '1px solid #E8C872' : '1px solid #E2E8F0',
+                  border: editingId === p.id ? '1px solid #D4A31E' : '1px solid #E2E8F0',
                 }}
               >
                 <div className="flex items-center justify-between gap-3">

@@ -65,7 +65,7 @@ interface AnalyticsClientProps {
   recentActivity: ActivityItem[]
 }
 
-const GOLD = '#E8C872'
+const GOLD = '#D4A31E'
 const GOLD_DIM = '#B89A45'
 const CARD_BG = '#FFFFFF'
 const CARD_BORDER = '#E2E8F0'
@@ -73,7 +73,7 @@ const TEXT_PRIMARY = '#1E293B'
 const TEXT_SECONDARY = '#64748B'
 const GRID_COLOR = '#E2E8F0'
 
-const TIER_COLORS = ['#E8C872', '#B89A45', '#8B7535']
+const TIER_COLORS = ['#D4A31E', '#B89A45', '#8B7535']
 
 function StatCard({ label, value }: { label: string; value: string | number }) {
   return (
@@ -110,7 +110,7 @@ function CustomTooltip({ active, payload, label }: { active?: boolean; payload?:
   return (
     <div
       className="rounded px-3 py-2 text-xs"
-      style={{ backgroundColor: '#F8FAFC', border: `1px solid ${CARD_BORDER}`, color: TEXT_PRIMARY }}
+      style={{ backgroundColor: '#FFFFFF', border: `1px solid ${CARD_BORDER}`, color: TEXT_PRIMARY }}
     >
       <p style={{ color: TEXT_SECONDARY }}>{label}</p>
       {payload.map((entry, i) => (
@@ -225,7 +225,7 @@ export function AnalyticsClient({
                   return (
                     <div
                       className="rounded px-3 py-2 text-xs"
-                      style={{ backgroundColor: '#F8FAFC', border: `1px solid ${CARD_BORDER}`, color: TEXT_PRIMARY }}
+                      style={{ backgroundColor: '#FFFFFF', border: `1px solid ${CARD_BORDER}`, color: TEXT_PRIMARY }}
                     >
                       <p style={{ color: TEXT_SECONDARY }}>{data.fullTitle}</p>
                       <p style={{ color: GOLD }}>{data.completed} completed</p>
@@ -268,7 +268,7 @@ export function AnalyticsClient({
                     return (
                       <div
                         className="rounded px-3 py-2 text-xs"
-                        style={{ backgroundColor: '#F8FAFC', border: `1px solid ${CARD_BORDER}`, color: TEXT_PRIMARY }}
+                        style={{ backgroundColor: '#FFFFFF', border: `1px solid ${CARD_BORDER}`, color: TEXT_PRIMARY }}
                       >
                         <p style={{ color: GOLD }}>{d.name}: {d.value} learners</p>
                       </div>
@@ -313,7 +313,7 @@ export function AnalyticsClient({
                       return (
                         <div
                           className="rounded px-3 py-2 text-xs"
-                          style={{ backgroundColor: '#F8FAFC', border: `1px solid ${CARD_BORDER}`, color: TEXT_PRIMARY }}
+                          style={{ backgroundColor: '#FFFFFF', border: `1px solid ${CARD_BORDER}`, color: TEXT_PRIMARY }}
                         >
                           <p style={{ color: TEXT_SECONDARY }}>{d.fullTitle}</p>
                           <p style={{ color: GOLD }}>{d.passRate}% pass rate</p>

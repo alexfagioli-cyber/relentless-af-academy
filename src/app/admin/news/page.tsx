@@ -145,7 +145,7 @@ export default function AdminNewsPage() {
               setError(null)
             }}
             className="px-3 py-1.5 rounded text-xs font-medium transition-colors"
-            style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+            style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
           >
             + Add News Item
           </button>
@@ -181,7 +181,7 @@ export default function AdminNewsPage() {
                 onChange={(e) => setForm({ ...form, title: e.target.value })}
                 className="w-full rounded px-3 py-2 text-sm outline-none"
                 style={{
-                  backgroundColor: '#F8FAFC',
+                  backgroundColor: '#FFFFFF',
                   border: '1px solid #E2E8F0',
                   color: '#1E293B',
                 }}
@@ -198,7 +198,7 @@ export default function AdminNewsPage() {
                 rows={3}
                 className="w-full rounded px-3 py-2 text-sm outline-none resize-y"
                 style={{
-                  backgroundColor: '#F8FAFC',
+                  backgroundColor: '#FFFFFF',
                   border: '1px solid #E2E8F0',
                   color: '#1E293B',
                 }}
@@ -215,7 +215,7 @@ export default function AdminNewsPage() {
                 onChange={(e) => setForm({ ...form, url: e.target.value })}
                 className="w-full rounded px-3 py-2 text-sm outline-none"
                 style={{
-                  backgroundColor: '#F8FAFC',
+                  backgroundColor: '#FFFFFF',
                   border: '1px solid #E2E8F0',
                   color: '#1E293B',
                 }}
@@ -232,7 +232,7 @@ export default function AdminNewsPage() {
                   onChange={(e) => setForm({ ...form, category: e.target.value })}
                   className="w-full rounded px-3 py-2 text-sm outline-none"
                   style={{
-                    backgroundColor: '#F8FAFC',
+                    backgroundColor: '#FFFFFF',
                     border: '1px solid #E2E8F0',
                     color: '#1E293B',
                   }}
@@ -254,7 +254,7 @@ export default function AdminNewsPage() {
                   onChange={(e) => setForm({ ...form, published_at: e.target.value })}
                   className="w-full rounded px-3 py-2 text-sm outline-none"
                   style={{
-                    backgroundColor: '#F8FAFC',
+                    backgroundColor: '#FFFFFF',
                     border: '1px solid #E2E8F0',
                     color: '#1E293B',
                   }}
@@ -266,7 +266,7 @@ export default function AdminNewsPage() {
                 onClick={handleSave}
                 disabled={saving}
                 className="px-4 py-2 rounded text-xs font-medium transition-colors disabled:opacity-50"
-                style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+                style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
               >
                 {saving ? 'Saving...' : editingId ? 'Update' : 'Create'}
               </button>
@@ -328,7 +328,7 @@ export default function AdminNewsPage() {
                 <div className="flex items-center gap-2 mt-1 flex-wrap">
                   <span
                     className="text-[10px] uppercase tracking-wide font-semibold px-1.5 py-0.5 rounded"
-                    style={{ backgroundColor: '#E2E8F0', color: '#E8C872' }}
+                    style={{ backgroundColor: '#E2E8F0', color: '#D4A31E' }}
                   >
                     {item.category}
                   </span>

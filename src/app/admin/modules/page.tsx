@@ -16,7 +16,7 @@ export default async function AdminModulesPage() {
         <h1 className="text-2xl font-bold mb-1" style={{ color: '#1E293B' }}>Admin</h1>
         <p className="text-sm mb-4" style={{ color: '#64748B' }}>Module Manager</p>
         <AdminNav />
-        <p style={{ color: '#E8C872' }}>Failed to load modules: {error.message}</p>
+        <p style={{ color: '#D4A31E' }}>Failed to load modules: {error.message}</p>
       </>
     )
   }

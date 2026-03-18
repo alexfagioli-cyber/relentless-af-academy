@@ -26,7 +26,7 @@ interface Props {
 
 function statusDotColour(days: number): string {
   if (days <= 3) return '#22C55E'   // green
-  if (days <= 7) return '#E8C872'   // amber
+  if (days <= 7) return '#D4A31E'   // amber
   if (days <= 14) return '#EF4444'  // red
   return '#6B7280'                  // grey
 }
@@ -86,7 +86,7 @@ export function LearnersClient({ learners }: Props) {
               className="w-full rounded-lg p-4 text-left transition-all"
               style={{
                 backgroundColor: '#FFFFFF',
-                border: isExpanded ? '1px solid #E8C872' : '1px solid #E2E8F0',
+                border: isExpanded ? '1px solid #D4A31E' : '1px solid #E2E8F0',
               }}
             >
               <div className="flex items-center gap-3">
@@ -105,7 +105,7 @@ export function LearnersClient({ learners }: Props) {
                     {l.isAdmin && (
                       <span
                         className="text-xs px-1.5 py-0.5 rounded"
-                        style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+                        style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
                       >
                         admin
                       </span>
@@ -169,7 +169,7 @@ export function LearnersClient({ learners }: Props) {
                     onChange={(e) => handleTierOverride(l.id, e.target.value)}
                     disabled={savingTier === l.id}
                     className="rounded-md px-3 py-1.5 text-xs disabled:opacity-50"
-                    style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
+                    style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
                   >
                     <option value="aware">Aware</option>
                     <option value="enabled">Enabled</option>

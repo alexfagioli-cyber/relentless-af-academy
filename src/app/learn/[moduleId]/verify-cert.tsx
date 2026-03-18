@@ -123,7 +123,7 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
             placeholder="Certificate number"
             className="flex-1 rounded-md px-3 py-3 text-sm outline-none"
             style={{
-              backgroundColor: '#F8FAFC',
+              backgroundColor: '#FFFFFF',
               color: '#1E293B',
               border: '1px solid #E2E8F0',
             }}
@@ -132,14 +132,14 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
             type="submit"
             disabled={verifying || !certNumber.trim()}
             className="rounded-md px-4 py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
-            style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+            style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
           >
             {verifying ? '...' : 'Verify Certificate'}
           </button>
         </form>
 
         {error && (
-          <p className="mt-2 text-xs" style={{ color: '#E8C872' }}>{error}</p>
+          <p className="mt-2 text-xs" style={{ color: '#D4A31E' }}>{error}</p>
         )}
       </div>
 

@@ -59,7 +59,7 @@ function PlaygroundInner({ userId }: { userId: string }) {
   }
 
   return (
-    <div className="flex flex-col h-[100dvh]" style={{ backgroundColor: '#F8FAFC' }}>
+    <div className="flex flex-col h-[100dvh]" style={{ backgroundColor: '#FFFFFF' }}>
       {/* Header */}
       <div className="px-4 pt-4 pb-3" style={{ borderBottom: '1px solid #E2E8F0' }}>
         <div className="flex items-center justify-between max-w-lg mx-auto">
@@ -90,7 +90,7 @@ function PlaygroundInner({ userId }: { userId: string }) {
                 className="rounded-xl px-4 py-3 max-w-[85%] text-sm leading-relaxed"
                 style={{
                   backgroundColor: msg.role === 'user' ? '#FFFFFF' : '#FFFFFF',
-                  border: msg.role === 'user' ? '1px solid #E8C872' : '1px solid #E2E8F0',
+                  border: msg.role === 'user' ? '1px solid #D4A31E' : '1px solid #E2E8F0',
                   color: '#1E293B',
                 }}
               >
@@ -99,7 +99,7 @@ function PlaygroundInner({ userId }: { userId: string }) {
                   <button
                     onClick={handleCopyAndOpen}
                     className="mt-3 rounded-lg px-3 py-1.5 text-xs font-semibold"
-                    style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+                    style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
                   >
                     Open Claude →
                   </button>
@@ -136,13 +136,13 @@ function PlaygroundInner({ userId }: { userId: string }) {
             placeholder="Type a prompt..."
             rows={1}
             className="flex-1 rounded-lg px-3 py-2.5 text-sm outline-none resize-none"
-            style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
+            style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
           />
           <button
             onClick={handleSend}
             disabled={!input.trim() || sending}
             className="rounded-lg px-4 text-sm font-semibold transition-opacity disabled:opacity-30"
-            style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+            style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
           >
             Send
           </button>

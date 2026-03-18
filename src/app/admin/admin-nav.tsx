@@ -28,7 +28,7 @@ export function AdminNav() {
               href={tab.href}
               className="px-3 py-2 rounded-md text-xs font-medium whitespace-nowrap transition-colors"
               style={{
-                backgroundColor: isActive ? '#E8C872' : '#FFFFFF',
+                backgroundColor: isActive ? '#D4A31E' : '#FFFFFF',
                 color: isActive ? '#1E293B' : '#64748B',
                 border: isActive ? 'none' : '1px solid #E2E8F0',
               }}

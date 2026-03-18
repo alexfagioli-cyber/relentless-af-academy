@@ -56,7 +56,7 @@ export function FeedbackButton() {
         <button
           onClick={() => setOpen(true)}
           className="fixed bottom-24 right-6 z-40 rounded-full px-3 py-1.5 text-xs font-semibold transition-all shadow-lg"
-          style={{ color: '#E8C872', border: '1.5px solid #E8C872', backgroundColor: '#FFFFFF' }}
+          style={{ color: '#D4A31E', border: '1.5px solid #D4A31E', backgroundColor: '#FFFFFF' }}
         >
           Feedback
         </button>
@@ -95,9 +95,9 @@ export function FeedbackButton() {
                       onClick={() => setRating(r.value)}
                       className="rounded-lg py-3 text-center transition-all"
                       style={{
-                        backgroundColor: rating === r.value ? '#E8C872' : '#F8FAFC',
+                        backgroundColor: rating === r.value ? '#D4A31E' : '#FFFFFF',
                         color: rating === r.value ? '#1E293B' : '#64748B',
-                        border: `1px solid ${rating === r.value ? '#E8C872' : '#E2E8F0'}`,
+                        border: `1px solid ${rating === r.value ? '#D4A31E' : '#E2E8F0'}`,
                       }}
                     >
                       <span className="text-lg block">{r.emoji}</span>
@@ -112,14 +112,14 @@ export function FeedbackButton() {
                   placeholder="Anything specific? (optional)"
                   rows={2}
                   className="w-full rounded-lg px-3 py-2 text-sm outline-none resize-none mb-3"
-                  style={{ backgroundColor: '#F8FAFC', color: '#1E293B', border: '1px solid #E2E8F0' }}
+                  style={{ backgroundColor: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0' }}
                 />
 
                 <button
                   onClick={handleSubmit}
                   disabled={!rating}
                   className="w-full rounded-lg py-2.5 text-sm font-semibold transition-opacity disabled:opacity-30"
-                  style={{ backgroundColor: '#E8C872', color: '#1E293B' }}
+                  style={{ backgroundColor: '#D4A31E', color: '#1E293B' }}
                 >
                   Send
                 </button>
