@@ -269,9 +269,9 @@ export default async function DashboardPage() {
             <p className="text-sm font-semibold" style={{ color: '#D4A31E' }}>AI Playground</p>
             <p className="text-xs mt-1" style={{ color: '#64748B' }}>Practise your prompts</p>
           </Link>
-          <Link href="/futures" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}>
-            <p className="text-sm font-semibold" style={{ color: '#D4A31E' }}>Futures</p>
-            <p className="text-xs mt-1" style={{ color: '#64748B' }}>Where AI could take your career and life</p>
+          <Link href="/community" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}>
+            <p className="text-sm font-semibold" style={{ color: '#D4A31E' }}>Community</p>
+            <p className="text-xs mt-1" style={{ color: '#64748B' }}>Share and learn together</p>
           </Link>
           <Link href="/tools" className="rounded-lg p-4 transition-all" style={{ backgroundColor: '#FFFFFF', border: '1px solid #D4A31E' }}>
             <p className="text-sm font-semibold" style={{ color: '#D4A31E' }}>AI Tools</p>
