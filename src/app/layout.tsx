@@ -35,15 +35,10 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icon-192.png" />
       </head>
       <body className={`${inter.variable} font-sans antialiased bg-background text-foreground`}>
-        {/* Desktop: centre content in a phone mockup frame */}
-        <div className="md:flex md:items-center md:justify-center md:min-h-screen">
-          <div className="md:w-[390px] md:max-h-[85vh] md:aspect-[9/19.5] md:rounded-[40px] md:border md:border-[#363654] md:shadow-[0_0_60px_rgba(0,0,0,0.5)] md:overflow-y-auto md:overflow-x-hidden md:relative md:bg-[#1A1A2E]">
-            <CelebrationProvider>
-              {children}
-              <FeedbackButton />
-            </CelebrationProvider>
-          </div>
-        </div>
+        <CelebrationProvider>
+          {children}
+          <FeedbackButton />
+        </CelebrationProvider>
       </body>
     </html>
   )
