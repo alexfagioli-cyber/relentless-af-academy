@@ -202,27 +202,51 @@ export default function OnboardingPage() {
         .from('onboarding_responses')
         .insert(responseRows)
 
-      if (responseError) throw responseError
+      if (responseError) {
+        console.error('Onboarding responses save failed:', responseError.message, responseError.details)
+        throw responseError
+      }
 
-      // Upsert learner profile
+      // Update or insert learner profile
       const motivationOptions = QUESTION_OPTIONS.motivation
       const successOptions = QUESTION_OPTIONS.success_vision
       const backgroundOptions = QUESTION_OPTIONS.background
 
-      const { error: profileError } = await supabase
-        .from('learner_profiles')
-        .upsert({
-          id: user.id,
-          display_name: displayName,
-          tier,
-          onboarding_complete: true,
-          weekly_time_commitment: timeCommitment,
-          primary_goal: successOptions[responses.success_vision]?.label ?? null,
-          learning_motivation: motivationOptions[responses.motivation]?.label ?? null,
-          occupation: backgroundOptions[responses.background]?.label ?? null,
-        })
+      const profileData = {
+        display_name: displayName,
+        tier,
+        onboarding_complete: true,
+        weekly_time_commitment: timeCommitment,
+        primary_goal: successOptions[responses.success_vision]?.label ?? null,
+        learning_motivation: motivationOptions[responses.motivation]?.label ?? null,
+        occupation: backgroundOptions[responses.background]?.label ?? null,
+      }
 
-      if (profileError) throw profileError
+      // Try update first (handles existing rows created by admin invite)
+      const { data: existing } = await supabase
+        .from('learner_profiles')
+        .select('id')
+        .eq('id', user.id)
+        .single()
+
+      let profileError
+      if (existing) {
+        const result = await supabase
+          .from('learner_profiles')
+          .update(profileData)
+          .eq('id', user.id)
+        profileError = result.error
+      } else {
+        const result = await supabase
+          .from('learner_profiles')
+          .insert({ id: user.id, ...profileData })
+        profileError = result.error
+      }
+
+      if (profileError) {
+        console.error('Profile save failed:', profileError.message, profileError.details, profileError.hint)
+        throw profileError
+      }
 
       router.push('/')
       router.refresh()
