@@ -1,0 +1,126 @@
+import { createClient } from '@/lib/supabase/server'
+import { BottomNav } from '@/components/layout/bottom-nav'
+import { redirect } from 'next/navigation'
+import Link from 'next/link'
+import { ModuleActions } from './module-actions'
+
+const PLATFORM_LABELS: Record<string, string> = {
+  skilljar: 'Anthropic Academy (Skilljar)',
+  github: 'Anthropic GitHub Courses',
+  coursera: 'Coursera',
+  claudecertifications: 'Claude Certifications',
+  internal: 'RelentlessAF Academy',
+}
+
+function formatDuration(mins: number): string {
+  if (mins < 60) return `${mins} minutes`
+  const h = Math.floor(mins / 60)
+  const m = mins % 60
+  return m > 0 ? `${h}h ${m}m` : `${h} hour${h > 1 ? 's' : ''}`
+}
+
+export default async function ModuleDetailPage({
+  params,
+}: {
+  params: Promise<{ moduleId: string }>
+}) {
+  const { moduleId } = await params
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+
+  if (!user) redirect('/auth/login')
+
+  // Fetch module
+  const { data: mod } = await supabase
+    .from('modules')
+    .select('*')
+    .eq('id', moduleId)
+    .single()
+
+  if (!mod) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#111827' }}>
+        <div className="text-center">
+          <p className="text-lg font-medium" style={{ color: '#F9FAFB' }}>Module not found</p>
+          <Link href="/learn" className="mt-4 inline-block text-sm" style={{ color: '#DC2626' }}>
+            Back to learning path
+          </Link>
+        </div>
+        <BottomNav />
+      </div>
+    )
+  }
+
+  // Fetch progress
+  const { data: progress } = await supabase
+    .from('progress')
+    .select('status, started_at, completed_at')
+    .eq('learner_id', user.id)
+    .eq('module_id', moduleId)
+    .single()
+
+  // If no progress row yet, create one as in_progress and log started event
+  const currentStatus = progress?.status ?? 'not_started'
+
+  return (
+    <div className="min-h-screen pb-20" style={{ backgroundColor: '#111827' }}>
+      <div className="max-w-lg mx-auto px-4 pt-8">
+        {/* Back link */}
+        <Link href="/learn" className="text-sm mb-6 inline-block" style={{ color: '#9CA3AF' }}>
+          ← Back to learning path
+        </Link>
+
+        {/* Module header */}
+        <div className="mb-6">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-xs uppercase tracking-wide px-2 py-0.5 rounded" style={{ backgroundColor: '#1E293B', color: '#9CA3AF' }}>
+              {mod.module_type}
+            </span>
+            <span className="text-xs uppercase tracking-wide px-2 py-0.5 rounded" style={{ backgroundColor: '#1E293B', color: '#9CA3AF' }}>
+              {mod.tier}
+            </span>
+          </div>
+          <h1 className="text-2xl font-bold" style={{ color: '#F9FAFB' }}>
+            {mod.title}
+          </h1>
+        </div>
+
+        {/* Details */}
+        <div className="rounded-lg p-4 mb-6 space-y-3" style={{ backgroundColor: '#1E293B' }}>
+          {mod.description && (
+            <p className="text-sm" style={{ color: '#9CA3AF' }}>
+              {mod.description}
+            </p>
+          )}
+          <div className="flex flex-wrap gap-4 text-xs" style={{ color: '#6B7280' }}>
+            {mod.estimated_duration_mins && (
+              <span>Duration: {formatDuration(mod.estimated_duration_mins)}</span>
+            )}
+            {mod.platform && (
+              <span>Platform: {PLATFORM_LABELS[mod.platform] ?? mod.platform}</span>
+            )}
+          </div>
+        </div>
+
+        {/* Status banner */}
+        {currentStatus === 'completed' && (
+          <div className="rounded-lg p-3 mb-6 text-sm font-medium text-center" style={{ backgroundColor: '#14532D', color: '#22C55E' }}>
+            Completed {progress?.completed_at ? `on ${new Date(progress.completed_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}` : ''}
+          </div>
+        )}
+
+        {/* Actions — client component */}
+        <ModuleActions
+          moduleId={mod.id}
+          moduleType={mod.module_type}
+          externalUrl={mod.external_url}
+          platform={mod.platform}
+          currentStatus={currentStatus}
+          userId={user.id}
+        />
+      </div>
+
+      <BottomNav />
+    </div>
+  )
+}
