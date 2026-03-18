@@ -108,7 +108,7 @@ export default async function DashboardPage() {
         {/* Welcome */}
         <div className="mb-6">
           <h1 className="text-2xl font-bold" style={{ color: '#E8F0FE' }}>
-            Welcome back{profile?.display_name ? `, ${profile.display_name.split(' ')[0]}` : ''}
+            Welcome back{profile?.display_name ? `, ${getFirstName(profile.display_name)}` : ''}
           </h1>
           {(() => {
             const msg = getDashboardMessage({
@@ -289,6 +289,13 @@ export default async function DashboardPage() {
       <BottomNav />
     </div>
   )
+}
+
+function getFirstName(name: string): string {
+  // If name has a space, take the first word (e.g. "Alex Fagioli" → "Alex")
+  if (name.includes(' ')) return name.split(' ')[0]
+  // Email prefix or single word — capitalise first letter
+  return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
 }
 
 function formatTimeAgo(dateStr: string): string {
