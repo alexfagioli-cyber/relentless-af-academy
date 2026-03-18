@@ -30,7 +30,8 @@ export async function POST(request: NextRequest) {
   }
 
   const { email } = body
-  if (!email || !email.includes('@')) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!email || typeof email !== 'string' || !emailRegex.test(email.trim()) || email.length > 254) {
     return NextResponse.json({ error: 'Valid email required' }, { status: 400 })
   }
 

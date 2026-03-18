@@ -162,6 +162,12 @@
   animation: revealScore 0.5s ease-out 0.3s both;
 }
 
+/* Toast slide-in from top */
+@keyframes toastSlideIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Smooth colour transitions for module status */
 .transition-status {
   transition: border-color 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;

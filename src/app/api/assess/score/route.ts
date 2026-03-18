@@ -27,6 +27,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Missing assessmentId or answers' }, { status: 400 })
   }
 
+  // Validate UUID format
+  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+  if (!uuidRegex.test(assessmentId)) {
+    return NextResponse.json({ error: 'Invalid assessmentId format' }, { status: 400 })
+  }
+
   // Fetch assessment with correct answers (server-side only — never sent to client)
   const { data: assessment, error: fetchError } = await supabase
     .from('assessments')

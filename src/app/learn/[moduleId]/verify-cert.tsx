@@ -51,14 +51,15 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
 
   async function handleVerify(e: React.FormEvent) {
     e.preventDefault()
-    if (!certNumber.trim()) return
+    const sanitised = certNumber.trim().slice(0, 100).replace(/[^a-zA-Z0-9\-_]/g, '')
+    if (!sanitised) return
 
     setVerifying(true)
     setError(null)
 
     try {
       // Attempt Skilljar verification
-      const res = await fetch(`https://verify.skilljar.com/c/${encodeURIComponent(certNumber.trim())}`, {
+      const res = await fetch(`https://verify.skilljar.com/c/${encodeURIComponent(sanitised)}`, {
         method: 'HEAD',
         mode: 'no-cors',
       })

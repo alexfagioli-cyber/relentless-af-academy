@@ -188,12 +188,15 @@ export default function OnboardingPage() {
       // Get display name from user metadata or email
       const displayName = user.user_metadata?.display_name || user.email?.split('@')[0] || 'Learner'
 
-      // Save onboarding responses
-      const responseRows = Object.entries(responses).map(([questionKey, optionIndex]) => ({
-        learner_id: user.id,
-        question_key: questionKey,
-        response: { option_index: optionIndex },
-      }))
+      // Save onboarding responses — validate keys against known question keys
+      const validKeys = new Set(Object.keys(QUESTION_OPTIONS))
+      const responseRows = Object.entries(responses)
+        .filter(([questionKey]) => validKeys.has(questionKey))
+        .map(([questionKey, optionIndex]) => ({
+          learner_id: user.id,
+          question_key: questionKey,
+          response: { option_index: optionIndex },
+        }))
 
       const { error: responseError } = await supabase
         .from('onboarding_responses')
