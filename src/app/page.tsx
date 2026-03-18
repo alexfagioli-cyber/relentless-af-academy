@@ -319,18 +319,6 @@ export default async function DashboardPage() {
         </Link>
       </div>
 
-      {/* Floating AI Playground button */}
-      <Link
-        href="/playground"
-        className="fixed bottom-[5.5rem] right-4 z-30 flex items-center gap-1.5 rounded-full px-3 py-1.5 shadow-lg"
-        style={{ backgroundColor: '#25253D', border: '1.5px solid #E8C872' }}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#E8C872" className="w-4 h-4">
-          <path fillRule="evenodd" d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.178 7.152.52 1.978.29 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.68-3.348 3.97a48.901 48.901 0 0 1-3.476.383.39.39 0 0 0-.297.17l-2.755 4.133a.75.75 0 0 1-1.248 0l-2.755-4.133a.39.39 0 0 0-.297-.17 48.9 48.9 0 0 1-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97Z" clipRule="evenodd" />
-        </svg>
-        <span className="text-xs font-semibold" style={{ color: '#E8C872' }}>AI Playground</span>
-      </Link>
-
       <BottomNav />
     </div>
   )
