@@ -45,7 +45,7 @@ export default async function ModuleDetailPage({
       <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#0A1628' }}>
         <div className="text-center">
           <p className="text-lg font-medium" style={{ color: '#E8F0FE' }}>Module not found</p>
-          <Link href="/learn" className="mt-4 inline-block text-sm" style={{ color: '#DC2626' }}>
+          <Link href="/learn" className="mt-4 inline-block text-sm" style={{ color: '#F59E0B' }}>
             Back to learning path
           </Link>
         </div>

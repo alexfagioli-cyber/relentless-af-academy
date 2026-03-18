@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-brand-crimson: #DC2626;
+  --color-brand-crimson: #F59E0B;
   --color-brand-charcoal: #1F2937;
   --color-surface: #122240;
   --color-background: var(--background);

@@ -54,7 +54,7 @@ export default function SetPasswordPage() {
         </div>
 
         {error && (
-          <div className="rounded-md p-3 text-sm" style={{ backgroundColor: '#122240', color: '#DC2626' }}>
+          <div className="rounded-md p-3 text-sm" style={{ backgroundColor: '#122240', color: '#F59E0B' }}>
             {error}
           </div>
         )}
@@ -106,7 +106,7 @@ export default function SetPasswordPage() {
             type="submit"
             disabled={loading}
             className="w-full rounded-md py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
-            style={{ backgroundColor: '#DC2626', color: '#E8F0FE' }}
+            style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}
           >
             {loading ? 'Setting password' : 'Set Your Password'}
           </button>

@@ -51,7 +51,7 @@ function LoginForm() {
       </div>
 
       {(urlError || error) && (
-        <div className="rounded-md p-3 text-sm" style={{ backgroundColor: '#122240', color: '#DC2626' }}>
+        <div className="rounded-md p-3 text-sm" style={{ backgroundColor: '#122240', color: '#F59E0B' }}>
           {urlError === 'invalid_link' ? 'Invalid or expired link. Please try again.' : error}
         </div>
       )}
@@ -103,7 +103,7 @@ function LoginForm() {
           type="submit"
           disabled={loading}
           className="w-full rounded-md py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
-          style={{ backgroundColor: '#DC2626', color: '#E8F0FE' }}
+          style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}
         >
           {loading ? 'Signing in' : 'Sign In'}
         </button>

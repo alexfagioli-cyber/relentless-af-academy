@@ -132,7 +132,7 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
             type="submit"
             disabled={verifying || !certNumber.trim()}
             className="rounded-md px-4 py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
-            style={{ backgroundColor: '#DC2626', color: '#E8F0FE' }}
+            style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}
           >
             {verifying ? '...' : 'Verify Certificate'}
           </button>

@@ -9,7 +9,7 @@ import Link from 'next/link'
 const TIER_ORDER = ['aware', 'enabled', 'specialist'] as const
 const TIER_COLOURS: Record<string, string> = {
   aware: '#F59E0B',
-  enabled: '#DC2626',
+  enabled: '#F59E0B',
   specialist: '#8B5CF6',
 }
 const MODULE_TYPE_ICONS: Record<string, string> = {
@@ -147,7 +147,7 @@ export default async function DashboardPage() {
           </div>
           <div
             className="flex-1 rounded-lg px-3 py-2 text-center"
-            style={{ backgroundColor: '#122240', borderBottom: `2px solid ${TIER_COLOURS[learnerTier] ?? '#DC2626'}` }}
+            style={{ backgroundColor: '#122240', borderBottom: `2px solid ${TIER_COLOURS[learnerTier] ?? '#F59E0B'}` }}
           >
             <p className="text-xs" style={{ color: '#8BA3C4' }}>Tier</p>
             <p className="text-sm font-semibold capitalize" style={{ color: TIER_COLOURS[learnerTier] ?? '#E8F0FE' }}>
@@ -181,7 +181,7 @@ export default async function DashboardPage() {
           <Link
             href={`/learn/${resumeModule.id}`}
             className="block rounded-lg p-5 mb-4 transition-all"
-            style={{ backgroundColor: '#122240', border: '1px solid #DC2626' }}
+            style={{ backgroundColor: '#122240', border: '1px solid #F59E0B' }}
           >
             <p className="text-sm mb-2" style={{ color: '#8BA3C4' }}>
               Nothing started yet. That changes today.
@@ -189,7 +189,7 @@ export default async function DashboardPage() {
             <p className="text-base font-semibold" style={{ color: '#E8F0FE' }}>
               {MODULE_TYPE_ICONS[resumeModule.module_type] ?? ''} {resumeModule.title}
             </p>
-            <p className="mt-2 text-sm font-semibold" style={{ color: '#DC2626' }}>
+            <p className="mt-2 text-sm font-semibold" style={{ color: '#F59E0B' }}>
               Start →
             </p>
           </Link>
@@ -197,7 +197,7 @@ export default async function DashboardPage() {
           <Link
             href={`/learn/${resumeModule.id}`}
             className="block rounded-lg p-5 mb-4 transition-all"
-            style={{ backgroundColor: '#122240', border: '1px solid #DC2626' }}
+            style={{ backgroundColor: '#122240', border: '1px solid #F59E0B' }}
           >
             <p className="text-xs uppercase tracking-wide mb-1" style={{ color: '#8BA3C4' }}>
               {inProgressModule ? 'Continue where you left off' : 'Up next'}
@@ -205,7 +205,7 @@ export default async function DashboardPage() {
             <p className="text-base font-semibold" style={{ color: '#E8F0FE' }}>
               {MODULE_TYPE_ICONS[resumeModule.module_type] ?? ''} {resumeModule.title}
             </p>
-            <p className="mt-2 text-sm font-semibold" style={{ color: '#DC2626' }}>
+            <p className="mt-2 text-sm font-semibold" style={{ color: '#F59E0B' }}>
               {inProgressModule ? 'Resume →' : 'Start →'}
             </p>
           </Link>
@@ -227,7 +227,7 @@ export default async function DashboardPage() {
         )}
 
         {/* Daily tip */}
-        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#122240', borderLeft: '3px solid #DC2626' }}>
+        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#122240', borderLeft: '3px solid #F59E0B' }}>
           <p className="text-sm" style={{ color: '#8BA3C4' }}>
             {getDailyTip()}
           </p>

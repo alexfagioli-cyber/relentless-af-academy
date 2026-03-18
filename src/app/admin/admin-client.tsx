@@ -58,7 +58,7 @@ interface Props {
 function statusColour(days: number): string {
   if (days <= 3) return '#22C55E'   // green
   if (days <= 7) return '#F59E0B'   // amber
-  if (days <= 14) return '#DC2626'  // red
+  if (days <= 14) return '#F59E0B'  // red
   return '#6B7280'                  // grey
 }
 
@@ -167,7 +167,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
               <button
                 onClick={() => setExpandedId(expandedId === l.id ? null : l.id)}
                 className="w-full rounded-lg p-4 text-left transition-all"
-                style={{ backgroundColor: '#122240', border: expandedId === l.id ? '1px solid #DC2626' : '1px solid #374151' }}
+                style={{ backgroundColor: '#122240', border: expandedId === l.id ? '1px solid #F59E0B' : '1px solid #374151' }}
               >
                 <div className="flex items-center gap-3">
                   {/* Status dot */}
@@ -183,7 +183,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
                         {l.displayName}
                       </span>
                       {l.isAdmin && (
-                        <span className="text-xs px-1.5 py-0.5 rounded" style={{ backgroundColor: '#DC2626', color: '#E8F0FE' }}>
+                        <span className="text-xs px-1.5 py-0.5 rounded" style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}>
                           admin
                         </span>
                       )}
@@ -261,7 +261,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
                         {l.attempts.slice(0, 5).map((a, i) => (
                           <div key={i} className="flex justify-between text-xs rounded px-2 py-1" style={{ backgroundColor: '#0A1628' }}>
                             <span style={{ color: '#8BA3C4' }}>{a.assessment_title}</span>
-                            <span style={{ color: a.passed ? '#22C55E' : '#DC2626' }}>
+                            <span style={{ color: a.passed ? '#22C55E' : '#F59E0B' }}>
                               {Math.round(a.score)}% — {a.passed ? 'Pass' : 'Fail'}
                             </span>
                           </div>
@@ -314,14 +314,14 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
             type="submit"
             disabled={inviteLoading || !inviteEmail.trim()}
             className="rounded-md px-4 py-3 text-sm font-semibold transition-opacity disabled:opacity-50"
-            style={{ backgroundColor: '#DC2626', color: '#E8F0FE' }}
+            style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}
           >
             {inviteLoading ? '...' : 'Send Invite'}
           </button>
         </form>
 
         {inviteError && (
-          <p className="text-xs mb-3" style={{ color: '#DC2626' }}>{inviteError}</p>
+          <p className="text-xs mb-3" style={{ color: '#F59E0B' }}>{inviteError}</p>
         )}
         {inviteSuccess && (
           <p className="text-xs mb-3" style={{ color: '#22C55E' }}>{inviteSuccess}</p>
@@ -332,7 +332,7 @@ export function AdminDashboardClient({ learners, invites, feedback, summary }: P
             <div key={inv.id} className="flex items-center justify-between rounded-md px-3 py-2 text-xs" style={{ backgroundColor: '#122240', border: '1px solid #1E3A5F' }}>
               <span className="truncate mr-2" style={{ color: '#8BA3C4' }}>{inv.email}</span>
               <span style={{
-                color: inv.status === 'accepted' ? '#22C55E' : inv.status === 'expired' ? '#DC2626' : '#F59E0B'
+                color: inv.status === 'accepted' ? '#22C55E' : inv.status === 'expired' ? '#F59E0B' : '#F59E0B'
               }}>
                 {inv.status}
               </span>

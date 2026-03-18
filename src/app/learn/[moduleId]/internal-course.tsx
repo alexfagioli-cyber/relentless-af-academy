@@ -119,7 +119,7 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
         <button
           onClick={() => router.push('/learn')}
           className="mt-4 rounded-lg px-6 py-2 text-sm font-semibold"
-          style={{ backgroundColor: '#DC2626', color: '#E8F0FE' }}
+          style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}
         >
           Continue →
         </button>
@@ -137,7 +137,7 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
             className="h-1.5 rounded-full transition-all duration-300"
             style={{
               width: i === currentScreen ? 24 : 8,
-              backgroundColor: i <= currentScreen ? '#DC2626' : '#374151',
+              backgroundColor: i <= currentScreen ? '#F59E0B' : '#374151',
             }}
           />
         ))}
@@ -167,7 +167,7 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 block w-full rounded-lg py-3 text-sm font-semibold text-center"
-            style={{ backgroundColor: '#DC2626', color: '#E8F0FE' }}
+            style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}
           >
             {screen.action_label ?? 'Open'} →
           </a>
@@ -207,9 +207,9 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
                           onClick={() => updateResponse(input.key, opt)}
                           className="w-full text-left rounded-lg px-4 py-3 text-sm transition-all"
                           style={{
-                            backgroundColor: selected ? '#DC2626' : '#122240',
+                            backgroundColor: selected ? '#F59E0B' : '#122240',
                             color: selected ? '#E8F0FE' : '#8BA3C4',
-                            border: selected ? '1px solid #DC2626' : '1px solid #374151',
+                            border: selected ? '1px solid #F59E0B' : '1px solid #374151',
                           }}
                         >
                           {opt}
@@ -240,7 +240,7 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
             onClick={handleComplete}
             disabled={saving || !canProceed()}
             className="flex-1 rounded-lg py-3 text-sm font-semibold transition-opacity disabled:opacity-30"
-            style={{ backgroundColor: '#DC2626', color: '#E8F0FE' }}
+            style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}
           >
             {saving ? 'Saving' : 'Complete'}
           </button>
@@ -249,7 +249,7 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
             onClick={() => setCurrentScreen((s) => s + 1)}
             disabled={screen.inputs ? !canProceed() : false}
             className="flex-1 rounded-lg py-3 text-sm font-semibold transition-opacity disabled:opacity-30"
-            style={{ backgroundColor: '#DC2626', color: '#E8F0FE' }}
+            style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}
           >
             Continue
           </button>

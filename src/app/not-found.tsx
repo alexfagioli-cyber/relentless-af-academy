@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#0A1628' }}>
       <div className="text-center">
-        <p className="text-6xl font-bold mb-4" style={{ color: '#DC2626' }}>404</p>
+        <p className="text-6xl font-bold mb-4" style={{ color: '#F59E0B' }}>404</p>
         <h1 className="text-xl font-semibold mb-2" style={{ color: '#E8F0FE' }}>
           Page not found
         </h1>
@@ -14,7 +14,7 @@ export default function NotFound() {
         <Link
           href="/"
           className="inline-block rounded-lg px-6 py-3 text-sm font-semibold"
-          style={{ backgroundColor: '#DC2626', color: '#E8F0FE' }}
+          style={{ backgroundColor: '#F59E0B', color: '#E8F0FE' }}
         >
           Back to dashboard
         </Link>
