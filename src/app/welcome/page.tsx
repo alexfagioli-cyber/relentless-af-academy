@@ -51,6 +51,33 @@ export default function WelcomePage() {
           </p>
         </div>
 
+        {/* Art of the possible */}
+        <div className="mb-10">
+          <h2 className="text-xl font-bold mb-4" style={{ color: '#F9FAFB' }}>
+            What people are doing with AI right now:
+          </h2>
+          <div className="space-y-3">
+            <div className="rounded-lg p-5" style={{ backgroundColor: '#1E293B', borderLeft: '3px solid #DC2626' }}>
+              <p className="text-sm leading-relaxed" style={{ color: '#D1D5DB' }}>
+                <span className="font-semibold" style={{ color: '#F9FAFB' }}>Students</span> are using AI to revise smarter, break down complex topics in seconds, and write with more clarity than they ever thought possible.
+              </p>
+            </div>
+            <div className="rounded-lg p-5" style={{ backgroundColor: '#1E293B', borderLeft: '3px solid #DC2626' }}>
+              <p className="text-sm leading-relaxed" style={{ color: '#D1D5DB' }}>
+                <span className="font-semibold" style={{ color: '#F9FAFB' }}>Professionals</span> are automating half their admin, generating reports in minutes, and making better decisions with AI-powered analysis.
+              </p>
+            </div>
+            <div className="rounded-lg p-5" style={{ backgroundColor: '#1E293B', borderLeft: '3px solid #DC2626' }}>
+              <p className="text-sm leading-relaxed" style={{ color: '#D1D5DB' }}>
+                <span className="font-semibold" style={{ color: '#F9FAFB' }}>Builders</span> are creating apps, tools, and entire businesses that didn&apos;t exist six months ago — some without writing a single line of code.
+              </p>
+            </div>
+          </div>
+          <p className="mt-4 text-base font-semibold" style={{ color: '#F9FAFB' }}>
+            This is where you start.
+          </p>
+        </div>
+
         {/* Tiers */}
         <div className="mb-10">
           <h2 className="text-xl font-bold mb-4" style={{ color: '#F9FAFB' }}>

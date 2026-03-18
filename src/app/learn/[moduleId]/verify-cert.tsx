@@ -3,6 +3,7 @@
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { useCelebration } from '@/components/ui/celebration-toast'
 
 interface Props {
   moduleId: string
@@ -17,6 +18,7 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
   const [success, setSuccess] = useState(false)
   const [fallback, setFallback] = useState(false)
   const router = useRouter()
+  const { celebrate } = useCelebration()
 
   async function markCompleteWithEvent() {
     const supabase = createClient()
@@ -44,6 +46,15 @@ export function VerifyCert({ moduleId, userId, platform }: Props) {
 
     const { updateStreak } = await import('@/lib/streak')
     await updateStreak(supabase, userId)
+
+    // Check if this is the learner's first cert verification
+    const { count } = await supabase
+      .from('learning_events')
+      .select('*', { count: 'exact', head: true })
+      .eq('learner_id', userId)
+      .eq('verb', 'completed')
+      .contains('context', { verification_method: 'certificate' })
+    if (count === 1) celebrate('first_cert_verified')
 
     setSuccess(true)
     router.refresh()

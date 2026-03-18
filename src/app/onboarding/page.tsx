@@ -207,6 +207,7 @@ export default function OnboardingPage() {
       // Upsert learner profile
       const motivationOptions = QUESTION_OPTIONS.motivation
       const successOptions = QUESTION_OPTIONS.success_vision
+      const backgroundOptions = QUESTION_OPTIONS.background
 
       const { error: profileError } = await supabase
         .from('learner_profiles')
@@ -218,6 +219,7 @@ export default function OnboardingPage() {
           weekly_time_commitment: timeCommitment,
           primary_goal: successOptions[responses.success_vision]?.label ?? null,
           learning_motivation: motivationOptions[responses.motivation]?.label ?? null,
+          occupation: backgroundOptions[responses.background]?.label ?? null,
         })
 
       if (profileError) throw profileError

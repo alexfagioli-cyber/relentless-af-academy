@@ -4,6 +4,8 @@ import { useState, useCallback } from 'react'
 import { Model } from 'survey-core'
 import { Survey } from 'survey-react-ui'
 import 'survey-core/survey-core.min.css'
+import { createClient } from '@/lib/supabase/client'
+import { useCelebration } from '@/components/ui/celebration-toast'
 
 interface SurveyRendererProps {
   assessmentId: string
@@ -51,6 +53,7 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [result, setResult] = useState<ScoreResult | null>(null)
+  const { celebrate } = useCelebration()
 
   const handleComplete = useCallback(async (sender: Model) => {
     setSubmitting(true)
@@ -71,6 +74,18 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
 
       const scoreResult: ScoreResult = await res.json()
       setResult(scoreResult)
+
+      // Check if this is the learner's first pass or fail
+      const supabase = createClient()
+      const verb = scoreResult.passed ? 'passed' : 'failed'
+      const { count } = await supabase
+        .from('learning_events')
+        .select('*', { count: 'exact', head: true })
+        .eq('verb', verb)
+      if (count === 1) {
+        celebrate(scoreResult.passed ? 'first_assessment_passed' : 'first_assessment_failed')
+      }
+
       onComplete(scoreResult)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')

@@ -4,6 +4,8 @@ import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { useState, useEffect, useCallback } from 'react'
 import { SurveyRenderer, type ScoreResult } from '@/components/assessment/survey-renderer'
+import { useCelebration } from '@/components/ui/celebration-toast'
+import type { CelebrationKey } from '@/lib/celebrations'
 
 interface AssessmentData {
   id: string
@@ -35,6 +37,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
   const [showAssessment, setShowAssessment] = useState(false)
   const [assessmentError, setAssessmentError] = useState<string | null>(null)
   const router = useRouter()
+  const { celebrate } = useCelebration()
 
   // On mount, mark as in_progress if not_started + fetch assessment data if assessment module
   useEffect(() => {
@@ -110,6 +113,14 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
         object_id: moduleId,
       })
 
+    // Check if this is the learner's first module start
+    const { count } = await supabase
+      .from('learning_events')
+      .select('*', { count: 'exact', head: true })
+      .eq('learner_id', userId)
+      .eq('verb', 'started')
+    if (count === 1) celebrate('first_module_started')
+
     setStatus('in_progress')
   }
 
@@ -142,15 +153,29 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
         object_id: moduleId,
       })
 
+    // Check if this is the learner's first module completion
+    const { count } = await supabase
+      .from('learning_events')
+      .select('*', { count: 'exact', head: true })
+      .eq('learner_id', userId)
+      .eq('verb', 'completed')
+    if (count === 1) celebrate('first_module_completed')
+
+    // Update streak and check milestones
     const { updateStreak } = await import('@/lib/streak')
-    await updateStreak(supabase, userId)
+    const newStreak = await updateStreak(supabase, userId)
+    if (newStreak === 3) celebrate('streak_3')
+    if (newStreak === 7) celebrate('streak_7')
+
+    // Check tier completion
+    await checkTierCelebrations(supabase, userId, moduleId, celebrate)
 
     setStatus('completed')
     setLoading(false)
     router.refresh()
   }
 
-  const handleAssessmentComplete = useCallback((result: ScoreResult) => {
+  const handleAssessmentComplete = useCallback(async (result: ScoreResult) => {
     setShowAssessment(false)
     setAttempts((prev) => [{
       score: result.score,
@@ -160,11 +185,25 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
 
     if (result.passed) {
       setStatus('completed')
+
+      // Check streak milestone (streak was updated by the API route)
+      const supabase = createClient()
+      const { data: profile } = await supabase
+        .from('learner_profiles')
+        .select('streak_current')
+        .eq('id', userId)
+        .single()
+      if (profile?.streak_current === 3) celebrate('streak_3')
+      if (profile?.streak_current === 7) celebrate('streak_7')
+
+      // Check tier completion
+      await checkTierCelebrations(supabase, userId, moduleId, celebrate)
+
       router.refresh()
     } else {
       setStatus('failed')
     }
-  }, [router])
+  }, [router, userId, moduleId, celebrate])
 
   // External course
   if (externalUrl && platform !== 'internal') {
@@ -297,6 +336,41 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
   }
 
   return null
+}
+
+async function checkTierCelebrations(
+  supabase: ReturnType<typeof createClient>,
+  userId: string,
+  completedModuleId: string,
+  celebrate: (key: CelebrationKey) => void,
+) {
+  // Fetch all modules and the learner's progress
+  const [{ data: modules }, { data: progress }] = await Promise.all([
+    supabase.from('modules').select('id, tier'),
+    supabase.from('progress').select('module_id, status').eq('learner_id', userId),
+  ])
+  if (!modules || !progress) return
+
+  const completedIds = new Set(
+    progress.filter((p) => p.status === 'completed').map((p) => p.module_id),
+  )
+
+  // Find which tier the just-completed module belongs to
+  const completedModule = modules.find((m) => m.id === completedModuleId)
+  if (!completedModule) return
+
+  const currentTier = completedModule.tier
+  const tierModules = modules.filter((m) => m.tier === currentTier)
+
+  // Check if ALL modules in this tier are now completed
+  const allComplete = tierModules.every((m) => completedIds.has(m.id))
+  if (!allComplete) return
+
+  celebrate('tier_complete')
+
+  // Fire tier transition celebration
+  if (currentTier === 'aware') celebrate('tier_aware_to_enabled')
+  if (currentTier === 'enabled') celebrate('tier_enabled_to_specialist')
 }
 
 function PreviousAttempts({ attempts }: { attempts: AttemptData[] }) {

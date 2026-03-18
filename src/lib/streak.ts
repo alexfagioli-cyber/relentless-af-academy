@@ -1,6 +1,10 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 
-export async function updateStreak(supabase: SupabaseClient, userId: string) {
+/**
+ * Updates the learner's daily streak.
+ * Returns the new streak count, or null if no change (already active today / no profile).
+ */
+export async function updateStreak(supabase: SupabaseClient, userId: string): Promise<number | null> {
   const today = new Date().toISOString().split('T')[0] // YYYY-MM-DD
 
   const { data: profile } = await supabase
@@ -9,7 +13,7 @@ export async function updateStreak(supabase: SupabaseClient, userId: string) {
     .eq('id', userId)
     .single()
 
-  if (!profile) return
+  if (!profile) return null
 
   const lastDate = profile.streak_last_date // YYYY-MM-DD or null
   let newCurrent = profile.streak_current ?? 0
@@ -17,7 +21,7 @@ export async function updateStreak(supabase: SupabaseClient, userId: string) {
 
   if (lastDate === today) {
     // Already active today — no change
-    return
+    return null
   }
 
   // Check if last date was yesterday
@@ -46,4 +50,6 @@ export async function updateStreak(supabase: SupabaseClient, userId: string) {
       last_active_at: new Date().toISOString(),
     })
     .eq('id', userId)
+
+  return newCurrent
 }

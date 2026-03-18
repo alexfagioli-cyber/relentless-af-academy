@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { computeUnlockedModules } from '@/lib/prerequisites'
+import { getDashboardMessage } from '@/lib/dashboard-messages'
 import { BottomNav } from '@/components/layout/bottom-nav'
 import Link from 'next/link'
 
@@ -11,7 +12,7 @@ export default async function DashboardPage() {
 
   const { data: profile } = await supabase
     .from('learner_profiles')
-    .select('display_name, tier, streak_current')
+    .select('display_name, tier, streak_current, occupation, learning_motivation, primary_goal')
     .eq('id', user?.id ?? '')
     .single()
 
@@ -59,9 +60,24 @@ export default async function DashboardPage() {
           <h1 className="text-2xl font-bold" style={{ color: '#F9FAFB' }}>
             Welcome back{profile?.display_name ? `, ${profile.display_name}` : ''}
           </h1>
-          <p className="mt-1 text-sm" style={{ color: '#9CA3AF' }}>
-            Keep pushing. Every session compounds.
-          </p>
+          {(() => {
+            const msg = getDashboardMessage({
+              tier: profile?.tier ?? 'aware',
+              occupation: profile?.occupation ?? null,
+              learning_motivation: profile?.learning_motivation ?? null,
+              primary_goal: profile?.primary_goal ?? null,
+            })
+            return (
+              <>
+                <p className="mt-2 text-base font-semibold" style={{ color: '#F9FAFB' }}>
+                  {msg.headline}
+                </p>
+                <p className="mt-1 text-sm" style={{ color: '#9CA3AF' }}>
+                  {msg.subtext}
+                </p>
+              </>
+            )
+          })()}
         </div>
 
         {/* Stats row */}
