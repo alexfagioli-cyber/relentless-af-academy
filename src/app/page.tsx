@@ -146,6 +146,42 @@ export default async function DashboardPage() {
           </p>
         </Link>
 
+        {/* Quick links */}
+        <div className="grid grid-cols-2 gap-3 mb-6">
+          <Link
+            href="/playground"
+            className="rounded-lg p-4 transition-all"
+            style={{ backgroundColor: '#25253D', borderLeft: '3px solid #E8C872' }}
+          >
+            <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>AI Playground</p>
+            <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>Experiment with prompts in real time</p>
+          </Link>
+          <Link
+            href="/community"
+            className="rounded-lg p-4 transition-all"
+            style={{ backgroundColor: '#25253D', borderLeft: '3px solid #E8C872' }}
+          >
+            <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>Community</p>
+            <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>Share and learn with others</p>
+          </Link>
+          <Link
+            href="/tools"
+            className="rounded-lg p-4 transition-all"
+            style={{ backgroundColor: '#25253D', borderLeft: '3px solid #E8C872' }}
+          >
+            <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>Tools</p>
+            <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>Curated directory of the best AI tools</p>
+          </Link>
+          <Link
+            href="/news"
+            className="rounded-lg p-4 transition-all"
+            style={{ backgroundColor: '#25253D', borderLeft: '3px solid #E8C872' }}
+          >
+            <p className="text-sm font-semibold" style={{ color: '#E8F0FE' }}>News</p>
+            <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>AI updates that matter to you</p>
+          </Link>
+        </div>
+
         {/* Quick stats bar */}
         <div className="flex items-center gap-3 mb-6">
           <div
