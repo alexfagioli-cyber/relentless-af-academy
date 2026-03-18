@@ -129,11 +129,20 @@ export default function WelcomePage() {
           </p>
         </div>
 
+        {/* Futures teaser */}
+        <Link
+          href="/futures"
+          className="block w-full rounded-lg py-4 text-center text-base font-semibold tracking-wide mb-4"
+          style={{ color: '#E8C872', border: '2px solid #E8C872' }}
+        >
+          See where AI could take you →
+        </Link>
+
         {/* CTA */}
         <Link
           href="/onboarding"
           className="block w-full rounded-lg py-4 text-center text-base font-bold tracking-wide"
-          style={{ backgroundColor: '#E8C872', color: '#E8F0FE' }}
+          style={{ backgroundColor: '#E8C872', color: '#0A1628' }}
         >
           Let&apos;s Go →
         </Link>
