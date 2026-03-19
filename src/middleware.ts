@@ -47,9 +47,12 @@ export async function middleware(request: NextRequest) {
 
   // Check onboarding status and session enforcement
   if (!pathname.startsWith('/onboarding') && !pathname.startsWith('/welcome')) {
+    // DO NOT add columns here that don't exist in the database.
+    // active_session_id / active_session_ids has been added and reverted 3 times.
+    // If you want session enforcement, CREATE THE COLUMN FIRST via Supabase SQL Editor.
     const { data: profile } = await supabase
       .from('learner_profiles')
-      .select('onboarding_complete, active_session_ids')
+      .select('onboarding_complete')
       .eq('id', user.id)
       .single()
 
@@ -58,19 +61,6 @@ export async function middleware(request: NextRequest) {
       const url = request.nextUrl.clone()
       url.pathname = '/onboarding'
       return NextResponse.redirect(url)
-    }
-
-    // Session enforcement: allow up to 2 concurrent sessions (mobile + desktop)
-    const activeIds: string[] = (profile as Record<string, unknown>).active_session_ids as string[] ?? []
-    const cookieSessionId = request.cookies.get('academy_session_id')?.value
-    if (cookieSessionId && activeIds.length > 0 && !activeIds.includes(cookieSessionId)) {
-      await supabase.auth.signOut()
-      const url = request.nextUrl.clone()
-      url.pathname = '/auth/login'
-      url.searchParams.set('error', 'session_replaced')
-      const response = NextResponse.redirect(url)
-      response.cookies.delete('academy_session_id')
-      return response
     }
   }
 
