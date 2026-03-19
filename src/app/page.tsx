@@ -107,7 +107,7 @@ export default async function DashboardPage() {
     <div className="min-h-screen pb-20 md:pb-8 animate-fade-in">
       <div className="max-w-lg md:max-w-3xl mx-auto px-4 pt-8">
         {/* Welcome */}
-        <div className="mb-6">
+        <div className="mb-6 md:mb-4">
           <h1 className="text-2xl font-bold" style={{ color: '#FFFFFF' }}>
             Welcome back{profile?.display_name ? `, ${getFirstName(profile.display_name)}` : ''}
           </h1>
@@ -126,27 +126,67 @@ export default async function DashboardPage() {
           })()}
         </div>
 
-        {/* Futures card */}
-        <Link
-          href="/futures"
-          className="block rounded-xl p-5 mb-6 transition-all card-depth gold-glow"
-          style={{ border: '2px solid #E8C872' }}
-        >
-          <p className="text-base font-bold" style={{ color: '#E8C872' }}>
-            Where could AI take you?
-          </p>
-          <p className="text-sm mt-1" style={{ color: '#D4D4E8' }}>
-            Real stories, an interactive explorer, and 15 things you can do with AI today.
-          </p>
-          <p className="mt-3 text-sm font-semibold" style={{ color: '#E8C872' }}>
-            Explore →
-          </p>
-        </Link>
+        {/* --- Futures card (extracted for conditional ordering) --- */}
+        {completedCount === 0 && (
+          <Link
+            href="/futures"
+            className="block rounded-xl p-5 md:p-4 mb-4 md:mb-3 transition-all card-depth gold-glow"
+            style={{ border: '2px solid #E8C872' }}
+          >
+            <p className="text-base font-bold" style={{ color: '#E8C872' }}>
+              Where could AI take you?
+            </p>
+            <p className="text-sm mt-1" style={{ color: '#D4D4E8' }}>
+              Real stories, an interactive explorer, and 15 things you can do with AI today.
+            </p>
+            <p className="mt-3 text-sm font-semibold" style={{ color: '#E8C872' }}>
+              Explore →
+            </p>
+          </Link>
+        )}
+
+        {/* --- Continue / Resume card (before Futures for returning users) --- */}
+        {completedCount > 0 && (
+          <>
+            {resumeModule ? (
+              <Link
+                href={`/learn/${resumeModule.id}`}
+                className="block rounded-lg p-5 md:p-4 mb-4 md:mb-3 transition-all card-depth gold-glow"
+                style={{ border: '1px solid #E8C872' }}
+              >
+                <p className="text-xs uppercase tracking-wide mb-1" style={{ color: '#D4D4E8' }}>
+                  {inProgressModule ? 'Continue where you left off' : 'Up next'}
+                </p>
+                <p className="text-base font-semibold" style={{ color: '#FFFFFF' }}>
+                  {MODULE_TYPE_ICONS[resumeModule.module_type] ?? ''} {resumeModule.title}
+                </p>
+                <p className="mt-2 text-sm font-semibold" style={{ color: '#E8C872' }}>
+                  {inProgressModule ? 'Resume →' : 'Start →'}
+                </p>
+              </Link>
+            ) : completedCount === totalCount && totalCount > 0 ? (
+              <div className="rounded-lg p-5 md:p-4 mb-4 md:mb-3 text-center card-depth">
+                <p className="text-base font-semibold" style={{ color: '#22C55E' }}>
+                  All modules completed
+                </p>
+                <p className="mt-1 text-sm" style={{ color: '#D4D4E8' }}>
+                  You&apos;ve finished everything available in your tier. Extraordinary.
+                </p>
+              </div>
+            ) : (
+              <div className="rounded-lg p-5 md:p-4 mb-4 md:mb-3 text-center card-depth">
+                <p className="text-sm" style={{ color: '#D4D4E8' }}>
+                  Complete your current modules to unlock the next step.
+                </p>
+              </div>
+            )}
+          </>
+        )}
 
         <div className="section-divider" />
 
         {/* Quick stats bar */}
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex items-center gap-3 mb-4 md:mb-3">
           <div className="flex-1 rounded-lg px-3 py-2 text-center card-depth">
             <p className="text-xs" style={{ color: '#D4D4E8' }}>Time</p>
             <p className="text-sm font-semibold" style={{ color: '#FFFFFF' }}>
@@ -167,11 +207,14 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        {/* Progress ring + tier progress */}
-        <div className="flex items-center gap-4 mb-6 rounded-lg px-3 py-3 card-depth">
-          <ProgressRing completed={currentTierCompleted} total={currentTierTotal} size={56} />
+        {/* Progress ring — overall progress with current tier secondary */}
+        <div className="flex items-center gap-4 mb-4 md:mb-3 rounded-lg px-3 py-3 card-depth">
+          <ProgressRing completed={completedCount} total={totalCount} size={56} />
           <div className="flex-1 min-w-0">
             <p className="text-sm font-semibold" style={{ color: '#FFFFFF' }}>
+              {completedCount} completed
+            </p>
+            <p className="mt-0.5 text-xs" style={{ color: '#D4D4E8' }}>
               {currentTierCompleted} of {currentTierTotal} in {learnerTier.charAt(0).toUpperCase() + learnerTier.slice(1)}
             </p>
             {nextInTier && (
@@ -190,67 +233,65 @@ export default async function DashboardPage() {
         <div className="section-divider" />
 
         {/* Daily tip — motivation first */}
-        <div className="rounded-lg p-4 mb-4 card-depth" style={{ borderLeft: '3px solid #E8C872' }}>
+        <div className="rounded-lg p-4 md:p-3 mb-4 md:mb-3 card-depth" style={{ borderLeft: '3px solid #E8C872' }}>
           <p className="text-sm" style={{ color: '#D4D4E8' }}>
             {getDailyTip()}
           </p>
         </div>
 
-        {/* Continue / Resume card */}
-        {resumeModule && completedCount === 0 ? (
+        {/* --- Futures card (after action cards for returning users) --- */}
+        {completedCount > 0 && (
           <Link
-            href={`/learn/${resumeModule.id}`}
-            className="block rounded-lg p-5 mb-4 transition-all card-depth gold-glow"
-            style={{ border: '1px solid #E8C872' }}
+            href="/futures"
+            className="block rounded-xl p-5 md:p-4 mb-4 md:mb-3 transition-all card-depth gold-glow"
+            style={{ border: '2px solid #E8C872' }}
           >
-            <p className="text-sm mb-2" style={{ color: '#D4D4E8' }}>
-              Nothing started yet. That changes today.
+            <p className="text-base font-bold" style={{ color: '#E8C872' }}>
+              Where could AI take you?
             </p>
-            <p className="text-base font-semibold" style={{ color: '#FFFFFF' }}>
-              {MODULE_TYPE_ICONS[resumeModule.module_type] ?? ''} {resumeModule.title}
+            <p className="text-sm mt-1" style={{ color: '#D4D4E8' }}>
+              Real stories, an interactive explorer, and 15 things you can do with AI today.
             </p>
-            <p className="mt-2 text-sm font-semibold" style={{ color: '#E8C872' }}>
-              Start →
+            <p className="mt-3 text-sm font-semibold" style={{ color: '#E8C872' }}>
+              Explore →
             </p>
           </Link>
-        ) : resumeModule ? (
-          <Link
-            href={`/learn/${resumeModule.id}`}
-            className="block rounded-lg p-5 mb-4 transition-all card-depth gold-glow"
-            style={{ border: '1px solid #E8C872' }}
-          >
-            <p className="text-xs uppercase tracking-wide mb-1" style={{ color: '#D4D4E8' }}>
-              {inProgressModule ? 'Continue where you left off' : 'Up next'}
-            </p>
-            <p className="text-base font-semibold" style={{ color: '#FFFFFF' }}>
-              {MODULE_TYPE_ICONS[resumeModule.module_type] ?? ''} {resumeModule.title}
-            </p>
-            <p className="mt-2 text-sm font-semibold" style={{ color: '#E8C872' }}>
-              {inProgressModule ? 'Resume →' : 'Start →'}
-            </p>
-          </Link>
-        ) : completedCount === totalCount && totalCount > 0 ? (
-          <div className="rounded-lg p-5 mb-4 text-center card-depth">
-            <p className="text-base font-semibold" style={{ color: '#22C55E' }}>
-              All modules completed
-            </p>
-            <p className="mt-1 text-sm" style={{ color: '#D4D4E8' }}>
-              You&apos;ve finished everything available in your tier. Extraordinary.
-            </p>
-          </div>
-        ) : (
-          <div className="rounded-lg p-5 mb-4 text-center card-depth">
-            <p className="text-sm" style={{ color: '#D4D4E8' }}>
-              Complete your current modules to unlock the next step.
-            </p>
-          </div>
+        )}
+
+        {/* --- Continue / Resume card (after Futures for new users) --- */}
+        {completedCount === 0 && (
+          <>
+            {resumeModule ? (
+              <Link
+                href={`/learn/${resumeModule.id}`}
+                className="block rounded-lg p-5 md:p-4 mb-4 md:mb-3 transition-all card-depth gold-glow"
+                style={{ border: '1px solid #E8C872' }}
+              >
+                <p className="text-sm mb-2" style={{ color: '#D4D4E8' }}>
+                  Nothing started yet. That changes today.
+                </p>
+                <p className="text-base font-semibold" style={{ color: '#FFFFFF' }}>
+                  {MODULE_TYPE_ICONS[resumeModule.module_type] ?? ''} {resumeModule.title}
+                </p>
+                <p className="mt-2 text-sm font-semibold" style={{ color: '#E8C872' }}>
+                  Start →
+                </p>
+              </Link>
+            ) : (
+              <div className="rounded-lg p-5 md:p-4 mb-4 md:mb-3 text-center card-depth">
+                <p className="text-sm" style={{ color: '#D4D4E8' }}>
+                  Complete your current modules to unlock the next step.
+                </p>
+              </div>
+            )}
+          </>
         )}
 
         {/* Reviews due */}
         {dueReviews > 0 && (
           <Link
             href="/review"
-            className="block rounded-lg p-4 mb-4 transition-all card-depth"
+            className="block rounded-lg p-4 md:p-3 mb-4 md:mb-3 transition-all card-depth"
             style={{ border: '1px solid #E8C872' }}
           >
             <div className="flex items-center justify-between">
@@ -270,28 +311,28 @@ export default async function DashboardPage() {
         <div className="section-divider" />
 
         {/* Quick access cards — 2x3 grid */}
-        <div className="grid grid-cols-2 gap-3 mb-4">
-          <Link href="/community" className="rounded-lg p-4 transition-all card-depth" style={{ border: '1px solid #E8C872' }}>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3 mb-4 md:mb-3">
+          <Link href="/community" className="rounded-lg p-4 md:p-3 transition-all card-depth" style={{ border: '1px solid #E8C872' }}>
             <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>Community</p>
             <p className="text-xs mt-1" style={{ color: '#D4D4E8' }}>Share and learn together</p>
           </Link>
-          <Link href="/tools" className="rounded-lg p-4 transition-all card-depth" style={{ border: '1px solid #E8C872' }}>
+          <Link href="/tools" className="rounded-lg p-4 md:p-3 transition-all card-depth" style={{ border: '1px solid #E8C872' }}>
             <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>AI Tools</p>
             <p className="text-xs mt-1" style={{ color: '#D4D4E8' }}>Curated directory</p>
           </Link>
-          <Link href="/news" className="rounded-lg p-4 transition-all card-depth" style={{ border: '1px solid #E8C872' }}>
+          <Link href="/news" className="rounded-lg p-4 md:p-3 transition-all card-depth" style={{ border: '1px solid #E8C872' }}>
             <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>Latest News</p>
             <p className="text-xs mt-1" style={{ color: '#D4D4E8' }}>AI updates and ideas</p>
           </Link>
-          <Link href="/prompts" className="rounded-lg p-4 transition-all card-depth" style={{ border: '1px solid #E8C872' }}>
+          <Link href="/prompts" className="rounded-lg p-4 md:p-3 transition-all card-depth" style={{ border: '1px solid #E8C872' }}>
             <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>Prompt Library</p>
             <p className="text-xs mt-1" style={{ color: '#D4D4E8' }}>Templates that work</p>
           </Link>
-          <div className="rounded-lg p-4 card-depth" style={{ border: '1px solid #363654', opacity: 0.6 }}>
+          <div className="rounded-lg p-4 md:p-3 card-depth" style={{ border: '1px solid #363654', opacity: 0.6 }}>
             <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>AI Playground</p>
             <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>Coming soon</p>
           </div>
-          <Link href="/learn/026f2263-67f7-5e35-a104-3f8315397376" className="rounded-lg p-4 transition-all card-depth" style={{ border: '1px solid #8B5CF6', background: 'linear-gradient(135deg, #1A1A2E 0%, #25253D 100%)' }}>
+          <Link href="/learn/026f2263-67f7-5e35-a104-3f8315397376" className="rounded-lg p-4 md:p-3 transition-all card-depth" style={{ border: '1px solid #8B5CF6', background: 'linear-gradient(135deg, #1A1A2E 0%, #25253D 100%)' }}>
             <p className="text-xs" style={{ color: '#8B5CF6' }}>⚡ Specialist Preview</p>
             <p className="text-sm font-semibold mt-1" style={{ color: '#FFFFFF' }}>Building Skills</p>
             <p className="text-xs mt-1" style={{ color: '#9CA3AF' }}>Free taster — try it now</p>
@@ -301,7 +342,7 @@ export default async function DashboardPage() {
         <div className="section-divider" />
 
         {/* Recent activity */}
-        <div className="rounded-lg p-4 mb-4 card-depth">
+        <div className="rounded-lg p-4 md:p-3 mb-4 md:mb-3 card-depth">
           <p className="text-xs uppercase tracking-wide mb-3" style={{ color: '#6B7280' }}>Recent activity</p>
           {recentEvents && recentEvents.length > 0 ? (
             <div className="space-y-2">
@@ -329,7 +370,7 @@ export default async function DashboardPage() {
         {/* Full learning path link */}
         <Link
           href="/learn"
-          className="block rounded-lg p-4 text-center text-sm font-medium mb-4"
+          className="block rounded-lg p-4 md:p-3 text-center text-sm font-medium mb-4 md:mb-3"
           style={{ backgroundColor: '#25253D', color: '#D4D4E8', border: '1px solid #374151' }}
         >
           View full learning path
