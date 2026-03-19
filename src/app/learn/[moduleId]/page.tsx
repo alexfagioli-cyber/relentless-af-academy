@@ -107,6 +107,25 @@ export default async function ModuleDetailPage({
           </div>
         </div>
 
+        {/* Challenge guidance — structured help for challenge modules */}
+        {mod.module_type === 'challenge' && mod.content?.guidance && (
+          <div className="rounded-lg p-4 mb-6 space-y-4" style={{ backgroundColor: '#1A1A2E', border: '1px solid #363654' }}>
+            {(mod.content.guidance as Array<{ title: string; body: string; examples?: string[] }>).map((section: { title: string; body: string; examples?: string[] }, i: number) => (
+              <div key={i} className="space-y-2">
+                <h3 className="text-sm font-semibold" style={{ color: '#E8C872' }}>{section.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: '#D4D4E8' }}>{section.body}</p>
+                {section.examples && (
+                  <ul className="space-y-1 pl-4">
+                    {section.examples.map((ex: string, j: number) => (
+                      <li key={j} className="text-sm list-disc" style={{ color: '#9CA3AF' }}>{ex}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+
         {/* Status banner */}
         {currentStatus === 'completed' && (
           <div className="rounded-lg p-3 mb-6 text-sm font-medium text-center" style={{ backgroundColor: '#14532D', color: '#22C55E' }}>
