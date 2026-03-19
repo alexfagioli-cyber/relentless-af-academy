@@ -61,7 +61,12 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
       .single()
 
     if (error || !assessmentRow) {
-      // Retry once after a short delay (handles session race conditions on mobile)
+      // If no row exists at all (PGRST116 = no rows), this module has no assessment data yet
+      if (error?.code === 'PGRST116') {
+        setAssessmentError('Assessment coming soon — this module is still being built.')
+        return
+      }
+      // Retry for transient errors (session race conditions on mobile)
       if (retryCount < 2) {
         setTimeout(() => fetchAssessmentData(retryCount + 1), 1500)
         return
