@@ -74,17 +74,27 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Failed to save attempt' }, { status: 500 })
   }
 
-  // Update progress
+  // Check existing progress — never downgrade a pass to a fail
+  const { data: existingProgress } = await supabase
+    .from('progress')
+    .select('status, score')
+    .eq('learner_id', user.id)
+    .eq('module_id', assessment.module_id)
+    .single()
+
+  const alreadyPassed = existingProgress?.status === 'completed'
+
+  // Update progress (preserve completed status if already passed)
   await supabase
     .from('progress')
     .upsert({
       learner_id: user.id,
       module_id: assessment.module_id,
-      status: passed ? 'completed' : 'failed',
+      status: alreadyPassed || passed ? 'completed' : 'failed',
       started_at: new Date().toISOString(),
-      completed_at: passed ? new Date().toISOString() : null,
-      score,
-      attempts: 1, // Will be incremented by the upsert if already exists
+      completed_at: alreadyPassed || passed ? new Date().toISOString() : null,
+      score: alreadyPassed ? Math.max(existingProgress.score ?? 0, score) : score,
+      attempts: 1,
     }, { onConflict: 'learner_id,module_id' })
 
   // Log learning_events: attempted, then passed or failed
@@ -113,10 +123,19 @@ export async function POST(request: NextRequest) {
     await updateStreak(supabase, user.id)
   }
 
+  // Build per-question review (safe to send after submission — answers already locked in)
+  const review = elements.map((element) => ({
+    name: element.name,
+    yourAnswer: answers[element.name] ?? null,
+    correctAnswer: element.correctAnswer ?? null,
+    correct: element.correctAnswer ? answers[element.name] === element.correctAnswer : true,
+  }))
+
   return NextResponse.json({
     score: Math.round(score * 100) / 100,
     passed,
     total_questions: totalQuestions,
     correct_count: correctCount,
+    review,
   })
 }

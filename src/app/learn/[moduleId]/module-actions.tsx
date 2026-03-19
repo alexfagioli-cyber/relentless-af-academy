@@ -205,33 +205,56 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
 
       router.refresh()
     } else {
-      setStatus('failed')
+      // Don't regress status if already passed (practice retake)
+      if (status !== 'completed') {
+        setStatus('failed')
+      }
     }
-  }, [router, userId, moduleId, celebrate])
+  }, [router, userId, moduleId, celebrate, status])
 
   // External course
   if (externalUrl && platform !== 'internal') {
     return (
       <div className="space-y-4">
-        <a
-          href={externalUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity"
-          style={{ backgroundColor: '#E8C872', color: '#FFFFFF' }}
-        >
-          {status === 'completed' ? 'Revisit Course' : 'Start This'} →
-        </a>
-
-        {status !== 'completed' && (
-          <button
-            onClick={markComplete}
-            disabled={loading}
-            className="block w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity disabled:opacity-50"
-            style={{ backgroundColor: '#25253D', color: '#D4D4E8', border: '1px solid #374151' }}
-          >
-            {loading ? 'Saving' : "I've finished this course"}
-          </button>
+        {status === 'completed' ? (
+          <>
+            <button
+              onClick={() => router.push('/learn')}
+              className="block w-full rounded-lg py-3 text-sm font-semibold text-center"
+              style={{ backgroundColor: '#E8C872', color: '#FFFFFF' }}
+            >
+              Continue →
+            </button>
+            <a
+              href={externalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full rounded-lg py-3 text-sm font-semibold text-center"
+              style={{ backgroundColor: '#25253D', color: '#D4D4E8', border: '1px solid #374151' }}
+            >
+              Revisit Course →
+            </a>
+          </>
+        ) : (
+          <>
+            <a
+              href={externalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity"
+              style={{ backgroundColor: '#E8C872', color: '#FFFFFF' }}
+            >
+              Start This →
+            </a>
+            <button
+              onClick={markComplete}
+              disabled={loading}
+              className="block w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity disabled:opacity-50"
+              style={{ backgroundColor: '#25253D', color: '#D4D4E8', border: '1px solid #374151' }}
+            >
+              {loading ? 'Saving' : "I've finished this course"}
+            </button>
+          </>
         )}
 
         <p className="text-xs text-center" style={{ color: '#6B7280' }}>
@@ -289,6 +312,13 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
               Best score: {Math.round(Math.max(...attempts.filter(a => a.passed).map(a => a.score)))}%
             </p>
           </div>
+          <button
+            onClick={() => router.push('/learn')}
+            className="w-full rounded-lg py-3 text-sm font-semibold text-center"
+            style={{ backgroundColor: '#E8C872', color: '#FFFFFF' }}
+          >
+            Continue →
+          </button>
           <button
             onClick={() => setShowAssessment(true)}
             className="w-full rounded-lg py-3 text-sm font-semibold text-center"
@@ -445,8 +475,17 @@ function ChallengeActions({
 
   if (status === 'completed') {
     return (
-      <div className="text-sm text-center" style={{ color: '#22C55E' }}>
-        Challenge completed
+      <div className="space-y-4 text-center">
+        <div className="text-sm" style={{ color: '#22C55E' }}>
+          Challenge completed
+        </div>
+        <button
+          onClick={() => window.location.href = '/learn'}
+          className="w-full rounded-lg py-3 text-sm font-semibold"
+          style={{ backgroundColor: '#E8C872', color: '#FFFFFF' }}
+        >
+          Continue →
+        </button>
       </div>
     )
   }

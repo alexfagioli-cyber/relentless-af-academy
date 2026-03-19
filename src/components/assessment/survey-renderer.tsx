@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useMemo } from 'react'
+import { useRouter } from 'next/navigation'
 import { Model } from 'survey-core'
 import { Survey } from 'survey-react-ui'
 import 'survey-core/survey-core.min.css'
@@ -15,11 +16,19 @@ interface SurveyRendererProps {
   onComplete: (result: ScoreResult) => void
 }
 
+export interface QuestionReview {
+  name: string
+  yourAnswer: string | null
+  correctAnswer: string | null
+  correct: boolean
+}
+
 export interface ScoreResult {
   score: number
   passed: boolean
   total_questions: number
   correct_count: number
+  review?: QuestionReview[]
 }
 
 // Custom dark theme matching RelentlessAF branding
@@ -53,7 +62,19 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [result, setResult] = useState<ScoreResult | null>(null)
+  const [showReview, setShowReview] = useState(false)
   const { celebrate } = useCelebration()
+  const router = useRouter()
+
+  // Build a name→title lookup from the survey JSON for readable question labels
+  const questionLabels = useMemo(() => {
+    const qs = (questions as { elements?: Array<{ name: string; title?: string }> }).elements ?? []
+    const map: Record<string, string> = {}
+    for (const q of qs) {
+      map[q.name] = q.title ?? q.name
+    }
+    return map
+  }, [questions])
 
   const handleComplete = useCallback(async (sender: Model) => {
     setSubmitting(true)
@@ -97,29 +118,80 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
   // Show result screen
   if (result) {
     return (
-      <div className="rounded-lg p-6 text-center animate-fade-in" style={{ backgroundColor: '#25253D' }}>
-        <div
-          className="text-4xl font-bold mb-2 animate-reveal"
-          style={{ color: result.passed ? '#22C55E' : '#E8C872' }}
-        >
-          {Math.round(result.score)}%
+      <div className="space-y-4 animate-fade-in">
+        <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#25253D' }}>
+          <div
+            className="text-4xl font-bold mb-2 animate-reveal"
+            style={{ color: result.passed ? '#22C55E' : '#E8C872' }}
+          >
+            {Math.round(result.score)}%
+          </div>
+          <p className="text-lg font-semibold mb-1" style={{ color: '#FFFFFF' }}>
+            {result.passed ? 'Passed' : 'Not quite'}
+          </p>
+          <p className="text-sm mb-4" style={{ color: '#D4D4E8' }}>
+            {result.correct_count} of {result.total_questions} correct
+            {!result.passed && ` — you need ${passScore}% to pass`}
+          </p>
+          {result.passed ? (
+            <p className="text-sm" style={{ color: '#22C55E' }}>
+              Module completed. Keep going.
+            </p>
+          ) : (
+            <p className="text-sm" style={{ color: '#D4D4E8' }}>
+              Review the material and try again when you&apos;re ready.
+            </p>
+          )}
         </div>
-        <p className="text-lg font-semibold mb-1" style={{ color: '#FFFFFF' }}>
-          {result.passed ? 'Passed' : 'Not quite'}
-        </p>
-        <p className="text-sm mb-4" style={{ color: '#D4D4E8' }}>
-          {result.correct_count} of {result.total_questions} correct
-          {!result.passed && ` — you need ${passScore}% to pass`}
-        </p>
-        {result.passed ? (
-          <p className="text-sm" style={{ color: '#22C55E' }}>
-            Module completed. Keep going.
-          </p>
-        ) : (
-          <p className="text-sm" style={{ color: '#D4D4E8' }}>
-            Review the material and try again when you&apos;re ready.
-          </p>
+
+        {/* Show answers button */}
+        {result.review && result.review.length > 0 && (
+          <button
+            onClick={() => setShowReview(!showReview)}
+            className="w-full rounded-lg py-2 text-sm font-semibold"
+            style={{ backgroundColor: '#25253D', color: '#D4D4E8', border: '1px solid #374151' }}
+          >
+            {showReview ? 'Hide Answers' : 'Show Answers'}
+          </button>
         )}
+
+        {/* Answer review */}
+        {showReview && result.review && (
+          <div className="space-y-2">
+            {result.review.map((q, i) => (
+              <div
+                key={i}
+                className="rounded-lg p-3 text-sm"
+                style={{
+                  backgroundColor: '#25253D',
+                  border: `1px solid ${q.correct ? '#22C55E' : '#EF4444'}`,
+                }}
+              >
+                <p className="font-medium mb-1" style={{ color: '#FFFFFF' }}>
+                  {questionLabels[q.name] ?? `Question ${i + 1}`}
+                </p>
+                <p style={{ color: q.correct ? '#22C55E' : '#EF4444' }}>
+                  Your answer: {q.yourAnswer ?? 'No answer'}
+                  {q.correct ? ' ✓' : ' ✗'}
+                </p>
+                {!q.correct && q.correctAnswer && (
+                  <p style={{ color: '#22C55E' }}>
+                    Correct answer: {q.correctAnswer}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Continue button */}
+        <button
+          onClick={() => router.push('/learn')}
+          className="w-full rounded-lg py-3 text-sm font-semibold text-center"
+          style={{ backgroundColor: '#E8C872', color: '#FFFFFF' }}
+        >
+          Continue →
+        </button>
       </div>
     )
   }
