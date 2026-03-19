@@ -1,4 +1,4 @@
--- Single concurrent session enforcement
--- Each login generates a unique session ID stored in the profile.
--- Middleware checks the cookie against this value — mismatch = kicked out.
-ALTER TABLE learner_profiles ADD COLUMN IF NOT EXISTS active_session_id TEXT;
+-- Session enforcement — allows up to 2 concurrent sessions (mobile + desktop).
+-- Third login replaces the oldest session, kicking that device out.
+ALTER TABLE learner_profiles ADD COLUMN IF NOT EXISTS active_session_ids TEXT[] DEFAULT '{}';
+ALTER TABLE learner_profiles DROP COLUMN IF EXISTS active_session_id;
