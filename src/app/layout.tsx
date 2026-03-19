@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { CelebrationProvider } from '@/components/ui/celebration-toast'
 import { FeedbackButton } from '@/components/ui/feedback-button'
 import { SidebarNav } from '@/components/layout/sidebar-nav'
+import { ContentWrapper } from '@/components/layout/content-wrapper'
 import './globals.css'
 
 const inter = Inter({
@@ -38,9 +39,9 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased bg-background text-foreground`}>
         <CelebrationProvider>
           <SidebarNav />
-          <div className="md:ml-60">
+          <ContentWrapper>
             {children}
-          </div>
+          </ContentWrapper>
           <FeedbackButton />
         </CelebrationProvider>
       </body>

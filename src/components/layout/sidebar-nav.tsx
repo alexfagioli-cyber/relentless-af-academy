@@ -4,8 +4,12 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { navItems, isNavActive } from './nav-items'
 
+const HIDDEN_PATHS = ['/auth', '/onboarding', '/welcome']
+
 export function SidebarNav() {
   const pathname = usePathname()
+
+  if (HIDDEN_PATHS.some((p) => pathname.startsWith(p))) return null
 
   return (
     <nav className="hidden md:flex md:flex-col fixed top-0 left-0 h-full w-60 z-40 pt-8 px-4" style={{ background: 'rgba(26, 26, 46, 0.85)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderRight: '1px solid rgba(232, 200, 114, 0.1)' }}>
