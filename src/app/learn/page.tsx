@@ -21,9 +21,8 @@ export default async function LearnPage() {
     .eq('id', user?.id ?? '')
     .single()
 
-  const learnerTier = profile?.tier ?? 'aware'
-  const tierIndex = TIER_ORDER.indexOf(learnerTier as typeof TIER_ORDER[number])
-  const visibleTiers = TIER_ORDER.slice(0, tierIndex + 1)
+  // Show all tiers — locked modules are still gated by prerequisites
+  const visibleTiers = [...TIER_ORDER]
 
   // Get modules for visible tiers
   const { data: modules } = await supabase
