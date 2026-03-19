@@ -152,21 +152,46 @@ const SUGGESTIONS: Record<string, string[]> = {
 }
 
 const QUICK_EXAMPLES = [
-  'Plan a kitchen renovation in 10 minutes',
-  'Understand a medical report your doctor gave you',
-  'Write a CV that actually gets interviews',
-  'Help your child with maths homework you\'ve forgotten',
-  'Analyse 3 insurance quotes and pick the best one',
-  'Draft a complaint letter that gets results',
-  'Learn any topic from scratch in an afternoon',
-  'Prepare for a job interview with AI roleplay',
-  'Create a business plan from a napkin idea',
-  'Translate and understand a legal contract',
-  'Build a personal budget that actually works',
-  'Write social media content for a month in an hour',
-  'Research a holiday destination like a travel agent',
-  'Summarise a 300-page book in 5 minutes',
-  'Turn meeting notes into action items automatically',
+  {
+    title: 'Plan a kitchen renovation in 10 minutes',
+    detail: 'Full project plan, material list, and budget breakdown. Would have taken a weekend of research — done before the kettle boiled.',
+  },
+  {
+    title: 'Write a CV that actually gets interviews',
+    detail: 'Tailored to each job listing, highlighting the right experience. One user went from zero callbacks to 4 interviews in a week.',
+  },
+  {
+    title: 'Help your child with maths homework you\'ve forgotten',
+    detail: 'Claude explains it at their level, not yours. No more pretending you remember trigonometry. Homework done in half the time.',
+  },
+  {
+    title: 'Analyse 3 insurance quotes side by side',
+    detail: 'Compared coverage, exclusions, and real cost — not just the headline price. Saved £340/year by spotting what the cheapest quote didn\'t cover.',
+  },
+  {
+    title: 'Prepare for a job interview with AI roleplay',
+    detail: 'Practised tough questions with realistic follow-ups. Went in confident instead of nervous. Got the offer.',
+  },
+  {
+    title: 'Create a month of social media content in an hour',
+    detail: '30 posts, captions, and hashtags — tailored to the brand voice. What used to take a full day now fits in a lunch break.',
+  },
+  {
+    title: 'Turn meeting notes into action items automatically',
+    detail: 'Paste rough notes, get a structured summary with owners and deadlines. Teams that do this recover 3+ hours per week.',
+  },
+  {
+    title: 'Research a holiday like a travel agent',
+    detail: 'Best flights, hotel comparisons, day-by-day itinerary, local tips. A family saved £800 on their summer holiday by finding options they\'d never have Googled.',
+  },
+  {
+    title: 'Draft a complaint letter that gets results',
+    detail: 'Professional, firm, citing the right regulations. One user got a full refund within 48 hours after months of being ignored.',
+  },
+  {
+    title: 'Build a personal budget that actually works',
+    detail: 'Paste bank statements, get categorised spending and a realistic savings plan. Takes 5 minutes instead of a spreadsheet you\'ll never finish.',
+  },
 ]
 
 const ROLE_OPTIONS = ['Student', 'Professional', 'Business Owner', 'Home Manager', 'Career Changer', 'Other']
@@ -500,15 +525,20 @@ export function FuturesClient() {
           AI isn&apos;t just for tech people. Here&apos;s what anyone can do today:
         </p>
 
-        <div className="grid grid-cols-1 gap-2">
+        <div className="grid grid-cols-1 gap-3">
           {QUICK_EXAMPLES.map((example, i) => (
             <div
               key={i}
-              className="rounded-lg px-4 py-2.5 flex items-center gap-3"
-              style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}
+              className="rounded-lg px-4 py-3"
+              style={{ backgroundColor: '#25253D', borderLeft: '3px solid #E8C872' }}
             >
-              <span className="text-xs" style={{ color: '#E8C872' }}>✦</span>
-              <p className="text-xs" style={{ color: '#D1D5DB' }}>{example}</p>
+              <div className="flex items-start gap-3">
+                <span className="text-sm mt-0.5" style={{ color: '#E8C872' }}>✦</span>
+                <div>
+                  <p className="text-sm font-medium" style={{ color: '#FFFFFF' }}>{example.title}</p>
+                  <p className="text-xs mt-1 leading-relaxed" style={{ color: '#8BA3C4' }}>{example.detail}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
