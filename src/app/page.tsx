@@ -189,6 +189,13 @@ export default async function DashboardPage() {
 
         <div className="section-divider" />
 
+        {/* Daily tip — motivation first */}
+        <div className="rounded-lg p-4 mb-4 card-depth" style={{ borderLeft: '3px solid #E8C872' }}>
+          <p className="text-sm" style={{ color: '#D4D4E8' }}>
+            {getDailyTip()}
+          </p>
+        </div>
+
         {/* Continue / Resume card */}
         {resumeModule && completedCount === 0 ? (
           <Link
@@ -259,13 +266,6 @@ export default async function DashboardPage() {
             </div>
           </Link>
         )}
-
-        {/* Daily tip */}
-        <div className="rounded-lg p-4 mb-4 card-depth" style={{ borderLeft: '3px solid #E8C872' }}>
-          <p className="text-sm" style={{ color: '#D4D4E8' }}>
-            {getDailyTip()}
-          </p>
-        </div>
 
         <div className="section-divider" />
 
