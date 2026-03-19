@@ -50,7 +50,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  async function fetchAssessmentData() {
+  async function fetchAssessmentData(retryCount = 0) {
     const supabase = createClient()
 
     // Fetch assessment for this module (strip correctAnswer before setting state)
@@ -61,7 +61,13 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
       .single()
 
     if (error || !assessmentRow) {
+      // Retry once after a short delay (handles session race conditions on mobile)
+      if (retryCount < 2) {
+        setTimeout(() => fetchAssessmentData(retryCount + 1), 1500)
+        return
+      }
       setAssessmentError("Assessment didn't load. Refresh and try again.")
+      console.error('Assessment fetch failed:', error?.message ?? 'No assessment found for module', moduleId)
       return
     }
 
