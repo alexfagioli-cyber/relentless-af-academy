@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { BottomNav } from '@/components/layout/bottom-nav'
 import { redirect } from 'next/navigation'
 import { SignOutButton } from './sign-out-button'
+import Link from 'next/link'
 import { NotificationPreferences } from './notifications'
 import { BadgeWall } from './badges'
 import { checkAndAwardBadges } from '@/lib/badges'
@@ -25,7 +26,7 @@ export default async function ProfilePage() {
 
   const { data: profile } = await supabase
     .from('learner_profiles')
-    .select('display_name, tier, streak_current, streak_longest, weekly_time_commitment, occupation, primary_goal')
+    .select('display_name, tier, streak_current, streak_longest, weekly_time_commitment, occupation, primary_goal, is_admin')
     .eq('id', user.id)
     .single()
 
@@ -127,6 +128,17 @@ export default async function ProfilePage() {
           </h2>
           <NotificationPreferences userId={user.id} />
         </div>
+
+        {/* Admin link */}
+        {profile?.is_admin && (
+          <Link
+            href="/admin"
+            className="block rounded-lg p-4 text-center text-sm font-medium mb-4"
+            style={{ backgroundColor: '#25253D', color: '#E8C872', border: '1px solid #363654' }}
+          >
+            Admin Dashboard
+          </Link>
+        )}
 
         {/* Sign out */}
         <SignOutButton />

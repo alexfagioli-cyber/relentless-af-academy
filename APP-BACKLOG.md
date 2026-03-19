@@ -7,7 +7,7 @@
 
 | # | Issue | Location | Detail |
 |---|---|---|---|
-| C1 | No invite UI in admin panel | `/admin` | API endpoint `/api/admin/invite` exists but no form/button/tab to trigger it. Admins cannot invite anyone from the interface. |
+| ~~C1~~ | ~~No invite UI in admin panel~~ | `/admin` | **DONE** — invite form exists on Overview tab (was below the fold). Email input + Send Invite button + invite history. |
 | C2 | Invite email flow untested | Auth flow | PKCE code exchange deployed but never tested end-to-end: invite → email → `/auth/confirm` → `/auth/set-password` → welcome. |
 | C3 | Jason Staats has no tier | Database | Shows "—" for tier, 0/12 modules. Onboarding not completed. Middleware should redirect him to onboarding on login — verify this works. |
 
