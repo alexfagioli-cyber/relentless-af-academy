@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import Link from 'next/link'
 
 /* ------------------------------------------------------------------ */
@@ -185,6 +185,24 @@ export function FuturesClient() {
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const persona = PERSONAS[personaIdx]
+  const touchStartX = useRef<number | null>(null)
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+  }, [])
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    if (touchStartX.current === null) return
+    const diff = touchStartX.current - e.changedTouches[0].clientX
+    if (Math.abs(diff) > 50) {
+      if (diff > 0 && personaIdx < PERSONAS.length - 1) {
+        setPersonaIdx(personaIdx + 1)
+      } else if (diff < 0 && personaIdx > 0) {
+        setPersonaIdx(personaIdx - 1)
+      }
+    }
+    touchStartX.current = null
+  }, [personaIdx])
 
   function handleShowResults() {
     if (role) setShowResults(true)
@@ -215,9 +233,11 @@ export function FuturesClient() {
         {/* Persona card */}
         <div
           ref={scrollRef}
-          className="rounded-xl p-5 mb-3 animate-fade-in"
+          className="rounded-xl p-5 mb-3 animate-fade-in touch-pan-y"
           style={{ backgroundColor: '#25253D', border: '1px solid #363654' }}
           key={personaIdx}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
           {/* Avatar + name */}
           <div className="flex items-center gap-3 mb-4">

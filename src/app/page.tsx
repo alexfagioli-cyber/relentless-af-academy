@@ -169,7 +169,7 @@ export default async function DashboardPage() {
 
         {/* Progress ring + tier progress */}
         <div className="flex items-center gap-5 mb-6 rounded-lg p-4 card-depth">
-          <ProgressRing completed={completedCount} total={totalCount} size={90} />
+          <ProgressRing completed={currentTierCompleted} total={currentTierTotal} size={90} />
           <div className="flex-1">
             <p className="text-sm font-semibold" style={{ color: '#FFFFFF' }}>
               {currentTierCompleted} of {currentTierTotal} in {learnerTier.charAt(0).toUpperCase() + learnerTier.slice(1)}

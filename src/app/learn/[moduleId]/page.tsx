@@ -114,8 +114,8 @@ export default async function ModuleDetailPage({
           </div>
         )}
 
-        {/* Video for internal modules — only show if there's actual video content */}
-        {mod.platform === 'internal' && mod.video_url && (
+        {/* Video for internal course modules */}
+        {mod.platform === 'internal' && mod.module_type === 'course' && (
           <VideoPlaceholder videoUrl={mod.video_url} />
         )}
 

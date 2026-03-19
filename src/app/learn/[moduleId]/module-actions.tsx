@@ -229,7 +229,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
               className="block w-full rounded-lg py-3 text-sm font-semibold text-center"
               style={{ backgroundColor: '#E8C872', color: '#FFFFFF' }}
             >
-              Continue →
+              Back to Learning Path
             </button>
             <a
               href={externalUrl}
@@ -263,9 +263,6 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
           </>
         )}
 
-        <p className="text-xs text-center" style={{ color: '#6B7280' }}>
-          This course may have moved. Try visiting {platform} directly if the link doesn&apos;t work.
-        </p>
       </div>
     )
   }
