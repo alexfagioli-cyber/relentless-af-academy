@@ -52,7 +52,7 @@ export default async function ToolsPage() {
               </h2>
             </div>
             <div className="space-y-2">
-              {(tools ?? []).filter((t) => t.category === category).map((tool) => (
+              {(tools ?? []).filter((t) => t.category === category).sort((a, b) => (b.alex_recommends ? 1 : 0) - (a.alex_recommends ? 1 : 0)).map((tool) => (
                 <a
                   key={tool.id}
                   href={tool.url}
