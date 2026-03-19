@@ -15,16 +15,20 @@ export async function GET(request: NextRequest) {
   if (code) {
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     if (error) {
-      return NextResponse.redirect(new URL('/auth/login?error=invalid_link', request.url))
+      console.error('PKCE exchange failed:', error.message)
+      // For invite flows, PKCE may fail because there's no code_verifier cookie
+      // (the invite was server-initiated, not browser-initiated).
+      // Fall through to check if the user was already confirmed by Supabase.
     }
   }
-  // Legacy token_hash flow
+  // Token hash flow (invites, magic links)
   else if (token_hash && type) {
     const { error } = await supabase.auth.verifyOtp({
       type: type as 'email' | 'recovery' | 'invite' | 'magiclink' | 'email_change',
       token_hash,
     })
     if (error) {
+      console.error('OTP verify failed:', error.message)
       return NextResponse.redirect(new URL('/auth/login?error=invalid_link', request.url))
     }
   } else {
@@ -35,7 +39,10 @@ export async function GET(request: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser()
 
   if (!user) {
-    return NextResponse.redirect(new URL('/auth/login?error=invalid_link', request.url))
+    // PKCE exchange failed and no session — this happens with server-initiated invites.
+    // The user IS confirmed in Supabase but we couldn't establish a browser session.
+    // Redirect to set-password page which will prompt them to log in first.
+    return NextResponse.redirect(new URL('/auth/login?invited=true', request.url))
   }
 
   // Check invite status

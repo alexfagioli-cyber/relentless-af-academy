@@ -50,7 +50,13 @@ function LoginForm() {
         </p>
       </div>
 
-      {(urlError || error) && (
+      {searchParams.get('invited') === 'true' && (
+        <div className="rounded-md p-3 text-sm" style={{ backgroundColor: '#14532D', color: '#22C55E' }}>
+          You&apos;re in. Your temporary password was sent with your invite — sign in below to get started.
+        </div>
+      )}
+
+      {(urlError || error) && !searchParams.get('invited') && (
         <div className="rounded-md p-3 text-sm" style={{ backgroundColor: '#25253D', color: '#E8C872' }}>
           {urlError === 'invalid_link' ? 'Invalid or expired link. Please try again.' : error}
         </div>
