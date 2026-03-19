@@ -68,8 +68,8 @@ export default async function ModuleDetailPage({
   const currentStatus = progress?.status ?? 'not_started'
 
   return (
-    <div className="min-h-screen pb-20" style={{ backgroundColor: 'transparent' }}>
-      <div className="max-w-lg mx-auto px-4 pt-8">
+    <div className="min-h-screen pb-20 md:pb-8" style={{ backgroundColor: 'transparent' }}>
+      <div className="max-w-lg md:max-w-3xl mx-auto px-4 pt-8">
         {/* Back link */}
         <Link href="/learn" className="text-sm mb-6 inline-block" style={{ color: '#D4D4E8' }}>
           ← Back to learning path

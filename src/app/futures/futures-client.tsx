@@ -213,7 +213,7 @@ export function FuturesClient() {
   const picked = suggestions.slice(0, 5)
 
   return (
-    <div className="max-w-lg mx-auto px-4 pt-8 animate-fade-in">
+    <div className="max-w-lg md:max-w-3xl mx-auto px-4 pt-8 animate-fade-in">
       {/* Header */}
       <h1 className="text-2xl font-bold mb-2" style={{ color: '#FFFFFF' }}>
         Where Could AI Take You?

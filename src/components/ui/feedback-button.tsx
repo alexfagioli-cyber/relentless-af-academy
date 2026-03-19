@@ -55,7 +55,7 @@ export function FeedbackButton() {
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="fixed bottom-[5.5rem] right-4 z-40 rounded-full px-3 py-1.5 text-xs font-semibold transition-all shadow-lg"
+          className="fixed bottom-[5.5rem] md:bottom-6 right-4 md:right-8 z-40 rounded-full px-3 py-1.5 text-xs font-semibold transition-all shadow-lg"
           style={{ color: '#E8C872', border: '1.5px solid #E8C872', backgroundColor: '#25253D' }}
         >
           Feedback

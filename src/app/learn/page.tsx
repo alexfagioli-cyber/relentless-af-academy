@@ -1,26 +1,13 @@
 import { createClient } from '@/lib/supabase/server'
 import { computeUnlockedModules } from '@/lib/prerequisites'
 import { BottomNav } from '@/components/layout/bottom-nav'
-import Link from 'next/link'
+import { ModuleList } from './module-list'
 
 const TIER_ORDER = ['aware', 'enabled', 'specialist'] as const
 const TIER_LABELS: Record<string, string> = {
   aware: 'Aware',
   enabled: 'Enabled',
   specialist: 'Specialist',
-}
-
-const TYPE_ICONS: Record<string, string> = {
-  course: '📖',
-  challenge: '⚡',
-  assessment: '✅',
-}
-
-function formatDuration(mins: number): string {
-  if (mins < 60) return `${mins}m`
-  const h = Math.floor(mins / 60)
-  const m = mins % 60
-  return m > 0 ? `${h}h ${m}m` : `${h}h`
 }
 
 export default async function LearnPage() {
@@ -75,90 +62,28 @@ export default async function LearnPage() {
     return 'locked'
   }
 
-  // Group modules by tier
-  const groupedModules = visibleTiers.map((tier) => ({
+  // Group modules by tier with statuses
+  const tierGroups = visibleTiers.map((tier) => ({
     tier,
-    modules: (modules ?? []).filter((m) => m.tier === tier),
+    label: TIER_LABELS[tier],
+    modules: (modules ?? []).filter((m) => m.tier === tier).map((mod) => ({
+      id: mod.id,
+      title: mod.title,
+      module_type: mod.module_type,
+      estimated_duration_mins: mod.estimated_duration_mins,
+      platform: mod.platform,
+      status: getStatus(mod.id),
+    })),
   }))
 
   return (
-    <div className="min-h-screen pb-20 animate-fade-in" style={{ backgroundColor: 'transparent' }}>
-      <div className="max-w-lg mx-auto px-4 pt-8">
+    <div className="min-h-screen pb-20 md:pb-8 animate-fade-in" style={{ backgroundColor: 'transparent' }}>
+      <div className="max-w-lg md:max-w-3xl mx-auto px-4 pt-8">
         <h1 className="text-2xl font-bold mb-6" style={{ color: '#FFFFFF' }}>
           Learning Path
         </h1>
 
-        {groupedModules.map(({ tier, modules: tierModules }) => (
-          <div key={tier} className="mb-8">
-            <h2 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#D4D4E8' }}>
-              {TIER_LABELS[tier]} Tier
-            </h2>
-            <div className="space-y-3">
-              {tierModules.map((mod) => {
-                const status = getStatus(mod.id)
-                const isLocked = status === 'locked'
-
-                const borderColor =
-                  status === 'completed' ? '#22C55E' :
-                  status === 'available' ? '#E8C872' :
-                  status === 'in_progress' ? '#E8C872' :
-                  '#374151'
-
-                const content = (
-                  <div
-                    className="rounded-lg p-4 transition-status"
-                    style={{
-                      backgroundColor: '#25253D',
-                      border: `1px solid ${borderColor}`,
-                      opacity: isLocked ? 0.5 : 1,
-                    }}
-                  >
-                    <div className="flex items-start gap-3">
-                      {/* Status indicator */}
-                      <div className="mt-0.5 text-lg flex-shrink-0">
-                        {status === 'completed' && <span style={{ color: '#22C55E' }}>✓</span>}
-                        {status === 'in_progress' && <span>▶</span>}
-                        {status === 'available' && <span>{TYPE_ICONS[mod.module_type] ?? '📖'}</span>}
-                        {status === 'locked' && <span style={{ color: '#6B7280' }}>🔒</span>}
-                      </div>
-
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium" style={{ color: '#FFFFFF' }}>
-                          {mod.title}
-                        </p>
-                        <div className="flex items-center gap-3 mt-1">
-                          <span className="text-xs" style={{ color: '#D4D4E8' }}>
-                            {mod.module_type}
-                          </span>
-                          {mod.estimated_duration_mins && (
-                            <span className="text-xs" style={{ color: '#6B7280' }}>
-                              {formatDuration(mod.estimated_duration_mins)}
-                            </span>
-                          )}
-                          {mod.platform && mod.platform !== 'internal' && (
-                            <span className="text-xs" style={{ color: '#6B7280' }}>
-                              {mod.platform}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )
-
-                if (isLocked) {
-                  return <div key={mod.id}>{content}</div>
-                }
-
-                return (
-                  <Link key={mod.id} href={`/learn/${mod.id}`}>
-                    {content}
-                  </Link>
-                )
-              })}
-            </div>
-          </div>
-        ))}
+        <ModuleList groups={tierGroups} />
       </div>
 
       <BottomNav />
