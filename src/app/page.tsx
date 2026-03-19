@@ -291,11 +291,11 @@ export default async function DashboardPage() {
             <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>AI Playground</p>
             <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>Coming soon</p>
           </div>
-          <div className="rounded-lg p-4 card-depth" style={{ border: '1px solid #8B5CF6', background: 'linear-gradient(135deg, #1A1A2E 0%, #25253D 100%)' }}>
-            <p className="text-xs" style={{ color: '#8B5CF6' }}>🔒 Specialist</p>
+          <Link href="/learn/026f2263-67f7-5e35-a104-3f8315397376" className="rounded-lg p-4 transition-all card-depth" style={{ border: '1px solid #8B5CF6', background: 'linear-gradient(135deg, #1A1A2E 0%, #25253D 100%)' }}>
+            <p className="text-xs" style={{ color: '#8B5CF6' }}>⚡ Specialist Preview</p>
             <p className="text-sm font-semibold mt-1" style={{ color: '#FFFFFF' }}>Building Skills</p>
-            <p className="text-xs mt-1" style={{ color: '#9CA3AF' }}>Reach Specialist to unlock</p>
-          </div>
+            <p className="text-xs mt-1" style={{ color: '#9CA3AF' }}>Free taster — try it now</p>
+          </Link>
         </div>
 
         <div className="section-divider" />
