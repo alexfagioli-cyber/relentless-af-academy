@@ -49,7 +49,7 @@ export async function middleware(request: NextRequest) {
   if (!pathname.startsWith('/onboarding') && !pathname.startsWith('/welcome')) {
     const { data: profile } = await supabase
       .from('learner_profiles')
-      .select('onboarding_complete')
+      .select('onboarding_complete, active_session_ids')
       .eq('id', user.id)
       .single()
 
@@ -58,6 +58,19 @@ export async function middleware(request: NextRequest) {
       const url = request.nextUrl.clone()
       url.pathname = '/onboarding'
       return NextResponse.redirect(url)
+    }
+
+    // Session enforcement: allow up to 2 concurrent sessions (mobile + desktop)
+    const activeIds: string[] = (profile as Record<string, unknown>).active_session_ids as string[] ?? []
+    const cookieSessionId = request.cookies.get('academy_session_id')?.value
+    if (cookieSessionId && activeIds.length > 0 && !activeIds.includes(cookieSessionId)) {
+      await supabase.auth.signOut()
+      const url = request.nextUrl.clone()
+      url.pathname = '/auth/login'
+      url.searchParams.set('error', 'session_replaced')
+      const response = NextResponse.redirect(url)
+      response.cookies.delete('academy_session_id')
+      return response
     }
   }
 
