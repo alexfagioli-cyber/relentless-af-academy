@@ -271,10 +271,10 @@ export default async function DashboardPage() {
 
         {/* Quick access cards — 2x2 grid */}
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <Link href="/playground" className="rounded-lg p-4 transition-all card-depth" style={{ border: '1px solid #E8C872' }}>
+          <div className="rounded-lg p-4 card-depth" style={{ border: '1px solid #363654', opacity: 0.6 }}>
             <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>AI Playground</p>
-            <p className="text-xs mt-1" style={{ color: '#D4D4E8' }}>Practise your prompts</p>
-          </Link>
+            <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>Coming soon</p>
+          </div>
           <Link href="/community" className="rounded-lg p-4 transition-all card-depth" style={{ border: '1px solid #E8C872' }}>
             <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>Community</p>
             <p className="text-xs mt-1" style={{ color: '#D4D4E8' }}>Share and learn together</p>
