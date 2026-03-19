@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import Link from 'next/link'
 
 /* ------------------------------------------------------------------ */
@@ -32,9 +32,9 @@ const PERSONAS: Persona[] = [
     afterSpecialist: 'Built a revision app for her school. Considering computer science at uni.',
   },
   {
-    name: 'Ronnie',
+    name: 'Mary',
     role: 'Home & Family Manager',
-    initials: 'R',
+    initials: 'M',
     colour: '#EC4899',
     tag: 'Starts at Aware',
     before: 'Manages a household, plans holidays, handles finances, supports kids\' homework.',
@@ -54,9 +54,9 @@ const PERSONAS: Persona[] = [
     afterSpecialist: 'Left to start an AI consultancy. Charges £2,000/day.',
   },
   {
-    name: 'Jess',
+    name: 'Max',
     role: 'University Student (18)',
-    initials: 'J',
+    initials: 'M',
     colour: '#8B5CF6',
     tag: 'Starts at Aware, goal Specialist',
     before: 'Standard study approach — good but not exceptional.',
@@ -186,22 +186,42 @@ export function FuturesClient() {
 
   const persona = PERSONAS[personaIdx]
   const touchStartX = useRef<number | null>(null)
+  const autoScrollRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const [paused, setPaused] = useState(false)
+
+  // Auto-scroll every 6 seconds, pause on interaction
+  useEffect(() => {
+    if (paused) return
+    autoScrollRef.current = setInterval(() => {
+      setPersonaIdx((prev) => (prev + 1) % PERSONAS.length)
+    }, 6000)
+    return () => { if (autoScrollRef.current) clearInterval(autoScrollRef.current) }
+  }, [paused])
+
+  function goTo(idx: number) {
+    setPersonaIdx(idx)
+    setPaused(true)
+    setTimeout(() => setPaused(false), 15000) // resume auto-scroll after 15s of no interaction
+  }
+
+  function goPrev() { goTo(personaIdx === 0 ? PERSONAS.length - 1 : personaIdx - 1) }
+  function goNext() { goTo((personaIdx + 1) % PERSONAS.length) }
 
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX
+    setPaused(true)
   }, [])
 
   const handleTouchEnd = useCallback((e: React.TouchEvent) => {
     if (touchStartX.current === null) return
     const diff = touchStartX.current - e.changedTouches[0].clientX
     if (Math.abs(diff) > 50) {
-      if (diff > 0 && personaIdx < PERSONAS.length - 1) {
-        setPersonaIdx(personaIdx + 1)
-      } else if (diff < 0 && personaIdx > 0) {
-        setPersonaIdx(personaIdx - 1)
-      }
+      if (diff > 0) goNext()
+      else goPrev()
     }
     touchStartX.current = null
+    setTimeout(() => setPaused(false), 15000)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [personaIdx])
 
   function handleShowResults() {
@@ -284,20 +304,40 @@ export function FuturesClient() {
           </div>
         </div>
 
-        {/* Persona dots */}
-        <div className="flex justify-center gap-2">
-          {PERSONAS.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setPersonaIdx(i)}
-              className="w-2 h-2 rounded-full transition-all"
-              style={{
-                backgroundColor: i === personaIdx ? '#E8C872' : '#363654',
-                width: i === personaIdx ? 16 : 8,
-              }}
-            />
-          ))}
+        {/* Carousel controls */}
+        <div className="flex items-center justify-center gap-4">
+          <button
+            onClick={goPrev}
+            className="w-8 h-8 rounded-full flex items-center justify-center transition-all"
+            style={{ backgroundColor: '#25253D', border: '1px solid #363654', color: '#D4D4E8' }}
+          >
+            ‹
+          </button>
+          <div className="flex items-center gap-2">
+            {PERSONAS.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                className="rounded-full transition-all"
+                style={{
+                  backgroundColor: i === personaIdx ? '#E8C872' : '#363654',
+                  width: i === personaIdx ? 20 : 10,
+                  height: 10,
+                }}
+              />
+            ))}
+          </div>
+          <button
+            onClick={goNext}
+            className="w-8 h-8 rounded-full flex items-center justify-center transition-all"
+            style={{ backgroundColor: '#25253D', border: '1px solid #363654', color: '#D4D4E8' }}
+          >
+            ›
+          </button>
         </div>
+        <p className="text-center text-[10px] mt-2" style={{ color: '#6B7280' }}>
+          {personaIdx + 1} of {PERSONAS.length} stories
+        </p>
       </div>
 
       {/* ============================================================ */}
