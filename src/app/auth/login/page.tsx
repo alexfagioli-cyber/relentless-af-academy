@@ -21,7 +21,7 @@ function LoginForm() {
     setError(null)
 
     const supabase = createClient()
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     })
@@ -30,6 +30,16 @@ function LoginForm() {
       setError(error.message)
       setLoading(false)
       return
+    }
+
+    // Generate unique session ID and store it — enforces single active session
+    if (data.user) {
+      const sessionId = crypto.randomUUID()
+      await supabase
+        .from('learner_profiles')
+        .update({ active_session_id: sessionId })
+        .eq('id', data.user.id)
+      document.cookie = `academy_session_id=${sessionId}; path=/; max-age=${60 * 60 * 24 * 30}; SameSite=Lax; Secure`
     }
 
     router.push('/')
@@ -58,7 +68,9 @@ function LoginForm() {
 
       {(urlError || error) && !searchParams.get('invited') && (
         <div className="rounded-md p-3 text-sm" style={{ backgroundColor: '#25253D', color: '#E8C872' }}>
-          {urlError === 'invalid_link' ? 'Invalid or expired link. Please try again.' : error}
+          {urlError === 'invalid_link' ? 'Invalid or expired link. Please try again.'
+            : urlError === 'session_replaced' ? 'You were signed out because your account was signed in on another device.'
+            : error}
         </div>
       )}
 

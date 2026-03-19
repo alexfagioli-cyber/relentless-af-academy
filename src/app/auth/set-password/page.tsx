@@ -37,6 +37,17 @@ export default function SetPasswordPage() {
       return
     }
 
+    // Set session ID for single-session enforcement
+    const { data: { user } } = await supabase.auth.getUser()
+    if (user) {
+      const sessionId = crypto.randomUUID()
+      await supabase
+        .from('learner_profiles')
+        .update({ active_session_id: sessionId })
+        .eq('id', user.id)
+      document.cookie = `academy_session_id=${sessionId}; path=/; max-age=${60 * 60 * 24 * 30}; SameSite=Lax; Secure`
+    }
+
     router.push('/welcome')
     router.refresh()
   }

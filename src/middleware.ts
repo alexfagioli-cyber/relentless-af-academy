@@ -45,11 +45,11 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
-  // Check onboarding status
+  // Check onboarding status and session enforcement
   if (!pathname.startsWith('/onboarding') && !pathname.startsWith('/welcome')) {
     const { data: profile } = await supabase
       .from('learner_profiles')
-      .select('onboarding_complete')
+      .select('onboarding_complete, active_session_id')
       .eq('id', user.id)
       .single()
 
@@ -58,6 +58,21 @@ export async function middleware(request: NextRequest) {
       const url = request.nextUrl.clone()
       url.pathname = '/onboarding'
       return NextResponse.redirect(url)
+    }
+
+    // Single-session enforcement: check cookie matches active session
+    if (profile.active_session_id) {
+      const cookieSessionId = request.cookies.get('academy_session_id')?.value
+      if (cookieSessionId && cookieSessionId !== profile.active_session_id) {
+        // Another device logged in — sign this session out
+        await supabase.auth.signOut()
+        const url = request.nextUrl.clone()
+        url.pathname = '/auth/login'
+        url.searchParams.set('error', 'session_replaced')
+        const response = NextResponse.redirect(url)
+        response.cookies.delete('academy_session_id')
+        return response
+      }
     }
   }
 
