@@ -38,7 +38,7 @@ export function VideoPlaceholder({ videoUrl }: VideoPlaceholderProps) {
 
   // Direct video files (MP4 etc)
   return (
-    <div className="mb-6 rounded-lg overflow-hidden mx-auto max-w-sm" style={{ border: '1px solid #363654' }}>
+    <div className="mb-6 rounded-lg overflow-hidden mx-auto w-2/3 max-w-xs" style={{ border: '1px solid #363654' }}>
       <video
         src={videoUrl}
         controls
