@@ -168,19 +168,19 @@ export default async function DashboardPage() {
         </div>
 
         {/* Progress ring + tier progress */}
-        <div className="flex items-center gap-5 mb-6 rounded-lg p-4 card-depth">
-          <ProgressRing completed={currentTierCompleted} total={currentTierTotal} size={90} />
-          <div className="flex-1">
+        <div className="flex items-center gap-4 mb-6 rounded-lg px-3 py-3 card-depth">
+          <ProgressRing completed={currentTierCompleted} total={currentTierTotal} size={56} />
+          <div className="flex-1 min-w-0">
             <p className="text-sm font-semibold" style={{ color: '#FFFFFF' }}>
               {currentTierCompleted} of {currentTierTotal} in {learnerTier.charAt(0).toUpperCase() + learnerTier.slice(1)}
             </p>
             {nextInTier && (
-              <p className="mt-1 text-xs" style={{ color: '#D4D4E8' }}>
-                Next up: {nextInTier.title}
+              <p className="mt-0.5 text-xs truncate" style={{ color: '#D4D4E8' }}>
+                Next: {nextInTier.title}
               </p>
             )}
             {currentTierCompleted === currentTierTotal && currentTierTotal > 0 && (
-              <p className="mt-1 text-xs font-semibold" style={{ color: '#22C55E' }}>
+              <p className="mt-0.5 text-xs font-semibold" style={{ color: '#22C55E' }}>
                 Tier complete
               </p>
             )}
@@ -269,12 +269,8 @@ export default async function DashboardPage() {
 
         <div className="section-divider" />
 
-        {/* Quick access cards — 2x2 grid */}
+        {/* Quick access cards — 2x3 grid */}
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <div className="rounded-lg p-4 card-depth" style={{ border: '1px solid #363654', opacity: 0.6 }}>
-            <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>AI Playground</p>
-            <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>Coming soon</p>
-          </div>
           <Link href="/community" className="rounded-lg p-4 transition-all card-depth" style={{ border: '1px solid #E8C872' }}>
             <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>Community</p>
             <p className="text-xs mt-1" style={{ color: '#D4D4E8' }}>Share and learn together</p>
@@ -287,6 +283,19 @@ export default async function DashboardPage() {
             <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>Latest News</p>
             <p className="text-xs mt-1" style={{ color: '#D4D4E8' }}>AI updates and ideas</p>
           </Link>
+          <Link href="/prompts" className="rounded-lg p-4 transition-all card-depth" style={{ border: '1px solid #E8C872' }}>
+            <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>Prompt Library</p>
+            <p className="text-xs mt-1" style={{ color: '#D4D4E8' }}>Templates that work</p>
+          </Link>
+          <div className="rounded-lg p-4 card-depth" style={{ border: '1px solid #363654', opacity: 0.6 }}>
+            <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>AI Playground</p>
+            <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>Coming soon</p>
+          </div>
+          <div className="rounded-lg p-4 card-depth" style={{ border: '1px solid #8B5CF6', background: 'linear-gradient(135deg, #1A1A2E 0%, #25253D 100%)' }}>
+            <p className="text-xs" style={{ color: '#8B5CF6' }}>🔒 Specialist</p>
+            <p className="text-sm font-semibold mt-1" style={{ color: '#FFFFFF' }}>Building Skills</p>
+            <p className="text-xs mt-1" style={{ color: '#9CA3AF' }}>Reach Specialist to unlock</p>
+          </div>
         </div>
 
         <div className="section-divider" />

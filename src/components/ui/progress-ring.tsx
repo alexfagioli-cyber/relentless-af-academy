@@ -39,7 +39,7 @@ export function ProgressRing({ completed, total, size = 120 }: ProgressRingProps
       </svg>
       {/* Centre text */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-2xl font-bold" style={{ color: '#FFFFFF' }}>
+        <span className={`${size <= 64 ? 'text-sm' : 'text-2xl'} font-bold`} style={{ color: '#FFFFFF' }}>
           {pct}%
         </span>
       </div>
