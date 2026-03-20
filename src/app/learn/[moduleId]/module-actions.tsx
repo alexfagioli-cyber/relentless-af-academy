@@ -522,6 +522,15 @@ function ChallengeActions({
 
   return (
     <div className="space-y-4">
+      <a
+        href="https://claude.ai"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity"
+        style={{ backgroundColor: '#E8C872', color: '#FFFFFF' }}
+      >
+        Open Claude to do this exercise →
+      </a>
       <textarea
         value={reflection}
         onChange={(e) => setReflection(e.target.value)}
