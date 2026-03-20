@@ -107,8 +107,8 @@ export default async function ModuleDetailPage({
           </div>
         </div>
 
-        {/* Challenge guidance — structured help for challenge modules */}
-        {mod.module_type === 'challenge' && mod.content?.guidance && (
+        {/* Guidance — structured help for any module with guidance content */}
+        {mod.content?.guidance && (
           <div className="rounded-lg p-4 mb-6 space-y-4" style={{ backgroundColor: '#1A1A2E', border: '1px solid #363654' }}>
             {(mod.content.guidance as Array<{ title: string; body: string; examples?: string[] }>).map((section: { title: string; body: string; examples?: string[] }, i: number) => (
               <div key={i} className="space-y-2">

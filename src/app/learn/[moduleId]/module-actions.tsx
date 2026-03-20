@@ -279,6 +279,14 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
             >
               {loading ? 'Saving' : "I've finished this course"}
             </button>
+            <button
+              onClick={markComplete}
+              disabled={loading}
+              className="block w-full text-xs text-center py-2 transition-opacity disabled:opacity-50"
+              style={{ color: '#6B7280' }}
+            >
+              {loading ? 'Saving' : 'Skip this course'}
+            </button>
           </>
         )}
 

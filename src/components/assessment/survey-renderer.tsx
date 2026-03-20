@@ -62,7 +62,7 @@ export function SurveyRenderer({ assessmentId, questions, timeLimit, passScore, 
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [result, setResult] = useState<ScoreResult | null>(null)
-  const [showReview, setShowReview] = useState(false)
+  const [showReview, setShowReview] = useState(true)
   const { celebrate } = useCelebration()
   const router = useRouter()
 

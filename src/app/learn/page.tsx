@@ -61,18 +61,35 @@ export default async function LearnPage() {
     return 'locked'
   }
 
-  // Group modules by tier with statuses
+  // Status priority for smart ordering: active first, completed last
+  const STATUS_PRIORITY: Record<string, number> = {
+    in_progress: 0,
+    available: 1,
+    not_started: 2,
+    completed: 3,
+    locked: 4,
+  }
+
+  // Group modules by tier with statuses, sorted: active first, completed last
   const tierGroups = visibleTiers.map((tier) => ({
     tier,
     label: TIER_LABELS[tier],
-    modules: (modules ?? []).filter((m) => m.tier === tier).map((mod) => ({
-      id: mod.id,
-      title: mod.title,
-      module_type: mod.module_type,
-      estimated_duration_mins: mod.estimated_duration_mins,
-      platform: mod.platform,
-      status: getStatus(mod.id),
-    })),
+    modules: (modules ?? [])
+      .filter((m) => m.tier === tier)
+      .map((mod) => ({
+        id: mod.id,
+        title: mod.title,
+        module_type: mod.module_type,
+        estimated_duration_mins: mod.estimated_duration_mins,
+        platform: mod.platform,
+        status: getStatus(mod.id),
+        order_index: mod.order_index as number,
+      }))
+      .sort((a, b) => {
+        const statusDiff = (STATUS_PRIORITY[a.status] ?? 9) - (STATUS_PRIORITY[b.status] ?? 9)
+        if (statusDiff !== 0) return statusDiff
+        return a.order_index - b.order_index
+      }),
   }))
 
   return (
