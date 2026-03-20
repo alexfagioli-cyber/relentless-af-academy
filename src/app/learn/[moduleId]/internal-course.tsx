@@ -265,6 +265,17 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
         )}
       </div>
 
+      {/* Open Claude link */}
+      <a
+        href="https://claude.ai"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block w-full rounded-lg py-3 text-sm font-semibold text-center transition-opacity"
+        style={{ backgroundColor: '#E8C872', color: '#FFFFFF' }}
+      >
+        Open Claude to do this →
+      </a>
+
       {/* Error */}
       {error && (
         <div className="rounded-lg p-3 text-sm" style={{ backgroundColor: '#25253D', color: '#E8C872' }}>
@@ -303,6 +314,16 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
           </button>
         )}
       </div>
+      {/* Skip link for screens with inputs */}
+      {!isLast && screen.inputs && !canProceed() && (
+        <button
+          onClick={() => setCurrentScreen((s) => s + 1)}
+          className="block w-full text-xs text-center py-1"
+          style={{ color: '#6B7280' }}
+        >
+          Skip this step
+        </button>
+      )}
     </div>
   )
 }
