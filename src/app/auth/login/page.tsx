@@ -32,23 +32,6 @@ function LoginForm() {
       return
     }
 
-    // Generate unique session ID — allows up to 2 concurrent sessions (mobile + desktop)
-    if (data.user) {
-      const sessionId = crypto.randomUUID()
-      const { data: profile } = await supabase
-        .from('learner_profiles')
-        .select('active_session_ids')
-        .eq('id', data.user.id)
-        .single()
-      const existing: string[] = profile?.active_session_ids ?? []
-      const updated = [...existing, sessionId].slice(-2) // keep last 2 only
-      await supabase
-        .from('learner_profiles')
-        .update({ active_session_ids: updated })
-        .eq('id', data.user.id)
-      document.cookie = `academy_session_id=${sessionId}; path=/; max-age=${60 * 60 * 24 * 30}; SameSite=Lax; Secure`
-    }
-
     router.push('/')
     router.refresh()
   }

@@ -2,7 +2,7 @@
 
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { SurveyRenderer, type ScoreResult } from '@/components/assessment/survey-renderer'
 import { useCelebration } from '@/components/ui/celebration-toast'
 import type { CelebrationKey } from '@/lib/celebrations'
@@ -38,6 +38,16 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
   const [assessmentError, setAssessmentError] = useState<string | null>(null)
   const router = useRouter()
   const { celebrate } = useCelebration()
+  const mountedRef = useRef(true)
+  const retryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      mountedRef.current = false
+      if (retryTimeoutRef.current) clearTimeout(retryTimeoutRef.current)
+    }
+  }, [])
 
   // On mount, mark as in_progress if not_started + fetch assessment data if assessment module
   useEffect(() => {
@@ -60,6 +70,8 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
       .eq('module_id', moduleId)
       .single()
 
+    if (!mountedRef.current) return
+
     if (error || !assessmentRow) {
       // If no row exists at all (PGRST116 = no rows), this module has no assessment data yet
       if (error?.code === 'PGRST116') {
@@ -68,7 +80,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
       }
       // Retry for transient errors (session race conditions on mobile)
       if (retryCount < 2) {
-        setTimeout(() => fetchAssessmentData(retryCount + 1), 1500)
+        retryTimeoutRef.current = setTimeout(() => fetchAssessmentData(retryCount + 1), 1500)
         return
       }
       setAssessmentError("Assessment didn't load. Refresh and try again.")
@@ -83,6 +95,8 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
         delete element.correctAnswer
       }
     }
+
+    if (!mountedRef.current) return
 
     setAssessment({
       id: assessmentRow.id,
@@ -99,7 +113,7 @@ export function ModuleActions({ moduleId, moduleType, externalUrl, platform, cur
       .eq('learner_id', userId)
       .order('attempted_at', { ascending: false })
 
-    setAttempts(prevAttempts ?? [])
+    if (mountedRef.current) setAttempts(prevAttempts ?? [])
   }
 
   async function markStarted() {

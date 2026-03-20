@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { useState, useCallback } from 'react'
@@ -29,11 +30,37 @@ interface Props {
   currentStatus: string
 }
 
+/** Parse **bold** and newlines into React elements — no dangerouslySetInnerHTML */
+function renderMarkdownBold(text: string): React.ReactNode[] {
+  const parts = text.split(/(\*\*.*?\*\*)/g)
+  let keyIdx = 0
+  const nodes: React.ReactNode[] = []
+
+  for (const part of parts) {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      nodes.push(
+        <strong key={keyIdx++} style={{ color: '#FFFFFF' }}>
+          {part.slice(2, -2)}
+        </strong>
+      )
+    } else {
+      const lines = part.split('\n')
+      lines.forEach((line, li) => {
+        if (li > 0) nodes.push(<br key={keyIdx++} />)
+        if (line) nodes.push(<span key={keyIdx++}>{line}</span>)
+      })
+    }
+  }
+
+  return nodes
+}
+
 export function InternalCourse({ moduleId, userId, screens, currentStatus }: Props) {
   const [currentScreen, setCurrentScreen] = useState(0)
   const [responses, setResponses] = useState<Record<string, string>>({})
   const [saving, setSaving] = useState(false)
   const [completed, setCompleted] = useState(currentStatus === 'completed')
+  const [error, setError] = useState<string | null>(null)
   const router = useRouter()
   const { celebrate } = useCelebration()
 
@@ -56,61 +83,73 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
 
   async function handleComplete() {
     setSaving(true)
+    setError(null)
     const supabase = createClient()
 
-    // Save responses if any
-    if (Object.keys(responses).length > 0) {
-      await supabase
-        .from('challenge_responses')
+    try {
+      // Save responses if any
+      if (Object.keys(responses).length > 0) {
+        const { error: respError } = await supabase
+          .from('challenge_responses')
+          .upsert({
+            learner_id: userId,
+            module_id: moduleId,
+            responses,
+          }, { onConflict: 'learner_id,module_id' })
+        if (respError) throw respError
+      }
+
+      // Mark module complete
+      const { error: progressError } = await supabase
+        .from('progress')
         .upsert({
           learner_id: userId,
           module_id: moduleId,
-          responses,
+          status: 'completed',
+          started_at: new Date().toISOString(),
+          completed_at: new Date().toISOString(),
+          attempts: 1,
         }, { onConflict: 'learner_id,module_id' })
+      if (progressError) throw progressError
+
+      // Non-critical: learning event, celebrations, streak, reviews
+      // These can fail without blocking module completion
+      try {
+        await supabase
+          .from('learning_events')
+          .insert({
+            learner_id: userId,
+            verb: 'completed',
+            object_type: 'module',
+            object_id: moduleId,
+          })
+
+        const { count } = await supabase
+          .from('learning_events')
+          .select('*', { count: 'exact', head: true })
+          .eq('learner_id', userId)
+          .eq('verb', 'completed')
+        if (count === 1) celebrate('first_module_completed')
+
+        const { updateStreak } = await import('@/lib/streak')
+        const newStreak = await updateStreak(supabase, userId)
+        if (newStreak === 3) celebrate('streak_3')
+        if (newStreak === 7) celebrate('streak_7')
+
+        const { scheduleReviews } = await import('@/lib/spaced-repetition')
+        await scheduleReviews(supabase, userId, moduleId)
+      } catch {
+        // Non-critical — module is already marked complete
+      }
+
+      setCompleted(true)
+      router.refresh()
+    } catch (err) {
+      console.error('Failed to save progress:', err)
+      setError('Failed to save. Check your connection and try again.')
+    } finally {
+      setSaving(false)
     }
-
-    // Mark module complete
-    await supabase
-      .from('progress')
-      .upsert({
-        learner_id: userId,
-        module_id: moduleId,
-        status: 'completed',
-        started_at: new Date().toISOString(),
-        completed_at: new Date().toISOString(),
-        attempts: 1,
-      }, { onConflict: 'learner_id,module_id' })
-
-    await supabase
-      .from('learning_events')
-      .insert({
-        learner_id: userId,
-        verb: 'completed',
-        object_type: 'module',
-        object_id: moduleId,
-      })
-
-    // Check if first completion
-    const { count } = await supabase
-      .from('learning_events')
-      .select('*', { count: 'exact', head: true })
-      .eq('learner_id', userId)
-      .eq('verb', 'completed')
-    if (count === 1) celebrate('first_module_completed')
-
-    // Update streak
-    const { updateStreak } = await import('@/lib/streak')
-    const newStreak = await updateStreak(supabase, userId)
-    if (newStreak === 3) celebrate('streak_3')
-    if (newStreak === 7) celebrate('streak_7')
-
-    // Schedule spaced repetition reviews
-    const { scheduleReviews } = await import('@/lib/spaced-repetition')
-    await scheduleReviews(supabase, userId, moduleId)
-
-    setCompleted(true)
-    setSaving(false)
-    router.refresh()
   }
 
   if (completed) {
@@ -153,14 +192,12 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
           {screen.title}
         </h2>
 
-        {/* Body text — render markdown-style bold */}
+        {/* Body text — safe rendering via React elements */}
         <div className="text-sm leading-relaxed space-y-3" style={{ color: '#D1D5DB' }}>
           {screen.body.split('\n\n').map((paragraph, i) => (
-            <p key={i} dangerouslySetInnerHTML={{
-              __html: paragraph
-                .replace(/\*\*(.*?)\*\*/g, '<strong style="color:#FFFFFF">$1</strong>')
-                .replace(/\n/g, '<br/>')
-            }} />
+            <p key={i}>
+              {renderMarkdownBold(paragraph)}
+            </p>
           ))}
         </div>
 
@@ -227,6 +264,13 @@ export function InternalCourse({ moduleId, userId, screens, currentStatus }: Pro
           </div>
         )}
       </div>
+
+      {/* Error */}
+      {error && (
+        <div className="rounded-lg p-3 text-sm" style={{ backgroundColor: '#25253D', color: '#E8C872' }}>
+          {error}
+        </div>
+      )}
 
       {/* Navigation */}
       <div className="flex gap-3 pt-2">

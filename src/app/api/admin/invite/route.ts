@@ -38,12 +38,28 @@ export async function POST(request: NextRequest) {
   // Send invite via admin client (service_role)
   const adminClient = createAdminClient()
 
-  const { error: inviteError } = await adminClient.auth.admin.inviteUserByEmail(email, {
+  const { data: inviteData, error: inviteError } = await adminClient.auth.admin.inviteUserByEmail(email, {
     redirectTo: `${request.nextUrl.origin}/auth/confirm`,
   })
 
   if (inviteError) {
     return NextResponse.json({ error: inviteError.message }, { status: 500 })
+  }
+
+  // Pre-create minimal profile so middleware doesn't break if onboarding fails
+  if (inviteData?.user) {
+    const { error: profileError } = await adminClient
+      .from('learner_profiles')
+      .upsert({
+        id: inviteData.user.id,
+        display_name: email.split('@')[0],
+        onboarding_complete: false,
+      }, { onConflict: 'id' })
+
+    if (profileError) {
+      // Non-fatal — onboarding upsert is the fallback
+      console.error('Pre-create profile failed:', profileError.message)
+    }
   }
 
   // Create invite row (only after successful invite send)

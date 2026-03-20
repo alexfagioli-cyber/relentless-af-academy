@@ -332,6 +332,7 @@ export default async function DashboardPage() {
             <p className="text-sm font-semibold" style={{ color: '#E8C872' }}>AI Playground</p>
             <p className="text-xs mt-1" style={{ color: '#8BA3C4' }}>Coming soon</p>
           </div>
+          {/* Building Skills module UUID — deterministic from module_uuid('S10b') */}
           <Link href="/learn/026f2263-67f7-5e35-a104-3f8315397376" className="rounded-lg p-4 md:p-3 transition-all card-depth" style={{ border: '1px solid #8B5CF6', background: 'linear-gradient(135deg, #1A1A2E 0%, #25253D 100%)' }}>
             <p className="text-xs" style={{ color: '#8B5CF6' }}>⚡ Specialist Preview</p>
             <p className="text-sm font-semibold mt-1" style={{ color: '#FFFFFF' }}>Building Skills</p>
