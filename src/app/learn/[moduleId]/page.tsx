@@ -170,9 +170,9 @@ export default async function ModuleDetailPage({
           <ChallengeGallery moduleId={mod.id} />
         )}
 
-        {/* Feedback — shown after completion */}
-        {currentStatus === 'completed' && (
-          <ModuleFeedback moduleId={mod.id} userId={user.id} />
+        {/* Feedback — shown once module is started */}
+        {currentStatus !== 'not_started' && (
+          <ModuleFeedback moduleId={mod.id} userId={user.id} status={currentStatus} />
         )}
       </div>
 

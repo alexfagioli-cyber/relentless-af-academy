@@ -35,7 +35,10 @@ export function SidebarNav() {
     <nav className="hidden md:flex md:flex-col fixed top-0 left-0 h-full w-60 z-40 pt-8 px-4" style={{ background: 'rgba(26, 26, 46, 0.85)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderRight: '1px solid rgba(232, 200, 114, 0.1)' }}>
       <div className="mb-10 px-3">
         <p className="text-sm font-bold" style={{ color: '#E8C872' }}>RelentlessAF</p>
-        <p className="text-xs" style={{ color: '#D4D4E8' }}>Academy</p>
+        <div className="flex items-center gap-2">
+          <p className="text-xs" style={{ color: '#D4D4E8' }}>Academy</p>
+          <span className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-full" style={{ color: '#E8C872', border: '1px solid rgba(232, 200, 114, 0.3)', backgroundColor: 'rgba(232, 200, 114, 0.08)' }}>Beta</span>
+        </div>
       </div>
 
       <div className="space-y-1 flex-1">

@@ -29,6 +29,21 @@ export function FeedbackButton() {
     })
   }, [])
 
+  const [showNudge, setShowNudge] = useState(false)
+
+  useEffect(() => {
+    if (!userId) return
+    const seen = localStorage.getItem('feedback-nudge-seen')
+    if (!seen) {
+      setShowNudge(true)
+      const timer = setTimeout(() => {
+        setShowNudge(false)
+        localStorage.setItem('feedback-nudge-seen', '1')
+      }, 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [userId])
+
   if (hidden || !userId) return null
 
   async function handleSubmit() {
@@ -53,13 +68,24 @@ export function FeedbackButton() {
     <>
       {/* Floating button */}
       {!open && (
-        <button
-          onClick={() => setOpen(true)}
-          className="fixed bottom-[5.5rem] md:bottom-6 right-4 md:right-8 z-40 rounded-full px-3 py-1.5 text-xs font-semibold transition-all shadow-lg"
-          style={{ color: '#E8C872', border: '1.5px solid #E8C872', backgroundColor: '#25253D' }}
-        >
-          Feedback
-        </button>
+        <div className="fixed bottom-[5.5rem] md:bottom-6 right-4 md:right-8 z-40">
+          {showNudge && (
+            <div
+              className="absolute bottom-full right-0 mb-2 rounded-lg px-3 py-2 text-xs whitespace-nowrap animate-fade-in"
+              style={{ backgroundColor: '#25253D', color: '#D4D4E8', border: '1px solid #E8C872', boxShadow: '0 4px 12px rgba(0,0,0,0.3)' }}
+              onClick={() => { setShowNudge(false); localStorage.setItem('feedback-nudge-seen', '1') }}
+            >
+              Spot something off? Tap here
+            </div>
+          )}
+          <button
+            onClick={() => { setOpen(true); setShowNudge(false); localStorage.setItem('feedback-nudge-seen', '1') }}
+            className="rounded-full px-3 py-1.5 text-xs font-semibold transition-all shadow-lg"
+            style={{ color: '#E8C872', border: '1.5px solid #E8C872', backgroundColor: '#25253D' }}
+          >
+            Feedback
+          </button>
+        </div>
       )}
 
       {/* Modal overlay */}

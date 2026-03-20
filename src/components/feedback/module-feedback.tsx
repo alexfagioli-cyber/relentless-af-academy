@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 interface Props {
   moduleId: string
   userId: string
+  status?: string
 }
 
 const RATINGS = [
@@ -15,7 +16,7 @@ const RATINGS = [
   { value: 'confusing', label: 'Confusing', icon: '😕' },
 ] as const
 
-export function ModuleFeedback({ moduleId, userId }: Props) {
+export function ModuleFeedback({ moduleId, userId, status }: Props) {
   const [selected, setSelected] = useState<string | null>(null)
   const [comment, setComment] = useState('')
   const [showComment, setShowComment] = useState(false)
@@ -82,7 +83,7 @@ export function ModuleFeedback({ moduleId, userId }: Props) {
   return (
     <div className="mt-6 pt-6" style={{ borderTop: '1px solid #374151' }}>
       <p className="text-xs uppercase tracking-wide mb-3" style={{ color: '#6B7280' }}>
-        How was this module?
+        {status === 'completed' ? 'How was this module?' : "How's this going so far?"}
       </p>
 
       <div className="flex gap-2">
