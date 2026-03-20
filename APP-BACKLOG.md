@@ -1,7 +1,30 @@
 # RelentlessAF Academy — Development Backlog
 
 > App-specific development backlog. Not Atlas AT items.
-> Raised: 19 March 2026 — live walkthrough debug session.
+> Started: 19 March 2026 — live walkthrough debug session.
+> Updated: 20 March 2026 — Sam feedback sprint (v1.2.0).
+
+## Completed — v1.2.0 (20 March 2026)
+
+| # | Fix | Source |
+|---|---|---|
+| S1 | Assessment answers shown by default | Sam feedback |
+| S2 | Guidance rendering expanded to all module types | Sam feedback |
+| S3 | "Skip this course" on external courses | Sam feedback |
+| S4 | Learn page smart sort (completed sink to bottom) | Sam feedback |
+| S5 | AI Assistant challenge — guidance + persona examples | Sam feedback |
+| S6 | Prompt Engineering — pre-course guidance | Sam feedback |
+| S7 | Building Skills — "Create Your First SKILL.md" screen | Sam feedback |
+| S8 | Beta badge in sidebar | Atlas initiative |
+| S9 | Feedback nudge tooltip for new users | Atlas initiative |
+| S10 | Module feedback available mid-progress | Atlas initiative |
+| S11 | "Suggestion" rating in feedback panel | Sam feedback |
+| S12 | Copy-to-clipboard on Futures prompts | Sam feedback |
+| S13 | "Open Claude" button on all challenges | Sam feedback |
+| S14 | Automated test suite (20 tests, vitest) | Sam feedback |
+| S15 | Release tagging (v1.2.0) | Sam feedback |
+
+---
 
 ## Critical — Blocks Next Invite
 
