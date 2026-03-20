@@ -188,7 +188,32 @@ export default function OnboardingPage() {
       // Get display name from user metadata or email
       const displayName = user.user_metadata?.display_name || user.email?.split('@')[0] || 'Learner'
 
-      // Save onboarding responses — validate keys against known question keys
+      // Save learner profile FIRST (most critical — this is what unblocks the user)
+      const motivationOptions = QUESTION_OPTIONS.motivation
+      const successOptions = QUESTION_OPTIONS.success_vision
+      const backgroundOptions = QUESTION_OPTIONS.background
+
+      const profileData = {
+        id: user.id,
+        display_name: displayName,
+        tier,
+        onboarding_complete: true,
+        weekly_time_commitment: timeCommitment,
+        primary_goal: successOptions[responses.success_vision]?.label ?? null,
+        learning_motivation: motivationOptions[responses.motivation]?.label ?? null,
+        occupation: backgroundOptions[responses.background]?.label ?? null,
+      }
+
+      const { error: profileError } = await supabase
+        .from('learner_profiles')
+        .upsert(profileData, { onConflict: 'id' })
+
+      if (profileError) {
+        console.error('Profile save failed:', profileError.message, profileError.details, profileError.hint)
+        throw profileError
+      }
+
+      // Save onboarding responses (non-blocking — profile is already saved)
       const validKeys = new Set(Object.keys(QUESTION_OPTIONS))
       const responseRows = Object.entries(responses)
         .filter(([questionKey]) => validKeys.has(questionKey))
@@ -200,52 +225,11 @@ export default function OnboardingPage() {
 
       const { error: responseError } = await supabase
         .from('onboarding_responses')
-        .insert(responseRows)
+        .upsert(responseRows, { onConflict: 'learner_id,question_key' })
 
       if (responseError) {
-        console.error('Onboarding responses save failed:', responseError.message, responseError.details)
-        throw responseError
-      }
-
-      // Update or insert learner profile
-      const motivationOptions = QUESTION_OPTIONS.motivation
-      const successOptions = QUESTION_OPTIONS.success_vision
-      const backgroundOptions = QUESTION_OPTIONS.background
-
-      const profileData = {
-        display_name: displayName,
-        tier,
-        onboarding_complete: true,
-        weekly_time_commitment: timeCommitment,
-        primary_goal: successOptions[responses.success_vision]?.label ?? null,
-        learning_motivation: motivationOptions[responses.motivation]?.label ?? null,
-        occupation: backgroundOptions[responses.background]?.label ?? null,
-      }
-
-      // Try update first (handles existing rows created by admin invite)
-      const { data: existing } = await supabase
-        .from('learner_profiles')
-        .select('id')
-        .eq('id', user.id)
-        .single()
-
-      let profileError
-      if (existing) {
-        const result = await supabase
-          .from('learner_profiles')
-          .update(profileData)
-          .eq('id', user.id)
-        profileError = result.error
-      } else {
-        const result = await supabase
-          .from('learner_profiles')
-          .insert({ id: user.id, ...profileData })
-        profileError = result.error
-      }
-
-      if (profileError) {
-        console.error('Profile save failed:', profileError.message, profileError.details, profileError.hint)
-        throw profileError
+        // Log but don't block — profile is saved, user can proceed
+        console.error('Onboarding responses save failed:', responseError.message)
       }
 
       router.push('/')
