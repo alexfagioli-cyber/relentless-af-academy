@@ -61,16 +61,7 @@ export default async function LearnPage() {
     return 'locked'
   }
 
-  // Status priority for smart ordering: active first, completed last
-  const STATUS_PRIORITY: Record<string, number> = {
-    in_progress: 0,
-    available: 1,
-    not_started: 2,
-    completed: 3,
-    locked: 4,
-  }
-
-  // Group modules by tier with statuses, sorted: active first, completed last
+  // Group modules by tier with statuses, sorted: original order but completed sink to bottom
   const tierGroups = visibleTiers.map((tier) => ({
     tier,
     label: TIER_LABELS[tier],
@@ -86,8 +77,9 @@ export default async function LearnPage() {
         order_index: mod.order_index as number,
       }))
       .sort((a, b) => {
-        const statusDiff = (STATUS_PRIORITY[a.status] ?? 9) - (STATUS_PRIORITY[b.status] ?? 9)
-        if (statusDiff !== 0) return statusDiff
+        const aCompleted = a.status === 'completed' ? 1 : 0
+        const bCompleted = b.status === 'completed' ? 1 : 0
+        if (aCompleted !== bCompleted) return aCompleted - bCompleted
         return a.order_index - b.order_index
       }),
   }))

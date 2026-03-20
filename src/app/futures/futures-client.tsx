@@ -3,6 +3,30 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import Link from 'next/link'
 
+function CopyButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false)
+
+  async function handleCopy() {
+    await navigator.clipboard.writeText(text)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 1500)
+  }
+
+  return (
+    <button
+      onClick={handleCopy}
+      className="shrink-0 rounded px-2 py-1 text-[10px] font-semibold transition-all"
+      style={{
+        backgroundColor: copied ? '#22C55E' : '#1A1A2E',
+        color: copied ? '#FFFFFF' : '#8BA3C4',
+        border: `1px solid ${copied ? '#22C55E' : '#363654'}`,
+      }}
+    >
+      {copied ? 'Copied' : 'Copy'}
+    </button>
+  )
+}
+
 /* ------------------------------------------------------------------ */
 /*  DATA                                                               */
 /* ------------------------------------------------------------------ */
@@ -484,13 +508,16 @@ export function FuturesClient() {
               return (
                 <div
                   key={i}
-                  className="rounded-lg px-4 py-3"
+                  className="rounded-lg px-4 py-3 flex items-start justify-between gap-2"
                   style={{ backgroundColor: '#25253D', borderLeft: '3px solid #E8C872' }}
                 >
-                  <p className="text-sm font-semibold" style={{ color: '#FFFFFF' }}>{title}</p>
-                  {rest.length > 0 && (
-                    <p className="text-xs mt-0.5" style={{ color: '#D4D4E8' }}>{rest.join(' — ')}</p>
-                  )}
+                  <div>
+                    <p className="text-sm font-semibold" style={{ color: '#FFFFFF' }}>{title}</p>
+                    {rest.length > 0 && (
+                      <p className="text-xs mt-0.5" style={{ color: '#D4D4E8' }}>{rest.join(' — ')}</p>
+                    )}
+                  </div>
+                  <CopyButton text={suggestion} />
                 </div>
               )
             })}
@@ -534,8 +561,11 @@ export function FuturesClient() {
             >
               <div className="flex items-start gap-3">
                 <span className="text-sm mt-0.5" style={{ color: '#E8C872' }}>✦</span>
-                <div>
-                  <p className="text-sm font-medium" style={{ color: '#FFFFFF' }}>{example.title}</p>
+                <div className="flex-1">
+                  <div className="flex items-start justify-between gap-2">
+                    <p className="text-sm font-medium" style={{ color: '#FFFFFF' }}>{example.title}</p>
+                    <CopyButton text={`${example.title}: ${example.detail}`} />
+                  </div>
                   <p className="text-xs mt-1 leading-relaxed" style={{ color: '#8BA3C4' }}>{example.detail}</p>
                 </div>
               </div>

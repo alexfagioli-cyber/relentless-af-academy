@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 const RATINGS = [
   { value: 'love', label: 'Love it', emoji: '❤️' },
   { value: 'good', label: 'Good', emoji: '👍' },
+  { value: 'suggestion', label: 'Suggestion', emoji: '💡' },
   { value: 'needs-work', label: 'Needs work', emoji: '🔧' },
   { value: 'confused', label: 'Confused', emoji: '😕' },
 ]
@@ -114,7 +115,7 @@ export function FeedbackButton() {
                   </button>
                 </div>
 
-                <div className="grid grid-cols-4 gap-2 mb-4">
+                <div className="grid grid-cols-5 gap-2 mb-4">
                   {RATINGS.map((r) => (
                     <button
                       key={r.value}
