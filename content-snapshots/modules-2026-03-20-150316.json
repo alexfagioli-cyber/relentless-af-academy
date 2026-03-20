@@ -1,0 +1,1004 @@
+[
+  {
+    "id": "62911def-50a2-5221-aa80-90533ef5fe37",
+    "title": "Welcome to the Academy",
+    "tier": "aware",
+    "module_type": "course",
+    "order_index": 1,
+    "description": "A quick introduction to what you will learn and how the programme works.",
+    "content": {
+      "screens": [
+        {
+          "body": "This programme teaches you how to use AI properly \u2014 not just the basics, but the kind of skill that genuinely changes how you work, study, and think.\n\nIt is built around **three tiers**:\n\n**Aware** \u2014 understand what AI is, what it can do, and how to have a useful conversation with it.\n\n**Enabled** \u2014 develop real prompt engineering skills that make AI indispensable in your daily work.\n\n**Specialist** \u2014 build with AI: APIs, tools, agents, and professional certification.\n\nYou go at your own pace. Every module you complete unlocks the next one.",
+          "title": "Welcome"
+        },
+        {
+          "body": "The programme mixes **courses**, **challenges**, and **assessments**.\n\n**Courses** teach you concepts \u2014 some are built into this app, others link to world-class content from Anthropic, Coursera, and GitHub.\n\n**Challenges** ask you to apply what you have learned to something real in your life. No right answers \u2014 just practice.\n\n**Assessments** check your understanding before you move to the next tier. You can retake them as many times as you need.\n\nEverything is designed to build on what came before. Trust the sequence.",
+          "title": "How it works"
+        },
+        {
+          "body": "There is no rush. The people who get the most from this programme are the ones who actually try things \u2014 not just read about them.\n\nWhen a challenge asks you to use AI for something real, do it. That is where the learning happens.",
+          "title": "One thing before you start",
+          "inputs": [
+            {
+              "key": "hoping_for",
+              "type": "textarea",
+              "label": "What are you most hoping to get from learning AI?",
+              "placeholder": "Be honest \u2014 there are no wrong answers here..."
+            }
+          ]
+        }
+      ]
+    },
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 5
+  },
+  {
+    "id": "93a985cf-a70e-43af-be49-74bf1ff33f05",
+    "title": "AI Tools That Accelerate Your Work",
+    "tier": "aware",
+    "module_type": "course",
+    "order_index": 2,
+    "description": "Before you dive into courses, know the tools that will genuinely change how you work.",
+    "content": {
+      "screens": [
+        {
+          "body": "Before you go deeper into AI courses, there are three tools you should know about. Not because they are trendy \u2014 because they will genuinely save you hours every week.",
+          "title": "Three tools. Genuine impact."
+        },
+        {
+          "body": "Fireflies records, transcribes, and summarises your meetings automatically. Every call, every discussion, every decision \u2014 captured without you taking a single note. You can search across months of conversations, find exactly who said what, and never lose a detail again. It works with Zoom, Teams, Google Meet, and most other platforms.",
+          "title": "Fireflies \u2014 Your meeting memory"
+        },
+        {
+          "body": "Wisprflow turns your spoken words into written text \u2014 fast, accurate, and everywhere on your Mac. Instead of typing a long email, you talk. Instead of writing meeting notes from memory, you dictate them while they are fresh. Most people think faster than they type. Wisprflow removes that bottleneck.",
+          "title": "Wisprflow \u2014 Your voice, as text"
+        },
+        {
+          "body": "You have already met Claude. Here is how it fits with the other two. Fireflies captures the raw material \u2014 what was said, decided, and committed to. Wisprflow captures your thoughts \u2014 quick, unfiltered, in your own words. Claude processes it all \u2014 summarises, analyses, drafts, and helps you think clearly. Together, these three tools mean you capture everything, lose nothing, and spend your time on thinking rather than typing.",
+          "title": "Claude \u2014 Your thinking partner"
+        },
+        {
+          "body": "If you do not already have these tools: Fireflies \u2014 ask the person who invited you for access. Wisprflow \u2014 available on the Mac App Store. You do not need them to continue this programme, but the sooner you start, the sooner the value compounds.",
+          "title": "Your next step",
+          "inputs": [
+            {
+              "key": "tools_interest",
+              "type": "radio",
+              "label": "Which tool interests you most?",
+              "options": [
+                "Fireflies",
+                "Wisprflow",
+                "Claude",
+                "All three equally"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 10
+  },
+  {
+    "id": "06fc9e1b-fba3-5226-bf4b-643b830799e8",
+    "title": "Claude 101",
+    "tier": "aware",
+    "module_type": "course",
+    "order_index": 3,
+    "description": "Introduction to Claude \u2014 what it is, how it works, and your first conversations.",
+    "content": null,
+    "platform": "skilljar",
+    "external_url": "https://anthropic.skilljar.com/claude-101",
+    "estimated_duration_mins": 210
+  },
+  {
+    "id": "694554a4-3b49-5cba-b2f6-aa5ef09e68c0",
+    "title": "What to Look For",
+    "tier": "aware",
+    "module_type": "course",
+    "order_index": 4,
+    "description": "Key concepts from Claude 101 \u2014 making sure the essentials have landed.",
+    "content": {
+      "screens": [
+        {
+          "body": "Before you move on, let's make sure the key concepts landed.\n\nClaude 101 covered a lot of ground. The three things that matter most right now:\n\n**1. Claude is a conversation, not a command.** The more context you give, the better the response.\n\n**2. You're in control.** Claude follows your lead. If the response isn't right, refine your question \u2014 don't just accept it.\n\n**3. AI has limits.** It can hallucinate. It has a knowledge cutoff. Always verify important facts.",
+          "title": "You've just completed Claude 101"
+        },
+        {
+          "body": "No scoring \u2014 just checking your understanding.",
+          "title": "Quick check",
+          "inputs": [
+            {
+              "key": "key_takeaway",
+              "type": "textarea",
+              "label": "What's the one thing from Claude 101 that you'll remember?",
+              "placeholder": "The concept that stuck with you..."
+            },
+            {
+              "key": "first_use_idea",
+              "type": "textarea",
+              "label": "Name one thing you want to try using Claude for this week.",
+              "placeholder": "Something specific..."
+            }
+          ]
+        }
+      ]
+    },
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 5
+  },
+  {
+    "id": "0d311ccc-d6d3-5683-bce9-f9ce2252328d",
+    "title": "Your First Real Conversation",
+    "tier": "aware",
+    "module_type": "challenge",
+    "order_index": 5,
+    "description": "Use Claude to help with something real this week \u2014 homework, a work task, a decision, a creative project. Paste your best exchange and reflect on what worked.",
+    "content": null,
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 30
+  },
+  {
+    "id": "3787e880-1f2c-508b-8661-cf62c2939fcc",
+    "title": "Assessment: AI Basics",
+    "tier": "aware",
+    "module_type": "assessment",
+    "order_index": 6,
+    "description": "Test your understanding of AI fundamentals from Claude 101.",
+    "content": null,
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 15
+  },
+  {
+    "id": "01ad0c5c-0e0e-5119-9585-783d88a85309",
+    "title": "Prompt Patterns That Work",
+    "tier": "aware",
+    "module_type": "course",
+    "order_index": 7,
+    "description": "Five prompt patterns you can use right now to get dramatically better results from Claude.",
+    "content": {
+      "screens": [
+        {
+          "body": "Before you dive into the deeper courses, here are patterns that make Claude dramatically more useful. These aren't theory \u2014 they're templates you can copy and adapt today.",
+          "title": "10 prompt patterns you can use right now"
+        },
+        {
+          "body": "**Start with who Claude should be.**\n\n\"You are an experienced [teacher / editor / analyst / coach]. Help me with [task].\"\n\nThis shapes the perspective of every response. A teacher explains differently from an analyst.",
+          "title": "Pattern 1: The Role"
+        },
+        {
+          "body": "**Give Claude everything it needs.**\n\n\"Here's my situation: [paste details]. Given this context, [your question].\"\n\nThe more relevant context you provide, the more specific and useful the response. Don't make Claude guess.",
+          "title": "Pattern 2: The Context Dump"
+        },
+        {
+          "body": "**Tell Claude what you want back.**\n\n\"Give me this as [a bullet list / a table / a step-by-step guide / a 200-word summary].\"\n\nFormat control is one of the most underused features. You don't have to accept whatever Claude gives you.",
+          "title": "Pattern 3: The Format Request"
+        },
+        {
+          "body": "**Don't accept the first response.**\n\n\"That's good but [make it shorter / more specific / less formal / add examples]. Also [additional instruction].\"\n\nThe best results come from 2-3 rounds of refinement, not one perfect prompt.",
+          "title": "Pattern 4: The Refinement Loop"
+        },
+        {
+          "body": "**Ask Claude to challenge you.**\n\n\"Here's my [plan / essay / idea]. What are the weaknesses? What am I missing? Be direct.\"\n\nThis is where AI becomes genuinely powerful \u2014 as a thinking partner who spots what you can't see.",
+          "title": "Pattern 5: The Critique Request"
+        },
+        {
+          "body": "Pick two of these patterns. Use them with Claude right now on something real. Then come back.",
+          "title": "Now use them",
+          "inputs": [
+            {
+              "key": "patterns_used",
+              "type": "textarea",
+              "label": "Which patterns did you try? What happened?",
+              "placeholder": "What you tried and how it went..."
+            },
+            {
+              "key": "favourite_pattern",
+              "type": "radio",
+              "label": "Which pattern was most useful?",
+              "options": [
+                "The Role",
+                "The Context Dump",
+                "The Format Request",
+                "The Refinement Loop",
+                "The Critique Request"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 10
+  },
+  {
+    "id": "6566d57e-fbba-5a7b-abc5-bc5371099cc0",
+    "title": "AI Fluency: Framework & Foundations",
+    "tier": "aware",
+    "module_type": "course",
+    "order_index": 8,
+    "description": "Deep dive into AI frameworks \u2014 how to think about AI capabilities and limitations.",
+    "content": null,
+    "platform": "skilljar",
+    "external_url": "https://anthropic.skilljar.com/ai-fluency-framework",
+    "estimated_duration_mins": 210
+  },
+  {
+    "id": "93403d94-2669-5139-9139-9a90e426912e",
+    "title": "AI Fluency for Students",
+    "tier": "aware",
+    "module_type": "course",
+    "order_index": 9,
+    "description": "AI fluency tailored for students \u2014 study skills, research, and academic use cases.",
+    "content": null,
+    "platform": "skilljar",
+    "external_url": "https://anthropic.skilljar.com/ai-fluency-students",
+    "estimated_duration_mins": 180
+  },
+  {
+    "id": "bb91ffa1-5ee5-5f61-b306-964dc620a936",
+    "title": "Solve a Real Problem",
+    "tier": "aware",
+    "module_type": "challenge",
+    "order_index": 10,
+    "description": "Pick something you're genuinely stuck on. Use Claude and everything you've learned to work through it. Document your process \u2014 what you asked, how you refined, what the outcome was.",
+    "content": null,
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 30
+  },
+  {
+    "id": "788f22ed-d7ed-53d1-9687-5430c9ef6f63",
+    "title": "Assessment: Frameworks Applied",
+    "tier": "aware",
+    "module_type": "assessment",
+    "order_index": 11,
+    "description": "Demonstrate your understanding of AI frameworks through practical scenarios.",
+    "content": null,
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 15
+  },
+  {
+    "id": "3a0187b6-a659-550d-8bcd-4c1fead0819d",
+    "title": "Build Your AI Toolkit",
+    "tier": "aware",
+    "module_type": "challenge",
+    "order_index": 12,
+    "description": "Set up Claude with custom instructions tailored to your life. Create 3 reusable prompt templates for tasks you do regularly. Test each one and refine until they work reliably.",
+    "content": {
+      "guidance": [
+        {
+          "body": "You are going to set up Claude as a personal tool \u2014 something you can come back to again and again. Think of it like creating shortcuts for the tasks you do most often.",
+          "title": "What is this challenge?"
+        },
+        {
+          "body": "Think about 3 things you do regularly that involve writing, thinking, or organising. Here are some ideas to get you started:",
+          "title": "Step 1: Pick your tasks",
+          "examples": [
+            "Writing emails \u2014 especially ones you put off because they need the right tone",
+            "Summarising meeting notes or long documents",
+            "Planning meals, trips, or weekly schedules",
+            "Helping your kids with homework topics you are rusty on",
+            "Drafting social media posts or messages",
+            "Researching a purchase \u2014 comparing options, pros and cons",
+            "Preparing for a conversation you are nervous about"
+          ]
+        },
+        {
+          "body": "A prompt template is a reusable message you can tweak each time. The key ingredients: tell Claude WHO it should be (role), WHAT you need (task), and HOW you want it (format/tone). Here is an example:",
+          "title": "Step 2: Build a prompt template for each one",
+          "examples": [
+            "Example: \"You are my personal email assistant. I need to write a [professional/casual/apologetic] email to [person] about [topic]. Keep it under 150 words and match my usual tone \u2014 direct but warm.\""
+          ]
+        },
+        {
+          "body": "Try each template with a real task. If the result is not quite right, tweak the prompt \u2014 add more context, change the tone, or be more specific about what you want. The goal is to get it working well enough that you would actually use it again.",
+          "title": "Step 3: Test and refine"
+        },
+        {
+          "body": "Share which 3 tasks you chose, one of your prompt templates, and what happened when you tested it. What worked? What did you have to adjust?",
+          "title": "What to write below"
+        }
+      ]
+    },
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 45
+  },
+  {
+    "id": "800514cc-efa4-5cf2-8a9c-bb0968fb8022",
+    "title": "Quick Start: Set Up Claude for Your Life",
+    "tier": "enabled",
+    "module_type": "course",
+    "order_index": 12,
+    "description": "20 minutes to a Claude that actually knows you. Set up your Profile, create your first Project, and build 3 reusable prompt templates. This is where learning turns into doing.",
+    "content": {
+      "screens": [
+        {
+          "body": "You've learned what AI is, how it works, and what it can do. That's the foundation.\n\nNow we're going to do something practical. In the next 20 minutes, you'll set up Claude so it actually knows who you are and what you need. No more generic responses. No more starting from scratch every conversation.\n\nThree steps. All inside Claude. By the end, you'll have a personal AI setup that works for your life \u2014 not just a chatbot you ask random questions.",
+          "title": "You made it \u2014 now let's make Claude yours"
+        },
+        {
+          "body": "This is the single most important thing you can do in Claude. Your Profile Preferences apply to EVERY conversation \u2014 they shape how Claude responds to everything.\n\n**How to get there:**\nClick your initials in the bottom-left corner of Claude \u2192 Settings \u2192 Profile.\n\nYou'll see a field: \"What personal preferences should Claude consider in responses?\"\n\n**What to write:**\nTell Claude who you are, how you work, and what you need. Be specific. Here's the formula:\n\n\u2022 Who you are (role, context)\n\u2022 How you like responses (format, length, tone)\n\u2022 What you use Claude for most\n\u2022 Any rules (things to always or never do)",
+          "title": "Step 1: Set Up Your Profile",
+          "inputs": [
+            {
+              "key": "profile_draft",
+              "type": "textarea",
+              "label": "Draft your Profile Preferences here before pasting them into Claude. Use the formula above.",
+              "placeholder": "I am a [role]. I use Claude for [tasks]. I prefer [format/tone]. Always [rule]. Never [rule]."
+            }
+          ]
+        },
+        {
+          "body": "Here are three real Profile Preferences to inspire yours:\n\n**Student:**\n\"I'm a Year 12 student studying Biology, Chemistry and Maths. I use Claude for revision, essay planning, and understanding complex topics. Explain things simply \u2014 if I need more depth, I'll ask. When I ask for essay help, give me a structure first, not a finished essay. Test me with questions after explaining a topic.\"\n\n**Professional:**\n\"I'm a marketing manager at a mid-size company. I use Claude for drafting emails, brainstorming campaigns, and summarising long documents. Keep responses under 200 words unless I ask for more. Use bullet points over paragraphs. Be direct \u2014 I don't need caveats or disclaimers.\"\n\n**Home & Family:**\n\"I manage a household with two kids (ages 10 and 14). I use Claude for meal planning, homework help, travel research, and comparing products. Keep language simple and practical. When helping with homework, explain at the child's level, not mine. For recipes, always include prep time and ingredient count.\"\n\nNotice the pattern: who \u2192 what \u2192 how \u2192 rules. Specific beats vague every time.",
+          "title": "Step 1: Examples That Work"
+        },
+        {
+          "body": "Projects let you give Claude focused context for a specific area of your life. Think of it as a workspace with its own instructions.\n\n**Already using Projects?** Skip ahead to Step 3 \u2014 you're ahead of the curve. This step is here for people who haven't discovered Projects yet.\n\n**How to create one:**\nClick the menu (top-left) \u2192 Projects \u2192 New Project.\n\nGive it a name and add Project Instructions \u2014 these only apply inside this project's chats.\n\n**What makes a good first project?**\nPick the one thing you use Claude for most. Not \"everything\" \u2014 one specific area:\n\n\u2022 Your job (\"Marketing Assistant\" \u2014 knows your brand voice, your products, your audience)\n\u2022 A course you're studying (\"Biology Revision\" \u2014 knows your syllabus, your exam board, your weak topics)\n\u2022 A side project (\"Wedding Planning\" \u2014 knows the date, budget, guest count, venue)\n\u2022 Family admin (\"Family HQ\" \u2014 knows the kids' schedules, dietary needs, upcoming events)",
+          "title": "Step 2: Create Your First Project",
+          "inputs": [
+            {
+              "key": "project_name",
+              "type": "textarea",
+              "label": "What will your first project be? Name it and write 2-3 sentences of instructions for it.",
+              "placeholder": "Project name: ...\nInstructions: ..."
+            }
+          ]
+        },
+        {
+          "body": "A prompt template is a reusable message you tweak each time. Instead of figuring out how to ask Claude from scratch, you start with a template that already works.\n\n**The formula:**\nRole + Task + Context + Format = reliable output.\n\n**Three templates to build now:**\n\n**Template 1 \u2014 Your most common task:**\nWhat do you ask Claude to do most? Write an email? Summarise something? Plan something? Build a template for that.\n\nExample: \"You are my email assistant. Draft a [professional/casual/apologetic] email to [person] about [topic]. Keep it under 150 words. Match my usual tone \u2014 direct but warm.\"\n\n**Template 2 \u2014 Your thinking partner:**\nWhen do you need help thinking something through?\n\nExample: \"I need to make a decision about [topic]. Ask me 5 clarifying questions, then give me a structured pros/cons analysis with your recommendation.\"\n\n**Template 3 \u2014 Your knowledge gap:**\nWhat topic do you regularly need to understand better?\n\nExample: \"Explain [topic] to me as if I'm [level]. Start with the key concept in one sentence, then give me 3 practical examples. Tell me what most people get wrong about this.\"",
+          "title": "Step 3: Build 3 Prompt Templates",
+          "inputs": [
+            {
+              "key": "templates",
+              "type": "textarea",
+              "label": "Write your 3 prompt templates below. You'll test them in Claude next.",
+              "placeholder": "Template 1 (most common task): ...\n\nTemplate 2 (thinking partner): ...\n\nTemplate 3 (knowledge gap): ..."
+            }
+          ]
+        },
+        {
+          "body": "In 20 minutes you've done what most people never do:\n\n\u2713 **Profile Preferences** \u2014 Claude now knows who you are across every conversation\n\u2713 **First Project** \u2014 you have a focused workspace for your most important area\n\u2713 **3 Prompt Templates** \u2014 reusable starting points instead of blank pages\n\nThis is your AI foundation. Everything else in the Academy builds on it.\n\n**What to do next:**\n\u2022 Open Claude and test your 3 templates with real tasks\n\u2022 Refine your Profile Preferences after a week \u2014 what's missing? What needs adjusting?\n\u2022 Create a second Project when you find another area that needs focused context\n\nThe rest of the Enabled tier goes deeper into prompting techniques, but you're no longer starting from zero. You have a working setup that makes Claude genuinely useful right now.",
+          "title": "You're set up",
+          "inputs": [
+            {
+              "key": "reflection",
+              "type": "textarea",
+              "label": "Quick reflection: which of the three steps made the biggest difference? What surprised you?",
+              "placeholder": "The step that changed things most was..."
+            }
+          ]
+        }
+      ]
+    },
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 20
+  },
+  {
+    "id": "6e0a8ae1-f277-5b1f-9334-a4797773f6ea",
+    "title": "Tier Gate: Aware Completion",
+    "tier": "aware",
+    "module_type": "assessment",
+    "order_index": 13,
+    "description": "Final assessment for the Aware tier. Pass to unlock the Enabled tier.",
+    "content": null,
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 20
+  },
+  {
+    "id": "9b90bb8f-b056-53d9-a532-6241c7422c1b",
+    "title": "Why Prompting Changes Everything",
+    "tier": "enabled",
+    "module_type": "course",
+    "order_index": 13,
+    "description": "Welcome to the Enabled tier \u2014 where AI stops being interesting and starts being indispensable.",
+    "content": {
+      "screens": [
+        {
+          "body": "You've completed the Aware tier. You understand what AI is, what it can do, and how to have a useful conversation with it.\n\nThe Enabled tier is where AI stops being interesting and starts being indispensable.\n\nThe difference between someone who \"uses AI\" and someone who's genuinely AI-enabled is one thing: prompt engineering. Not as a buzzword \u2014 as a real, practical skill that changes how you work.",
+          "title": "Welcome to Enabled"
+        },
+        {
+          "body": "In Aware, you learned to ask Claude questions.\n\nIn Enabled, you'll learn to:\n\n**Structure complex tasks** \u2014 breaking big problems into steps that AI can handle\n\n**Create reusable systems** \u2014 prompts and workflows you use every day\n\n**Think in AI-native ways** \u2014 approaching problems differently because you have AI as a tool\n\nBy the end of this tier, AI won't be something you use occasionally. It'll be something you can't imagine working without.",
+          "title": "What changes at this level"
+        },
+        {
+          "body": "The Enabled tier includes:\n\n\u2022 A Coursera specialisation on real-world AI application\n\u2022 Anthropic's own prompt engineering tutorials\n\u2022 Challenges where you build your personal prompt library and AI workflow\n\u2022 Assessments that prove you genuinely understand this material\n\nThis is where the real skills start. Let's go.",
+          "title": "What's ahead",
+          "inputs": [
+            {
+              "key": "enabled_goal",
+              "type": "textarea",
+              "label": "What's the one thing you most want AI to help you with at this level?",
+              "placeholder": "Be specific..."
+            }
+          ]
+        }
+      ]
+    },
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 10
+  },
+  {
+    "id": "2d2e7295-ee1b-54b9-96ea-2176298a636b",
+    "title": "Real-World AI for Everyone",
+    "tier": "enabled",
+    "module_type": "course",
+    "order_index": 14,
+    "description": "Coursera specialisation covering practical AI applications across industries.",
+    "content": null,
+    "platform": "coursera",
+    "external_url": "https://www.coursera.org/specializations/real-world-ai-for-everyone",
+    "estimated_duration_mins": 600
+  },
+  {
+    "id": "89532325-5c7a-55fa-8d94-b19e1ebca2ec",
+    "title": "Build Your Personal AI Assistant",
+    "tier": "enabled",
+    "module_type": "challenge",
+    "order_index": 15,
+    "description": "Create a comprehensive custom instruction set that makes Claude work like your personal assistant. Test it across 5 different real tasks. Document what works and what doesn't.",
+    "content": {
+      "guidance": [
+        {
+          "body": "Custom instructions are a set of preferences and context you give to Claude before starting a conversation. They shape how Claude responds to everything you ask \u2014 like briefing an assistant on your working style, role, and priorities before they start the job.",
+          "title": "What are custom instructions?",
+          "examples": [
+            "\"I'm a marketing manager. Keep suggestions practical and budget-conscious.\"",
+            "\"I prefer bullet points over long paragraphs.\"",
+            "\"Always suggest alternatives when recommending a tool or approach.\""
+          ]
+        },
+        {
+          "body": "Claude has three places where you can personalise how it works. For this exercise, start with Profile Preferences \u2014 that's the main one:",
+          "title": "Where to set this up in Claude",
+          "examples": [
+            "Profile Preferences \u2014 Click your initials (bottom-left in Claude) \u2192 Settings \u2192 Profile. The field \"What personal preferences should Claude consider?\" applies to EVERY conversation. This is where your custom instructions go.",
+            "Memory \u2014 Settings \u2192 Capabilities \u2192 Memory. Claude builds a picture of you over time from your conversations. You can view and edit what it has stored.",
+            "Projects \u2014 Create a Project for focused work (e.g. a specific business or task). Project instructions only apply within that project's chats \u2014 useful when you need different context for different areas of your life."
+          ]
+        },
+        {
+          "body": "The best custom instructions are specific, honest, and task-oriented. They tell Claude who you are, how you work, and what kind of help you actually need. Vague instructions (\"be helpful\") do nothing. Specific ones (\"I'm a teacher who needs lesson plans for Year 9 science\") change everything.",
+          "title": "What makes a good AI assistant setup?"
+        },
+        {
+          "body": "Here are three real examples to inspire yours:",
+          "title": "Examples for different people",
+          "examples": [
+            "Student: \"I am a Year 12 student studying Biology, Chemistry, and Maths. Help me revise by breaking topics into key concepts, testing me with practice questions, and explaining things I get wrong. Use simple language. When I ask for essay help, give me a structure first, not a finished essay.\"",
+            "Young adult: \"I am 24, working my first office job in marketing. Help me write professional emails (I overthink the tone), brainstorm campaign ideas, and summarise long documents. Be direct and keep things under 200 words unless I ask for more.\"",
+            "Professional: \"I am a project manager running 3 teams. Help me write status updates, prepare for stakeholder meetings, and analyse project risks. I prefer bullet points over paragraphs. When I share meeting notes, extract action items with owners and deadlines.\""
+          ]
+        },
+        {
+          "body": "Follow these steps to build your personal AI assistant:",
+          "title": "Your 3-step process",
+          "examples": [
+            "Step 1: Define your needs \u2014 What do you use AI for most? What frustrates you about generic responses? What context would help Claude do better?",
+            "Step 2: Write the instructions \u2014 Include your role, your preferences, your common tasks, and any rules (e.g. \"never use jargon\", \"always cite sources\").",
+            "Step 3: Test across 5 real tasks \u2014 Try your instructions on different types of work: writing, analysis, brainstorming, summarising, problem-solving. Refine based on what works."
+          ]
+        },
+        {
+          "body": "After testing, write about what worked and what didn't. Which instructions made the biggest difference? What did you have to change? What surprised you about how Claude responded to your specific context?",
+          "title": "What to write in your reflection"
+        }
+      ]
+    },
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 45
+  },
+  {
+    "id": "f6b7cd00-8fdc-5640-bbaf-42d9be52486a",
+    "title": "Assessment: Applied Prompting",
+    "tier": "enabled",
+    "module_type": "assessment",
+    "order_index": 16,
+    "description": "Demonstrate your ability to craft effective prompts for real-world tasks.",
+    "content": null,
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 20
+  },
+  {
+    "id": "b1dc94db-48a2-556e-a982-b412fe5b64a6",
+    "title": "Prompt Engineering Interactive Tutorial",
+    "tier": "enabled",
+    "module_type": "course",
+    "order_index": 17,
+    "description": "Anthropic's official prompt engineering course \u2014 a hands-on Jupyter notebook tutorial. Meaty and thorough. Work through it at your own pace, focusing on the techniques most relevant to your work.",
+    "content": {
+      "guidance": [
+        {
+          "body": "This is a Jupyter notebook course hosted on GitHub, not a video series. You'll read explanations and run prompt examples directly. It's substantial \u2014 plan for 2-4 hours to work through the core material. You don't need to finish it in one sitting.",
+          "title": "What to expect"
+        },
+        {
+          "body": "A Claude account (free or paid) and basic familiarity with prompting. No coding experience required \u2014 the notebooks handle the technical parts. You'll get the most from this if you've already completed the earlier modules in this tier.",
+          "title": "What you need"
+        },
+        {
+          "body": "If you're short on time, prioritise these sections:",
+          "title": "Where to focus",
+          "examples": [
+            "Chapter 2: Being Clear and Direct \u2014 the foundation everything else builds on",
+            "Chapter 4: Separating Data from Instructions \u2014 essential for real-world use",
+            "Chapter 7: Using Examples (Few-Shot) \u2014 the single biggest quality lever",
+            "Chapter 9: Complex Prompts \u2014 where it all comes together"
+          ]
+        }
+      ]
+    },
+    "platform": "github",
+    "external_url": "https://github.com/anthropics/courses/tree/master/prompt_engineering_interactive_tutorial",
+    "estimated_duration_mins": 180
+  },
+  {
+    "id": "73575f89-d753-5e0a-a032-81015be6bd53",
+    "title": "Real World Prompting",
+    "tier": "enabled",
+    "module_type": "course",
+    "order_index": 18,
+    "description": "Advanced prompting techniques for production-grade AI interactions.",
+    "content": null,
+    "platform": "github",
+    "external_url": "https://github.com/anthropics/courses/tree/master/real_world_prompting",
+    "estimated_duration_mins": 120
+  },
+  {
+    "id": "c0121d11-10c9-568e-8e69-e74c20e7844a",
+    "title": "Your Prompt Library",
+    "tier": "enabled",
+    "module_type": "challenge",
+    "order_index": 19,
+    "description": "Build a library of 10 prompts you'll actually reuse. Categories: research, writing, analysis, decision-making, creative. Test each one on real tasks and rate their effectiveness.",
+    "content": null,
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 60
+  },
+  {
+    "id": "4523c04a-2ff7-504c-a526-a96fae02b5d6",
+    "title": "Assessment: Prompt Engineering Mastery",
+    "tier": "enabled",
+    "module_type": "assessment",
+    "order_index": 20,
+    "description": "Prove your prompt engineering skills across multiple scenarios.",
+    "content": null,
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 25
+  },
+  {
+    "id": "7a526a29-aa24-516f-b2b2-670cec08fc01",
+    "title": "AI in Your Workflow",
+    "tier": "enabled",
+    "module_type": "challenge",
+    "order_index": 21,
+    "description": "Map your daily or weekly routine. Identify 3 tasks where AI can save time or improve quality. Build the prompts, use them for a full week, then report: time saved, quality difference, what you'd change.",
+    "content": null,
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 60
+  },
+  {
+    "id": "747c9239-291a-5e50-8936-40dfc2532f70",
+    "title": "Tier Gate: Enabled Completion",
+    "tier": "enabled",
+    "module_type": "assessment",
+    "order_index": 22,
+    "description": "Final assessment for the Enabled tier. Pass to unlock the Specialist tier.",
+    "content": null,
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 25
+  },
+  {
+    "id": "2ff92b9a-1598-5e82-aff9-97b65dbb90f7",
+    "title": "From User to Builder",
+    "tier": "specialist",
+    "module_type": "course",
+    "order_index": 23,
+    "description": "Welcome to Specialist \u2014 where you stop using AI and start building with it.",
+    "content": {
+      "screens": [
+        {
+          "body": "Most people will never reach this tier. The skills you're about to develop are the same ones used by engineers at Anthropic, and by the professionals who build AI-powered products and services.\n\nThis is where you stop being someone who uses AI and become someone who builds with it.",
+          "title": "Welcome to Specialist"
+        },
+        {
+          "body": "In Enabled, you mastered prompting \u2014 talking to AI effectively.\n\nIn Specialist, you'll learn to:\n\n**Use the Claude API** \u2014 call Claude programmatically, not just through a chat interface\n\n**Build with MCP** \u2014 connect Claude to real tools, databases, and services\n\n**Create AI agents** \u2014 systems that can plan, execute, and verify their own work\n\n**Prepare for certification** \u2014 the Claude Certified Architect credential\n\nThis is career-grade material. Take it seriously.",
+          "title": "What changes here"
+        },
+        {
+          "body": "The Specialist tier involves code. You don't need to be an expert programmer, but you should be comfortable reading code and following technical instructions.\n\nIf you're not there yet, that's fine \u2014 the courses will teach you what you need. But know that this tier requires more effort than the previous two.",
+          "title": "Before you start",
+          "inputs": [
+            {
+              "key": "specialist_motivation",
+              "type": "textarea",
+              "label": "Why do you want to reach Specialist level? What will you build?",
+              "placeholder": "What's driving you to go this deep..."
+            }
+          ]
+        }
+      ]
+    },
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 10
+  },
+  {
+    "id": "faf132ba-7d1b-59c8-a101-8a5b072eed1c",
+    "title": "Building with the Claude API",
+    "tier": "specialist",
+    "module_type": "course",
+    "order_index": 24,
+    "description": "Official Anthropic course on building applications with the Claude API.",
+    "content": null,
+    "platform": "skilljar",
+    "external_url": "https://anthropic.skilljar.com/building-with-the-claude-api",
+    "estimated_duration_mins": 480
+  },
+  {
+    "id": "1fdcd062-8ea8-5a08-8fca-9dc56dbec983",
+    "title": "API Fundamentals (GitHub)",
+    "tier": "specialist",
+    "module_type": "course",
+    "order_index": 25,
+    "description": "Hands-on API fundamentals from the Anthropic courses repository.",
+    "content": null,
+    "platform": "github",
+    "external_url": "https://github.com/anthropics/courses/tree/master/anthropic_api_fundamentals",
+    "estimated_duration_mins": 120
+  },
+  {
+    "id": "91fd664d-077b-5a0e-9ebc-ca91c5976716",
+    "title": "Challenge: Build a Claude API Script",
+    "tier": "specialist",
+    "module_type": "challenge",
+    "order_index": 26,
+    "description": "Build a working script that calls the Claude API to solve a real problem.",
+    "content": null,
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 90
+  },
+  {
+    "id": "39aba73a-c27f-5446-a06e-46f989386fa2",
+    "title": "Assessment: API Fundamentals",
+    "tier": "specialist",
+    "module_type": "assessment",
+    "order_index": 27,
+    "description": "Demonstrate your Claude API knowledge through practical assessment.",
+    "content": null,
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 25
+  },
+  {
+    "id": "4cbfccd4-e2d3-5dc3-b770-0d1e68d84888",
+    "title": "Claude Code in Action",
+    "tier": "specialist",
+    "module_type": "course",
+    "order_index": 28,
+    "description": "Learn Claude Code \u2014 AI-powered development from inside your terminal.",
+    "content": null,
+    "platform": "skilljar",
+    "external_url": "https://anthropic.skilljar.com/claude-code-in-action",
+    "estimated_duration_mins": 240
+  },
+  {
+    "id": "2bc2fe10-054a-5861-aefa-170160440b23",
+    "title": "Introduction to MCP",
+    "tier": "specialist",
+    "module_type": "course",
+    "order_index": 29,
+    "description": "Model Context Protocol \u2014 connecting Claude to external tools and data.",
+    "content": null,
+    "platform": "skilljar",
+    "external_url": "https://anthropic.skilljar.com/introduction-to-mcp",
+    "estimated_duration_mins": 150
+  },
+  {
+    "id": "b3db711d-a77d-5351-97a4-d7ee797602ea",
+    "title": "MCP Advanced Topics",
+    "tier": "specialist",
+    "module_type": "course",
+    "order_index": 30,
+    "description": "Advanced MCP patterns \u2014 building servers, managing resources, security.",
+    "content": null,
+    "platform": "skilljar",
+    "external_url": "https://anthropic.skilljar.com/mcp-advanced-topics",
+    "estimated_duration_mins": 180
+  },
+  {
+    "id": "ab91ecde-1306-5d2e-ba05-6ff044ef1600",
+    "title": "Tool Use (GitHub)",
+    "tier": "specialist",
+    "module_type": "course",
+    "order_index": 31,
+    "description": "Hands-on tool use patterns from the Anthropic courses repository.",
+    "content": null,
+    "platform": "github",
+    "external_url": "https://github.com/anthropics/courses/tree/master/tool_use",
+    "estimated_duration_mins": 120
+  },
+  {
+    "id": "04daa463-a790-51ed-9588-957bae26a3ef",
+    "title": "Challenge: Build an MCP Server",
+    "tier": "specialist",
+    "module_type": "challenge",
+    "order_index": 32,
+    "description": "Build a working MCP server that connects Claude to an external data source.",
+    "content": null,
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 120
+  },
+  {
+    "id": "2d116340-74ea-5fdf-a7ef-8ceba25a807e",
+    "title": "Introduction to Agent Skills",
+    "tier": "specialist",
+    "module_type": "course",
+    "order_index": 33,
+    "description": "Building agent skills \u2014 extending Claude with specialised capabilities.",
+    "content": null,
+    "platform": "skilljar",
+    "external_url": "https://anthropic.skilljar.com/introduction-to-agent-skills",
+    "estimated_duration_mins": 30
+  },
+  {
+    "id": "026f2263-67f7-5e35-a104-3f8315397376",
+    "title": "Building Skills for Claude",
+    "tier": "specialist",
+    "module_type": "course",
+    "order_index": 34,
+    "description": "Learn to build skills \u2014 reusable instruction packages that teach Claude workflows, best practices, and domain expertise. Covers the complete lifecycle from planning to testing to distribution.",
+    "content": {
+      "screens": [
+        {
+          "body": "A **skill** is a folder containing instructions that teaches Claude how to handle specific tasks or workflows.\n\nInstead of re-explaining your preferences, processes, and domain expertise in every conversation, you teach Claude once and it applies that knowledge every time.\n\nThe only required file is **SKILL.md** \u2014 a Markdown file with YAML frontmatter. Optionally you can include:\n\n\u2022 **scripts/** \u2014 executable code (Python, Bash, etc.)\n\u2022 **references/** \u2014 documentation loaded as needed\n\u2022 **assets/** \u2014 templates, fonts, icons used in output\n\nThink of it this way: if you find yourself giving Claude the same instructions repeatedly, that should be a skill.",
+          "title": "What is a Skill?"
+        },
+        {
+          "body": "Skills use a **three-level system** that minimises token usage while maintaining expertise:\n\n**Level 1 \u2014 YAML frontmatter.** Always loaded into Claude's system prompt. Gives just enough information for Claude to know WHEN the skill should be used. This is the skill's \"shopfront\".\n\n**Level 2 \u2014 SKILL.md body.** Loaded when Claude decides the skill is relevant to the current task. Contains the full instructions and guidance.\n\n**Level 3 \u2014 Linked files.** Additional files in the skill folder that Claude can discover and navigate to as needed \u2014 API guides, examples, templates.\n\nThis matters because loading everything into context all the time wastes tokens and degrades performance. The best skills are lean at Level 1 and rich at Levels 2 and 3.",
+          "title": "Progressive Disclosure",
+          "inputs": [
+            {
+              "key": "disclosure_understanding",
+              "type": "radio",
+              "label": "Why does progressive disclosure matter?",
+              "options": [
+                "It makes the skill folder smaller on disk",
+                "It minimises token usage while maintaining specialised expertise",
+                "It makes the skill load faster",
+                "It prevents other skills from loading"
+              ]
+            }
+          ]
+        },
+        {
+          "body": "If you're already building with MCP, here's how skills fit in:\n\n**MCP provides the professional kitchen** \u2014 access to tools, ingredients, and equipment. It connects Claude to your services (Notion, Linear, Slack, etc.) and provides real-time data access and tool invocation.\n\n**Skills provide the recipes** \u2014 step-by-step instructions on how to create something valuable using those tools.\n\nWithout skills, users connect your MCP but don't know what to do next. Each conversation starts from scratch. Results are inconsistent because everyone prompts differently.\n\nWith skills, pre-built workflows activate automatically. Best practices are embedded in every interaction. The learning curve drops dramatically.\n\nEven without MCP, standalone skills are powerful \u2014 they work with Claude's built-in capabilities like code execution, document creation, and analysis.",
+          "title": "The Kitchen Analogy"
+        },
+        {
+          "body": "Every well-built skill has these properties:\n\n**Composability.** Claude can load multiple skills simultaneously. Your skill should work well alongside others \u2014 don't assume it's the only capability available. A good skill does one thing well and doesn't try to control everything.\n\n**Portability.** Skills work identically across Claude.ai, Claude Code, and the API. Build a skill once and it works on all surfaces without modification, provided the environment supports any dependencies your skill requires.\n\nThese two properties are what make skills genuinely powerful. A composable, portable skill is a reusable building block that compounds in value over time.",
+          "title": "Two Key Properties",
+          "inputs": [
+            {
+              "key": "composability_example",
+              "type": "textarea",
+              "label": "Give an example of two skills that might work well together.",
+              "placeholder": "e.g. A data-analysis skill + a report-generation skill..."
+            }
+          ]
+        },
+        {
+          "body": "Before writing any code, identify **2-3 concrete use cases** your skill should enable.\n\nA good use case definition looks like this:\n\nUse Case: Project Sprint Planning\nTrigger: User says \"help me plan this sprint\"\nSteps: 1. Fetch project status  2. Analyse capacity  3. Suggest priorities  4. Create tasks\nResult: Fully planned sprint with tasks created\n\n**Ask yourself:**\n\u2022 What does a user want to accomplish?\n\u2022 What multi-step workflows does this require?\n\u2022 Which tools are needed (built-in or MCP)?\n\u2022 What domain knowledge or best practices should be embedded?\n\nAnthropic has observed three common skill categories:\n\n**1. Document & Asset Creation** \u2014 generating consistent, high-quality output (reports, designs, code)\n**2. Workflow Automation** \u2014 multi-step processes with validation gates and templates\n**3. MCP Enhancement** \u2014 adding workflow guidance on top of MCP tool access",
+          "title": "Planning: Start with Use Cases"
+        },
+        {
+          "body": "Before building, define how you'll know your skill is working. Anthropic recommends both quantitative and qualitative metrics.\n\n**Quantitative:**\n\u2022 Skill triggers on 90% of relevant queries \u2014 test with 10-20 phrases\n\u2022 Completes workflow in X tool calls \u2014 compare with and without the skill\n\u2022 0 failed API calls per workflow \u2014 monitor during testing\n\n**Qualitative:**\n\u2022 Users don't need to prompt Claude about next steps\n\u2022 Workflows complete without user correction\n\u2022 Consistent results across sessions \u2014 run the same request 3-5 times\n\u2022 A new user can accomplish the task on first try with minimal guidance\n\nThese are rough benchmarks, not precise thresholds. The goal is to have clear criteria BEFORE you start building so you know when you're done.",
+          "title": "Success Criteria",
+          "inputs": [
+            {
+              "key": "success_metric",
+              "type": "radio",
+              "label": "Which is a qualitative success metric?",
+              "options": [
+                "Skill triggers on 90% of relevant queries",
+                "0 failed API calls per workflow",
+                "Workflows complete without user correction",
+                "Completes in under 6000 tokens"
+              ]
+            }
+          ]
+        },
+        {
+          "body": "The YAML frontmatter is **the most important part of your skill**. It's how Claude decides whether to load your skill. Get this wrong and your skill never activates.\n\n**Critical rules:**\n\u2022 File must be exactly **SKILL.md** (case-sensitive \u2014 not SKILL.MD or skill.md)\n\u2022 Folder name uses **kebab-case** (my-cool-skill, not My Cool Skill or my_cool_skill)\n\u2022 **No README.md** inside the skill folder \u2014 all docs go in SKILL.md or references/\n\n**Required fields:**\n\n**name** \u2014 kebab-case, no spaces or capitals, should match folder name\n\n**description** \u2014 the field that makes or breaks your skill. Must include BOTH:\n  \u2014 What the skill does\n  \u2014 When to use it (trigger conditions)\n  \u2014 Under 1024 characters, no XML angle brackets\n\n**The description formula:**\n[What it does] + [When to use it] + [Key capabilities]",
+          "title": "The YAML Frontmatter"
+        },
+        {
+          "body": "Let's put theory into practice. Here's how to create a working skill from scratch.\n\n**Step 1 \u2014 Create the folder:**\nIn your project directory (or ~/.claude/skills/ for global skills), create a folder in kebab-case:\n\nmy-first-skill/\n  SKILL.md\n\n**Step 2 \u2014 Add the frontmatter:**\nOpen SKILL.md and paste this minimal template:\n\n---\nname: my-first-skill\ndescription: \"[What it does]. Use when [trigger phrases]. Capabilities: [key features].\"\n---\n\n**Step 3 \u2014 Write your instructions:**\nBelow the frontmatter, add Markdown instructions. Start simple \u2014 even 5 lines of clear guidance is a working skill.\n\n**Step 4 \u2014 Test it:**\nAsk Claude something that should trigger your skill. Did it activate? Did it follow your instructions? If not, refine the description or instructions and try again.",
+          "title": "Try It: Create Your First SKILL.md",
+          "inputs": [
+            {
+              "key": "first_skill_name",
+              "type": "textarea",
+              "label": "What did you name your skill folder, and what does your description field say?",
+              "placeholder": "Folder: my-first-skill/\ndescription: ..."
+            }
+          ]
+        },
+        {
+          "body": "The description field is where most skills succeed or fail. Here are real examples:\n\n**Good \u2014 specific and actionable:**\n\"Analyses Figma design files and generates developer handoff documentation. Use when user uploads .fig files, asks for design specs, component documentation, or design-to-code handoff.\"\n\n**Good \u2014 includes trigger phrases:**\n\"Manages Linear project workflows including sprint planning, task creation, and status tracking. Use when user mentions sprint, Linear tasks, project planning, or asks to create tickets.\"\n\n**Bad \u2014 too vague:**\n\"Helps with projects.\"\n\n**Bad \u2014 missing triggers:**\n\"Creates sophisticated multi-page documentation systems.\"\n\n**Bad \u2014 too technical, no user triggers:**\n\"Implements the Project entity model with hierarchical relationships.\"\n\nThe test: would a user actually say something that matches your description? If not, Claude won't know when to load your skill.",
+          "title": "Good vs Bad Descriptions",
+          "inputs": [
+            {
+              "key": "write_description",
+              "type": "textarea",
+              "label": "Write a skill description for a tool that helps create meeting agendas. Include what it does AND trigger phrases.",
+              "placeholder": "description: ..."
+            }
+          ]
+        },
+        {
+          "body": "After the frontmatter, the SKILL.md body contains your actual instructions in Markdown.\n\n**Be specific and actionable:**\nGood: \"Run python scripts/validate.py --input {filename} to check data format. If validation fails, common issues include: missing required fields, invalid date formats (use YYYY-MM-DD).\"\nBad: \"Validate the data before proceeding.\"\n\n**Include error handling:**\nAlways add a Common Issues section. When something goes wrong, Claude needs to know what to try.\n\n**Reference bundled resources clearly:**\n\"Before writing queries, consult references/api-patterns.md for rate limiting guidance, pagination patterns, and error codes.\"\n\n**Use progressive disclosure in your instructions too:**\nKeep SKILL.md focused on core instructions. Move detailed documentation to references/ and link to it. Keep SKILL.md under 5000 words.\n\n**Put critical instructions at the top.** Use ## Important or ## Critical headers. Repeat key points if needed \u2014 Claude pays more attention to content early in the file.",
+          "title": "Writing Instructions That Work"
+        },
+        {
+          "body": "Effective skill testing covers three areas:\n\n**1. Triggering tests** \u2014 Does your skill load at the right times?\n\u2022 Should trigger on obvious tasks (\"Help me set up a new project\")\n\u2022 Should trigger on paraphrased requests (\"I need to create a project\")\n\u2022 Should NOT trigger on unrelated topics (\"What's the weather?\")\n\n**2. Functional tests** \u2014 Does it produce correct outputs?\n\u2022 Valid outputs generated\n\u2022 API calls succeed\n\u2022 Error handling works\n\u2022 Edge cases covered\n\n**3. Performance comparison** \u2014 Is it actually better than no skill?\nCompare the same task with and without the skill enabled. Count: messages needed, tool calls, failed attempts, tokens consumed.\n\n**Pro tip from Anthropic:** Iterate on a single task before expanding. Get one challenging workflow working, extract the winning approach into a skill, then broaden to multiple use cases. This gives you faster signal than broad testing.",
+          "title": "Testing Your Skill",
+          "inputs": [
+            {
+              "key": "testing_approach",
+              "type": "radio",
+              "label": "What should you test FIRST when building a new skill?",
+              "options": [
+                "Test it on 50 different use cases at once",
+                "Iterate on a single challenging task until it succeeds",
+                "Deploy it to your whole team and collect feedback",
+                "Run automated performance benchmarks"
+              ]
+            }
+          ]
+        },
+        {
+          "body": "Skills are living documents. After initial deployment, watch for these signals:\n\n**Undertriggering** \u2014 your skill doesn't load when it should:\n\u2022 Users manually enabling the skill\n\u2022 Support questions about when to use it\n\u2022 Skill doesn't activate on relevant queries\nFix: Add more detail and keyword triggers to the description.\n\n**Overtriggering** \u2014 your skill loads when it shouldn't:\n\u2022 Skill activates for irrelevant queries\n\u2022 Users disabling the skill\n\u2022 Confusion about the skill's purpose\nFix: Add negative triggers (\"Do NOT use for...\"), be more specific about scope.\n\n**Instructions not followed** \u2014 skill loads but Claude ignores parts:\n\u2022 Instructions too verbose \u2014 use bullet points, not prose\n\u2022 Critical instructions buried \u2014 put them at the top\n\u2022 Ambiguous language \u2014 \"Make sure to validate\" vs \"CRITICAL: Before calling create_project, verify: project name is non-empty, at least one team member assigned, start date is not in the past\"\n\n**Model laziness** \u2014 Claude skips validation steps:\nAdd explicit encouragement: \"Take your time. Quality is more important than speed. Do not skip validation steps.\"",
+          "title": "Iteration Signals"
+        },
+        {
+          "body": "These patterns emerged from early adopters and Anthropic's internal teams:\n\n**Pattern 1: Sequential Orchestration** \u2014 Multi-step processes in a specific order with dependencies between steps and validation at each stage.\n\n**Pattern 2: Multi-MCP Coordination** \u2014 Workflows spanning multiple services (e.g., export from Figma, store in Drive, create tasks in Linear, notify in Slack). Clear phase separation and data passing between MCPs.\n\n**Pattern 3: Iterative Refinement** \u2014 Output improves with iteration. Generate draft, run quality check, address issues, regenerate, repeat until threshold met.\n\n**Pattern 4: Context-Aware Tool Selection** \u2014 Same outcome, different tools depending on context. Decision criteria drive which approach to use (e.g., large files to cloud storage, code to GitHub, docs to Notion).\n\n**Pattern 5: Domain-Specific Intelligence** \u2014 Your skill adds specialised knowledge beyond tool access. Compliance rules, industry standards, best practices embedded in the workflow logic.",
+          "title": "Five Workflow Patterns",
+          "inputs": [
+            {
+              "key": "pattern_match",
+              "type": "radio",
+              "label": "You want to build a skill that generates reports, checks quality, and refines until they pass. Which pattern?",
+              "options": [
+                "Sequential Orchestration",
+                "Multi-MCP Coordination",
+                "Iterative Refinement",
+                "Domain-Specific Intelligence"
+              ]
+            }
+          ]
+        },
+        {
+          "body": "When designing your skill, choose your approach:\n\n**Problem-first:** \"I need to set up a project workspace.\" Your skill orchestrates the right MCP calls in the right sequence. Users describe outcomes \u2014 the skill handles the tools.\n\n**Tool-first:** \"I have Notion MCP connected.\" Your skill teaches Claude the optimal workflows and best practices for that tool. Users already have access \u2014 the skill provides expertise.\n\nMost skills lean one direction. The distinction matters because it determines how you write your instructions:\n\n\u2022 Problem-first skills need clear step ordering, dependencies, and rollback instructions\n\u2022 Tool-first skills need embedded best practices, common patterns, and domain knowledge\n\nKnowing which framing fits your use case helps you choose the right workflow pattern from the previous screen.",
+          "title": "Problem-First vs Tool-First"
+        },
+        {
+          "body": "**How to distribute skills:**\n1. Download the skill folder\n2. Zip it (if needed)\n3. Upload via Claude.ai \u2192 Settings \u2192 Capabilities \u2192 Skills\n4. Or place in your Claude Code skills directory\n\nOrganisations can deploy skills workspace-wide with automatic updates and centralised management.\n\n**The skill-creator tool** is built into Claude.ai and Claude Code. It can:\n\u2022 Generate skills from natural language descriptions\n\u2022 Produce properly formatted SKILL.md with frontmatter\n\u2022 Suggest trigger phrases and structure\n\u2022 Review and flag common issues (vague descriptions, structural problems)\n\nTo use it: \"Use the skill-creator skill to help me build a skill for [your use case].\"\n\nSkills are an **open standard** (like MCP) \u2014 designed to be portable across platforms, not locked to Claude.\n\n**Position your skill around outcomes, not features:**\nGood: \"Enables teams to set up project workspaces in seconds \u2014 including pages, databases, and templates.\"\nBad: \"A folder containing YAML frontmatter and Markdown instructions that calls our MCP server tools.\"",
+          "title": "Distribution and the skill-creator"
+        },
+        {
+          "body": "You have the knowledge. Time to plan a real skill.\n\nThink about a workflow you repeat often \u2014 something where you give Claude the same context and instructions regularly. That's your skill candidate.",
+          "title": "Now Plan Your First Skill",
+          "inputs": [
+            {
+              "key": "skill_use_case",
+              "type": "textarea",
+              "label": "What workflow will your skill automate? (Use case, trigger, steps, result)",
+              "placeholder": "Use Case: ...\nTrigger: User says ...\nSteps: 1. ... 2. ... 3. ...\nResult: ..."
+            },
+            {
+              "key": "skill_category",
+              "type": "radio",
+              "label": "Which category does your skill fit?",
+              "options": [
+                "Document & Asset Creation",
+                "Workflow Automation",
+                "MCP Enhancement"
+              ]
+            },
+            {
+              "key": "skill_description",
+              "type": "textarea",
+              "label": "Write the description field for your skill (what it does + when to use it + key capabilities).",
+              "placeholder": "description: ..."
+            }
+          ]
+        }
+      ]
+    },
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 45
+  },
+  {
+    "id": "1d51a805-85df-5851-a10b-2e55a657a128",
+    "title": "Assessment: Building Skills",
+    "tier": "specialist",
+    "module_type": "assessment",
+    "order_index": 35,
+    "description": "Test your knowledge of skill architecture, design patterns, testing, and distribution.",
+    "content": null,
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 25
+  },
+  {
+    "id": "4a5567cf-3c00-5a57-9664-cfe73f30b2ec",
+    "title": "Prompt Evaluations (GitHub)",
+    "tier": "specialist",
+    "module_type": "course",
+    "order_index": 36,
+    "description": "Systematic prompt evaluation and testing from the Anthropic courses repository.",
+    "content": null,
+    "platform": "github",
+    "external_url": "https://github.com/anthropics/courses/tree/master/prompt_evaluations",
+    "estimated_duration_mins": 90
+  },
+  {
+    "id": "cb6c3de9-f482-572f-aec3-3e401b7109ed",
+    "title": "Building with the Claude API (Coursera)",
+    "tier": "specialist",
+    "module_type": "course",
+    "order_index": 37,
+    "description": "Coursera specialisation \u2014 comprehensive Claude API development.",
+    "content": null,
+    "platform": "coursera",
+    "external_url": "https://www.coursera.org/specializations/building-with-the-claude-api",
+    "estimated_duration_mins": 600
+  },
+  {
+    "id": "7077616d-8832-59dd-9d51-4b7ee43262ac",
+    "title": "CCA Exam Preparation",
+    "tier": "specialist",
+    "module_type": "course",
+    "order_index": 38,
+    "description": "Preparation materials for the Claude Certified Architect examination.",
+    "content": null,
+    "platform": "claudecertifications",
+    "external_url": "https://claudecertifications.com/",
+    "estimated_duration_mins": 300
+  },
+  {
+    "id": "94644c9d-de35-50df-a0db-2568b58cd4c5",
+    "title": "Assessment: Specialist Readiness",
+    "tier": "specialist",
+    "module_type": "assessment",
+    "order_index": 39,
+    "description": "Final assessment \u2014 are you ready for CCA certification?",
+    "content": null,
+    "platform": "internal",
+    "external_url": null,
+    "estimated_duration_mins": 30
+  }
+]
